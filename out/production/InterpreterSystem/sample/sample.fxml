@@ -1,48 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import org.fxmisc.richtext.CodeArea?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-   </top>
-   <center>
-      <TextArea prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </center>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <right>
-      <VBox alignment="CENTER" minWidth="100.0" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" minWidth="100.0" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="TOP_CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Run">
-               <graphic>
-                  <FontAwesomeIconView fill="#17d052" glyphName="PLAY" strokeType="OUTSIDE" strokeWidth="0.0" />
-               </graphic>
-            </Button>
+
          </children>
       </VBox>
    </right>
+   <center>
+      <CodeArea fx:id="codeArea" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+            <Button fx:id="runBtn" mnemonicParsing="false" onAction="#onRunClick" text="Run">
+                <graphic>
+                    <FontAwesomeIconView fill="#17d052" glyphName="PLAY" size="15" strokeType="OUTSIDE" strokeWidth="0.0" />
+                </graphic>
+                <VBox.margin>
+                    <Insets bottom="2.0" top="2.0" />
+                </VBox.margin>
+            </Button>
+            <Button fx:id="openBtn" mnemonicParsing="false" onAction="#onRunClick" text="Open">
+                <graphic>
+                    <FontAwesomeIconView fill="#cd8f3a" glyphName="FOLDER_OPEN" size="15" strokeType="OUTSIDE" strokeWidth="0.0" />
+                </graphic>
+                <VBox.margin>
+                    <Insets bottom="2.0" top="2.0" />
+                </VBox.margin>
+            </Button>
+            <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#onRunClick" text="Save">
+                <graphic>
+                    <FontAwesomeIconView fill="#1959cf" glyphName="SAVE" size="15" strokeType="OUTSIDE" strokeWidth="0.0" />
+                </graphic>
+                <VBox.margin>
+                    <Insets bottom="2.0" top="2.0" />
+                </VBox.margin>
+            </Button>
+            <Button fx:id="optionsBtn" mnemonicParsing="false" onAction="#onRunClick" text="Options">
+                <graphic>
+                    <FontAwesomeIconView fill="#727272" glyphName="GEAR" size="15" strokeType="OUTSIDE" strokeWidth="0.0" />
+                </graphic>
+                <VBox.margin>
+                    <Insets bottom="2.0" top="2.0" />
+                </VBox.margin>
+            </Button>
+        </items>
+      </ToolBar>
+   </top>
 </BorderPane>
