@@ -1,0 +1,16 @@
+.side-bar {
+    -fx-background-color: #7a7973;
+}
+
+.split-pane:vertical > .split-pane-divider {
+   -fx-background-color: #7a7973;
+   -fx-padding: 0 1 0 1;
+}
+
+.console-area {
+    text-area-background: #bdbcb9 ;
+}
+
+.console-area .content {
+    -fx-background-color: text-area-background ;
+}

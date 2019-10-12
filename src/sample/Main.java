@@ -28,6 +28,14 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT));
         primaryStage.show();
         primaryStage.setResizable(false);
+
+        primaryStage.getScene().getStylesheets().add(
+                this.getClass().getResource("common-style.css").toExternalForm()
+        );
+
+        primaryStage.getScene().getStylesheets().add(
+                this.getClass().getResource("light-mode.css").toExternalForm()
+        );
     }
 
     public static Main getInstance() {
@@ -36,6 +44,14 @@ public class Main extends Application {
 
     public void successNotif(String title, String body){
         Notifications.create().title(title + " Success").text(body).position(Pos.BOTTOM_RIGHT).owner(primaryStage).showInformation();
+    }
+
+    public void failNotif(String title, String body){
+        Notifications.create().title(title + " Fail").text(body).position(Pos.BOTTOM_RIGHT).owner(primaryStage).showError();
+    }
+
+    public Stage getPrimaryStage(){
+        return primaryStage;
     }
 
     public static void main(String[] args) {
