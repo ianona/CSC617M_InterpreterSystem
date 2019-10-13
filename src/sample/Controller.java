@@ -1,11 +1,8 @@
 package sample;
 
 import antlr4.EzBrewLexer;
-<<<<<<< HEAD
 import antlr4.EzBrewParser;
 import javafx.collections.FXCollections;
-=======
->>>>>>> 7e953ea645183d42218af74547320af8a07bada7
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
