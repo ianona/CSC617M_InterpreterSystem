@@ -1,38 +1,36 @@
 package sample;
 
 import antlr4.EzBrewLexer;
-import com.sun.tools.javah.Gen;
+<<<<<<< HEAD
+import antlr4.EzBrewParser;
+import javafx.collections.FXCollections;
+=======
+>>>>>>> 7e953ea645183d42218af74547320af8a07bada7
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TextArea;
+import javafx.geometry.Insets;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import org.antlr.v4.runtime.ANTLRInputStream;
-import org.antlr.v4.runtime.Recognizer;
-import org.antlr.v4.runtime.Token;
-import org.antlr.v4.runtime.Vocabulary;
+import javafx.util.Pair;
+import org.antlr.v4.gui.TreeViewer;
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.tree.ParseTree;
 import org.controlsfx.control.StatusBar;
 import org.fxmisc.richtext.CodeArea;
-import org.fxmisc.richtext.GenericStyledArea;
 import org.fxmisc.richtext.LineNumberFactory;
-import org.fxmisc.richtext.model.Codec;
-import org.fxmisc.richtext.model.ReadOnlyStyledDocument;
-import org.fxmisc.richtext.model.StyledDocument;
-import org.fxmisc.richtext.model.StyledSegment;
-import org.reactfx.util.Either;
-import org.reactfx.util.Tuple2;
-import richtext.LinkedImage;
-import richtext.ParStyle;
+import org.fxmisc.richtext.model.StyleSpans;
+import org.fxmisc.richtext.model.StyleSpansBuilder;
+import org.reactfx.Subscription;
 
 import java.io.*;
-import java.time.format.TextStyle;
+import java.time.Duration;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Optional;
+import java.util.regex.Matcher;
 
 public class Controller {
     @FXML private Button runBtn;
@@ -44,7 +42,6 @@ public class Controller {
     @FXML private StatusBar statusBar;
 
     @FXML public void initialize(){
-        // add line numbers to the left of area
         codeArea.setParagraphGraphicFactory(LineNumberFactory.get(codeArea));
         codeArea.prefWidthProperty().bind(topAnchor.widthProperty());
         codeArea.prefHeightProperty().bind(topAnchor.heightProperty());
@@ -56,6 +53,48 @@ public class Controller {
         consoleArea.prefHeightProperty().bind(bottomAnchor.heightProperty());
 
         splitPane.setDividerPositions(0.8);
+
+        // syntax highlighting
+        // recompute the syntax highlighting 100 ms after user stops editing area
+        Subscription cleanupWhenNoLongerNeedIt = codeArea
+
+                // plain changes = ignore style changes that are emitted when syntax highlighting is reapplied
+                // multi plain changes = save computation by not rerunning the code multiple times
+                //   when making multiple changes (e.g. renaming a method at multiple parts in file)
+                .multiPlainChanges()
+
+                // do not emit an event until 500 ms have passed since the last emission of previous stream
+                .successionEnds(Duration.ofMillis(100))
+
+                // run the following code block when previous stream emits an event
+                .subscribe(ignore -> codeArea.setStyleSpans(0, computeHighlighting(codeArea.getText())));
+
+        // when no longer need syntax highlighting and wish to clean up memory leaks
+        // run: `cleanupWhenNoLongerNeedIt.unsubscribe();`
+    }
+
+    private static StyleSpans<Collection<String>> computeHighlighting(String text) {
+        Matcher matcher = Constants.PATTERN.matcher(text);
+        int lastKwEnd = 0;
+        StyleSpansBuilder<Collection<String>> spansBuilder
+                = new StyleSpansBuilder<>();
+        while(matcher.find()) {
+            String styleClass =
+                    matcher.group("KEYWORD") != null ? "keyword" :
+                            matcher.group("PAREN") != null ? "paren" :
+                                    matcher.group("BRACE") != null ? "brace" :
+                                            matcher.group("BRACKET") != null ? "bracket" :
+                                                    matcher.group("SEMICOLON") != null ? "semicolon" :
+                                                            matcher.group("STRING") != null ? "string" :
+                                                                    matcher.group("OPERATOR") != null ? "operator" :
+                                                                            matcher.group("COMMENT") != null ? "comment" :
+                                                                                    null; /* never happens */ assert styleClass != null;
+            spansBuilder.add(Collections.emptyList(), matcher.start() - lastKwEnd);
+            spansBuilder.add(Collections.singleton(styleClass), matcher.end() - matcher.start());
+            lastKwEnd = matcher.end();
+        }
+        spansBuilder.add(Collections.emptyList(), text.length() - lastKwEnd);
+        return spansBuilder.create();
     }
 
     private void consoleLog(String log){
@@ -72,16 +111,38 @@ public class Controller {
     }
 
     public void onScanClick(ActionEvent actionEvent) {
-//        Main.getInstance().failNotif("Scan","Function not implemented yet");
-        EzBrewLexer lexer = new EzBrewLexer(new ANTLRInputStream(codeArea.getText()));
-        Vocabulary vocabulary = lexer.getVocabulary();
+        CollectingErrorListener listener = new CollectingErrorListener();
         clearConsole();
 
+        EzBrewLexer lexer = new EzBrewLexer(new ANTLRInputStream(codeArea.getText()));
+        Vocabulary vocabulary = lexer.getVocabulary();
+//        lexer.removeErrorListeners();
+        lexer.addErrorListener(listener);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        EzBrewParser parser = new EzBrewParser(tokens);
+//        parser.removeErrorListeners();
+        parser.addErrorListener(listener);
+        parser.compilationUnit();
+
+        int errors_count = Arrays.stream(listener.getSyntaxErrors().toArray())
+                .filter(error -> ((SyntaxError)error).getMessage().contains("token recognition"))
+                .toArray().length;
+
+        if (errors_count != 0) {
+            consoleLog("----------Token Errors----------");
+            Arrays.stream(listener.getSyntaxErrors().toArray())
+                    .filter(error -> ((SyntaxError)error).getMessage().contains("token recognition"))
+                    .forEach(
+                            error -> consoleLog(((SyntaxError)error).getMessage())
+                    );
+        }
+
+        EzBrewLexer lexer2 = new EzBrewLexer(new ANTLRInputStream(codeArea.getText()));
         consoleLog("----------Tokens----------");
         int count = 0;
         int ws_count = 0;
         int valid_count = 0;
-        for (Token token: lexer.getAllTokens()){
+        for (Token token: lexer2.getAllTokens()){
             String tokenClass = null;
             String symbolicName = vocabulary.getSymbolicName(token.getType());
 
@@ -115,12 +176,19 @@ public class Controller {
             count++;
         }
         Main.getInstance().successNotif("Scan","Scan complete, found " + count + " tokens");
-        updateStatus(count + " tokens found ("+ws_count+" whitespace tokens, " + valid_count + " valid tokens)");
+        updateStatus(count + " tokens found (" + ws_count + " whitespace tokens, " + valid_count + " valid tokens, " + errors_count + " errors)");
     }
 
     public void onParseClick(ActionEvent actionEvent) {
-        Main.getInstance().failNotif("Parse","Function not implemented yet");
+        EzBrewLexer lexer = new EzBrewLexer(new ANTLRInputStream(codeArea.getText()));
+        TokenStream tokenStream = new CommonTokenStream(lexer);
+        EzBrewParser parser = new EzBrewParser(tokenStream);
+        ParseTree tree = parser.compilationUnit();
+        TreeViewer viewr = new TreeViewer(Arrays.asList(parser.getRuleNames()),tree);
+        viewr.setScale(.3);
+        viewr.open();
     }
+
 
     public void onRunClick(ActionEvent actionEvent) {
         Main.getInstance().failNotif("Run","Function not implemented yet");
@@ -142,7 +210,44 @@ public class Controller {
     }
 
     public void onOptionsClick(ActionEvent actionEvent) {
-        Main.getInstance().failNotif("Options","Function not implemented yet");
+        Dialog<Pair<String, String>> dialog = new Dialog<>();
+        dialog.setTitle("Options");
+        dialog.setHeaderText("Customize IDE");
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+//        dialog.setGraphic(new ImageView(this.getClass().getResource("login.png").toString()));
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
+
+        String week_days[] = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
+        ComboBox username = new ComboBox(FXCollections.observableArrayList(Constants.IDE_MODES));
+        username.getSelectionModel().select(Main.getInstance().getMode());
+        ComboBox dummy = new ComboBox(FXCollections.observableArrayList(week_days));
+        dummy.getSelectionModel().select("Wednesday");
+
+        grid.add(new Label("IDE Mode:"), 0, 0);
+        grid.add(username, 1, 0);
+        grid.add(new Label("Dummy:"), 0, 1);
+        grid.add(dummy, 1, 1);
+        dialog.getDialogPane().setContent(grid);
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == ButtonType.OK) {
+                return new Pair<>(
+                        username.getSelectionModel().getSelectedItem().toString(),
+                        dummy.getSelectionModel().getSelectedItem().toString()
+                );
+            }
+            return null;
+        });
+
+        Optional<Pair<String, String>> result = dialog.showAndWait();
+        result.ifPresent(options -> {
+            System.out.println("Mode=" + options.getKey() + ", Dummy=" + options.getValue());
+        });
     }
 
     private void loadDocument() {
@@ -188,7 +293,6 @@ public class Controller {
             save(selectedFile);
         }
     }
-
 
     private void save(File file) {
         try {

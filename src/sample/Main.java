@@ -12,6 +12,7 @@ import org.controlsfx.control.Notifications;
 
 public class Main extends Application {
     private static Main instance;
+    private static String mode;
 
     private Stage primaryStage;
     @Override
@@ -36,10 +37,17 @@ public class Main extends Application {
         primaryStage.getScene().getStylesheets().add(
                 this.getClass().getResource("light-mode.css").toExternalForm()
         );
+
+        // set current IDE mode
+        mode = Constants.MODE_LIGHT;
     }
 
     public static Main getInstance() {
         return instance;
+    }
+
+    public String getMode() {
+        return mode;
     }
 
     public void successNotif(String title, String body){
