@@ -247,7 +247,19 @@ public class Controller {
 
         Optional<Pair<String, String>> result = dialog.showAndWait();
         result.ifPresent(options -> {
-            System.out.println("Mode=" + options.getKey() + ", Dummy=" + options.getValue());
+            String mode = options.getKey();
+            Main.getInstance().setMode(mode);
+
+            System.out.println("Mode=" + mode + ", Dummy=" + options.getValue());
+
+            // update stylesheets
+            Main.getInstance().getPrimaryStage().getScene().getStylesheets().clear();
+            Main.getInstance().getPrimaryStage().getScene().getStylesheets().add(
+                    this.getClass().getResource("common-style.css").toExternalForm()
+            );
+            Main.getInstance().getPrimaryStage().getScene().getStylesheets().add(
+                    this.getClass().getResource(mode.toLowerCase()+"-mode.css").toExternalForm()
+            );
         });
     }
 

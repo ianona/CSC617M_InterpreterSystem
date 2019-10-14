@@ -50,6 +50,10 @@ public class Main extends Application {
         return mode;
     }
 
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
+
     public void successNotif(String title, String body){
         Notifications.create().title(title + " Success").text(body).position(Pos.BOTTOM_RIGHT).owner(primaryStage).showInformation();
     }
