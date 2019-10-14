@@ -149,14 +149,16 @@ public class Controller {
                 tokenClass = "IDENTIFIER";
             } else if (symbolicName.contains("LITERAL")) {
                 tokenClass = "LITERAL";
-            } else if (token.getType() >= 49 && token.getType() <= 57) {
+            } else if (token.getType() >= 65 && token.getType() <= 73) {
                 tokenClass = "SEPARATOR";
-            } else if (token.getType() >= 58 && token.getType() <= 93) {
+            } else if (token.getType() >= 74 && token.getType() <= 90) {
                 tokenClass = "OPERATOR";
-            } else if (token.getType() >= 1 && token.getType() <= 38){
+            } else if (token.getType() >= 22 && token.getType() <= 59){
                 tokenClass = "KEYWORD";
             } else if (symbolicName.contains("WS")) {
                 ws_count++;
+            } else if (symbolicName == "ERROR") {
+                tokenClass = "ERROR";
             }
 
             if (tokenClass != null) {

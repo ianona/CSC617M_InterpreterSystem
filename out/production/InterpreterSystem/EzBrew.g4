@@ -55,21 +55,21 @@ WHILE:              'during';//'while';
 // Literals
 
 DECIMAL_LITERAL:    ('0' | [1-9] (Digits? | '_'+ Digits)) [lL]?;
-HEX_LITERAL:        '0' [xX] [0-9a-fA-F] ([0-9a-fA-F_]* [0-9a-fA-F])? [lL]?;
-OCT_LITERAL:        '0' '_'* [0-7] ([0-7_]* [0-7])? [lL]?;
-BINARY_LITERAL:     '0' [bB] [01] ([01_]* [01])? [lL]?;
+//HEX_LITERAL:        '0' [xX] [0-9a-fA-F] ([0-9a-fA-F_]* [0-9a-fA-F])? [lL]?;
+//OCT_LITERAL:        '0' '_'* [0-7] ([0-7_]* [0-7])? [lL]?;
+//BINARY_LITERAL:     '0' [bB] [01] ([01_]* [01])? [lL]?;
 
 FLOAT_LITERAL:      (Digits '.' Digits? | '.' Digits) ExponentPart? [fFdD]?
              |       Digits (ExponentPart [fFdD]? | [fFdD])
              ;
 
-HEX_FLOAT_LITERAL:  '0' [xX] (HexDigits '.'? | HexDigits? '.' HexDigits) [pP] [+-]? Digits [fFdD]?;
+//HEX_FLOAT_LITERAL:  '0' [xX] (HexDigits '.'? | HexDigits? '.' HexDigits) [pP] [+-]? Digits [fFdD]?;
 
 BOOL_LITERAL:       'true'
             |       'false'
             ;
 
-CHAR_LITERAL:       '\'' (~['\\\r\n] | EscapeSequence) '\'';
+//CHAR_LITERAL:       '\'' (~['\\\r\n] | EscapeSequence) '\'';
 
 STRING_LITERAL:     '"' (~["\\\r\n] | EscapeSequence)* '"';
 NULL_LITERAL:       'null';
@@ -88,9 +88,9 @@ ASSIGN:             '=';
 GT:                 '>';
 LT:                 '<';
 BANG:               '!';
-TILDE:              '~';
-QUESTION:           '?';
-COLON:              ':';
+//TILDE:              '~';
+//QUESTION:           '?';
+//COLON:              ':';
 EQUAL:              '==';
 LE:                 '<=';
 GE:                 '>=';
@@ -103,27 +103,27 @@ ADD:                '+';
 SUB:                '-';
 MUL:                '*';
 DIV:                '/';
-BITAND:             '&';
-BITOR:              '|';
-CARET:              '^';
+//BITAND:             '&';
+//BITOR:              '|';
+//CARET:              '^';
 MOD:                '%';
-ADD_ASSIGN:         '+=';
-SUB_ASSIGN:         '-=';
-MUL_ASSIGN:         '*=';
-DIV_ASSIGN:         '/=';
-AND_ASSIGN:         '&=';
-OR_ASSIGN:          '|=';
-XOR_ASSIGN:         '^=';
-MOD_ASSIGN:         '%=';
-LSHIFT_ASSIGN:      '<<=';
-RSHIFT_ASSIGN:      '>>=';
-URSHIFT_ASSIGN:     '>>>=';
+//ADD_ASSIGN:         '+=';
+//SUB_ASSIGN:         '-=';
+//MUL_ASSIGN:         '*=';
+//DIV_ASSIGN:         '/=';
+//AND_ASSIGN:         '&=';
+//OR_ASSIGN:          '|=';
+//XOR_ASSIGN:         '^=';
+//MOD_ASSIGN:         '%=';
+//LSHIFT_ASSIGN:      '<<=';
+//RSHIFT_ASSIGN:      '>>=';
+//URSHIFT_ASSIGN:     '>>>=';
 // Java 8 tokens
-ARROW:              '->';
-COLONCOLON:         '::';
+//ARROW:              '->';
+//COLONCOLON:         '::';
 // Additional symbols not defined in the lexical specification
-AT:                 '@';
-ELLIPSIS:           '...';
+//AT:                 '@';
+//ELLIPSIS:           '...';
 // Whitespace and comments
 WS:                 [ \t\r\n\u000C]+ -> channel(HIDDEN);
 COMMENT:            '<!>' .*? '<!>'    -> channel(HIDDEN);
@@ -132,6 +132,10 @@ LINE_COMMENT:       '#' ~[\r\n]*    -> channel(HIDDEN);
 // Identifiers
 
 IDENTIFIER:         Letter LetterOrDigit*;
+
+ERROR   :   [0-9] LetterOrDigit*
+        |   '\'' (~['\\\r\n] | EscapeSequence) (~['\\\r\n] | EscapeSequence)+ '\''
+        ;
 
 // Fragment rules
 
@@ -142,14 +146,14 @@ fragment ExponentPart
 fragment EscapeSequence
     : '\\' [btnfr"'\\]
     | '\\' ([0-3]? [0-7])? [0-7]
-    | '\\' 'u'+ HexDigit HexDigit HexDigit HexDigit
+//    | '\\' 'u'+ HexDigit HexDigit HexDigit HexDigit
     ;
-fragment HexDigits
-    : HexDigit ((HexDigit | '_')* HexDigit)?
-    ;
-fragment HexDigit
-    : [0-9a-fA-F]
-    ;
+//fragment HexDigits
+//    : HexDigit ((HexDigit | '_')* HexDigit)?
+//    ;
+//fragment HexDigit
+//    : [0-9a-fA-F]
+//    ;
 fragment Digits
     : [0-9] ([0-9_]* [0-9])?
     ;
@@ -720,10 +724,10 @@ typeType
 primitiveType
     : BOOLEAN
     | CHAR
-    | BYTE
-    | SHORT
+//    | BYTE
+//    | SHORT
     | INT
-    | LONG
+//    | LONG
     | FLOAT
     | DOUBLE
     ;
