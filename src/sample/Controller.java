@@ -159,6 +159,8 @@ public class Controller {
                 ws_count++;
             } else if (symbolicName == "ERROR") {
                 tokenClass = "ERROR";
+                errors_count++;
+                valid_count--;
             }
 
             if (tokenClass != null) {

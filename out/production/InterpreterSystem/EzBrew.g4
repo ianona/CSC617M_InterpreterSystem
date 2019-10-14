@@ -135,6 +135,7 @@ IDENTIFIER:         Letter LetterOrDigit*;
 
 ERROR   :   [0-9] LetterOrDigit*
         |   '\'' (~['\\\r\n] | EscapeSequence) (~['\\\r\n] | EscapeSequence)+ '\''
+        |   '\'' '\''
         ;
 
 // Fragment rules

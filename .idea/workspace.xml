@@ -4,124 +4,14 @@
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/EzBrew.g4" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/EzBrew.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrew.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrew.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrew.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrew.tokens" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewLexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewLexer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewLexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewLexer.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$AnnotationConstantRestContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$AnnotationConstantRestContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$AnnotationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$AnnotationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$AnnotationMethodOrConstantRestContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$AnnotationMethodOrConstantRestContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$AnnotationMethodRestContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$AnnotationMethodRestContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$AnnotationTypeBodyContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$AnnotationTypeBodyContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$AnnotationTypeDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$AnnotationTypeDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$AnnotationTypeElementDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$AnnotationTypeElementDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$AnnotationTypeElementRestContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$AnnotationTypeElementRestContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ArgumentsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ArgumentsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ArrayCreatorRestContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ArrayCreatorRestContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ArrayInitializerContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ArrayInitializerContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$BlockContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$BlockContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$BlockStatementContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$BlockStatementContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$CatchClauseContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$CatchClauseContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$CatchTypeContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$CatchTypeContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ClassBodyContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ClassBodyContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ClassBodyDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ClassBodyDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ClassCreatorRestContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ClassCreatorRestContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ClassDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ClassDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ClassOrInterfaceModifierContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ClassOrInterfaceModifierContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ClassOrInterfaceTypeContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ClassOrInterfaceTypeContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ClassTypeContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ClassTypeContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$CompilationUnitContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$CompilationUnitContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ConstDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ConstDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ConstantDeclaratorContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ConstantDeclaratorContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ConstructorDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ConstructorDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$CreatedNameContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$CreatedNameContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$CreatorContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$CreatorContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$DefaultValueContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$DefaultValueContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ElementValueArrayInitializerContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ElementValueArrayInitializerContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ElementValueContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ElementValueContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ElementValuePairContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ElementValuePairContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ElementValuePairsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ElementValuePairsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$EnhancedForControlContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$EnhancedForControlContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$EnumBodyDeclarationsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$EnumBodyDeclarationsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$EnumConstantContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$EnumConstantContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$EnumConstantsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$EnumConstantsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$EnumDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$EnumDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ExplicitGenericInvocationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ExplicitGenericInvocationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ExplicitGenericInvocationSuffixContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ExplicitGenericInvocationSuffixContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ExpressionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ExpressionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ExpressionListContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ExpressionListContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$FieldDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$FieldDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$FinallyBlockContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$FinallyBlockContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$FloatLiteralContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$FloatLiteralContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ForControlContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ForControlContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ForInitContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ForInitContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$FormalParameterContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$FormalParameterContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$FormalParameterListContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$FormalParameterListContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$FormalParametersContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$FormalParametersContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$GenericConstructorDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$GenericConstructorDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$GenericInterfaceMethodDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$GenericInterfaceMethodDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$GenericMethodDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$GenericMethodDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ImportDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ImportDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$InnerCreatorContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$InnerCreatorContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$IntegerLiteralContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$IntegerLiteralContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$InterfaceBodyContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$InterfaceBodyContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$InterfaceBodyDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$InterfaceBodyDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$InterfaceDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$InterfaceDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$InterfaceMemberDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$InterfaceMemberDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$InterfaceMethodDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$InterfaceMethodDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$InterfaceMethodModifierContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$InterfaceMethodModifierContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$LambdaBodyContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$LambdaBodyContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$LambdaExpressionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$LambdaExpressionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$LambdaParametersContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$LambdaParametersContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$LastFormalParameterContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$LastFormalParameterContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$LiteralContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$LiteralContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$LocalTypeDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$LocalTypeDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$LocalVariableDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$LocalVariableDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$MemberDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$MemberDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$MethodBodyContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$MethodBodyContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$MethodCallContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$MethodCallContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$MethodDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$MethodDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ModifierContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ModifierContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$NonWildcardTypeArgumentsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$NonWildcardTypeArgumentsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$NonWildcardTypeArgumentsOrDiamondContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$NonWildcardTypeArgumentsOrDiamondContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$PackageDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$PackageDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ParExpressionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ParExpressionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$PrimaryContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$PrimaryContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$PrimitiveTypeContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$PrimitiveTypeContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$QualifiedNameContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$QualifiedNameContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$QualifiedNameListContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$QualifiedNameListContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ResourceContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ResourceContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ResourceSpecificationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ResourceSpecificationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ResourcesContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$ResourcesContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$StatementContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$StatementContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$SuperSuffixContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$SuperSuffixContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$SwitchBlockStatementGroupContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$SwitchBlockStatementGroupContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$SwitchLabelContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$SwitchLabelContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeArgumentContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeArgumentContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeArgumentsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeArgumentsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeArgumentsOrDiamondContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeArgumentsOrDiamondContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeBoundContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeBoundContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeDeclarationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeDeclarationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeListContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeListContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeParameterContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeParameterContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeParametersContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeParametersContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeTypeContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeTypeContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeTypeOrVoidContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$TypeTypeOrVoidContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$VariableDeclaratorContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$VariableDeclaratorContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$VariableDeclaratorIdContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$VariableDeclaratorIdContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$VariableDeclaratorsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$VariableDeclaratorsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$VariableInitializerContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$VariableInitializerContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$VariableModifierContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser$VariableModifierContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/antlr4/EzBrewParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/sample/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/sample/Constants.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/sample/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EzBrew.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/EzBrew.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr4/EzBrew.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr4/EzBrew.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr4/EzBrew.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr4/EzBrew.tokens" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/antlr4/EzBrewLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr4/EzBrewLexer.interp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/antlr4/EzBrewLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr4/EzBrewLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr4/EzBrewLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr4/EzBrewLexer.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/antlr4/EzBrewParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr4/EzBrewParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -186,8 +76,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="157" column="34" lean-forward="true" selection-start-line="157" selection-start-column="34" selection-end-line="157" selection-end-column="34" />
+            <state relative-caret-position="247">
+              <caret line="157" column="41" lean-forward="true" selection-start-line="157" selection-start-column="41" selection-end-line="157" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#computeHighlighting#0;class#Controller#0" />
@@ -199,8 +89,17 @@
       <file leaf-file-name="EzBrewLexer.tokens" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/antlr4/EzBrewLexer.tokens">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="6" selection-start-column="6" selection-end-column="6" />
+            <state relative-caret-position="-480">
+              <caret line="41" column="13" lean-forward="true" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -208,8 +107,8 @@
       <file leaf-file-name="EzBrew.g4" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/EzBrew.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1677">
-              <caret line="137" column="9" selection-start-line="137" selection-start-column="9" selection-end-line="137" selection-end-column="9" />
+            <state relative-caret-position="1237">
+              <caret line="138" column="9" lean-forward="true" selection-start-line="138" selection-start-column="9" selection-end-line="138" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -306,15 +205,15 @@
         <option value="$PROJECT_DIR$/src/sample/ThrowingErrorListener.java" />
         <option value="$PROJECT_DIR$/src/sample/CollectingErrorListener.java" />
         <option value="$PROJECT_DIR$/src/sample/light-mode.css" />
-        <option value="$PROJECT_DIR$/src/sample/Constants.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/EzBrew.g4" />
+        <option value="$PROJECT_DIR$/src/sample/Constants.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="215" />
     <option name="y" value="42" />
     <option name="width" value="1086" />
@@ -533,12 +432,12 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5004029" side_tool="true" weight="0.34764543" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4995971" visible="true" weight="0.25900277" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4995971" visible="true" weight="0.25900277" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.26703498" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.26703498" />
       <window_info anchor="bottom" id="ANTLR Preview" order="7" weight="0.32963988" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -920,13 +819,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-550">
-          <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
@@ -969,24 +861,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/EzBrew.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1677">
-          <caret line="137" column="9" selection-start-line="137" selection-start-column="9" selection-end-line="137" selection-end-column="9" />
+        <state relative-caret-position="1237">
+          <caret line="138" column="9" lean-forward="true" selection-start-line="138" selection-start-column="9" selection-end-line="138" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/antlr4/EzBrewLexer.tokens">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" selection-start-column="6" selection-end-column="6" />
+        <state relative-caret-position="-480">
+          <caret line="41" column="13" lean-forward="true" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="157" column="34" lean-forward="true" selection-start-line="157" selection-start-column="34" selection-end-line="157" selection-end-column="34" />
+        <state relative-caret-position="247">
+          <caret line="157" column="41" lean-forward="true" selection-start-line="157" selection-start-column="41" selection-end-line="157" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#computeHighlighting#0;class#Controller#0" />
