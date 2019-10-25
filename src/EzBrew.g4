@@ -51,6 +51,9 @@ TRY:                'attempt';//'try';
 VOID:               'emp';//'void';
 //VOLATILE:           'volatile';
 WHILE:              'during';//'while';
+SCAN:               'scan';
+PRINT:              'print';
+STRING:             'string';
 
 // Literals
 
@@ -107,10 +110,10 @@ DIV:                '/';
 //BITOR:              '|';
 //CARET:              '^';
 MOD:                '%';
-//ADD_ASSIGN:         '+=';
-//SUB_ASSIGN:         '-=';
-//MUL_ASSIGN:         '*=';
-//DIV_ASSIGN:         '/=';
+ADD_ASSIGN:         '+=';
+SUB_ASSIGN:         '-=';
+MUL_ASSIGN:         '*=';
+DIV_ASSIGN:         '/=';
 //AND_ASSIGN:         '&=';
 //OR_ASSIGN:          '|=';
 //XOR_ASSIGN:         '^=';
@@ -422,14 +425,14 @@ literal
 
 integerLiteral
     : DECIMAL_LITERAL
-    | HEX_LITERAL
-    | OCT_LITERAL
-    | BINARY_LITERAL
+//    | HEX_LITERAL
+//    | OCT_LITERAL
+//    | BINARY_LITERAL
     ;
 
 floatLiteral
     : FLOAT_LITERAL
-    | HEX_FLOAT_LITERAL
+//    | HEX_FLOAT_LITERAL
     ;
 
 // ANNOTATIONS
@@ -534,6 +537,8 @@ statement
     | SEMI
     | statementExpression=expression ';'
     | identifierLabel=IDENTIFIER ':' statement
+    | IDENTIFIER '=' SCAN '(' (STRING_LITERAL('+'IDENTIFIER)*)? ')'
+    | PRINT '(' STRING_LITERAL ('+'IDENTIFIER)* ')'
     ;
 
 catchClause
@@ -640,6 +645,8 @@ expression
     | expression '::' typeArguments? IDENTIFIER
     | typeType '::' (typeArguments? IDENTIFIER | NEW)
     | classType '::' typeArguments? NEW
+
+    | SCAN '(' (STRING_LITERAL('+'IDENTIFIER)*)? ')'
     ;
 
 // Java8
@@ -731,6 +738,7 @@ primitiveType
 //    | LONG
     | FLOAT
     | DOUBLE
+    | STRING
     ;
 
 typeArguments

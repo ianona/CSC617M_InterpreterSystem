@@ -1,0 +1,38 @@
+open blueprint DemoClass {
+	open emp performFunction(num x){
+		sdec _sampleIdentifier123 = 999.9f;
+		bool y = (5 > 4 && true) || (false && !(x==0));
+		num[] myArray = orig num[10];
+		num y;
+		
+		scan("Please input a number: ", x); # ask for user input
+		print("The input is: ", x); # print the input
+		
+		given(x != 0) {
+			# TEST: sampl single line comment
+		} other {
+			<!> TEST : sampl multi-line comment
+				Hello
+				Creating a scanner i easy
+			<!>
+		}
+		
+		y = x;
+		during (x > 5) {
+			loop(num i = 0; i < x; i++) {
+				print("Hello World");
+			}
+			x--;
+		}
+		
+		out y;
+		
+	}
+		
+	open same emp main(String[] args) {
+		num x = 2;
+		DemoClass dc = orig DemoClass();
+		dc.performFunction(x);
+	}
+}
+

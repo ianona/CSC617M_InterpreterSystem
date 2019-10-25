@@ -19,20 +19,20 @@ public class EzBrewParser extends Parser {
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
-		T__17=18, T__18=19, T__19=20, T__20=21, ABSTRACT=22, BOOLEAN=23, BREAK=24, 
-		CASE=25, CATCH=26, CHAR=27, CLASS=28, CONST=29, DO=30, DOUBLE=31, ELSE=32, 
-		ENUM=33, EXTENDS=34, FINAL=35, FINALLY=36, FLOAT=37, FOR=38, IF=39, IMPLEMENTS=40, 
-		IMPORT=41, INSTANCEOF=42, INT=43, INTERFACE=44, NEW=45, PACKAGE=46, PRIVATE=47, 
-		PROTECTED=48, PUBLIC=49, RETURN=50, STATIC=51, SUPER=52, SWITCH=53, THIS=54, 
-		THROW=55, THROWS=56, TRY=57, VOID=58, WHILE=59, DECIMAL_LITERAL=60, FLOAT_LITERAL=61, 
-		BOOL_LITERAL=62, STRING_LITERAL=63, NULL_LITERAL=64, LPAREN=65, RPAREN=66, 
-		LBRACE=67, RBRACE=68, LBRACK=69, RBRACK=70, SEMI=71, COMMA=72, DOT=73, 
-		ASSIGN=74, GT=75, LT=76, BANG=77, EQUAL=78, LE=79, GE=80, NOTEQUAL=81, 
-		AND=82, OR=83, INC=84, DEC=85, ADD=86, SUB=87, MUL=88, DIV=89, MOD=90, 
-		WS=91, COMMENT=92, LINE_COMMENT=93, IDENTIFIER=94, ERROR=95, NATIVE=96, 
-		SYNCHRONIZED=97, TRANSIENT=98, VOLATILE=99, STRICTFP=100, DEFAULT=101, 
-		CHAR_LITERAL=102, HEX_LITERAL=103, OCT_LITERAL=104, BINARY_LITERAL=105, 
-		HEX_FLOAT_LITERAL=106, ASSERT=107, CONTINUE=108;
+		ABSTRACT=18, BOOLEAN=19, BREAK=20, CASE=21, CATCH=22, CHAR=23, CLASS=24, 
+		CONST=25, DO=26, DOUBLE=27, ELSE=28, ENUM=29, EXTENDS=30, FINAL=31, FINALLY=32, 
+		FLOAT=33, FOR=34, IF=35, IMPLEMENTS=36, IMPORT=37, INSTANCEOF=38, INT=39, 
+		INTERFACE=40, NEW=41, PACKAGE=42, PRIVATE=43, PROTECTED=44, PUBLIC=45, 
+		RETURN=46, STATIC=47, SUPER=48, SWITCH=49, THIS=50, THROW=51, THROWS=52, 
+		TRY=53, VOID=54, WHILE=55, SCAN=56, PRINT=57, STRING=58, DECIMAL_LITERAL=59, 
+		FLOAT_LITERAL=60, BOOL_LITERAL=61, STRING_LITERAL=62, NULL_LITERAL=63, 
+		LPAREN=64, RPAREN=65, LBRACE=66, RBRACE=67, LBRACK=68, RBRACK=69, SEMI=70, 
+		COMMA=71, DOT=72, ASSIGN=73, GT=74, LT=75, BANG=76, EQUAL=77, LE=78, GE=79, 
+		NOTEQUAL=80, AND=81, OR=82, INC=83, DEC=84, ADD=85, SUB=86, MUL=87, DIV=88, 
+		MOD=89, ADD_ASSIGN=90, SUB_ASSIGN=91, MUL_ASSIGN=92, DIV_ASSIGN=93, WS=94, 
+		COMMENT=95, LINE_COMMENT=96, IDENTIFIER=97, ERROR=98, NATIVE=99, SYNCHRONIZED=100, 
+		TRANSIENT=101, VOLATILE=102, STRICTFP=103, DEFAULT=104, CHAR_LITERAL=105, 
+		ASSERT=106, CONTINUE=107;
 	public static final int
 		RULE_compilationUnit = 0, RULE_packageDeclaration = 1, RULE_importDeclaration = 2, 
 		RULE_typeDeclaration = 3, RULE_modifier = 4, RULE_classOrInterfaceModifier = 5, 
@@ -104,36 +104,37 @@ public class EzBrewParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'&'", "'?'", "'...'", "'@'", "':'", "'|'", "'~'", "'^'", "'+='", 
-			"'-='", "'*='", "'/='", "'&='", "'|='", "'^='", "'>>='", "'>>>='", "'<<='", 
-			"'%='", "'::'", "'->'", "'outline'", "'bool'", "'stop'", "'sample'", 
-			"'handle'", "'letter'", "'blueprint'", "'perm'", "'do'", "'ddec'", "'other'", 
-			"'catalog'", "'childof'", "'abs'", "'lastly'", "'sdec'", "'loop'", "'given'", 
-			"'has'", "'include'", "'is'", "'num'", "'mod'", "'orig'", "'bundle'", 
-			"'closed'", "'secured'", "'open'", "'out'", "'same'", "'parent'", "'choose'", 
-			"'self'", "'shoot'", "'shoots'", "'attempt'", "'emp'", "'during'", null, 
+			null, "'&'", "'?'", "'...'", "'@'", "':'", "'|'", "'~'", "'^'", "'&='", 
+			"'|='", "'^='", "'>>='", "'>>>='", "'<<='", "'%='", "'::'", "'->'", "'outline'", 
+			"'bool'", "'stop'", "'sample'", "'handle'", "'letter'", "'blueprint'", 
+			"'perm'", "'do'", "'ddec'", "'other'", "'catalog'", "'childof'", "'abs'", 
+			"'lastly'", "'sdec'", "'loop'", "'given'", "'has'", "'include'", "'is'", 
+			"'num'", "'mod'", "'orig'", "'bundle'", "'closed'", "'secured'", "'open'", 
+			"'out'", "'same'", "'parent'", "'choose'", "'self'", "'shoot'", "'shoots'", 
+			"'attempt'", "'emp'", "'during'", "'scan'", "'print'", "'string'", null, 
 			null, null, null, "'null'", "'('", "')'", "'{'", "'}'", "'['", "']'", 
 			"';'", "','", "'.'", "'='", "'>'", "'<'", "'!'", "'=='", "'<='", "'>='", 
-			"'!='", "'&&'", "'||'", "'++'", "'--'", "'+'", "'-'", "'*'", "'/'", "'%'"
+			"'!='", "'&&'", "'||'", "'++'", "'--'", "'+'", "'-'", "'*'", "'/'", "'%'", 
+			"'+='", "'-='", "'*='", "'/='"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, null, null, null, null, null, null, null, "ABSTRACT", 
-			"BOOLEAN", "BREAK", "CASE", "CATCH", "CHAR", "CLASS", "CONST", "DO", 
-			"DOUBLE", "ELSE", "ENUM", "EXTENDS", "FINAL", "FINALLY", "FLOAT", "FOR", 
-			"IF", "IMPLEMENTS", "IMPORT", "INSTANCEOF", "INT", "INTERFACE", "NEW", 
-			"PACKAGE", "PRIVATE", "PROTECTED", "PUBLIC", "RETURN", "STATIC", "SUPER", 
-			"SWITCH", "THIS", "THROW", "THROWS", "TRY", "VOID", "WHILE", "DECIMAL_LITERAL", 
-			"FLOAT_LITERAL", "BOOL_LITERAL", "STRING_LITERAL", "NULL_LITERAL", "LPAREN", 
-			"RPAREN", "LBRACE", "RBRACE", "LBRACK", "RBRACK", "SEMI", "COMMA", "DOT", 
-			"ASSIGN", "GT", "LT", "BANG", "EQUAL", "LE", "GE", "NOTEQUAL", "AND", 
-			"OR", "INC", "DEC", "ADD", "SUB", "MUL", "DIV", "MOD", "WS", "COMMENT", 
-			"LINE_COMMENT", "IDENTIFIER", "ERROR", "NATIVE", "SYNCHRONIZED", "TRANSIENT", 
-			"VOLATILE", "STRICTFP", "DEFAULT", "CHAR_LITERAL", "HEX_LITERAL", "OCT_LITERAL", 
-			"BINARY_LITERAL", "HEX_FLOAT_LITERAL", "ASSERT", "CONTINUE"
+			null, null, null, null, null, null, "ABSTRACT", "BOOLEAN", "BREAK", "CASE", 
+			"CATCH", "CHAR", "CLASS", "CONST", "DO", "DOUBLE", "ELSE", "ENUM", "EXTENDS", 
+			"FINAL", "FINALLY", "FLOAT", "FOR", "IF", "IMPLEMENTS", "IMPORT", "INSTANCEOF", 
+			"INT", "INTERFACE", "NEW", "PACKAGE", "PRIVATE", "PROTECTED", "PUBLIC", 
+			"RETURN", "STATIC", "SUPER", "SWITCH", "THIS", "THROW", "THROWS", "TRY", 
+			"VOID", "WHILE", "SCAN", "PRINT", "STRING", "DECIMAL_LITERAL", "FLOAT_LITERAL", 
+			"BOOL_LITERAL", "STRING_LITERAL", "NULL_LITERAL", "LPAREN", "RPAREN", 
+			"LBRACE", "RBRACE", "LBRACK", "RBRACK", "SEMI", "COMMA", "DOT", "ASSIGN", 
+			"GT", "LT", "BANG", "EQUAL", "LE", "GE", "NOTEQUAL", "AND", "OR", "INC", 
+			"DEC", "ADD", "SUB", "MUL", "DIV", "MOD", "ADD_ASSIGN", "SUB_ASSIGN", 
+			"MUL_ASSIGN", "DIV_ASSIGN", "WS", "COMMENT", "LINE_COMMENT", "IDENTIFIER", 
+			"ERROR", "NATIVE", "SYNCHRONIZED", "TRANSIENT", "VOLATILE", "STRICTFP", 
+			"DEFAULT", "CHAR_LITERAL", "ASSERT", "CONTINUE"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -215,6 +216,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitCompilationUnit(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitCompilationUnit(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -302,6 +308,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitPackageDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitPackageDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final PackageDeclarationContext packageDeclaration() throws RecognitionException {
@@ -364,6 +375,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitImportDeclaration(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitImportDeclaration(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -446,6 +462,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitTypeDeclaration(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitTypeDeclaration(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -560,6 +581,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitModifier(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitModifier(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ModifierContext modifier() throws RecognitionException {
@@ -648,6 +674,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitClassOrInterfaceModifier(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitClassOrInterfaceModifier(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -746,6 +777,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitVariableModifier(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitVariableModifier(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final VariableModifierContext variableModifier() throws RecognitionException {
@@ -812,6 +848,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitClassDeclaration(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitClassDeclaration(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -900,6 +941,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitTypeParameters(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitTypeParameters(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final TypeParametersContext typeParameters() throws RecognitionException {
@@ -967,6 +1013,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitTypeParameter(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitTypeParameter(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1037,6 +1088,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitTypeBound(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitTypeBound(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final TypeBoundContext typeBound() throws RecognitionException {
@@ -1104,6 +1160,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitEnumDeclaration(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitEnumDeclaration(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1200,6 +1261,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitEnumConstants(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitEnumConstants(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final EnumConstantsContext enumConstants() throws RecognitionException {
@@ -1267,6 +1333,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitEnumConstant(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitEnumConstant(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1346,6 +1417,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitEnumBodyDeclarations(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitEnumBodyDeclarations(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final EnumBodyDeclarationsContext enumBodyDeclarations() throws RecognitionException {
@@ -1360,7 +1436,7 @@ public class EzBrewParser extends Parser {
 			setState(370);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << ABSTRACT) | (1L << BOOLEAN) | (1L << CHAR) | (1L << CLASS) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << INTERFACE) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << STATIC) | (1L << VOID))) != 0) || ((((_la - 67)) & ~0x3f) == 0 && ((1L << (_la - 67)) & ((1L << (LBRACE - 67)) | (1L << (SEMI - 67)) | (1L << (LT - 67)) | (1L << (IDENTIFIER - 67)) | (1L << (NATIVE - 67)) | (1L << (SYNCHRONIZED - 67)) | (1L << (TRANSIENT - 67)) | (1L << (VOLATILE - 67)) | (1L << (STRICTFP - 67)))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << ABSTRACT) | (1L << BOOLEAN) | (1L << CHAR) | (1L << CLASS) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << INTERFACE) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << STATIC) | (1L << VOID) | (1L << STRING))) != 0) || ((((_la - 66)) & ~0x3f) == 0 && ((1L << (_la - 66)) & ((1L << (LBRACE - 66)) | (1L << (SEMI - 66)) | (1L << (LT - 66)) | (1L << (IDENTIFIER - 66)) | (1L << (NATIVE - 66)) | (1L << (SYNCHRONIZED - 66)) | (1L << (TRANSIENT - 66)) | (1L << (VOLATILE - 66)) | (1L << (STRICTFP - 66)))) != 0)) {
 				{
 				{
 				setState(367);
@@ -1408,6 +1484,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitInterfaceDeclaration(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitInterfaceDeclaration(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1480,6 +1561,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitClassBody(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitClassBody(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ClassBodyContext classBody() throws RecognitionException {
@@ -1494,7 +1580,7 @@ public class EzBrewParser extends Parser {
 			setState(388);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << ABSTRACT) | (1L << BOOLEAN) | (1L << CHAR) | (1L << CLASS) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << INTERFACE) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << STATIC) | (1L << VOID))) != 0) || ((((_la - 67)) & ~0x3f) == 0 && ((1L << (_la - 67)) & ((1L << (LBRACE - 67)) | (1L << (SEMI - 67)) | (1L << (LT - 67)) | (1L << (IDENTIFIER - 67)) | (1L << (NATIVE - 67)) | (1L << (SYNCHRONIZED - 67)) | (1L << (TRANSIENT - 67)) | (1L << (VOLATILE - 67)) | (1L << (STRICTFP - 67)))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << ABSTRACT) | (1L << BOOLEAN) | (1L << CHAR) | (1L << CLASS) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << INTERFACE) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << STATIC) | (1L << VOID) | (1L << STRING))) != 0) || ((((_la - 66)) & ~0x3f) == 0 && ((1L << (_la - 66)) & ((1L << (LBRACE - 66)) | (1L << (SEMI - 66)) | (1L << (LT - 66)) | (1L << (IDENTIFIER - 66)) | (1L << (NATIVE - 66)) | (1L << (SYNCHRONIZED - 66)) | (1L << (TRANSIENT - 66)) | (1L << (VOLATILE - 66)) | (1L << (STRICTFP - 66)))) != 0)) {
 				{
 				{
 				setState(385);
@@ -1541,6 +1627,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitInterfaceBody(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitInterfaceBody(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final InterfaceBodyContext interfaceBody() throws RecognitionException {
@@ -1555,7 +1646,7 @@ public class EzBrewParser extends Parser {
 			setState(397);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << ABSTRACT) | (1L << BOOLEAN) | (1L << CHAR) | (1L << CLASS) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << INTERFACE) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << STATIC) | (1L << VOID))) != 0) || ((((_la - 71)) & ~0x3f) == 0 && ((1L << (_la - 71)) & ((1L << (SEMI - 71)) | (1L << (LT - 71)) | (1L << (IDENTIFIER - 71)) | (1L << (NATIVE - 71)) | (1L << (SYNCHRONIZED - 71)) | (1L << (TRANSIENT - 71)) | (1L << (VOLATILE - 71)) | (1L << (STRICTFP - 71)) | (1L << (DEFAULT - 71)))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << ABSTRACT) | (1L << BOOLEAN) | (1L << CHAR) | (1L << CLASS) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << INTERFACE) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << STATIC) | (1L << VOID) | (1L << STRING))) != 0) || ((((_la - 70)) & ~0x3f) == 0 && ((1L << (_la - 70)) & ((1L << (SEMI - 70)) | (1L << (LT - 70)) | (1L << (IDENTIFIER - 70)) | (1L << (NATIVE - 70)) | (1L << (SYNCHRONIZED - 70)) | (1L << (TRANSIENT - 70)) | (1L << (VOLATILE - 70)) | (1L << (STRICTFP - 70)) | (1L << (DEFAULT - 70)))) != 0)) {
 				{
 				{
 				setState(394);
@@ -1607,6 +1698,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitClassBodyDeclaration(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitClassBodyDeclaration(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1718,6 +1814,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitMemberDeclaration(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitMemberDeclaration(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1839,6 +1940,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitMethodDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitMethodDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final MethodDeclarationContext methodDeclaration() throws RecognitionException {
@@ -1914,6 +2020,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitMethodBody(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitMethodBody(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final MethodBodyContext methodBody() throws RecognitionException {
@@ -1969,6 +2080,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitTypeTypeOrVoid(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitTypeTypeOrVoid(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final TypeTypeOrVoidContext typeTypeOrVoid() throws RecognitionException {
@@ -1984,6 +2100,7 @@ public class EzBrewParser extends Parser {
 			case DOUBLE:
 			case FLOAT:
 			case INT:
+			case STRING:
 			case IDENTIFIER:
 				enterOuterAlt(_localctx, 1);
 				{
@@ -2032,6 +2149,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitGenericMethodDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitGenericMethodDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final GenericMethodDeclarationContext genericMethodDeclaration() throws RecognitionException {
@@ -2075,6 +2197,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitGenericConstructorDeclaration(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitGenericConstructorDeclaration(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2125,6 +2252,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitConstructorDeclaration(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitConstructorDeclaration(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2186,6 +2318,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitFieldDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitFieldDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final FieldDeclarationContext fieldDeclaration() throws RecognitionException {
@@ -2236,6 +2373,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitInterfaceBodyDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitInterfaceBodyDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final InterfaceBodyDeclarationContext interfaceBodyDeclaration() throws RecognitionException {
@@ -2262,6 +2404,7 @@ public class EzBrewParser extends Parser {
 			case PUBLIC:
 			case STATIC:
 			case VOID:
+			case STRING:
 			case LT:
 			case IDENTIFIER:
 			case NATIVE:
@@ -2347,6 +2490,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitInterfaceMemberDeclaration(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitInterfaceMemberDeclaration(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2446,6 +2594,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitConstDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitConstDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ConstDeclarationContext constDeclaration() throws RecognitionException {
@@ -2515,6 +2668,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitConstantDeclarator(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitConstantDeclarator(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2610,6 +2768,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitInterfaceMethodDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitInterfaceMethodDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final InterfaceMethodDeclarationContext interfaceMethodDeclaration() throws RecognitionException {
@@ -2646,6 +2809,7 @@ public class EzBrewParser extends Parser {
 			case FLOAT:
 			case INT:
 			case VOID:
+			case STRING:
 			case IDENTIFIER:
 				{
 				setState(516);
@@ -2747,6 +2911,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitInterfaceMethodModifier(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitInterfaceMethodModifier(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final InterfaceMethodModifierContext interfaceMethodModifier() throws RecognitionException {
@@ -2832,6 +3001,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitGenericInterfaceMethodDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitGenericInterfaceMethodDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final GenericInterfaceMethodDeclarationContext genericInterfaceMethodDeclaration() throws RecognitionException {
@@ -2879,6 +3053,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitVariableDeclarators(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitVariableDeclarators(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2940,6 +3119,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitVariableDeclarator(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitVariableDeclarator(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final VariableDeclaratorContext variableDeclarator() throws RecognitionException {
@@ -2997,6 +3181,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitVariableDeclaratorId(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitVariableDeclaratorId(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3057,6 +3246,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitVariableInitializer(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitVariableInitializer(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final VariableInitializerContext variableInitializer() throws RecognitionException {
@@ -3084,6 +3278,8 @@ public class EzBrewParser extends Parser {
 			case SUPER:
 			case THIS:
 			case VOID:
+			case SCAN:
+			case STRING:
 			case DECIMAL_LITERAL:
 			case FLOAT_LITERAL:
 			case BOOL_LITERAL:
@@ -3098,10 +3294,6 @@ public class EzBrewParser extends Parser {
 			case SUB:
 			case IDENTIFIER:
 			case CHAR_LITERAL:
-			case HEX_LITERAL:
-			case OCT_LITERAL:
-			case BINARY_LITERAL:
-			case HEX_FLOAT_LITERAL:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(576);
@@ -3148,6 +3340,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitArrayInitializer(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitArrayInitializer(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ArrayInitializerContext arrayInitializer() throws RecognitionException {
@@ -3163,7 +3360,7 @@ public class EzBrewParser extends Parser {
 			setState(591);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (NULL_LITERAL - 64)) | (1L << (LPAREN - 64)) | (1L << (LBRACE - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)) | (1L << (HEX_LITERAL - 64)) | (1L << (OCT_LITERAL - 64)) | (1L << (BINARY_LITERAL - 64)) | (1L << (HEX_FLOAT_LITERAL - 64)))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << SCAN) | (1L << STRING) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL) | (1L << NULL_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (LPAREN - 64)) | (1L << (LBRACE - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)))) != 0)) {
 				{
 				setState(580);
 				variableInitializer();
@@ -3239,6 +3436,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitClassOrInterfaceType(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitClassOrInterfaceType(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3320,6 +3522,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitTypeArgument(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitTypeArgument(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final TypeArgumentContext typeArgument() throws RecognitionException {
@@ -3336,6 +3543,7 @@ public class EzBrewParser extends Parser {
 			case DOUBLE:
 			case FLOAT:
 			case INT:
+			case STRING:
 			case IDENTIFIER:
 				enterOuterAlt(_localctx, 1);
 				{
@@ -3408,6 +3616,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitQualifiedNameList(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitQualifiedNameList(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final QualifiedNameListContext qualifiedNameList() throws RecognitionException {
@@ -3466,6 +3679,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitFormalParameters(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitFormalParameters(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final FormalParametersContext formalParameters() throws RecognitionException {
@@ -3480,7 +3698,7 @@ public class EzBrewParser extends Parser {
 			setState(627);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FINAL) | (1L << FLOAT) | (1L << INT))) != 0) || _la==IDENTIFIER) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << STRING))) != 0) || _la==IDENTIFIER) {
 				{
 				setState(626);
 				formalParameterList();
@@ -3527,6 +3745,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitFormalParameterList(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitFormalParameterList(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3621,6 +3844,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitFormalParameter(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitFormalParameter(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final FormalParameterContext formalParameter() throws RecognitionException {
@@ -3688,6 +3916,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitLastFormalParameter(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitLastFormalParameter(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final LastFormalParameterContext lastFormalParameter() throws RecognitionException {
@@ -3752,6 +3985,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitQualifiedName(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitQualifiedName(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -3818,6 +4056,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitLiteral(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitLiteral(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final LiteralContext literal() throws RecognitionException {
@@ -3828,9 +4071,6 @@ public class EzBrewParser extends Parser {
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case DECIMAL_LITERAL:
-			case HEX_LITERAL:
-			case OCT_LITERAL:
-			case BINARY_LITERAL:
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(673);
@@ -3838,7 +4078,6 @@ public class EzBrewParser extends Parser {
 				}
 				break;
 			case FLOAT_LITERAL:
-			case HEX_FLOAT_LITERAL:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(674);
@@ -3890,9 +4129,6 @@ public class EzBrewParser extends Parser {
 
 	public static class IntegerLiteralContext extends ParserRuleContext {
 		public TerminalNode DECIMAL_LITERAL() { return getToken(EzBrewParser.DECIMAL_LITERAL, 0); }
-		public TerminalNode HEX_LITERAL() { return getToken(EzBrewParser.HEX_LITERAL, 0); }
-		public TerminalNode OCT_LITERAL() { return getToken(EzBrewParser.OCT_LITERAL, 0); }
-		public TerminalNode BINARY_LITERAL() { return getToken(EzBrewParser.BINARY_LITERAL, 0); }
 		public IntegerLiteralContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3905,25 +4141,21 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitIntegerLiteral(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitIntegerLiteral(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final IntegerLiteralContext integerLiteral() throws RecognitionException {
 		IntegerLiteralContext _localctx = new IntegerLiteralContext(_ctx, getState());
 		enterRule(_localctx, 96, RULE_integerLiteral);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(681);
-			_la = _input.LA(1);
-			if ( !(((((_la - 60)) & ~0x3f) == 0 && ((1L << (_la - 60)) & ((1L << (DECIMAL_LITERAL - 60)) | (1L << (HEX_LITERAL - 60)) | (1L << (OCT_LITERAL - 60)) | (1L << (BINARY_LITERAL - 60)))) != 0)) ) {
-			_errHandler.recoverInline(this);
-			}
-			else {
-				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
-				_errHandler.reportMatch(this);
-				consume();
-			}
+			match(DECIMAL_LITERAL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -3939,7 +4171,6 @@ public class EzBrewParser extends Parser {
 
 	public static class FloatLiteralContext extends ParserRuleContext {
 		public TerminalNode FLOAT_LITERAL() { return getToken(EzBrewParser.FLOAT_LITERAL, 0); }
-		public TerminalNode HEX_FLOAT_LITERAL() { return getToken(EzBrewParser.HEX_FLOAT_LITERAL, 0); }
 		public FloatLiteralContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -3952,25 +4183,21 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitFloatLiteral(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitFloatLiteral(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final FloatLiteralContext floatLiteral() throws RecognitionException {
 		FloatLiteralContext _localctx = new FloatLiteralContext(_ctx, getState());
 		enterRule(_localctx, 98, RULE_floatLiteral);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(683);
-			_la = _input.LA(1);
-			if ( !(_la==FLOAT_LITERAL || _la==HEX_FLOAT_LITERAL) ) {
-			_errHandler.recoverInline(this);
-			}
-			else {
-				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
-				_errHandler.reportMatch(this);
-				consume();
-			}
+			match(FLOAT_LITERAL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -4007,6 +4234,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitAnnotation(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitAnnotation(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -4085,6 +4317,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitElementValuePairs(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitElementValuePairs(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ElementValuePairsContext elementValuePairs() throws RecognitionException {
@@ -4143,6 +4380,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitElementValuePair(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitElementValuePair(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ElementValuePairContext elementValuePair() throws RecognitionException {
@@ -4191,6 +4433,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitElementValue(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitElementValue(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -4260,6 +4507,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitElementValueArrayInitializer(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitElementValueArrayInitializer(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ElementValueArrayInitializerContext elementValueArrayInitializer() throws RecognitionException {
@@ -4275,7 +4527,7 @@ public class EzBrewParser extends Parser {
 			setState(721);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (NULL_LITERAL - 64)) | (1L << (LPAREN - 64)) | (1L << (LBRACE - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)) | (1L << (HEX_LITERAL - 64)) | (1L << (OCT_LITERAL - 64)) | (1L << (BINARY_LITERAL - 64)) | (1L << (HEX_FLOAT_LITERAL - 64)))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << SCAN) | (1L << STRING) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL) | (1L << NULL_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (LPAREN - 64)) | (1L << (LBRACE - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)))) != 0)) {
 				{
 				setState(713);
 				elementValue();
@@ -4343,6 +4595,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitAnnotationTypeDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitAnnotationTypeDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final AnnotationTypeDeclarationContext annotationTypeDeclaration() throws RecognitionException {
@@ -4393,6 +4650,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitAnnotationTypeBody(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitAnnotationTypeBody(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final AnnotationTypeBodyContext annotationTypeBody() throws RecognitionException {
@@ -4407,7 +4669,7 @@ public class EzBrewParser extends Parser {
 			setState(737);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << ABSTRACT) | (1L << BOOLEAN) | (1L << CHAR) | (1L << CLASS) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << INTERFACE) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << STATIC))) != 0) || ((((_la - 71)) & ~0x3f) == 0 && ((1L << (_la - 71)) & ((1L << (SEMI - 71)) | (1L << (IDENTIFIER - 71)) | (1L << (NATIVE - 71)) | (1L << (SYNCHRONIZED - 71)) | (1L << (TRANSIENT - 71)) | (1L << (VOLATILE - 71)) | (1L << (STRICTFP - 71)))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << ABSTRACT) | (1L << BOOLEAN) | (1L << CHAR) | (1L << CLASS) | (1L << DOUBLE) | (1L << ENUM) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << INTERFACE) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << STATIC) | (1L << STRING))) != 0) || ((((_la - 70)) & ~0x3f) == 0 && ((1L << (_la - 70)) & ((1L << (SEMI - 70)) | (1L << (IDENTIFIER - 70)) | (1L << (NATIVE - 70)) | (1L << (SYNCHRONIZED - 70)) | (1L << (TRANSIENT - 70)) | (1L << (VOLATILE - 70)) | (1L << (STRICTFP - 70)))) != 0)) {
 				{
 				{
 				setState(734);
@@ -4456,6 +4718,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitAnnotationTypeElementDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitAnnotationTypeElementDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final AnnotationTypeElementDeclarationContext annotationTypeElementDeclaration() throws RecognitionException {
@@ -4481,6 +4748,7 @@ public class EzBrewParser extends Parser {
 			case PROTECTED:
 			case PUBLIC:
 			case STATIC:
+			case STRING:
 			case IDENTIFIER:
 			case NATIVE:
 			case SYNCHRONIZED:
@@ -4562,6 +4830,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitAnnotationTypeElementRest(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitAnnotationTypeElementRest(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -4683,6 +4956,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitAnnotationMethodOrConstantRest(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitAnnotationMethodOrConstantRest(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final AnnotationMethodOrConstantRestContext annotationMethodOrConstantRest() throws RecognitionException {
@@ -4738,6 +5016,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitAnnotationMethodRest(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitAnnotationMethodRest(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final AnnotationMethodRestContext annotationMethodRest() throws RecognitionException {
@@ -4792,6 +5075,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitAnnotationConstantRest(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitAnnotationConstantRest(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final AnnotationConstantRestContext annotationConstantRest() throws RecognitionException {
@@ -4831,6 +5119,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitDefaultValue(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitDefaultValue(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -4878,6 +5171,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitBlock(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitBlock(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final BlockContext block() throws RecognitionException {
@@ -4892,7 +5190,7 @@ public class EzBrewParser extends Parser {
 			setState(793);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << ABSTRACT) | (1L << BOOLEAN) | (1L << BREAK) | (1L << CHAR) | (1L << CLASS) | (1L << DO) | (1L << DOUBLE) | (1L << FINAL) | (1L << FLOAT) | (1L << FOR) | (1L << IF) | (1L << INT) | (1L << INTERFACE) | (1L << NEW) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << RETURN) | (1L << STATIC) | (1L << SUPER) | (1L << SWITCH) | (1L << THIS) | (1L << THROW) | (1L << TRY) | (1L << VOID) | (1L << WHILE) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (NULL_LITERAL - 64)) | (1L << (LPAREN - 64)) | (1L << (LBRACE - 64)) | (1L << (SEMI - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (SYNCHRONIZED - 64)) | (1L << (STRICTFP - 64)) | (1L << (CHAR_LITERAL - 64)) | (1L << (HEX_LITERAL - 64)) | (1L << (OCT_LITERAL - 64)) | (1L << (BINARY_LITERAL - 64)) | (1L << (HEX_FLOAT_LITERAL - 64)) | (1L << (ASSERT - 64)) | (1L << (CONTINUE - 64)))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << ABSTRACT) | (1L << BOOLEAN) | (1L << BREAK) | (1L << CHAR) | (1L << CLASS) | (1L << DO) | (1L << DOUBLE) | (1L << FINAL) | (1L << FLOAT) | (1L << FOR) | (1L << IF) | (1L << INT) | (1L << INTERFACE) | (1L << NEW) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << RETURN) | (1L << STATIC) | (1L << SUPER) | (1L << SWITCH) | (1L << THIS) | (1L << THROW) | (1L << TRY) | (1L << VOID) | (1L << WHILE) | (1L << SCAN) | (1L << PRINT) | (1L << STRING) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL) | (1L << NULL_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (LPAREN - 64)) | (1L << (LBRACE - 64)) | (1L << (SEMI - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (SYNCHRONIZED - 64)) | (1L << (STRICTFP - 64)) | (1L << (CHAR_LITERAL - 64)) | (1L << (ASSERT - 64)) | (1L << (CONTINUE - 64)))) != 0)) {
 				{
 				{
 				setState(790);
@@ -4940,6 +5238,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitBlockStatement(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitBlockStatement(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -5011,6 +5314,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitLocalVariableDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitLocalVariableDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final LocalVariableDeclarationContext localVariableDeclaration() throws RecognitionException {
@@ -5078,6 +5386,11 @@ public class EzBrewParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitLocalTypeDeclaration(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitLocalTypeDeclaration(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -5223,8 +5536,19 @@ public class EzBrewParser extends Parser {
 		public TerminalNode RETURN() { return getToken(EzBrewParser.RETURN, 0); }
 		public TerminalNode THROW() { return getToken(EzBrewParser.THROW, 0); }
 		public TerminalNode BREAK() { return getToken(EzBrewParser.BREAK, 0); }
-		public TerminalNode IDENTIFIER() { return getToken(EzBrewParser.IDENTIFIER, 0); }
+		public List<TerminalNode> IDENTIFIER() { return getTokens(EzBrewParser.IDENTIFIER); }
+		public TerminalNode IDENTIFIER(int i) {
+			return getToken(EzBrewParser.IDENTIFIER, i);
+		}
 		public TerminalNode CONTINUE() { return getToken(EzBrewParser.CONTINUE, 0); }
+		public TerminalNode ASSIGN() { return getToken(EzBrewParser.ASSIGN, 0); }
+		public TerminalNode SCAN() { return getToken(EzBrewParser.SCAN, 0); }
+		public TerminalNode STRING_LITERAL() { return getToken(EzBrewParser.STRING_LITERAL, 0); }
+		public List<TerminalNode> ADD() { return getTokens(EzBrewParser.ADD); }
+		public TerminalNode ADD(int i) {
+			return getToken(EzBrewParser.ADD, i);
+		}
+		public TerminalNode PRINT() { return getToken(EzBrewParser.PRINT, 0); }
 		public StatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -5237,6 +5561,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitStatement(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitStatement(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final StatementContext statement() throws RecognitionException {
@@ -5245,9 +5574,9 @@ public class EzBrewParser extends Parser {
 		int _la;
 		try {
 			int _alt;
-			setState(931);
+			setState(957);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,108,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,111,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
@@ -5488,7 +5817,7 @@ public class EzBrewParser extends Parser {
 				setState(907);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (NULL_LITERAL - 64)) | (1L << (LPAREN - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)) | (1L << (HEX_LITERAL - 64)) | (1L << (OCT_LITERAL - 64)) | (1L << (BINARY_LITERAL - 64)) | (1L << (HEX_FLOAT_LITERAL - 64)))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << SCAN) | (1L << STRING) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL) | (1L << NULL_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (LPAREN - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)))) != 0)) {
 					{
 					setState(906);
 					expression(0);
@@ -5575,6 +5904,76 @@ public class EzBrewParser extends Parser {
 				statement();
 				}
 				break;
+			case 18:
+				enterOuterAlt(_localctx, 18);
+				{
+				setState(931);
+				match(IDENTIFIER);
+				setState(932);
+				match(ASSIGN);
+				setState(933);
+				match(SCAN);
+				setState(934);
+				match(LPAREN);
+				setState(943);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				if (_la==STRING_LITERAL) {
+					{
+					setState(935);
+					match(STRING_LITERAL);
+					setState(940);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+					while (_la==ADD) {
+						{
+						{
+						setState(936);
+						match(ADD);
+						setState(937);
+						match(IDENTIFIER);
+						}
+						}
+						setState(942);
+						_errHandler.sync(this);
+						_la = _input.LA(1);
+					}
+					}
+				}
+
+				setState(945);
+				match(RPAREN);
+				}
+				break;
+			case 19:
+				enterOuterAlt(_localctx, 19);
+				{
+				setState(946);
+				match(PRINT);
+				setState(947);
+				match(LPAREN);
+				setState(948);
+				match(STRING_LITERAL);
+				setState(953);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				while (_la==ADD) {
+					{
+					{
+					setState(949);
+					match(ADD);
+					setState(950);
+					match(IDENTIFIER);
+					}
+					}
+					setState(955);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				}
+				setState(956);
+				match(RPAREN);
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -5617,6 +6016,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitCatchClause(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitCatchClause(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final CatchClauseContext catchClause() throws RecognitionException {
@@ -5626,31 +6030,31 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(933);
+			setState(959);
 			match(CATCH);
-			setState(934);
+			setState(960);
 			match(LPAREN);
-			setState(938);
+			setState(964);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__3 || _la==FINAL) {
 				{
 				{
-				setState(935);
+				setState(961);
 				variableModifier();
 				}
 				}
-				setState(940);
+				setState(966);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(941);
+			setState(967);
 			catchType();
-			setState(942);
+			setState(968);
 			match(IDENTIFIER);
-			setState(943);
+			setState(969);
 			match(RPAREN);
-			setState(944);
+			setState(970);
 			block();
 			}
 		}
@@ -5684,6 +6088,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitCatchType(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitCatchType(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final CatchTypeContext catchType() throws RecognitionException {
@@ -5693,21 +6102,21 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(946);
+			setState(972);
 			qualifiedName();
-			setState(951);
+			setState(977);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__5) {
 				{
 				{
-				setState(947);
+				setState(973);
 				match(T__5);
-				setState(948);
+				setState(974);
 				qualifiedName();
 				}
 				}
-				setState(953);
+				setState(979);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -5741,6 +6150,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitFinallyBlock(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitFinallyBlock(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final FinallyBlockContext finallyBlock() throws RecognitionException {
@@ -5749,9 +6163,9 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(954);
+			setState(980);
 			match(FINALLY);
-			setState(955);
+			setState(981);
 			block();
 			}
 		}
@@ -5785,6 +6199,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitResourceSpecification(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitResourceSpecification(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ResourceSpecificationContext resourceSpecification() throws RecognitionException {
@@ -5794,21 +6213,21 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(957);
+			setState(983);
 			match(LPAREN);
-			setState(958);
+			setState(984);
 			resources();
-			setState(960);
+			setState(986);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==SEMI) {
 				{
-				setState(959);
+				setState(985);
 				match(SEMI);
 				}
 			}
 
-			setState(962);
+			setState(988);
 			match(RPAREN);
 			}
 		}
@@ -5846,6 +6265,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitResources(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitResources(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ResourcesContext resources() throws RecognitionException {
@@ -5855,25 +6279,25 @@ public class EzBrewParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(964);
+			setState(990);
 			resource();
-			setState(969);
+			setState(995);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,112,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,115,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(965);
+					setState(991);
 					match(SEMI);
-					setState(966);
+					setState(992);
 					resource();
 					}
 					} 
 				}
-				setState(971);
+				setState(997);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,112,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,115,_ctx);
 			}
 			}
 		}
@@ -5917,6 +6341,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitResource(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitResource(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ResourceContext resource() throws RecognitionException {
@@ -5926,27 +6355,27 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(975);
+			setState(1001);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__3 || _la==FINAL) {
 				{
 				{
-				setState(972);
+				setState(998);
 				variableModifier();
 				}
 				}
-				setState(977);
+				setState(1003);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(978);
+			setState(1004);
 			classOrInterfaceType();
-			setState(979);
+			setState(1005);
 			variableDeclaratorId();
-			setState(980);
+			setState(1006);
 			match(ASSIGN);
-			setState(981);
+			setState(1007);
 			expression(0);
 			}
 		}
@@ -5986,6 +6415,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitSwitchBlockStatementGroup(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitSwitchBlockStatementGroup(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final SwitchBlockStatementGroupContext switchBlockStatementGroup() throws RecognitionException {
@@ -5995,34 +6429,34 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(984); 
+			setState(1010); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(983);
+				setState(1009);
 				switchLabel();
 				}
 				}
-				setState(986); 
+				setState(1012); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==CASE || _la==DEFAULT );
-			setState(989); 
+			setState(1015); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(988);
+				setState(1014);
 				blockStatement();
 				}
 				}
-				setState(991); 
+				setState(1017); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << ABSTRACT) | (1L << BOOLEAN) | (1L << BREAK) | (1L << CHAR) | (1L << CLASS) | (1L << DO) | (1L << DOUBLE) | (1L << FINAL) | (1L << FLOAT) | (1L << FOR) | (1L << IF) | (1L << INT) | (1L << INTERFACE) | (1L << NEW) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << RETURN) | (1L << STATIC) | (1L << SUPER) | (1L << SWITCH) | (1L << THIS) | (1L << THROW) | (1L << TRY) | (1L << VOID) | (1L << WHILE) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (NULL_LITERAL - 64)) | (1L << (LPAREN - 64)) | (1L << (LBRACE - 64)) | (1L << (SEMI - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (SYNCHRONIZED - 64)) | (1L << (STRICTFP - 64)) | (1L << (CHAR_LITERAL - 64)) | (1L << (HEX_LITERAL - 64)) | (1L << (OCT_LITERAL - 64)) | (1L << (BINARY_LITERAL - 64)) | (1L << (HEX_FLOAT_LITERAL - 64)) | (1L << (ASSERT - 64)) | (1L << (CONTINUE - 64)))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << ABSTRACT) | (1L << BOOLEAN) | (1L << BREAK) | (1L << CHAR) | (1L << CLASS) | (1L << DO) | (1L << DOUBLE) | (1L << FINAL) | (1L << FLOAT) | (1L << FOR) | (1L << IF) | (1L << INT) | (1L << INTERFACE) | (1L << NEW) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << RETURN) | (1L << STATIC) | (1L << SUPER) | (1L << SWITCH) | (1L << THIS) | (1L << THROW) | (1L << TRY) | (1L << VOID) | (1L << WHILE) | (1L << SCAN) | (1L << PRINT) | (1L << STRING) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL) | (1L << NULL_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (LPAREN - 64)) | (1L << (LBRACE - 64)) | (1L << (SEMI - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (SYNCHRONIZED - 64)) | (1L << (STRICTFP - 64)) | (1L << (CHAR_LITERAL - 64)) | (1L << (ASSERT - 64)) | (1L << (CONTINUE - 64)))) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -6057,46 +6491,51 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitSwitchLabel(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitSwitchLabel(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final SwitchLabelContext switchLabel() throws RecognitionException {
 		SwitchLabelContext _localctx = new SwitchLabelContext(_ctx, getState());
 		enterRule(_localctx, 150, RULE_switchLabel);
 		try {
-			setState(1001);
+			setState(1027);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case CASE:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(993);
+				setState(1019);
 				match(CASE);
-				setState(996);
+				setState(1022);
 				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,116,_ctx) ) {
+				switch ( getInterpreter().adaptivePredict(_input,119,_ctx) ) {
 				case 1:
 					{
-					setState(994);
+					setState(1020);
 					((SwitchLabelContext)_localctx).constantExpression = expression(0);
 					}
 					break;
 				case 2:
 					{
-					setState(995);
+					setState(1021);
 					((SwitchLabelContext)_localctx).enumConstantName = match(IDENTIFIER);
 					}
 					break;
 				}
-				setState(998);
+				setState(1024);
 				match(T__4);
 				}
 				break;
 			case DEFAULT:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(999);
+				setState(1025);
 				match(DEFAULT);
-				setState(1000);
+				setState(1026);
 				match(T__4);
 				}
 				break;
@@ -6145,6 +6584,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitForControl(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitForControl(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ForControlContext forControl() throws RecognitionException {
@@ -6152,49 +6596,49 @@ public class EzBrewParser extends Parser {
 		enterRule(_localctx, 152, RULE_forControl);
 		int _la;
 		try {
-			setState(1015);
+			setState(1041);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,121,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,124,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(1003);
+				setState(1029);
 				enhancedForControl();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(1005);
+				setState(1031);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (NULL_LITERAL - 64)) | (1L << (LPAREN - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)) | (1L << (HEX_LITERAL - 64)) | (1L << (OCT_LITERAL - 64)) | (1L << (BINARY_LITERAL - 64)) | (1L << (HEX_FLOAT_LITERAL - 64)))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << SCAN) | (1L << STRING) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL) | (1L << NULL_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (LPAREN - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)))) != 0)) {
 					{
-					setState(1004);
+					setState(1030);
 					forInit();
 					}
 				}
 
-				setState(1007);
+				setState(1033);
 				match(SEMI);
-				setState(1009);
+				setState(1035);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (NULL_LITERAL - 64)) | (1L << (LPAREN - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)) | (1L << (HEX_LITERAL - 64)) | (1L << (OCT_LITERAL - 64)) | (1L << (BINARY_LITERAL - 64)) | (1L << (HEX_FLOAT_LITERAL - 64)))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << SCAN) | (1L << STRING) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL) | (1L << NULL_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (LPAREN - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)))) != 0)) {
 					{
-					setState(1008);
+					setState(1034);
 					expression(0);
 					}
 				}
 
-				setState(1011);
+				setState(1037);
 				match(SEMI);
-				setState(1013);
+				setState(1039);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (NULL_LITERAL - 64)) | (1L << (LPAREN - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)) | (1L << (HEX_LITERAL - 64)) | (1L << (OCT_LITERAL - 64)) | (1L << (BINARY_LITERAL - 64)) | (1L << (HEX_FLOAT_LITERAL - 64)))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << SCAN) | (1L << STRING) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL) | (1L << NULL_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (LPAREN - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)))) != 0)) {
 					{
-					setState(1012);
+					setState(1038);
 					((ForControlContext)_localctx).forUpdate = expressionList();
 					}
 				}
@@ -6233,26 +6677,31 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitForInit(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitForInit(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ForInitContext forInit() throws RecognitionException {
 		ForInitContext _localctx = new ForInitContext(_ctx, getState());
 		enterRule(_localctx, 154, RULE_forInit);
 		try {
-			setState(1019);
+			setState(1045);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,122,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,125,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(1017);
+				setState(1043);
 				localVariableDeclaration();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(1018);
+				setState(1044);
 				expressionList();
 				}
 				break;
@@ -6297,6 +6746,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitEnhancedForControl(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitEnhancedForControl(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final EnhancedForControlContext enhancedForControl() throws RecognitionException {
@@ -6306,29 +6760,29 @@ public class EzBrewParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(1024);
+			setState(1050);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,123,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,126,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(1021);
+					setState(1047);
 					variableModifier();
 					}
 					} 
 				}
-				setState(1026);
+				setState(1052);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,123,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,126,_ctx);
 			}
-			setState(1027);
+			setState(1053);
 			typeType();
-			setState(1028);
+			setState(1054);
 			variableDeclaratorId();
-			setState(1029);
+			setState(1055);
 			match(T__4);
-			setState(1030);
+			setState(1056);
 			expression(0);
 			}
 		}
@@ -6361,6 +6815,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitParExpression(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitParExpression(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ParExpressionContext parExpression() throws RecognitionException {
@@ -6369,11 +6828,11 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(1032);
+			setState(1058);
 			match(LPAREN);
-			setState(1033);
+			setState(1059);
 			expression(0);
-			setState(1034);
+			setState(1060);
 			match(RPAREN);
 			}
 		}
@@ -6411,6 +6870,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitExpressionList(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitExpressionList(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExpressionListContext expressionList() throws RecognitionException {
@@ -6420,21 +6884,21 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(1036);
+			setState(1062);
 			expression(0);
-			setState(1041);
+			setState(1067);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				setState(1037);
+				setState(1063);
 				match(COMMA);
-				setState(1038);
+				setState(1064);
 				expression(0);
 				}
 				}
-				setState(1043);
+				setState(1069);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -6472,6 +6936,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitMethodCall(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitMethodCall(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final MethodCallContext methodCall() throws RecognitionException {
@@ -6479,69 +6948,69 @@ public class EzBrewParser extends Parser {
 		enterRule(_localctx, 162, RULE_methodCall);
 		int _la;
 		try {
-			setState(1062);
+			setState(1088);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case IDENTIFIER:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(1044);
+				setState(1070);
 				match(IDENTIFIER);
-				setState(1045);
+				setState(1071);
 				match(LPAREN);
-				setState(1047);
+				setState(1073);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (NULL_LITERAL - 64)) | (1L << (LPAREN - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)) | (1L << (HEX_LITERAL - 64)) | (1L << (OCT_LITERAL - 64)) | (1L << (BINARY_LITERAL - 64)) | (1L << (HEX_FLOAT_LITERAL - 64)))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << SCAN) | (1L << STRING) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL) | (1L << NULL_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (LPAREN - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)))) != 0)) {
 					{
-					setState(1046);
+					setState(1072);
 					expressionList();
 					}
 				}
 
-				setState(1049);
+				setState(1075);
 				match(RPAREN);
 				}
 				break;
 			case THIS:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(1050);
+				setState(1076);
 				match(THIS);
-				setState(1051);
+				setState(1077);
 				match(LPAREN);
-				setState(1053);
+				setState(1079);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (NULL_LITERAL - 64)) | (1L << (LPAREN - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)) | (1L << (HEX_LITERAL - 64)) | (1L << (OCT_LITERAL - 64)) | (1L << (BINARY_LITERAL - 64)) | (1L << (HEX_FLOAT_LITERAL - 64)))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << SCAN) | (1L << STRING) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL) | (1L << NULL_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (LPAREN - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)))) != 0)) {
 					{
-					setState(1052);
+					setState(1078);
 					expressionList();
 					}
 				}
 
-				setState(1055);
+				setState(1081);
 				match(RPAREN);
 				}
 				break;
 			case SUPER:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(1056);
+				setState(1082);
 				match(SUPER);
-				setState(1057);
+				setState(1083);
 				match(LPAREN);
-				setState(1059);
+				setState(1085);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (NULL_LITERAL - 64)) | (1L << (LPAREN - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)) | (1L << (HEX_LITERAL - 64)) | (1L << (OCT_LITERAL - 64)) | (1L << (BINARY_LITERAL - 64)) | (1L << (HEX_FLOAT_LITERAL - 64)))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << SCAN) | (1L << STRING) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL) | (1L << NULL_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (LPAREN - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)))) != 0)) {
 					{
-					setState(1058);
+					setState(1084);
 					expressionList();
 					}
 				}
 
-				setState(1061);
+				setState(1087);
 				match(RPAREN);
 				}
 				break;
@@ -6585,7 +7054,10 @@ public class EzBrewParser extends Parser {
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
-		public TerminalNode ADD() { return getToken(EzBrewParser.ADD, 0); }
+		public List<TerminalNode> ADD() { return getTokens(EzBrewParser.ADD); }
+		public TerminalNode ADD(int i) {
+			return getToken(EzBrewParser.ADD, i);
+		}
 		public TerminalNode SUB() { return getToken(EzBrewParser.SUB, 0); }
 		public TerminalNode INC() { return getToken(EzBrewParser.INC, 0); }
 		public TerminalNode DEC() { return getToken(EzBrewParser.DEC, 0); }
@@ -6593,13 +7065,18 @@ public class EzBrewParser extends Parser {
 		public LambdaExpressionContext lambdaExpression() {
 			return getRuleContext(LambdaExpressionContext.class,0);
 		}
-		public TerminalNode IDENTIFIER() { return getToken(EzBrewParser.IDENTIFIER, 0); }
+		public List<TerminalNode> IDENTIFIER() { return getTokens(EzBrewParser.IDENTIFIER); }
+		public TerminalNode IDENTIFIER(int i) {
+			return getToken(EzBrewParser.IDENTIFIER, i);
+		}
 		public TypeArgumentsContext typeArguments() {
 			return getRuleContext(TypeArgumentsContext.class,0);
 		}
 		public ClassTypeContext classType() {
 			return getRuleContext(ClassTypeContext.class,0);
 		}
+		public TerminalNode SCAN() { return getToken(EzBrewParser.SCAN, 0); }
+		public TerminalNode STRING_LITERAL() { return getToken(EzBrewParser.STRING_LITERAL, 0); }
 		public TerminalNode MUL() { return getToken(EzBrewParser.MUL, 0); }
 		public TerminalNode DIV() { return getToken(EzBrewParser.DIV, 0); }
 		public TerminalNode MOD() { return getToken(EzBrewParser.MOD, 0); }
@@ -6618,6 +7095,10 @@ public class EzBrewParser extends Parser {
 		public TerminalNode AND() { return getToken(EzBrewParser.AND, 0); }
 		public TerminalNode OR() { return getToken(EzBrewParser.OR, 0); }
 		public TerminalNode ASSIGN() { return getToken(EzBrewParser.ASSIGN, 0); }
+		public TerminalNode ADD_ASSIGN() { return getToken(EzBrewParser.ADD_ASSIGN, 0); }
+		public TerminalNode SUB_ASSIGN() { return getToken(EzBrewParser.SUB_ASSIGN, 0); }
+		public TerminalNode MUL_ASSIGN() { return getToken(EzBrewParser.MUL_ASSIGN, 0); }
+		public TerminalNode DIV_ASSIGN() { return getToken(EzBrewParser.DIV_ASSIGN, 0); }
 		public TerminalNode DOT() { return getToken(EzBrewParser.DOT, 0); }
 		public TerminalNode THIS() { return getToken(EzBrewParser.THIS, 0); }
 		public InnerCreatorContext innerCreator() {
@@ -6648,6 +7129,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitExpression(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitExpression(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExpressionContext expression() throws RecognitionException {
@@ -6666,47 +7152,47 @@ public class EzBrewParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(1095);
+			setState(1134);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,132,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,137,_ctx) ) {
 			case 1:
 				{
-				setState(1065);
+				setState(1091);
 				primary();
 				}
 				break;
 			case 2:
 				{
-				setState(1066);
+				setState(1092);
 				methodCall();
 				}
 				break;
 			case 3:
 				{
-				setState(1067);
+				setState(1093);
 				match(NEW);
-				setState(1068);
+				setState(1094);
 				creator();
 				}
 				break;
 			case 4:
 				{
-				setState(1069);
+				setState(1095);
 				match(LPAREN);
-				setState(1070);
+				setState(1096);
 				typeType();
-				setState(1071);
+				setState(1097);
 				match(RPAREN);
-				setState(1072);
-				expression(21);
+				setState(1098);
+				expression(22);
 				}
 				break;
 			case 5:
 				{
-				setState(1074);
+				setState(1100);
 				((ExpressionContext)_localctx).prefix = _input.LT(1);
 				_la = _input.LA(1);
-				if ( !(((((_la - 84)) & ~0x3f) == 0 && ((1L << (_la - 84)) & ((1L << (INC - 84)) | (1L << (DEC - 84)) | (1L << (ADD - 84)) | (1L << (SUB - 84)))) != 0)) ) {
+				if ( !(((((_la - 83)) & ~0x3f) == 0 && ((1L << (_la - 83)) & ((1L << (INC - 83)) | (1L << (DEC - 83)) | (1L << (ADD - 83)) | (1L << (SUB - 83)))) != 0)) ) {
 					((ExpressionContext)_localctx).prefix = (Token)_errHandler.recoverInline(this);
 				}
 				else {
@@ -6714,13 +7200,13 @@ public class EzBrewParser extends Parser {
 					_errHandler.reportMatch(this);
 					consume();
 				}
-				setState(1075);
-				expression(19);
+				setState(1101);
+				expression(20);
 				}
 				break;
 			case 6:
 				{
-				setState(1076);
+				setState(1102);
 				((ExpressionContext)_localctx).prefix = _input.LT(1);
 				_la = _input.LA(1);
 				if ( !(_la==T__6 || _la==BANG) ) {
@@ -6731,45 +7217,45 @@ public class EzBrewParser extends Parser {
 					_errHandler.reportMatch(this);
 					consume();
 				}
-				setState(1077);
-				expression(18);
+				setState(1103);
+				expression(19);
 				}
 				break;
 			case 7:
 				{
-				setState(1078);
+				setState(1104);
 				lambdaExpression();
 				}
 				break;
 			case 8:
 				{
-				setState(1079);
+				setState(1105);
 				typeType();
-				setState(1080);
-				match(T__19);
-				setState(1086);
+				setState(1106);
+				match(T__15);
+				setState(1112);
 				_errHandler.sync(this);
 				switch (_input.LA(1)) {
 				case LT:
 				case IDENTIFIER:
 					{
-					setState(1082);
+					setState(1108);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 					if (_la==LT) {
 						{
-						setState(1081);
+						setState(1107);
 						typeArguments();
 						}
 					}
 
-					setState(1084);
+					setState(1110);
 					match(IDENTIFIER);
 					}
 					break;
 				case NEW:
 					{
-					setState(1085);
+					setState(1111);
 					match(NEW);
 					}
 					break;
@@ -6780,47 +7266,83 @@ public class EzBrewParser extends Parser {
 				break;
 			case 9:
 				{
-				setState(1088);
+				setState(1114);
 				classType();
-				setState(1089);
-				match(T__19);
-				setState(1091);
+				setState(1115);
+				match(T__15);
+				setState(1117);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if (_la==LT) {
 					{
-					setState(1090);
+					setState(1116);
 					typeArguments();
 					}
 				}
 
-				setState(1093);
+				setState(1119);
 				match(NEW);
+				}
+				break;
+			case 10:
+				{
+				setState(1121);
+				match(SCAN);
+				setState(1122);
+				match(LPAREN);
+				setState(1131);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				if (_la==STRING_LITERAL) {
+					{
+					setState(1123);
+					match(STRING_LITERAL);
+					setState(1128);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+					while (_la==ADD) {
+						{
+						{
+						setState(1124);
+						match(ADD);
+						setState(1125);
+						match(IDENTIFIER);
+						}
+						}
+						setState(1130);
+						_errHandler.sync(this);
+						_la = _input.LA(1);
+					}
+					}
+				}
+
+				setState(1133);
+				match(RPAREN);
 				}
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(1177);
+			setState(1216);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,138,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,143,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(1175);
+					setState(1214);
 					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,137,_ctx) ) {
+					switch ( getInterpreter().adaptivePredict(_input,142,_ctx) ) {
 					case 1:
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(1097);
-						if (!(precpred(_ctx, 17))) throw new FailedPredicateException(this, "precpred(_ctx, 17)");
-						setState(1098);
+						setState(1136);
+						if (!(precpred(_ctx, 18))) throw new FailedPredicateException(this, "precpred(_ctx, 18)");
+						setState(1137);
 						((ExpressionContext)_localctx).bop = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !(((((_la - 88)) & ~0x3f) == 0 && ((1L << (_la - 88)) & ((1L << (MUL - 88)) | (1L << (DIV - 88)) | (1L << (MOD - 88)))) != 0)) ) {
+						if ( !(((((_la - 87)) & ~0x3f) == 0 && ((1L << (_la - 87)) & ((1L << (MUL - 87)) | (1L << (DIV - 87)) | (1L << (MOD - 87)))) != 0)) ) {
 							((ExpressionContext)_localctx).bop = (Token)_errHandler.recoverInline(this);
 						}
 						else {
@@ -6828,17 +7350,17 @@ public class EzBrewParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(1099);
-						expression(18);
+						setState(1138);
+						expression(19);
 						}
 						break;
 					case 2:
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(1100);
-						if (!(precpred(_ctx, 16))) throw new FailedPredicateException(this, "precpred(_ctx, 16)");
-						setState(1101);
+						setState(1139);
+						if (!(precpred(_ctx, 17))) throw new FailedPredicateException(this, "precpred(_ctx, 17)");
+						setState(1140);
 						((ExpressionContext)_localctx).bop = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==ADD || _la==SUB) ) {
@@ -6849,60 +7371,60 @@ public class EzBrewParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(1102);
-						expression(17);
+						setState(1141);
+						expression(18);
 						}
 						break;
 					case 3:
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(1103);
-						if (!(precpred(_ctx, 15))) throw new FailedPredicateException(this, "precpred(_ctx, 15)");
-						setState(1111);
+						setState(1142);
+						if (!(precpred(_ctx, 16))) throw new FailedPredicateException(this, "precpred(_ctx, 16)");
+						setState(1150);
 						_errHandler.sync(this);
-						switch ( getInterpreter().adaptivePredict(_input,133,_ctx) ) {
+						switch ( getInterpreter().adaptivePredict(_input,138,_ctx) ) {
 						case 1:
 							{
-							setState(1104);
+							setState(1143);
 							match(LT);
-							setState(1105);
+							setState(1144);
 							match(LT);
 							}
 							break;
 						case 2:
 							{
-							setState(1106);
+							setState(1145);
 							match(GT);
-							setState(1107);
+							setState(1146);
 							match(GT);
-							setState(1108);
+							setState(1147);
 							match(GT);
 							}
 							break;
 						case 3:
 							{
-							setState(1109);
+							setState(1148);
 							match(GT);
-							setState(1110);
+							setState(1149);
 							match(GT);
 							}
 							break;
 						}
-						setState(1113);
-						expression(16);
+						setState(1152);
+						expression(17);
 						}
 						break;
 					case 4:
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(1114);
-						if (!(precpred(_ctx, 14))) throw new FailedPredicateException(this, "precpred(_ctx, 14)");
-						setState(1115);
+						setState(1153);
+						if (!(precpred(_ctx, 15))) throw new FailedPredicateException(this, "precpred(_ctx, 15)");
+						setState(1154);
 						((ExpressionContext)_localctx).bop = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !(((((_la - 75)) & ~0x3f) == 0 && ((1L << (_la - 75)) & ((1L << (GT - 75)) | (1L << (LT - 75)) | (1L << (LE - 75)) | (1L << (GE - 75)))) != 0)) ) {
+						if ( !(((((_la - 74)) & ~0x3f) == 0 && ((1L << (_la - 74)) & ((1L << (GT - 74)) | (1L << (LT - 74)) | (1L << (LE - 74)) | (1L << (GE - 74)))) != 0)) ) {
 							((ExpressionContext)_localctx).bop = (Token)_errHandler.recoverInline(this);
 						}
 						else {
@@ -6910,17 +7432,17 @@ public class EzBrewParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(1116);
-						expression(15);
+						setState(1155);
+						expression(16);
 						}
 						break;
 					case 5:
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(1117);
-						if (!(precpred(_ctx, 12))) throw new FailedPredicateException(this, "precpred(_ctx, 12)");
-						setState(1118);
+						setState(1156);
+						if (!(precpred(_ctx, 13))) throw new FailedPredicateException(this, "precpred(_ctx, 13)");
+						setState(1157);
 						((ExpressionContext)_localctx).bop = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==EQUAL || _la==NOTEQUAL) ) {
@@ -6931,96 +7453,96 @@ public class EzBrewParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(1119);
-						expression(13);
+						setState(1158);
+						expression(14);
 						}
 						break;
 					case 6:
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(1120);
-						if (!(precpred(_ctx, 11))) throw new FailedPredicateException(this, "precpred(_ctx, 11)");
-						setState(1121);
+						setState(1159);
+						if (!(precpred(_ctx, 12))) throw new FailedPredicateException(this, "precpred(_ctx, 12)");
+						setState(1160);
 						((ExpressionContext)_localctx).bop = match(T__0);
-						setState(1122);
-						expression(12);
+						setState(1161);
+						expression(13);
 						}
 						break;
 					case 7:
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(1123);
-						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
-						setState(1124);
+						setState(1162);
+						if (!(precpred(_ctx, 11))) throw new FailedPredicateException(this, "precpred(_ctx, 11)");
+						setState(1163);
 						((ExpressionContext)_localctx).bop = match(T__7);
-						setState(1125);
-						expression(11);
+						setState(1164);
+						expression(12);
 						}
 						break;
 					case 8:
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(1126);
-						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
-						setState(1127);
+						setState(1165);
+						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
+						setState(1166);
 						((ExpressionContext)_localctx).bop = match(T__5);
-						setState(1128);
-						expression(10);
+						setState(1167);
+						expression(11);
 						}
 						break;
 					case 9:
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(1129);
-						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
-						setState(1130);
+						setState(1168);
+						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
+						setState(1169);
 						((ExpressionContext)_localctx).bop = match(AND);
-						setState(1131);
-						expression(9);
+						setState(1170);
+						expression(10);
 						}
 						break;
 					case 10:
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(1132);
-						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
-						setState(1133);
+						setState(1171);
+						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
+						setState(1172);
 						((ExpressionContext)_localctx).bop = match(OR);
-						setState(1134);
-						expression(8);
+						setState(1173);
+						expression(9);
 						}
 						break;
 					case 11:
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(1135);
-						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
-						setState(1136);
+						setState(1174);
+						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
+						setState(1175);
 						((ExpressionContext)_localctx).bop = match(T__1);
-						setState(1137);
+						setState(1176);
 						expression(0);
-						setState(1138);
+						setState(1177);
 						match(T__4);
-						setState(1139);
-						expression(6);
+						setState(1178);
+						expression(7);
 						}
 						break;
 					case 12:
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(1141);
-						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
-						setState(1142);
+						setState(1180);
+						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
+						setState(1181);
 						((ExpressionContext)_localctx).bop = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__8) | (1L << T__9) | (1L << T__10) | (1L << T__11) | (1L << T__12) | (1L << T__13) | (1L << T__14) | (1L << T__15) | (1L << T__16) | (1L << T__17) | (1L << T__18))) != 0) || _la==ASSIGN) ) {
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__8) | (1L << T__9) | (1L << T__10) | (1L << T__11) | (1L << T__12) | (1L << T__13) | (1L << T__14))) != 0) || ((((_la - 73)) & ~0x3f) == 0 && ((1L << (_la - 73)) & ((1L << (ASSIGN - 73)) | (1L << (ADD_ASSIGN - 73)) | (1L << (SUB_ASSIGN - 73)) | (1L << (MUL_ASSIGN - 73)) | (1L << (DIV_ASSIGN - 73)))) != 0)) ) {
 							((ExpressionContext)_localctx).bop = (Token)_errHandler.recoverInline(this);
 						}
 						else {
@@ -7028,68 +7550,68 @@ public class EzBrewParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(1143);
-						expression(5);
+						setState(1182);
+						expression(6);
 						}
 						break;
 					case 13:
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(1144);
-						if (!(precpred(_ctx, 25))) throw new FailedPredicateException(this, "precpred(_ctx, 25)");
-						setState(1145);
+						setState(1183);
+						if (!(precpred(_ctx, 26))) throw new FailedPredicateException(this, "precpred(_ctx, 26)");
+						setState(1184);
 						((ExpressionContext)_localctx).bop = match(DOT);
-						setState(1157);
+						setState(1196);
 						_errHandler.sync(this);
-						switch ( getInterpreter().adaptivePredict(_input,135,_ctx) ) {
+						switch ( getInterpreter().adaptivePredict(_input,140,_ctx) ) {
 						case 1:
 							{
-							setState(1146);
+							setState(1185);
 							match(IDENTIFIER);
 							}
 							break;
 						case 2:
 							{
-							setState(1147);
+							setState(1186);
 							methodCall();
 							}
 							break;
 						case 3:
 							{
-							setState(1148);
+							setState(1187);
 							match(THIS);
 							}
 							break;
 						case 4:
 							{
-							setState(1149);
+							setState(1188);
 							match(NEW);
-							setState(1151);
+							setState(1190);
 							_errHandler.sync(this);
 							_la = _input.LA(1);
 							if (_la==LT) {
 								{
-								setState(1150);
+								setState(1189);
 								nonWildcardTypeArguments();
 								}
 							}
 
-							setState(1153);
+							setState(1192);
 							innerCreator();
 							}
 							break;
 						case 5:
 							{
-							setState(1154);
+							setState(1193);
 							match(SUPER);
-							setState(1155);
+							setState(1194);
 							superSuffix();
 							}
 							break;
 						case 6:
 							{
-							setState(1156);
+							setState(1195);
 							explicitGenericInvocation();
 							}
 							break;
@@ -7100,13 +7622,13 @@ public class EzBrewParser extends Parser {
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(1159);
-						if (!(precpred(_ctx, 24))) throw new FailedPredicateException(this, "precpred(_ctx, 24)");
-						setState(1160);
+						setState(1198);
+						if (!(precpred(_ctx, 25))) throw new FailedPredicateException(this, "precpred(_ctx, 25)");
+						setState(1199);
 						match(LBRACK);
-						setState(1161);
+						setState(1200);
 						expression(0);
-						setState(1162);
+						setState(1201);
 						match(RBRACK);
 						}
 						break;
@@ -7114,9 +7636,9 @@ public class EzBrewParser extends Parser {
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(1164);
-						if (!(precpred(_ctx, 20))) throw new FailedPredicateException(this, "precpred(_ctx, 20)");
-						setState(1165);
+						setState(1203);
+						if (!(precpred(_ctx, 21))) throw new FailedPredicateException(this, "precpred(_ctx, 21)");
+						setState(1204);
 						((ExpressionContext)_localctx).postfix = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==INC || _la==DEC) ) {
@@ -7133,11 +7655,11 @@ public class EzBrewParser extends Parser {
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(1166);
-						if (!(precpred(_ctx, 13))) throw new FailedPredicateException(this, "precpred(_ctx, 13)");
-						setState(1167);
+						setState(1205);
+						if (!(precpred(_ctx, 14))) throw new FailedPredicateException(this, "precpred(_ctx, 14)");
+						setState(1206);
 						((ExpressionContext)_localctx).bop = match(INSTANCEOF);
-						setState(1168);
+						setState(1207);
 						typeType();
 						}
 						break;
@@ -7145,30 +7667,30 @@ public class EzBrewParser extends Parser {
 						{
 						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(1169);
-						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-						setState(1170);
-						match(T__19);
-						setState(1172);
+						setState(1208);
+						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
+						setState(1209);
+						match(T__15);
+						setState(1211);
 						_errHandler.sync(this);
 						_la = _input.LA(1);
 						if (_la==LT) {
 							{
-							setState(1171);
+							setState(1210);
 							typeArguments();
 							}
 						}
 
-						setState(1174);
+						setState(1213);
 						match(IDENTIFIER);
 						}
 						break;
 					}
 					} 
 				}
-				setState(1179);
+				setState(1218);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,138,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,143,_ctx);
 			}
 			}
 		}
@@ -7202,6 +7724,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitLambdaExpression(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitLambdaExpression(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final LambdaExpressionContext lambdaExpression() throws RecognitionException {
@@ -7210,11 +7737,11 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(1180);
+			setState(1219);
 			lambdaParameters();
-			setState(1181);
-			match(T__20);
-			setState(1182);
+			setState(1220);
+			match(T__16);
+			setState(1221);
 			lambdaBody();
 			}
 		}
@@ -7255,6 +7782,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitLambdaParameters(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitLambdaParameters(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final LambdaParametersContext lambdaParameters() throws RecognitionException {
@@ -7262,59 +7794,59 @@ public class EzBrewParser extends Parser {
 		enterRule(_localctx, 168, RULE_lambdaParameters);
 		int _la;
 		try {
-			setState(1200);
+			setState(1239);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,141,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,146,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(1184);
+				setState(1223);
 				match(IDENTIFIER);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(1185);
+				setState(1224);
 				match(LPAREN);
-				setState(1187);
+				setState(1226);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FINAL) | (1L << FLOAT) | (1L << INT))) != 0) || _la==IDENTIFIER) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FINAL) | (1L << FLOAT) | (1L << INT) | (1L << STRING))) != 0) || _la==IDENTIFIER) {
 					{
-					setState(1186);
+					setState(1225);
 					formalParameterList();
 					}
 				}
 
-				setState(1189);
+				setState(1228);
 				match(RPAREN);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(1190);
+				setState(1229);
 				match(LPAREN);
-				setState(1191);
+				setState(1230);
 				match(IDENTIFIER);
-				setState(1196);
+				setState(1235);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					setState(1192);
+					setState(1231);
 					match(COMMA);
-					setState(1193);
+					setState(1232);
 					match(IDENTIFIER);
 					}
 					}
-					setState(1198);
+					setState(1237);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(1199);
+				setState(1238);
 				match(RPAREN);
 				}
 				break;
@@ -7350,13 +7882,18 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitLambdaBody(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitLambdaBody(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final LambdaBodyContext lambdaBody() throws RecognitionException {
 		LambdaBodyContext _localctx = new LambdaBodyContext(_ctx, getState());
 		enterRule(_localctx, 170, RULE_lambdaBody);
 		try {
-			setState(1204);
+			setState(1243);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__3:
@@ -7370,6 +7907,8 @@ public class EzBrewParser extends Parser {
 			case SUPER:
 			case THIS:
 			case VOID:
+			case SCAN:
+			case STRING:
 			case DECIMAL_LITERAL:
 			case FLOAT_LITERAL:
 			case BOOL_LITERAL:
@@ -7384,20 +7923,16 @@ public class EzBrewParser extends Parser {
 			case SUB:
 			case IDENTIFIER:
 			case CHAR_LITERAL:
-			case HEX_LITERAL:
-			case OCT_LITERAL:
-			case BINARY_LITERAL:
-			case HEX_FLOAT_LITERAL:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(1202);
+				setState(1241);
 				expression(0);
 				}
 				break;
 			case LBRACE:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(1203);
+				setState(1242);
 				block();
 				}
 				break;
@@ -7454,85 +7989,90 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitPrimary(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitPrimary(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final PrimaryContext primary() throws RecognitionException {
 		PrimaryContext _localctx = new PrimaryContext(_ctx, getState());
 		enterRule(_localctx, 172, RULE_primary);
 		try {
-			setState(1224);
+			setState(1263);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,144,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,149,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(1206);
+				setState(1245);
 				match(LPAREN);
-				setState(1207);
+				setState(1246);
 				expression(0);
-				setState(1208);
+				setState(1247);
 				match(RPAREN);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(1210);
+				setState(1249);
 				match(THIS);
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(1211);
+				setState(1250);
 				match(SUPER);
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(1212);
+				setState(1251);
 				literal();
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(1213);
+				setState(1252);
 				match(IDENTIFIER);
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(1214);
+				setState(1253);
 				typeTypeOrVoid();
-				setState(1215);
+				setState(1254);
 				match(DOT);
-				setState(1216);
+				setState(1255);
 				match(CLASS);
 				}
 				break;
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(1218);
+				setState(1257);
 				nonWildcardTypeArguments();
-				setState(1222);
+				setState(1261);
 				_errHandler.sync(this);
 				switch (_input.LA(1)) {
 				case SUPER:
 				case IDENTIFIER:
 					{
-					setState(1219);
+					setState(1258);
 					explicitGenericInvocationSuffix();
 					}
 					break;
 				case THIS:
 					{
-					setState(1220);
+					setState(1259);
 					match(THIS);
-					setState(1221);
+					setState(1260);
 					arguments();
 					}
 					break;
@@ -7581,6 +8121,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitClassType(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitClassType(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ClassTypeContext classType() throws RecognitionException {
@@ -7590,40 +8135,40 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(1229);
+			setState(1268);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,145,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,150,_ctx) ) {
 			case 1:
 				{
-				setState(1226);
+				setState(1265);
 				classOrInterfaceType();
-				setState(1227);
+				setState(1266);
 				match(DOT);
 				}
 				break;
 			}
-			setState(1234);
+			setState(1273);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__3) {
 				{
 				{
-				setState(1231);
+				setState(1270);
 				annotation();
 				}
 				}
-				setState(1236);
+				setState(1275);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(1237);
+			setState(1276);
 			match(IDENTIFIER);
-			setState(1239);
+			setState(1278);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==LT) {
 				{
-				setState(1238);
+				setState(1277);
 				typeArguments();
 				}
 			}
@@ -7666,23 +8211,28 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitCreator(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitCreator(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final CreatorContext creator() throws RecognitionException {
 		CreatorContext _localctx = new CreatorContext(_ctx, getState());
 		enterRule(_localctx, 176, RULE_creator);
 		try {
-			setState(1250);
+			setState(1289);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case LT:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(1241);
+				setState(1280);
 				nonWildcardTypeArguments();
-				setState(1242);
+				setState(1281);
 				createdName();
-				setState(1243);
+				setState(1282);
 				classCreatorRest();
 				}
 				break;
@@ -7691,23 +8241,24 @@ public class EzBrewParser extends Parser {
 			case DOUBLE:
 			case FLOAT:
 			case INT:
+			case STRING:
 			case IDENTIFIER:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(1245);
+				setState(1284);
 				createdName();
-				setState(1248);
+				setState(1287);
 				_errHandler.sync(this);
 				switch (_input.LA(1)) {
 				case LBRACK:
 					{
-					setState(1246);
+					setState(1285);
 					arrayCreatorRest();
 					}
 					break;
 				case LPAREN:
 					{
-					setState(1247);
+					setState(1286);
 					classCreatorRest();
 					}
 					break;
@@ -7761,6 +8312,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitCreatedName(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitCreatedName(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final CreatedNameContext createdName() throws RecognitionException {
@@ -7768,47 +8324,47 @@ public class EzBrewParser extends Parser {
 		enterRule(_localctx, 178, RULE_createdName);
 		int _la;
 		try {
-			setState(1267);
+			setState(1306);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case IDENTIFIER:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(1252);
+				setState(1291);
 				match(IDENTIFIER);
-				setState(1254);
+				setState(1293);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if (_la==LT) {
 					{
-					setState(1253);
+					setState(1292);
 					typeArgumentsOrDiamond();
 					}
 				}
 
-				setState(1263);
+				setState(1302);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==DOT) {
 					{
 					{
-					setState(1256);
+					setState(1295);
 					match(DOT);
-					setState(1257);
+					setState(1296);
 					match(IDENTIFIER);
-					setState(1259);
+					setState(1298);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 					if (_la==LT) {
 						{
-						setState(1258);
+						setState(1297);
 						typeArgumentsOrDiamond();
 						}
 					}
 
 					}
 					}
-					setState(1265);
+					setState(1304);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -7819,9 +8375,10 @@ public class EzBrewParser extends Parser {
 			case DOUBLE:
 			case FLOAT:
 			case INT:
+			case STRING:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(1266);
+				setState(1305);
 				primitiveType();
 				}
 				break;
@@ -7860,6 +8417,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitInnerCreator(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitInnerCreator(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final InnerCreatorContext innerCreator() throws RecognitionException {
@@ -7869,19 +8431,19 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(1269);
+			setState(1308);
 			match(IDENTIFIER);
-			setState(1271);
+			setState(1310);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==LT) {
 				{
-				setState(1270);
+				setState(1309);
 				nonWildcardTypeArgumentsOrDiamond();
 				}
 			}
 
-			setState(1273);
+			setState(1312);
 			classCreatorRest();
 			}
 		}
@@ -7926,6 +8488,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitArrayCreatorRest(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitArrayCreatorRest(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ArrayCreatorRestContext arrayCreatorRest() throws RecognitionException {
@@ -7936,32 +8503,32 @@ public class EzBrewParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(1275);
+			setState(1314);
 			match(LBRACK);
-			setState(1303);
+			setState(1342);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case RBRACK:
 				{
-				setState(1276);
+				setState(1315);
 				match(RBRACK);
-				setState(1281);
+				setState(1320);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==LBRACK) {
 					{
 					{
-					setState(1277);
+					setState(1316);
 					match(LBRACK);
-					setState(1278);
+					setState(1317);
 					match(RBRACK);
 					}
 					}
-					setState(1283);
+					setState(1322);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(1284);
+				setState(1323);
 				arrayInitializer();
 				}
 				break;
@@ -7976,6 +8543,8 @@ public class EzBrewParser extends Parser {
 			case SUPER:
 			case THIS:
 			case VOID:
+			case SCAN:
+			case STRING:
 			case DECIMAL_LITERAL:
 			case FLOAT_LITERAL:
 			case BOOL_LITERAL:
@@ -7990,52 +8559,48 @@ public class EzBrewParser extends Parser {
 			case SUB:
 			case IDENTIFIER:
 			case CHAR_LITERAL:
-			case HEX_LITERAL:
-			case OCT_LITERAL:
-			case BINARY_LITERAL:
-			case HEX_FLOAT_LITERAL:
 				{
-				setState(1285);
+				setState(1324);
 				expression(0);
-				setState(1286);
+				setState(1325);
 				match(RBRACK);
-				setState(1293);
+				setState(1332);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,156,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,161,_ctx);
 				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{
-						setState(1287);
+						setState(1326);
 						match(LBRACK);
-						setState(1288);
+						setState(1327);
 						expression(0);
-						setState(1289);
+						setState(1328);
 						match(RBRACK);
 						}
 						} 
 					}
-					setState(1295);
+					setState(1334);
 					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,156,_ctx);
+					_alt = getInterpreter().adaptivePredict(_input,161,_ctx);
 				}
-				setState(1300);
+				setState(1339);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,157,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,162,_ctx);
 				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{
-						setState(1296);
+						setState(1335);
 						match(LBRACK);
-						setState(1297);
+						setState(1336);
 						match(RBRACK);
 						}
 						} 
 					}
-					setState(1302);
+					setState(1341);
 					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,157,_ctx);
+					_alt = getInterpreter().adaptivePredict(_input,162,_ctx);
 				}
 				}
 				break;
@@ -8074,6 +8639,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitClassCreatorRest(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitClassCreatorRest(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ClassCreatorRestContext classCreatorRest() throws RecognitionException {
@@ -8082,14 +8652,14 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(1305);
+			setState(1344);
 			arguments();
-			setState(1307);
+			setState(1346);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,159,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,164,_ctx) ) {
 			case 1:
 				{
-				setState(1306);
+				setState(1345);
 				classBody();
 				}
 				break;
@@ -8126,6 +8696,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitExplicitGenericInvocation(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitExplicitGenericInvocation(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExplicitGenericInvocationContext explicitGenericInvocation() throws RecognitionException {
@@ -8134,9 +8709,9 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(1309);
+			setState(1348);
 			nonWildcardTypeArguments();
-			setState(1310);
+			setState(1349);
 			explicitGenericInvocationSuffix();
 			}
 		}
@@ -8169,28 +8744,33 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitTypeArgumentsOrDiamond(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitTypeArgumentsOrDiamond(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final TypeArgumentsOrDiamondContext typeArgumentsOrDiamond() throws RecognitionException {
 		TypeArgumentsOrDiamondContext _localctx = new TypeArgumentsOrDiamondContext(_ctx, getState());
 		enterRule(_localctx, 188, RULE_typeArgumentsOrDiamond);
 		try {
-			setState(1315);
+			setState(1354);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,160,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,165,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(1312);
+				setState(1351);
 				match(LT);
-				setState(1313);
+				setState(1352);
 				match(GT);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(1314);
+				setState(1353);
 				typeArguments();
 				}
 				break;
@@ -8225,28 +8805,33 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitNonWildcardTypeArgumentsOrDiamond(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitNonWildcardTypeArgumentsOrDiamond(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final NonWildcardTypeArgumentsOrDiamondContext nonWildcardTypeArgumentsOrDiamond() throws RecognitionException {
 		NonWildcardTypeArgumentsOrDiamondContext _localctx = new NonWildcardTypeArgumentsOrDiamondContext(_ctx, getState());
 		enterRule(_localctx, 190, RULE_nonWildcardTypeArgumentsOrDiamond);
 		try {
-			setState(1320);
+			setState(1359);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,161,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,166,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(1317);
+				setState(1356);
 				match(LT);
-				setState(1318);
+				setState(1357);
 				match(GT);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(1319);
+				setState(1358);
 				nonWildcardTypeArguments();
 				}
 				break;
@@ -8281,6 +8866,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitNonWildcardTypeArguments(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitNonWildcardTypeArguments(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final NonWildcardTypeArgumentsContext nonWildcardTypeArguments() throws RecognitionException {
@@ -8289,11 +8879,11 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(1322);
+			setState(1361);
 			match(LT);
-			setState(1323);
+			setState(1362);
 			typeList();
-			setState(1324);
+			setState(1363);
 			match(GT);
 			}
 		}
@@ -8331,6 +8921,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitTypeList(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitTypeList(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final TypeListContext typeList() throws RecognitionException {
@@ -8340,21 +8935,21 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(1326);
+			setState(1365);
 			typeType();
-			setState(1331);
+			setState(1370);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				setState(1327);
+				setState(1366);
 				match(COMMA);
-				setState(1328);
+				setState(1367);
 				typeType();
 				}
 				}
-				setState(1333);
+				setState(1372);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -8401,6 +8996,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitTypeType(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitTypeType(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final TypeTypeContext typeType() throws RecognitionException {
@@ -8411,22 +9011,22 @@ public class EzBrewParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(1335);
+			setState(1374);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==T__3) {
 				{
-				setState(1334);
+				setState(1373);
 				annotation();
 				}
 			}
 
-			setState(1339);
+			setState(1378);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case IDENTIFIER:
 				{
-				setState(1337);
+				setState(1376);
 				classOrInterfaceType();
 				}
 				break;
@@ -8435,31 +9035,32 @@ public class EzBrewParser extends Parser {
 			case DOUBLE:
 			case FLOAT:
 			case INT:
+			case STRING:
 				{
-				setState(1338);
+				setState(1377);
 				primitiveType();
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
-			setState(1345);
+			setState(1384);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,165,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,170,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(1341);
+					setState(1380);
 					match(LBRACK);
-					setState(1342);
+					setState(1381);
 					match(RBRACK);
 					}
 					} 
 				}
-				setState(1347);
+				setState(1386);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,165,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,170,_ctx);
 			}
 			}
 		}
@@ -8480,6 +9081,7 @@ public class EzBrewParser extends Parser {
 		public TerminalNode INT() { return getToken(EzBrewParser.INT, 0); }
 		public TerminalNode FLOAT() { return getToken(EzBrewParser.FLOAT, 0); }
 		public TerminalNode DOUBLE() { return getToken(EzBrewParser.DOUBLE, 0); }
+		public TerminalNode STRING() { return getToken(EzBrewParser.STRING, 0); }
 		public PrimitiveTypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -8492,6 +9094,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitPrimitiveType(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitPrimitiveType(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final PrimitiveTypeContext primitiveType() throws RecognitionException {
@@ -8501,9 +9108,9 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(1348);
+			setState(1387);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << STRING))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -8549,6 +9156,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitTypeArguments(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitTypeArguments(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final TypeArgumentsContext typeArguments() throws RecognitionException {
@@ -8558,27 +9170,27 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(1350);
+			setState(1389);
 			match(LT);
-			setState(1351);
+			setState(1390);
 			typeArgument();
-			setState(1356);
+			setState(1395);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				setState(1352);
+				setState(1391);
 				match(COMMA);
-				setState(1353);
+				setState(1392);
 				typeArgument();
 				}
 				}
-				setState(1358);
+				setState(1397);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(1359);
+			setState(1398);
 			match(GT);
 			}
 		}
@@ -8611,35 +9223,40 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitSuperSuffix(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitSuperSuffix(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final SuperSuffixContext superSuffix() throws RecognitionException {
 		SuperSuffixContext _localctx = new SuperSuffixContext(_ctx, getState());
 		enterRule(_localctx, 202, RULE_superSuffix);
 		try {
-			setState(1367);
+			setState(1406);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case LPAREN:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(1361);
+				setState(1400);
 				arguments();
 				}
 				break;
 			case DOT:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(1362);
+				setState(1401);
 				match(DOT);
-				setState(1363);
+				setState(1402);
 				match(IDENTIFIER);
-				setState(1365);
+				setState(1404);
 				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,167,_ctx) ) {
+				switch ( getInterpreter().adaptivePredict(_input,172,_ctx) ) {
 				case 1:
 					{
-					setState(1364);
+					setState(1403);
 					arguments();
 					}
 					break;
@@ -8682,30 +9299,35 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitExplicitGenericInvocationSuffix(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitExplicitGenericInvocationSuffix(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExplicitGenericInvocationSuffixContext explicitGenericInvocationSuffix() throws RecognitionException {
 		ExplicitGenericInvocationSuffixContext _localctx = new ExplicitGenericInvocationSuffixContext(_ctx, getState());
 		enterRule(_localctx, 204, RULE_explicitGenericInvocationSuffix);
 		try {
-			setState(1373);
+			setState(1412);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case SUPER:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(1369);
+				setState(1408);
 				match(SUPER);
-				setState(1370);
+				setState(1409);
 				superSuffix();
 				}
 				break;
 			case IDENTIFIER:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(1371);
+				setState(1410);
 				match(IDENTIFIER);
-				setState(1372);
+				setState(1411);
 				arguments();
 				}
 				break;
@@ -8742,6 +9364,11 @@ public class EzBrewParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof EzBrewListener ) ((EzBrewListener)listener).exitArguments(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof EzBrewVisitor ) return ((EzBrewVisitor<? extends T>)visitor).visitArguments(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ArgumentsContext arguments() throws RecognitionException {
@@ -8751,19 +9378,19 @@ public class EzBrewParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(1375);
+			setState(1414);
 			match(LPAREN);
-			setState(1377);
+			setState(1416);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (NULL_LITERAL - 64)) | (1L << (LPAREN - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)) | (1L << (HEX_LITERAL - 64)) | (1L << (OCT_LITERAL - 64)) | (1L << (BINARY_LITERAL - 64)) | (1L << (HEX_FLOAT_LITERAL - 64)))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__6) | (1L << BOOLEAN) | (1L << CHAR) | (1L << DOUBLE) | (1L << FLOAT) | (1L << INT) | (1L << NEW) | (1L << SUPER) | (1L << THIS) | (1L << VOID) | (1L << SCAN) | (1L << STRING) | (1L << DECIMAL_LITERAL) | (1L << FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << STRING_LITERAL) | (1L << NULL_LITERAL))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (LPAREN - 64)) | (1L << (LT - 64)) | (1L << (BANG - 64)) | (1L << (INC - 64)) | (1L << (DEC - 64)) | (1L << (ADD - 64)) | (1L << (SUB - 64)) | (1L << (IDENTIFIER - 64)) | (1L << (CHAR_LITERAL - 64)))) != 0)) {
 				{
-				setState(1376);
+				setState(1415);
 				expressionList();
 				}
 			}
 
-			setState(1379);
+			setState(1418);
 			match(RPAREN);
 			}
 		}
@@ -8788,45 +9415,45 @@ public class EzBrewParser extends Parser {
 	private boolean expression_sempred(ExpressionContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 0:
-			return precpred(_ctx, 17);
+			return precpred(_ctx, 18);
 		case 1:
-			return precpred(_ctx, 16);
+			return precpred(_ctx, 17);
 		case 2:
-			return precpred(_ctx, 15);
+			return precpred(_ctx, 16);
 		case 3:
-			return precpred(_ctx, 14);
+			return precpred(_ctx, 15);
 		case 4:
-			return precpred(_ctx, 12);
-		case 5:
-			return precpred(_ctx, 11);
-		case 6:
-			return precpred(_ctx, 10);
-		case 7:
-			return precpred(_ctx, 9);
-		case 8:
-			return precpred(_ctx, 8);
-		case 9:
-			return precpred(_ctx, 7);
-		case 10:
-			return precpred(_ctx, 6);
-		case 11:
-			return precpred(_ctx, 5);
-		case 12:
-			return precpred(_ctx, 25);
-		case 13:
-			return precpred(_ctx, 24);
-		case 14:
-			return precpred(_ctx, 20);
-		case 15:
 			return precpred(_ctx, 13);
+		case 5:
+			return precpred(_ctx, 12);
+		case 6:
+			return precpred(_ctx, 11);
+		case 7:
+			return precpred(_ctx, 10);
+		case 8:
+			return precpred(_ctx, 9);
+		case 9:
+			return precpred(_ctx, 8);
+		case 10:
+			return precpred(_ctx, 7);
+		case 11:
+			return precpred(_ctx, 6);
+		case 12:
+			return precpred(_ctx, 26);
+		case 13:
+			return precpred(_ctx, 25);
+		case 14:
+			return precpred(_ctx, 21);
+		case 15:
+			return precpred(_ctx, 14);
 		case 16:
-			return precpred(_ctx, 3);
+			return precpred(_ctx, 4);
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3n\u0568\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3m\u058f\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
@@ -8890,470 +9517,486 @@ public class EzBrewParser extends Parser {
 		"E\3E\5E\u0369\nE\3E\3E\3E\3E\7E\u036f\nE\fE\16E\u0372\13E\3E\5E\u0375"+
 		"\nE\3E\3E\3E\3E\7E\u037b\nE\fE\16E\u037e\13E\3E\7E\u0381\nE\fE\16E\u0384"+
 		"\13E\3E\3E\3E\3E\3E\3E\3E\3E\5E\u038e\nE\3E\3E\3E\3E\3E\3E\3E\5E\u0397"+
-		"\nE\3E\3E\3E\5E\u039c\nE\3E\3E\3E\3E\3E\3E\3E\3E\5E\u03a6\nE\3F\3F\3F"+
-		"\7F\u03ab\nF\fF\16F\u03ae\13F\3F\3F\3F\3F\3F\3G\3G\3G\7G\u03b8\nG\fG\16"+
-		"G\u03bb\13G\3H\3H\3H\3I\3I\3I\5I\u03c3\nI\3I\3I\3J\3J\3J\7J\u03ca\nJ\f"+
-		"J\16J\u03cd\13J\3K\7K\u03d0\nK\fK\16K\u03d3\13K\3K\3K\3K\3K\3K\3L\6L\u03db"+
-		"\nL\rL\16L\u03dc\3L\6L\u03e0\nL\rL\16L\u03e1\3M\3M\3M\5M\u03e7\nM\3M\3"+
-		"M\3M\5M\u03ec\nM\3N\3N\5N\u03f0\nN\3N\3N\5N\u03f4\nN\3N\3N\5N\u03f8\n"+
-		"N\5N\u03fa\nN\3O\3O\5O\u03fe\nO\3P\7P\u0401\nP\fP\16P\u0404\13P\3P\3P"+
-		"\3P\3P\3P\3Q\3Q\3Q\3Q\3R\3R\3R\7R\u0412\nR\fR\16R\u0415\13R\3S\3S\3S\5"+
-		"S\u041a\nS\3S\3S\3S\3S\5S\u0420\nS\3S\3S\3S\3S\5S\u0426\nS\3S\5S\u0429"+
-		"\nS\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\5T\u043d\nT"+
-		"\3T\3T\5T\u0441\nT\3T\3T\3T\5T\u0446\nT\3T\3T\5T\u044a\nT\3T\3T\3T\3T"+
-		"\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\5T\u045a\nT\3T\3T\3T\3T\3T\3T\3T\3T\3T"+
-		"\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T"+
-		"\3T\3T\3T\3T\3T\3T\5T\u0482\nT\3T\3T\3T\3T\5T\u0488\nT\3T\3T\3T\3T\3T"+
-		"\3T\3T\3T\3T\3T\3T\3T\3T\5T\u0497\nT\3T\7T\u049a\nT\fT\16T\u049d\13T\3"+
-		"U\3U\3U\3U\3V\3V\3V\5V\u04a6\nV\3V\3V\3V\3V\3V\7V\u04ad\nV\fV\16V\u04b0"+
-		"\13V\3V\5V\u04b3\nV\3W\3W\5W\u04b7\nW\3X\3X\3X\3X\3X\3X\3X\3X\3X\3X\3"+
-		"X\3X\3X\3X\3X\3X\5X\u04c9\nX\5X\u04cb\nX\3Y\3Y\3Y\5Y\u04d0\nY\3Y\7Y\u04d3"+
-		"\nY\fY\16Y\u04d6\13Y\3Y\3Y\5Y\u04da\nY\3Z\3Z\3Z\3Z\3Z\3Z\3Z\5Z\u04e3\n"+
-		"Z\5Z\u04e5\nZ\3[\3[\5[\u04e9\n[\3[\3[\3[\5[\u04ee\n[\7[\u04f0\n[\f[\16"+
-		"[\u04f3\13[\3[\5[\u04f6\n[\3\\\3\\\5\\\u04fa\n\\\3\\\3\\\3]\3]\3]\3]\7"+
-		"]\u0502\n]\f]\16]\u0505\13]\3]\3]\3]\3]\3]\3]\3]\7]\u050e\n]\f]\16]\u0511"+
-		"\13]\3]\3]\7]\u0515\n]\f]\16]\u0518\13]\5]\u051a\n]\3^\3^\5^\u051e\n^"+
-		"\3_\3_\3_\3`\3`\3`\5`\u0526\n`\3a\3a\3a\5a\u052b\na\3b\3b\3b\3b\3c\3c"+
-		"\3c\7c\u0534\nc\fc\16c\u0537\13c\3d\5d\u053a\nd\3d\3d\5d\u053e\nd\3d\3"+
-		"d\7d\u0542\nd\fd\16d\u0545\13d\3e\3e\3f\3f\3f\3f\7f\u054d\nf\ff\16f\u0550"+
-		"\13f\3f\3f\3g\3g\3g\3g\5g\u0558\ng\5g\u055a\ng\3h\3h\3h\3h\5h\u0560\n"+
-		"h\3i\3i\5i\u0564\ni\3i\3i\3i\2\3\u00a6j\2\4\6\b\n\f\16\20\22\24\26\30"+
-		"\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJLNPRTVXZ\\^`bdfhjlnprtvxz|~\u0080"+
-		"\u0082\u0084\u0086\u0088\u008a\u008c\u008e\u0090\u0092\u0094\u0096\u0098"+
-		"\u009a\u009c\u009e\u00a0\u00a2\u00a4\u00a6\u00a8\u00aa\u00ac\u00ae\u00b0"+
-		"\u00b2\u00b4\u00b6\u00b8\u00ba\u00bc\u00be\u00c0\u00c2\u00c4\u00c6\u00c8"+
-		"\u00ca\u00cc\u00ce\u00d0\2\16\4\2$$\66\66\4\2>>ik\4\2??ll\3\2VY\4\2\t"+
-		"\tOO\3\2Z\\\3\2XY\4\2MNQR\4\2PPSS\4\2\13\25LL\3\2VW\7\2\31\31\35\35!!"+
-		"\'\'--\2\u0601\2\u00d3\3\2\2\2\4\u00e6\3\2\2\2\6\u00ed\3\2\2\2\b\u0105"+
-		"\3\2\2\2\n\u010c\3\2\2\2\f\u0116\3\2\2\2\16\u011a\3\2\2\2\20\u011c\3\2"+
-		"\2\2\22\u012b\3\2\2\2\24\u0139\3\2\2\2\26\u0141\3\2\2\2\30\u0149\3\2\2"+
-		"\2\32\u015b\3\2\2\2\34\u0166\3\2\2\2\36\u0170\3\2\2\2 \u0177\3\2\2\2\""+
-		"\u0182\3\2\2\2$\u018b\3\2\2\2&\u01a0\3\2\2\2(\u01ab\3\2\2\2*\u01ad\3\2"+
-		"\2\2,\u01bf\3\2\2\2.\u01c3\3\2\2\2\60\u01c5\3\2\2\2\62\u01c8\3\2\2\2\64"+
-		"\u01cb\3\2\2\2\66\u01d3\3\2\2\28\u01df\3\2\2\2:\u01e8\3\2\2\2<\u01ea\3"+
-		"\2\2\2>\u01f5\3\2\2\2@\u0203\3\2\2\2B\u0227\3\2\2\2D\u0229\3\2\2\2F\u022c"+
-		"\3\2\2\2H\u0234\3\2\2\2J\u0239\3\2\2\2L\u0243\3\2\2\2N\u0245\3\2\2\2P"+
-		"\u0255\3\2\2\2R\u0269\3\2\2\2T\u026b\3\2\2\2V\u0273\3\2\2\2X\u0286\3\2"+
-		"\2\2Z\u028b\3\2\2\2\\\u0294\3\2\2\2^\u029b\3\2\2\2`\u02a9\3\2\2\2b\u02ab"+
-		"\3\2\2\2d\u02ad\3\2\2\2f\u02af\3\2\2\2h\u02b9\3\2\2\2j\u02c1\3\2\2\2l"+
-		"\u02c8\3\2\2\2n\u02ca\3\2\2\2p\u02da\3\2\2\2r\u02df\3\2\2\2t\u02f0\3\2"+
-		"\2\2v\u0306\3\2\2\2x\u030a\3\2\2\2z\u030c\3\2\2\2|\u0312\3\2\2\2~\u0314"+
-		"\3\2\2\2\u0080\u0317\3\2\2\2\u0082\u0325\3\2\2\2\u0084\u032a\3\2\2\2\u0086"+
-		"\u033b\3\2\2\2\u0088\u03a5\3\2\2\2\u008a\u03a7\3\2\2\2\u008c\u03b4\3\2"+
-		"\2\2\u008e\u03bc\3\2\2\2\u0090\u03bf\3\2\2\2\u0092\u03c6\3\2\2\2\u0094"+
-		"\u03d1\3\2\2\2\u0096\u03da\3\2\2\2\u0098\u03eb\3\2\2\2\u009a\u03f9\3\2"+
-		"\2\2\u009c\u03fd\3\2\2\2\u009e\u0402\3\2\2\2\u00a0\u040a\3\2\2\2\u00a2"+
-		"\u040e\3\2\2\2\u00a4\u0428\3\2\2\2\u00a6\u0449\3\2\2\2\u00a8\u049e\3\2"+
-		"\2\2\u00aa\u04b2\3\2\2\2\u00ac\u04b6\3\2\2\2\u00ae\u04ca\3\2\2\2\u00b0"+
-		"\u04cf\3\2\2\2\u00b2\u04e4\3\2\2\2\u00b4\u04f5\3\2\2\2\u00b6\u04f7\3\2"+
-		"\2\2\u00b8\u04fd\3\2\2\2\u00ba\u051b\3\2\2\2\u00bc\u051f\3\2\2\2\u00be"+
-		"\u0525\3\2\2\2\u00c0\u052a\3\2\2\2\u00c2\u052c\3\2\2\2\u00c4\u0530\3\2"+
-		"\2\2\u00c6\u0539\3\2\2\2\u00c8\u0546\3\2\2\2\u00ca\u0548\3\2\2\2\u00cc"+
-		"\u0559\3\2\2\2\u00ce\u055f\3\2\2\2\u00d0\u0561\3\2\2\2\u00d2\u00d4\5\4"+
-		"\3\2\u00d3\u00d2\3\2\2\2\u00d3\u00d4\3\2\2\2\u00d4\u00d8\3\2\2\2\u00d5"+
-		"\u00d7\5\6\4\2\u00d6\u00d5\3\2\2\2\u00d7\u00da\3\2\2\2\u00d8\u00d6\3\2"+
-		"\2\2\u00d8\u00d9\3\2\2\2\u00d9\u00de\3\2\2\2\u00da\u00d8\3\2\2\2\u00db"+
-		"\u00dd\5\b\5\2\u00dc\u00db\3\2\2\2\u00dd\u00e0\3\2\2\2\u00de\u00dc\3\2"+
-		"\2\2\u00de\u00df\3\2\2\2\u00df\u00e1\3\2\2\2\u00e0\u00de\3\2\2\2\u00e1"+
-		"\u00e2\7\2\2\3\u00e2\3\3\2\2\2\u00e3\u00e5\5f\64\2\u00e4\u00e3\3\2\2\2"+
-		"\u00e5\u00e8\3\2\2\2\u00e6\u00e4\3\2\2\2\u00e6\u00e7\3\2\2\2\u00e7\u00e9"+
-		"\3\2\2\2\u00e8\u00e6\3\2\2\2\u00e9\u00ea\7\60\2\2\u00ea\u00eb\5^\60\2"+
-		"\u00eb\u00ec\7I\2\2\u00ec\5\3\2\2\2\u00ed\u00ef\7+\2\2\u00ee\u00f0\7\65"+
-		"\2\2\u00ef\u00ee\3\2\2\2\u00ef\u00f0\3\2\2\2\u00f0\u00f1\3\2\2\2\u00f1"+
-		"\u00f4\5^\60\2\u00f2\u00f3\7K\2\2\u00f3\u00f5\7Z\2\2\u00f4\u00f2\3\2\2"+
-		"\2\u00f4\u00f5\3\2\2\2\u00f5\u00f6\3\2\2\2\u00f6\u00f7\7I\2\2\u00f7\7"+
-		"\3\2\2\2\u00f8\u00fa\5\f\7\2\u00f9\u00f8\3\2\2\2\u00fa\u00fd\3\2\2\2\u00fb"+
-		"\u00f9\3\2\2\2\u00fb\u00fc\3\2\2\2\u00fc\u0102\3\2\2\2\u00fd\u00fb\3\2"+
-		"\2\2\u00fe\u0103\5\20\t\2\u00ff\u0103\5\30\r\2\u0100\u0103\5 \21\2\u0101"+
-		"\u0103\5p9\2\u0102\u00fe\3\2\2\2\u0102\u00ff\3\2\2\2\u0102\u0100\3\2\2"+
-		"\2\u0102\u0101\3\2\2\2\u0103\u0106\3\2\2\2\u0104\u0106\7I\2\2\u0105\u00fb"+
-		"\3\2\2\2\u0105\u0104\3\2\2\2\u0106\t\3\2\2\2\u0107\u010d\5\f\7\2\u0108"+
-		"\u010d\7b\2\2\u0109\u010d\7c\2\2\u010a\u010d\7d\2\2\u010b\u010d\7e\2\2"+
-		"\u010c\u0107\3\2\2\2\u010c\u0108\3\2\2\2\u010c\u0109\3\2\2\2\u010c\u010a"+
-		"\3\2\2\2\u010c\u010b\3\2\2\2\u010d\13\3\2\2\2\u010e\u0117\5f\64\2\u010f"+
-		"\u0117\7\63\2\2\u0110\u0117\7\62\2\2\u0111\u0117\7\61\2\2\u0112\u0117"+
-		"\7\65\2\2\u0113\u0117\7\30\2\2\u0114\u0117\7%\2\2\u0115\u0117\7f\2\2\u0116"+
-		"\u010e\3\2\2\2\u0116\u010f\3\2\2\2\u0116\u0110\3\2\2\2\u0116\u0111\3\2"+
-		"\2\2\u0116\u0112\3\2\2\2\u0116\u0113\3\2\2\2\u0116\u0114\3\2\2\2\u0116"+
-		"\u0115\3\2\2\2\u0117\r\3\2\2\2\u0118\u011b\7%\2\2\u0119\u011b\5f\64\2"+
-		"\u011a\u0118\3\2\2\2\u011a\u0119\3\2\2\2\u011b\17\3\2\2\2\u011c\u011d"+
-		"\7\36\2\2\u011d\u011f\7`\2\2\u011e\u0120\5\22\n\2\u011f\u011e\3\2\2\2"+
-		"\u011f\u0120\3\2\2\2\u0120\u0123\3\2\2\2\u0121\u0122\7$\2\2\u0122\u0124"+
-		"\5\u00c6d\2\u0123\u0121\3\2\2\2\u0123\u0124\3\2\2\2\u0124\u0127\3\2\2"+
-		"\2\u0125\u0126\7*\2\2\u0126\u0128\5\u00c4c\2\u0127\u0125\3\2\2\2\u0127"+
-		"\u0128\3\2\2\2\u0128\u0129\3\2\2\2\u0129\u012a\5\"\22\2\u012a\21\3\2\2"+
-		"\2\u012b\u012c\7N\2\2\u012c\u0131\5\24\13\2\u012d\u012e\7J\2\2\u012e\u0130"+
-		"\5\24\13\2\u012f\u012d\3\2\2\2\u0130\u0133\3\2\2\2\u0131\u012f\3\2\2\2"+
-		"\u0131\u0132\3\2\2\2\u0132\u0134\3\2\2\2\u0133\u0131\3\2\2\2\u0134\u0135"+
-		"\7M\2\2\u0135\23\3\2\2\2\u0136\u0138\5f\64\2\u0137\u0136\3\2\2\2\u0138"+
-		"\u013b\3\2\2\2\u0139\u0137\3\2\2\2\u0139\u013a\3\2\2\2\u013a\u013c\3\2"+
-		"\2\2\u013b\u0139\3\2\2\2\u013c\u013f\7`\2\2\u013d\u013e\7$\2\2\u013e\u0140"+
-		"\5\26\f\2\u013f\u013d\3\2\2\2\u013f\u0140\3\2\2\2\u0140\25\3\2\2\2\u0141"+
-		"\u0146\5\u00c6d\2\u0142\u0143\7\3\2\2\u0143\u0145\5\u00c6d\2\u0144\u0142"+
-		"\3\2\2\2\u0145\u0148\3\2\2\2\u0146\u0144\3\2\2\2\u0146\u0147\3\2\2\2\u0147"+
-		"\27\3\2\2\2\u0148\u0146\3\2\2\2\u0149\u014a\7#\2\2\u014a\u014d\7`\2\2"+
-		"\u014b\u014c\7*\2\2\u014c\u014e\5\u00c4c\2\u014d\u014b\3\2\2\2\u014d\u014e"+
-		"\3\2\2\2\u014e\u014f\3\2\2\2\u014f\u0151\7E\2\2\u0150\u0152\5\32\16\2"+
-		"\u0151\u0150\3\2\2\2\u0151\u0152\3\2\2\2\u0152\u0154\3\2\2\2\u0153\u0155"+
-		"\7J\2\2\u0154\u0153\3\2\2\2\u0154\u0155\3\2\2\2\u0155\u0157\3\2\2\2\u0156"+
-		"\u0158\5\36\20\2\u0157\u0156\3\2\2\2\u0157\u0158\3\2\2\2\u0158\u0159\3"+
-		"\2\2\2\u0159\u015a\7F\2\2\u015a\31\3\2\2\2\u015b\u0160\5\34\17\2\u015c"+
-		"\u015d\7J\2\2\u015d\u015f\5\34\17\2\u015e\u015c\3\2\2\2\u015f\u0162\3"+
-		"\2\2\2\u0160\u015e\3\2\2\2\u0160\u0161\3\2\2\2\u0161\33\3\2\2\2\u0162"+
-		"\u0160\3\2\2\2\u0163\u0165\5f\64\2\u0164\u0163\3\2\2\2\u0165\u0168\3\2"+
-		"\2\2\u0166\u0164\3\2\2\2\u0166\u0167\3\2\2\2\u0167\u0169\3\2\2\2\u0168"+
-		"\u0166\3\2\2\2\u0169\u016b\7`\2\2\u016a\u016c\5\u00d0i\2\u016b\u016a\3"+
-		"\2\2\2\u016b\u016c\3\2\2\2\u016c\u016e\3\2\2\2\u016d\u016f\5\"\22\2\u016e"+
-		"\u016d\3\2\2\2\u016e\u016f\3\2\2\2\u016f\35\3\2\2\2\u0170\u0174\7I\2\2"+
-		"\u0171\u0173\5&\24\2\u0172\u0171\3\2\2\2\u0173\u0176\3\2\2\2\u0174\u0172"+
-		"\3\2\2\2\u0174\u0175\3\2\2\2\u0175\37\3\2\2\2\u0176\u0174\3\2\2\2\u0177"+
-		"\u0178\7.\2\2\u0178\u017a\7`\2\2\u0179\u017b\5\22\n\2\u017a\u0179\3\2"+
-		"\2\2\u017a\u017b\3\2\2\2\u017b\u017e\3\2\2\2\u017c\u017d\7$\2\2\u017d"+
-		"\u017f\5\u00c4c\2\u017e\u017c\3\2\2\2\u017e\u017f\3\2\2\2\u017f\u0180"+
-		"\3\2\2\2\u0180\u0181\5$\23\2\u0181!\3\2\2\2\u0182\u0186\7E\2\2\u0183\u0185"+
-		"\5&\24\2\u0184\u0183\3\2\2\2\u0185\u0188\3\2\2\2\u0186\u0184\3\2\2\2\u0186"+
-		"\u0187\3\2\2\2\u0187\u0189\3\2\2\2\u0188\u0186\3\2\2\2\u0189\u018a\7F"+
-		"\2\2\u018a#\3\2\2\2\u018b\u018f\7E\2\2\u018c\u018e\58\35\2\u018d\u018c"+
-		"\3\2\2\2\u018e\u0191\3\2\2\2\u018f\u018d\3\2\2\2\u018f\u0190\3\2\2\2\u0190"+
-		"\u0192\3\2\2\2\u0191\u018f\3\2\2\2\u0192\u0193\7F\2\2\u0193%\3\2\2\2\u0194"+
-		"\u01a1\7I\2\2\u0195\u0197\7\65\2\2\u0196\u0195\3\2\2\2\u0196\u0197\3\2"+
-		"\2\2\u0197\u0198\3\2\2\2\u0198\u01a1\5\u0080A\2\u0199\u019b\5\n\6\2\u019a"+
-		"\u0199\3\2\2\2\u019b\u019e\3\2\2\2\u019c\u019a\3\2\2\2\u019c\u019d\3\2"+
-		"\2\2\u019d\u019f\3\2\2\2\u019e\u019c\3\2\2\2\u019f\u01a1\5(\25\2\u01a0"+
-		"\u0194\3\2\2\2\u01a0\u0196\3\2\2\2\u01a0\u019c\3\2\2\2\u01a1\'\3\2\2\2"+
-		"\u01a2\u01ac\5*\26\2\u01a3\u01ac\5\60\31\2\u01a4\u01ac\5\66\34\2\u01a5"+
-		"\u01ac\5\64\33\2\u01a6\u01ac\5\62\32\2\u01a7\u01ac\5 \21\2\u01a8\u01ac"+
-		"\5p9\2\u01a9\u01ac\5\20\t\2\u01aa\u01ac\5\30\r\2\u01ab\u01a2\3\2\2\2\u01ab"+
-		"\u01a3\3\2\2\2\u01ab\u01a4\3\2\2\2\u01ab\u01a5\3\2\2\2\u01ab\u01a6\3\2"+
-		"\2\2\u01ab\u01a7\3\2\2\2\u01ab\u01a8\3\2\2\2\u01ab\u01a9\3\2\2\2\u01ab"+
-		"\u01aa\3\2\2\2\u01ac)\3\2\2\2\u01ad\u01ae\5.\30\2\u01ae\u01af\7`\2\2\u01af"+
-		"\u01b4\5V,\2\u01b0\u01b1\7G\2\2\u01b1\u01b3\7H\2\2\u01b2\u01b0\3\2\2\2"+
-		"\u01b3\u01b6\3\2\2\2\u01b4\u01b2\3\2\2\2\u01b4\u01b5\3\2\2\2\u01b5\u01b9"+
-		"\3\2\2\2\u01b6\u01b4\3\2\2\2\u01b7\u01b8\7:\2\2\u01b8\u01ba\5T+\2\u01b9"+
-		"\u01b7\3\2\2\2\u01b9\u01ba\3\2\2\2\u01ba\u01bb\3\2\2\2\u01bb\u01bc\5,"+
-		"\27\2\u01bc+\3\2\2\2\u01bd\u01c0\5\u0080A\2\u01be\u01c0\7I\2\2\u01bf\u01bd"+
-		"\3\2\2\2\u01bf\u01be\3\2\2\2\u01c0-\3\2\2\2\u01c1\u01c4\5\u00c6d\2\u01c2"+
-		"\u01c4\7<\2\2\u01c3\u01c1\3\2\2\2\u01c3\u01c2\3\2\2\2\u01c4/\3\2\2\2\u01c5"+
-		"\u01c6\5\22\n\2\u01c6\u01c7\5*\26\2\u01c7\61\3\2\2\2\u01c8\u01c9\5\22"+
-		"\n\2\u01c9\u01ca\5\64\33\2\u01ca\63\3\2\2\2\u01cb\u01cc\7`\2\2\u01cc\u01cf"+
-		"\5V,\2\u01cd\u01ce\7:\2\2\u01ce\u01d0\5T+\2\u01cf\u01cd\3\2\2\2\u01cf"+
-		"\u01d0\3\2\2\2\u01d0\u01d1\3\2\2\2\u01d1\u01d2\5\u0080A\2\u01d2\65\3\2"+
-		"\2\2\u01d3\u01d4\5\u00c6d\2\u01d4\u01d5\5F$\2\u01d5\u01d6\7I\2\2\u01d6"+
-		"\67\3\2\2\2\u01d7\u01d9\5\n\6\2\u01d8\u01d7\3\2\2\2\u01d9\u01dc\3\2\2"+
-		"\2\u01da\u01d8\3\2\2\2\u01da\u01db\3\2\2\2\u01db\u01dd\3\2\2\2\u01dc\u01da"+
-		"\3\2\2\2\u01dd\u01e0\5:\36\2\u01de\u01e0\7I\2\2\u01df\u01da\3\2\2\2\u01df"+
-		"\u01de\3\2\2\2\u01e09\3\2\2\2\u01e1\u01e9\5<\37\2\u01e2\u01e9\5@!\2\u01e3"+
-		"\u01e9\5D#\2\u01e4\u01e9\5 \21\2\u01e5\u01e9\5p9\2\u01e6\u01e9\5\20\t"+
-		"\2\u01e7\u01e9\5\30\r\2\u01e8\u01e1\3\2\2\2\u01e8\u01e2\3\2\2\2\u01e8"+
-		"\u01e3\3\2\2\2\u01e8\u01e4\3\2\2\2\u01e8\u01e5\3\2\2\2\u01e8\u01e6\3\2"+
-		"\2\2\u01e8\u01e7\3\2\2\2\u01e9;\3\2\2\2\u01ea\u01eb\5\u00c6d\2\u01eb\u01f0"+
-		"\5> \2\u01ec\u01ed\7J\2\2\u01ed\u01ef\5> \2\u01ee\u01ec\3\2\2\2\u01ef"+
-		"\u01f2\3\2\2\2\u01f0\u01ee\3\2\2\2\u01f0\u01f1\3\2\2\2\u01f1\u01f3\3\2"+
-		"\2\2\u01f2\u01f0\3\2\2\2\u01f3\u01f4\7I\2\2\u01f4=\3\2\2\2\u01f5\u01fa"+
-		"\7`\2\2\u01f6\u01f7\7G\2\2\u01f7\u01f9\7H\2\2\u01f8\u01f6\3\2\2\2\u01f9"+
-		"\u01fc\3\2\2\2\u01fa\u01f8\3\2\2\2\u01fa\u01fb\3\2\2\2\u01fb\u01fd\3\2"+
-		"\2\2\u01fc\u01fa\3\2\2\2\u01fd\u01fe\7L\2\2\u01fe\u01ff\5L\'\2\u01ff?"+
-		"\3\2\2\2\u0200\u0202\5B\"\2\u0201\u0200\3\2\2\2\u0202\u0205\3\2\2\2\u0203"+
-		"\u0201\3\2\2\2\u0203\u0204\3\2\2\2\u0204\u0210\3\2\2\2\u0205\u0203\3\2"+
-		"\2\2\u0206\u0211\5.\30\2\u0207\u020b\5\22\n\2\u0208\u020a\5f\64\2\u0209"+
-		"\u0208\3\2\2\2\u020a\u020d\3\2\2\2\u020b\u0209\3\2\2\2\u020b\u020c\3\2"+
-		"\2\2\u020c\u020e\3\2\2\2\u020d\u020b\3\2\2\2\u020e\u020f\5.\30\2\u020f"+
-		"\u0211\3\2\2\2\u0210\u0206\3\2\2\2\u0210\u0207\3\2\2\2\u0211\u0212\3\2"+
-		"\2\2\u0212\u0213\7`\2\2\u0213\u0218\5V,\2\u0214\u0215\7G\2\2\u0215\u0217"+
-		"\7H\2\2\u0216\u0214\3\2\2\2\u0217\u021a\3\2\2\2\u0218\u0216\3\2\2\2\u0218"+
-		"\u0219\3\2\2\2\u0219\u021d\3\2\2\2\u021a\u0218\3\2\2\2\u021b\u021c\7:"+
-		"\2\2\u021c\u021e\5T+\2\u021d\u021b\3\2\2\2\u021d\u021e\3\2\2\2\u021e\u021f"+
-		"\3\2\2\2\u021f\u0220\5,\27\2\u0220A\3\2\2\2\u0221\u0228\5f\64\2\u0222"+
-		"\u0228\7\63\2\2\u0223\u0228\7\30\2\2\u0224\u0228\7g\2\2\u0225\u0228\7"+
-		"\65\2\2\u0226\u0228\7f\2\2\u0227\u0221\3\2\2\2\u0227\u0222\3\2\2\2\u0227"+
-		"\u0223\3\2\2\2\u0227\u0224\3\2\2\2\u0227\u0225\3\2\2\2\u0227\u0226\3\2"+
-		"\2\2\u0228C\3\2\2\2\u0229\u022a\5\22\n\2\u022a\u022b\5@!\2\u022bE\3\2"+
-		"\2\2\u022c\u0231\5H%\2\u022d\u022e\7J\2\2\u022e\u0230\5H%\2\u022f\u022d"+
-		"\3\2\2\2\u0230\u0233\3\2\2\2\u0231\u022f\3\2\2\2\u0231\u0232\3\2\2\2\u0232"+
-		"G\3\2\2\2\u0233\u0231\3\2\2\2\u0234\u0237\5J&\2\u0235\u0236\7L\2\2\u0236"+
-		"\u0238\5L\'\2\u0237\u0235\3\2\2\2\u0237\u0238\3\2\2\2\u0238I\3\2\2\2\u0239"+
-		"\u023e\7`\2\2\u023a\u023b\7G\2\2\u023b\u023d\7H\2\2\u023c\u023a\3\2\2"+
-		"\2\u023d\u0240\3\2\2\2\u023e\u023c\3\2\2\2\u023e\u023f\3\2\2\2\u023fK"+
-		"\3\2\2\2\u0240\u023e\3\2\2\2\u0241\u0244\5N(\2\u0242\u0244\5\u00a6T\2"+
-		"\u0243\u0241\3\2\2\2\u0243\u0242\3\2\2\2\u0244M\3\2\2\2\u0245\u0251\7"+
-		"E\2\2\u0246\u024b\5L\'\2\u0247\u0248\7J\2\2\u0248\u024a\5L\'\2\u0249\u0247"+
-		"\3\2\2\2\u024a\u024d\3\2\2\2\u024b\u0249\3\2\2\2\u024b\u024c\3\2\2\2\u024c"+
-		"\u024f\3\2\2\2\u024d\u024b\3\2\2\2\u024e\u0250\7J\2\2\u024f\u024e\3\2"+
-		"\2\2\u024f\u0250\3\2\2\2\u0250\u0252\3\2\2\2\u0251\u0246\3\2\2\2\u0251"+
-		"\u0252\3\2\2\2\u0252\u0253\3\2\2\2\u0253\u0254\7F\2\2\u0254O\3\2\2\2\u0255"+
-		"\u0257\7`\2\2\u0256\u0258\5\u00caf\2\u0257\u0256\3\2\2\2\u0257\u0258\3"+
-		"\2\2\2\u0258\u0260\3\2\2\2\u0259\u025a\7K\2\2\u025a\u025c\7`\2\2\u025b"+
-		"\u025d\5\u00caf\2\u025c\u025b\3\2\2\2\u025c\u025d\3\2\2\2\u025d\u025f"+
-		"\3\2\2\2\u025e\u0259\3\2\2\2\u025f\u0262\3\2\2\2\u0260\u025e\3\2\2\2\u0260"+
-		"\u0261\3\2\2\2\u0261Q\3\2\2\2\u0262\u0260\3\2\2\2\u0263\u026a\5\u00c6"+
-		"d\2\u0264\u0267\7\4\2\2\u0265\u0266\t\2\2\2\u0266\u0268\5\u00c6d\2\u0267"+
-		"\u0265\3\2\2\2\u0267\u0268\3\2\2\2\u0268\u026a\3\2\2\2\u0269\u0263\3\2"+
-		"\2\2\u0269\u0264\3\2\2\2\u026aS\3\2\2\2\u026b\u0270\5^\60\2\u026c\u026d"+
-		"\7J\2\2\u026d\u026f\5^\60\2\u026e\u026c\3\2\2\2\u026f\u0272\3\2\2\2\u0270"+
-		"\u026e\3\2\2\2\u0270\u0271\3\2\2\2\u0271U\3\2\2\2\u0272\u0270\3\2\2\2"+
-		"\u0273\u0275\7C\2\2\u0274\u0276\5X-\2\u0275\u0274\3\2\2\2\u0275\u0276"+
-		"\3\2\2\2\u0276\u0277\3\2\2\2\u0277\u0278\7D\2\2\u0278W\3\2\2\2\u0279\u027e"+
-		"\5Z.\2\u027a\u027b\7J\2\2\u027b\u027d\5Z.\2\u027c\u027a\3\2\2\2\u027d"+
-		"\u0280\3\2\2\2\u027e\u027c\3\2\2\2\u027e\u027f\3\2\2\2\u027f\u0283\3\2"+
-		"\2\2\u0280\u027e\3\2\2\2\u0281\u0282\7J\2\2\u0282\u0284\5\\/\2\u0283\u0281"+
-		"\3\2\2\2\u0283\u0284\3\2\2\2\u0284\u0287\3\2\2\2\u0285\u0287\5\\/\2\u0286"+
-		"\u0279\3\2\2\2\u0286\u0285\3\2\2\2\u0287Y\3\2\2\2\u0288\u028a\5\16\b\2"+
-		"\u0289\u0288\3\2\2\2\u028a\u028d\3\2\2\2\u028b\u0289\3\2\2\2\u028b\u028c"+
-		"\3\2\2\2\u028c\u028e\3\2\2\2\u028d\u028b\3\2\2\2\u028e\u028f\5\u00c6d"+
-		"\2\u028f\u0290\5J&\2\u0290[\3\2\2\2\u0291\u0293\5\16\b\2\u0292\u0291\3"+
-		"\2\2\2\u0293\u0296\3\2\2\2\u0294\u0292\3\2\2\2\u0294\u0295\3\2\2\2\u0295"+
-		"\u0297\3\2\2\2\u0296\u0294\3\2\2\2\u0297\u0298\5\u00c6d\2\u0298\u0299"+
-		"\7\5\2\2\u0299\u029a\5J&\2\u029a]\3\2\2\2\u029b\u02a0\7`\2\2\u029c\u029d"+
-		"\7K\2\2\u029d\u029f\7`\2\2\u029e\u029c\3\2\2\2\u029f\u02a2\3\2\2\2\u02a0"+
-		"\u029e\3\2\2\2\u02a0\u02a1\3\2\2\2\u02a1_\3\2\2\2\u02a2\u02a0\3\2\2\2"+
-		"\u02a3\u02aa\5b\62\2\u02a4\u02aa\5d\63\2\u02a5\u02aa\7h\2\2\u02a6\u02aa"+
-		"\7A\2\2\u02a7\u02aa\7@\2\2\u02a8\u02aa\7B\2\2\u02a9\u02a3\3\2\2\2\u02a9"+
-		"\u02a4\3\2\2\2\u02a9\u02a5\3\2\2\2\u02a9\u02a6\3\2\2\2\u02a9\u02a7\3\2"+
-		"\2\2\u02a9\u02a8\3\2\2\2\u02aaa\3\2\2\2\u02ab\u02ac\t\3\2\2\u02acc\3\2"+
-		"\2\2\u02ad\u02ae\t\4\2\2\u02aee\3\2\2\2\u02af\u02b0\7\6\2\2\u02b0\u02b7"+
-		"\5^\60\2\u02b1\u02b4\7C\2\2\u02b2\u02b5\5h\65\2\u02b3\u02b5\5l\67\2\u02b4"+
-		"\u02b2\3\2\2\2\u02b4\u02b3\3\2\2\2\u02b4\u02b5\3\2\2\2\u02b5\u02b6\3\2"+
-		"\2\2\u02b6\u02b8\7D\2\2\u02b7\u02b1\3\2\2\2\u02b7\u02b8\3\2\2\2\u02b8"+
-		"g\3\2\2\2\u02b9\u02be\5j\66\2\u02ba\u02bb\7J\2\2\u02bb\u02bd\5j\66\2\u02bc"+
-		"\u02ba\3\2\2\2\u02bd\u02c0\3\2\2\2\u02be\u02bc\3\2\2\2\u02be\u02bf\3\2"+
-		"\2\2\u02bfi\3\2\2\2\u02c0\u02be\3\2\2\2\u02c1\u02c2\7`\2\2\u02c2\u02c3"+
-		"\7L\2\2\u02c3\u02c4\5l\67\2\u02c4k\3\2\2\2\u02c5\u02c9\5\u00a6T\2\u02c6"+
-		"\u02c9\5f\64\2\u02c7\u02c9\5n8\2\u02c8\u02c5\3\2\2\2\u02c8\u02c6\3\2\2"+
-		"\2\u02c8\u02c7\3\2\2\2\u02c9m\3\2\2\2\u02ca\u02d3\7E\2\2\u02cb\u02d0\5"+
-		"l\67\2\u02cc\u02cd\7J\2\2\u02cd\u02cf\5l\67\2\u02ce\u02cc\3\2\2\2\u02cf"+
-		"\u02d2\3\2\2\2\u02d0\u02ce\3\2\2\2\u02d0\u02d1\3\2\2\2\u02d1\u02d4\3\2"+
-		"\2\2\u02d2\u02d0\3\2\2\2\u02d3\u02cb\3\2\2\2\u02d3\u02d4\3\2\2\2\u02d4"+
-		"\u02d6\3\2\2\2\u02d5\u02d7\7J\2\2\u02d6\u02d5\3\2\2\2\u02d6\u02d7\3\2"+
-		"\2\2\u02d7\u02d8\3\2\2\2\u02d8\u02d9\7F\2\2\u02d9o\3\2\2\2\u02da\u02db"+
-		"\7\6\2\2\u02db\u02dc\7.\2\2\u02dc\u02dd\7`\2\2\u02dd\u02de\5r:\2\u02de"+
-		"q\3\2\2\2\u02df\u02e3\7E\2\2\u02e0\u02e2\5t;\2\u02e1\u02e0\3\2\2\2\u02e2"+
-		"\u02e5\3\2\2\2\u02e3\u02e1\3\2\2\2\u02e3\u02e4\3\2\2\2\u02e4\u02e6\3\2"+
-		"\2\2\u02e5\u02e3\3\2\2\2\u02e6\u02e7\7F\2\2\u02e7s\3\2\2\2\u02e8\u02ea"+
-		"\5\n\6\2\u02e9\u02e8\3\2\2\2\u02ea\u02ed\3\2\2\2\u02eb\u02e9\3\2\2\2\u02eb"+
-		"\u02ec\3\2\2\2\u02ec\u02ee\3\2\2\2\u02ed\u02eb\3\2\2\2\u02ee\u02f1\5v"+
-		"<\2\u02ef\u02f1\7I\2\2\u02f0\u02eb\3\2\2\2\u02f0\u02ef\3\2\2\2\u02f1u"+
-		"\3\2\2\2\u02f2\u02f3\5\u00c6d\2\u02f3\u02f4\5x=\2\u02f4\u02f5\7I\2\2\u02f5"+
-		"\u0307\3\2\2\2\u02f6\u02f8\5\20\t\2\u02f7\u02f9\7I\2\2\u02f8\u02f7\3\2"+
-		"\2\2\u02f8\u02f9\3\2\2\2\u02f9\u0307\3\2\2\2\u02fa\u02fc\5 \21\2\u02fb"+
-		"\u02fd\7I\2\2\u02fc\u02fb\3\2\2\2\u02fc\u02fd\3\2\2\2\u02fd\u0307\3\2"+
-		"\2\2\u02fe\u0300\5\30\r\2\u02ff\u0301\7I\2\2\u0300\u02ff\3\2\2\2\u0300"+
-		"\u0301\3\2\2\2\u0301\u0307\3\2\2\2\u0302\u0304\5p9\2\u0303\u0305\7I\2"+
-		"\2\u0304\u0303\3\2\2\2\u0304\u0305\3\2\2\2\u0305\u0307\3\2\2\2\u0306\u02f2"+
-		"\3\2\2\2\u0306\u02f6\3\2\2\2\u0306\u02fa\3\2\2\2\u0306\u02fe\3\2\2\2\u0306"+
-		"\u0302\3\2\2\2\u0307w\3\2\2\2\u0308\u030b\5z>\2\u0309\u030b\5|?\2\u030a"+
-		"\u0308\3\2\2\2\u030a\u0309\3\2\2\2\u030by\3\2\2\2\u030c\u030d\7`\2\2\u030d"+
-		"\u030e\7C\2\2\u030e\u0310\7D\2\2\u030f\u0311\5~@\2\u0310\u030f\3\2\2\2"+
-		"\u0310\u0311\3\2\2\2\u0311{\3\2\2\2\u0312\u0313\5F$\2\u0313}\3\2\2\2\u0314"+
-		"\u0315\7g\2\2\u0315\u0316\5l\67\2\u0316\177\3\2\2\2\u0317\u031b\7E\2\2"+
-		"\u0318\u031a\5\u0082B\2\u0319\u0318\3\2\2\2\u031a\u031d\3\2\2\2\u031b"+
-		"\u0319\3\2\2\2\u031b\u031c\3\2\2\2\u031c\u031e\3\2\2\2\u031d\u031b\3\2"+
-		"\2\2\u031e\u031f\7F\2\2\u031f\u0081\3\2\2\2\u0320\u0321\5\u0084C\2\u0321"+
-		"\u0322\7I\2\2\u0322\u0326\3\2\2\2\u0323\u0326\5\u0088E\2\u0324\u0326\5"+
-		"\u0086D\2\u0325\u0320\3\2\2\2\u0325\u0323\3\2\2\2\u0325\u0324\3\2\2\2"+
-		"\u0326\u0083\3\2\2\2\u0327\u0329\5\16\b\2\u0328\u0327\3\2\2\2\u0329\u032c"+
-		"\3\2\2\2\u032a\u0328\3\2\2\2\u032a\u032b\3\2\2\2\u032b\u032d\3\2\2\2\u032c"+
-		"\u032a\3\2\2\2\u032d\u032e\5\u00c6d\2\u032e\u032f\5F$\2\u032f\u0085\3"+
-		"\2\2\2\u0330\u0332\5\f\7\2\u0331\u0330\3\2\2\2\u0332\u0335\3\2\2\2\u0333"+
-		"\u0331\3\2\2\2\u0333\u0334\3\2\2\2\u0334\u0338\3\2\2\2\u0335\u0333\3\2"+
-		"\2\2\u0336\u0339\5\20\t\2\u0337\u0339\5 \21\2\u0338\u0336\3\2\2\2\u0338"+
-		"\u0337\3\2\2\2\u0339\u033c\3\2\2\2\u033a\u033c\7I\2\2\u033b\u0333\3\2"+
-		"\2\2\u033b\u033a\3\2\2\2\u033c\u0087\3\2\2\2\u033d\u03a6\5\u0080A\2\u033e"+
-		"\u033f\7m\2\2\u033f\u0342\5\u00a6T\2\u0340\u0341\7\7\2\2\u0341\u0343\5"+
-		"\u00a6T\2\u0342\u0340\3\2\2\2\u0342\u0343\3\2\2\2\u0343\u0344\3\2\2\2"+
-		"\u0344\u0345\7I\2\2\u0345\u03a6\3\2\2\2\u0346\u0347\7)\2\2\u0347\u0348"+
-		"\5\u00a0Q\2\u0348\u034b\5\u0088E\2\u0349\u034a\7\"\2\2\u034a\u034c\5\u0088"+
-		"E\2\u034b\u0349\3\2\2\2\u034b\u034c\3\2\2\2\u034c\u03a6\3\2\2\2\u034d"+
-		"\u034e\7(\2\2\u034e\u034f\7C\2\2\u034f\u0350\5\u009aN\2\u0350\u0351\7"+
-		"D\2\2\u0351\u0352\5\u0088E\2\u0352\u03a6\3\2\2\2\u0353\u0354\7=\2\2\u0354"+
-		"\u0355\5\u00a0Q\2\u0355\u0356\5\u0088E\2\u0356\u03a6\3\2\2\2\u0357\u0358"+
-		"\7 \2\2\u0358\u0359\5\u0088E\2\u0359\u035a\7=\2\2\u035a\u035b\5\u00a0"+
-		"Q\2\u035b\u035c\7I\2\2\u035c\u03a6\3\2\2\2\u035d\u035e\7;\2\2\u035e\u0368"+
+		"\nE\3E\3E\3E\5E\u039c\nE\3E\3E\3E\3E\3E\3E\3E\3E\3E\3E\3E\3E\3E\3E\3E"+
+		"\7E\u03ad\nE\fE\16E\u03b0\13E\5E\u03b2\nE\3E\3E\3E\3E\3E\3E\7E\u03ba\n"+
+		"E\fE\16E\u03bd\13E\3E\5E\u03c0\nE\3F\3F\3F\7F\u03c5\nF\fF\16F\u03c8\13"+
+		"F\3F\3F\3F\3F\3F\3G\3G\3G\7G\u03d2\nG\fG\16G\u03d5\13G\3H\3H\3H\3I\3I"+
+		"\3I\5I\u03dd\nI\3I\3I\3J\3J\3J\7J\u03e4\nJ\fJ\16J\u03e7\13J\3K\7K\u03ea"+
+		"\nK\fK\16K\u03ed\13K\3K\3K\3K\3K\3K\3L\6L\u03f5\nL\rL\16L\u03f6\3L\6L"+
+		"\u03fa\nL\rL\16L\u03fb\3M\3M\3M\5M\u0401\nM\3M\3M\3M\5M\u0406\nM\3N\3"+
+		"N\5N\u040a\nN\3N\3N\5N\u040e\nN\3N\3N\5N\u0412\nN\5N\u0414\nN\3O\3O\5"+
+		"O\u0418\nO\3P\7P\u041b\nP\fP\16P\u041e\13P\3P\3P\3P\3P\3P\3Q\3Q\3Q\3Q"+
+		"\3R\3R\3R\7R\u042c\nR\fR\16R\u042f\13R\3S\3S\3S\5S\u0434\nS\3S\3S\3S\3"+
+		"S\5S\u043a\nS\3S\3S\3S\3S\5S\u0440\nS\3S\5S\u0443\nS\3T\3T\3T\3T\3T\3"+
+		"T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\5T\u0457\nT\3T\3T\5T\u045b\nT\3"+
+		"T\3T\3T\5T\u0460\nT\3T\3T\3T\3T\3T\3T\3T\7T\u0469\nT\fT\16T\u046c\13T"+
+		"\5T\u046e\nT\3T\5T\u0471\nT\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T"+
+		"\5T\u0481\nT\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T"+
+		"\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\5T\u04a9\nT"+
+		"\3T\3T\3T\3T\5T\u04af\nT\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\3T\5T\u04be"+
+		"\nT\3T\7T\u04c1\nT\fT\16T\u04c4\13T\3U\3U\3U\3U\3V\3V\3V\5V\u04cd\nV\3"+
+		"V\3V\3V\3V\3V\7V\u04d4\nV\fV\16V\u04d7\13V\3V\5V\u04da\nV\3W\3W\5W\u04de"+
+		"\nW\3X\3X\3X\3X\3X\3X\3X\3X\3X\3X\3X\3X\3X\3X\3X\3X\5X\u04f0\nX\5X\u04f2"+
+		"\nX\3Y\3Y\3Y\5Y\u04f7\nY\3Y\7Y\u04fa\nY\fY\16Y\u04fd\13Y\3Y\3Y\5Y\u0501"+
+		"\nY\3Z\3Z\3Z\3Z\3Z\3Z\3Z\5Z\u050a\nZ\5Z\u050c\nZ\3[\3[\5[\u0510\n[\3["+
+		"\3[\3[\5[\u0515\n[\7[\u0517\n[\f[\16[\u051a\13[\3[\5[\u051d\n[\3\\\3\\"+
+		"\5\\\u0521\n\\\3\\\3\\\3]\3]\3]\3]\7]\u0529\n]\f]\16]\u052c\13]\3]\3]"+
+		"\3]\3]\3]\3]\3]\7]\u0535\n]\f]\16]\u0538\13]\3]\3]\7]\u053c\n]\f]\16]"+
+		"\u053f\13]\5]\u0541\n]\3^\3^\5^\u0545\n^\3_\3_\3_\3`\3`\3`\5`\u054d\n"+
+		"`\3a\3a\3a\5a\u0552\na\3b\3b\3b\3b\3c\3c\3c\7c\u055b\nc\fc\16c\u055e\13"+
+		"c\3d\5d\u0561\nd\3d\3d\5d\u0565\nd\3d\3d\7d\u0569\nd\fd\16d\u056c\13d"+
+		"\3e\3e\3f\3f\3f\3f\7f\u0574\nf\ff\16f\u0577\13f\3f\3f\3g\3g\3g\3g\5g\u057f"+
+		"\ng\5g\u0581\ng\3h\3h\3h\3h\5h\u0587\nh\3i\3i\5i\u058b\ni\3i\3i\3i\2\3"+
+		"\u00a6j\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:"+
+		"<>@BDFHJLNPRTVXZ\\^`bdfhjlnprtvxz|~\u0080\u0082\u0084\u0086\u0088\u008a"+
+		"\u008c\u008e\u0090\u0092\u0094\u0096\u0098\u009a\u009c\u009e\u00a0\u00a2"+
+		"\u00a4\u00a6\u00a8\u00aa\u00ac\u00ae\u00b0\u00b2\u00b4\u00b6\u00b8\u00ba"+
+		"\u00bc\u00be\u00c0\u00c2\u00c4\u00c6\u00c8\u00ca\u00cc\u00ce\u00d0\2\f"+
+		"\4\2  \62\62\3\2UX\4\2\t\tNN\3\2Y[\3\2WX\4\2LMPQ\4\2OORR\5\2\13\21KK\\"+
+		"_\3\2UV\b\2\25\25\31\31\35\35##))<<\2\u0630\2\u00d3\3\2\2\2\4\u00e6\3"+
+		"\2\2\2\6\u00ed\3\2\2\2\b\u0105\3\2\2\2\n\u010c\3\2\2\2\f\u0116\3\2\2\2"+
+		"\16\u011a\3\2\2\2\20\u011c\3\2\2\2\22\u012b\3\2\2\2\24\u0139\3\2\2\2\26"+
+		"\u0141\3\2\2\2\30\u0149\3\2\2\2\32\u015b\3\2\2\2\34\u0166\3\2\2\2\36\u0170"+
+		"\3\2\2\2 \u0177\3\2\2\2\"\u0182\3\2\2\2$\u018b\3\2\2\2&\u01a0\3\2\2\2"+
+		"(\u01ab\3\2\2\2*\u01ad\3\2\2\2,\u01bf\3\2\2\2.\u01c3\3\2\2\2\60\u01c5"+
+		"\3\2\2\2\62\u01c8\3\2\2\2\64\u01cb\3\2\2\2\66\u01d3\3\2\2\28\u01df\3\2"+
+		"\2\2:\u01e8\3\2\2\2<\u01ea\3\2\2\2>\u01f5\3\2\2\2@\u0203\3\2\2\2B\u0227"+
+		"\3\2\2\2D\u0229\3\2\2\2F\u022c\3\2\2\2H\u0234\3\2\2\2J\u0239\3\2\2\2L"+
+		"\u0243\3\2\2\2N\u0245\3\2\2\2P\u0255\3\2\2\2R\u0269\3\2\2\2T\u026b\3\2"+
+		"\2\2V\u0273\3\2\2\2X\u0286\3\2\2\2Z\u028b\3\2\2\2\\\u0294\3\2\2\2^\u029b"+
+		"\3\2\2\2`\u02a9\3\2\2\2b\u02ab\3\2\2\2d\u02ad\3\2\2\2f\u02af\3\2\2\2h"+
+		"\u02b9\3\2\2\2j\u02c1\3\2\2\2l\u02c8\3\2\2\2n\u02ca\3\2\2\2p\u02da\3\2"+
+		"\2\2r\u02df\3\2\2\2t\u02f0\3\2\2\2v\u0306\3\2\2\2x\u030a\3\2\2\2z\u030c"+
+		"\3\2\2\2|\u0312\3\2\2\2~\u0314\3\2\2\2\u0080\u0317\3\2\2\2\u0082\u0325"+
+		"\3\2\2\2\u0084\u032a\3\2\2\2\u0086\u033b\3\2\2\2\u0088\u03bf\3\2\2\2\u008a"+
+		"\u03c1\3\2\2\2\u008c\u03ce\3\2\2\2\u008e\u03d6\3\2\2\2\u0090\u03d9\3\2"+
+		"\2\2\u0092\u03e0\3\2\2\2\u0094\u03eb\3\2\2\2\u0096\u03f4\3\2\2\2\u0098"+
+		"\u0405\3\2\2\2\u009a\u0413\3\2\2\2\u009c\u0417\3\2\2\2\u009e\u041c\3\2"+
+		"\2\2\u00a0\u0424\3\2\2\2\u00a2\u0428\3\2\2\2\u00a4\u0442\3\2\2\2\u00a6"+
+		"\u0470\3\2\2\2\u00a8\u04c5\3\2\2\2\u00aa\u04d9\3\2\2\2\u00ac\u04dd\3\2"+
+		"\2\2\u00ae\u04f1\3\2\2\2\u00b0\u04f6\3\2\2\2\u00b2\u050b\3\2\2\2\u00b4"+
+		"\u051c\3\2\2\2\u00b6\u051e\3\2\2\2\u00b8\u0524\3\2\2\2\u00ba\u0542\3\2"+
+		"\2\2\u00bc\u0546\3\2\2\2\u00be\u054c\3\2\2\2\u00c0\u0551\3\2\2\2\u00c2"+
+		"\u0553\3\2\2\2\u00c4\u0557\3\2\2\2\u00c6\u0560\3\2\2\2\u00c8\u056d\3\2"+
+		"\2\2\u00ca\u056f\3\2\2\2\u00cc\u0580\3\2\2\2\u00ce\u0586\3\2\2\2\u00d0"+
+		"\u0588\3\2\2\2\u00d2\u00d4\5\4\3\2\u00d3\u00d2\3\2\2\2\u00d3\u00d4\3\2"+
+		"\2\2\u00d4\u00d8\3\2\2\2\u00d5\u00d7\5\6\4\2\u00d6\u00d5\3\2\2\2\u00d7"+
+		"\u00da\3\2\2\2\u00d8\u00d6\3\2\2\2\u00d8\u00d9\3\2\2\2\u00d9\u00de\3\2"+
+		"\2\2\u00da\u00d8\3\2\2\2\u00db\u00dd\5\b\5\2\u00dc\u00db\3\2\2\2\u00dd"+
+		"\u00e0\3\2\2\2\u00de\u00dc\3\2\2\2\u00de\u00df\3\2\2\2\u00df\u00e1\3\2"+
+		"\2\2\u00e0\u00de\3\2\2\2\u00e1\u00e2\7\2\2\3\u00e2\3\3\2\2\2\u00e3\u00e5"+
+		"\5f\64\2\u00e4\u00e3\3\2\2\2\u00e5\u00e8\3\2\2\2\u00e6\u00e4\3\2\2\2\u00e6"+
+		"\u00e7\3\2\2\2\u00e7\u00e9\3\2\2\2\u00e8\u00e6\3\2\2\2\u00e9\u00ea\7,"+
+		"\2\2\u00ea\u00eb\5^\60\2\u00eb\u00ec\7H\2\2\u00ec\5\3\2\2\2\u00ed\u00ef"+
+		"\7\'\2\2\u00ee\u00f0\7\61\2\2\u00ef\u00ee\3\2\2\2\u00ef\u00f0\3\2\2\2"+
+		"\u00f0\u00f1\3\2\2\2\u00f1\u00f4\5^\60\2\u00f2\u00f3\7J\2\2\u00f3\u00f5"+
+		"\7Y\2\2\u00f4\u00f2\3\2\2\2\u00f4\u00f5\3\2\2\2\u00f5\u00f6\3\2\2\2\u00f6"+
+		"\u00f7\7H\2\2\u00f7\7\3\2\2\2\u00f8\u00fa\5\f\7\2\u00f9\u00f8\3\2\2\2"+
+		"\u00fa\u00fd\3\2\2\2\u00fb\u00f9\3\2\2\2\u00fb\u00fc\3\2\2\2\u00fc\u0102"+
+		"\3\2\2\2\u00fd\u00fb\3\2\2\2\u00fe\u0103\5\20\t\2\u00ff\u0103\5\30\r\2"+
+		"\u0100\u0103\5 \21\2\u0101\u0103\5p9\2\u0102\u00fe\3\2\2\2\u0102\u00ff"+
+		"\3\2\2\2\u0102\u0100\3\2\2\2\u0102\u0101\3\2\2\2\u0103\u0106\3\2\2\2\u0104"+
+		"\u0106\7H\2\2\u0105\u00fb\3\2\2\2\u0105\u0104\3\2\2\2\u0106\t\3\2\2\2"+
+		"\u0107\u010d\5\f\7\2\u0108\u010d\7e\2\2\u0109\u010d\7f\2\2\u010a\u010d"+
+		"\7g\2\2\u010b\u010d\7h\2\2\u010c\u0107\3\2\2\2\u010c\u0108\3\2\2\2\u010c"+
+		"\u0109\3\2\2\2\u010c\u010a\3\2\2\2\u010c\u010b\3\2\2\2\u010d\13\3\2\2"+
+		"\2\u010e\u0117\5f\64\2\u010f\u0117\7/\2\2\u0110\u0117\7.\2\2\u0111\u0117"+
+		"\7-\2\2\u0112\u0117\7\61\2\2\u0113\u0117\7\24\2\2\u0114\u0117\7!\2\2\u0115"+
+		"\u0117\7i\2\2\u0116\u010e\3\2\2\2\u0116\u010f\3\2\2\2\u0116\u0110\3\2"+
+		"\2\2\u0116\u0111\3\2\2\2\u0116\u0112\3\2\2\2\u0116\u0113\3\2\2\2\u0116"+
+		"\u0114\3\2\2\2\u0116\u0115\3\2\2\2\u0117\r\3\2\2\2\u0118\u011b\7!\2\2"+
+		"\u0119\u011b\5f\64\2\u011a\u0118\3\2\2\2\u011a\u0119\3\2\2\2\u011b\17"+
+		"\3\2\2\2\u011c\u011d\7\32\2\2\u011d\u011f\7c\2\2\u011e\u0120\5\22\n\2"+
+		"\u011f\u011e\3\2\2\2\u011f\u0120\3\2\2\2\u0120\u0123\3\2\2\2\u0121\u0122"+
+		"\7 \2\2\u0122\u0124\5\u00c6d\2\u0123\u0121\3\2\2\2\u0123\u0124\3\2\2\2"+
+		"\u0124\u0127\3\2\2\2\u0125\u0126\7&\2\2\u0126\u0128\5\u00c4c\2\u0127\u0125"+
+		"\3\2\2\2\u0127\u0128\3\2\2\2\u0128\u0129\3\2\2\2\u0129\u012a\5\"\22\2"+
+		"\u012a\21\3\2\2\2\u012b\u012c\7M\2\2\u012c\u0131\5\24\13\2\u012d\u012e"+
+		"\7I\2\2\u012e\u0130\5\24\13\2\u012f\u012d\3\2\2\2\u0130\u0133\3\2\2\2"+
+		"\u0131\u012f\3\2\2\2\u0131\u0132\3\2\2\2\u0132\u0134\3\2\2\2\u0133\u0131"+
+		"\3\2\2\2\u0134\u0135\7L\2\2\u0135\23\3\2\2\2\u0136\u0138\5f\64\2\u0137"+
+		"\u0136\3\2\2\2\u0138\u013b\3\2\2\2\u0139\u0137\3\2\2\2\u0139\u013a\3\2"+
+		"\2\2\u013a\u013c\3\2\2\2\u013b\u0139\3\2\2\2\u013c\u013f\7c\2\2\u013d"+
+		"\u013e\7 \2\2\u013e\u0140\5\26\f\2\u013f\u013d\3\2\2\2\u013f\u0140\3\2"+
+		"\2\2\u0140\25\3\2\2\2\u0141\u0146\5\u00c6d\2\u0142\u0143\7\3\2\2\u0143"+
+		"\u0145\5\u00c6d\2\u0144\u0142\3\2\2\2\u0145\u0148\3\2\2\2\u0146\u0144"+
+		"\3\2\2\2\u0146\u0147\3\2\2\2\u0147\27\3\2\2\2\u0148\u0146\3\2\2\2\u0149"+
+		"\u014a\7\37\2\2\u014a\u014d\7c\2\2\u014b\u014c\7&\2\2\u014c\u014e\5\u00c4"+
+		"c\2\u014d\u014b\3\2\2\2\u014d\u014e\3\2\2\2\u014e\u014f\3\2\2\2\u014f"+
+		"\u0151\7D\2\2\u0150\u0152\5\32\16\2\u0151\u0150\3\2\2\2\u0151\u0152\3"+
+		"\2\2\2\u0152\u0154\3\2\2\2\u0153\u0155\7I\2\2\u0154\u0153\3\2\2\2\u0154"+
+		"\u0155\3\2\2\2\u0155\u0157\3\2\2\2\u0156\u0158\5\36\20\2\u0157\u0156\3"+
+		"\2\2\2\u0157\u0158\3\2\2\2\u0158\u0159\3\2\2\2\u0159\u015a\7E\2\2\u015a"+
+		"\31\3\2\2\2\u015b\u0160\5\34\17\2\u015c\u015d\7I\2\2\u015d\u015f\5\34"+
+		"\17\2\u015e\u015c\3\2\2\2\u015f\u0162\3\2\2\2\u0160\u015e\3\2\2\2\u0160"+
+		"\u0161\3\2\2\2\u0161\33\3\2\2\2\u0162\u0160\3\2\2\2\u0163\u0165\5f\64"+
+		"\2\u0164\u0163\3\2\2\2\u0165\u0168\3\2\2\2\u0166\u0164\3\2\2\2\u0166\u0167"+
+		"\3\2\2\2\u0167\u0169\3\2\2\2\u0168\u0166\3\2\2\2\u0169\u016b\7c\2\2\u016a"+
+		"\u016c\5\u00d0i\2\u016b\u016a\3\2\2\2\u016b\u016c\3\2\2\2\u016c\u016e"+
+		"\3\2\2\2\u016d\u016f\5\"\22\2\u016e\u016d\3\2\2\2\u016e\u016f\3\2\2\2"+
+		"\u016f\35\3\2\2\2\u0170\u0174\7H\2\2\u0171\u0173\5&\24\2\u0172\u0171\3"+
+		"\2\2\2\u0173\u0176\3\2\2\2\u0174\u0172\3\2\2\2\u0174\u0175\3\2\2\2\u0175"+
+		"\37\3\2\2\2\u0176\u0174\3\2\2\2\u0177\u0178\7*\2\2\u0178\u017a\7c\2\2"+
+		"\u0179\u017b\5\22\n\2\u017a\u0179\3\2\2\2\u017a\u017b\3\2\2\2\u017b\u017e"+
+		"\3\2\2\2\u017c\u017d\7 \2\2\u017d\u017f\5\u00c4c\2\u017e\u017c\3\2\2\2"+
+		"\u017e\u017f\3\2\2\2\u017f\u0180\3\2\2\2\u0180\u0181\5$\23\2\u0181!\3"+
+		"\2\2\2\u0182\u0186\7D\2\2\u0183\u0185\5&\24\2\u0184\u0183\3\2\2\2\u0185"+
+		"\u0188\3\2\2\2\u0186\u0184\3\2\2\2\u0186\u0187\3\2\2\2\u0187\u0189\3\2"+
+		"\2\2\u0188\u0186\3\2\2\2\u0189\u018a\7E\2\2\u018a#\3\2\2\2\u018b\u018f"+
+		"\7D\2\2\u018c\u018e\58\35\2\u018d\u018c\3\2\2\2\u018e\u0191\3\2\2\2\u018f"+
+		"\u018d\3\2\2\2\u018f\u0190\3\2\2\2\u0190\u0192\3\2\2\2\u0191\u018f\3\2"+
+		"\2\2\u0192\u0193\7E\2\2\u0193%\3\2\2\2\u0194\u01a1\7H\2\2\u0195\u0197"+
+		"\7\61\2\2\u0196\u0195\3\2\2\2\u0196\u0197\3\2\2\2\u0197\u0198\3\2\2\2"+
+		"\u0198\u01a1\5\u0080A\2\u0199\u019b\5\n\6\2\u019a\u0199\3\2\2\2\u019b"+
+		"\u019e\3\2\2\2\u019c\u019a\3\2\2\2\u019c\u019d\3\2\2\2\u019d\u019f\3\2"+
+		"\2\2\u019e\u019c\3\2\2\2\u019f\u01a1\5(\25\2\u01a0\u0194\3\2\2\2\u01a0"+
+		"\u0196\3\2\2\2\u01a0\u019c\3\2\2\2\u01a1\'\3\2\2\2\u01a2\u01ac\5*\26\2"+
+		"\u01a3\u01ac\5\60\31\2\u01a4\u01ac\5\66\34\2\u01a5\u01ac\5\64\33\2\u01a6"+
+		"\u01ac\5\62\32\2\u01a7\u01ac\5 \21\2\u01a8\u01ac\5p9\2\u01a9\u01ac\5\20"+
+		"\t\2\u01aa\u01ac\5\30\r\2\u01ab\u01a2\3\2\2\2\u01ab\u01a3\3\2\2\2\u01ab"+
+		"\u01a4\3\2\2\2\u01ab\u01a5\3\2\2\2\u01ab\u01a6\3\2\2\2\u01ab\u01a7\3\2"+
+		"\2\2\u01ab\u01a8\3\2\2\2\u01ab\u01a9\3\2\2\2\u01ab\u01aa\3\2\2\2\u01ac"+
+		")\3\2\2\2\u01ad\u01ae\5.\30\2\u01ae\u01af\7c\2\2\u01af\u01b4\5V,\2\u01b0"+
+		"\u01b1\7F\2\2\u01b1\u01b3\7G\2\2\u01b2\u01b0\3\2\2\2\u01b3\u01b6\3\2\2"+
+		"\2\u01b4\u01b2\3\2\2\2\u01b4\u01b5\3\2\2\2\u01b5\u01b9\3\2\2\2\u01b6\u01b4"+
+		"\3\2\2\2\u01b7\u01b8\7\66\2\2\u01b8\u01ba\5T+\2\u01b9\u01b7\3\2\2\2\u01b9"+
+		"\u01ba\3\2\2\2\u01ba\u01bb\3\2\2\2\u01bb\u01bc\5,\27\2\u01bc+\3\2\2\2"+
+		"\u01bd\u01c0\5\u0080A\2\u01be\u01c0\7H\2\2\u01bf\u01bd\3\2\2\2\u01bf\u01be"+
+		"\3\2\2\2\u01c0-\3\2\2\2\u01c1\u01c4\5\u00c6d\2\u01c2\u01c4\78\2\2\u01c3"+
+		"\u01c1\3\2\2\2\u01c3\u01c2\3\2\2\2\u01c4/\3\2\2\2\u01c5\u01c6\5\22\n\2"+
+		"\u01c6\u01c7\5*\26\2\u01c7\61\3\2\2\2\u01c8\u01c9\5\22\n\2\u01c9\u01ca"+
+		"\5\64\33\2\u01ca\63\3\2\2\2\u01cb\u01cc\7c\2\2\u01cc\u01cf\5V,\2\u01cd"+
+		"\u01ce\7\66\2\2\u01ce\u01d0\5T+\2\u01cf\u01cd\3\2\2\2\u01cf\u01d0\3\2"+
+		"\2\2\u01d0\u01d1\3\2\2\2\u01d1\u01d2\5\u0080A\2\u01d2\65\3\2\2\2\u01d3"+
+		"\u01d4\5\u00c6d\2\u01d4\u01d5\5F$\2\u01d5\u01d6\7H\2\2\u01d6\67\3\2\2"+
+		"\2\u01d7\u01d9\5\n\6\2\u01d8\u01d7\3\2\2\2\u01d9\u01dc\3\2\2\2\u01da\u01d8"+
+		"\3\2\2\2\u01da\u01db\3\2\2\2\u01db\u01dd\3\2\2\2\u01dc\u01da\3\2\2\2\u01dd"+
+		"\u01e0\5:\36\2\u01de\u01e0\7H\2\2\u01df\u01da\3\2\2\2\u01df\u01de\3\2"+
+		"\2\2\u01e09\3\2\2\2\u01e1\u01e9\5<\37\2\u01e2\u01e9\5@!\2\u01e3\u01e9"+
+		"\5D#\2\u01e4\u01e9\5 \21\2\u01e5\u01e9\5p9\2\u01e6\u01e9\5\20\t\2\u01e7"+
+		"\u01e9\5\30\r\2\u01e8\u01e1\3\2\2\2\u01e8\u01e2\3\2\2\2\u01e8\u01e3\3"+
+		"\2\2\2\u01e8\u01e4\3\2\2\2\u01e8\u01e5\3\2\2\2\u01e8\u01e6\3\2\2\2\u01e8"+
+		"\u01e7\3\2\2\2\u01e9;\3\2\2\2\u01ea\u01eb\5\u00c6d\2\u01eb\u01f0\5> \2"+
+		"\u01ec\u01ed\7I\2\2\u01ed\u01ef\5> \2\u01ee\u01ec\3\2\2\2\u01ef\u01f2"+
+		"\3\2\2\2\u01f0\u01ee\3\2\2\2\u01f0\u01f1\3\2\2\2\u01f1\u01f3\3\2\2\2\u01f2"+
+		"\u01f0\3\2\2\2\u01f3\u01f4\7H\2\2\u01f4=\3\2\2\2\u01f5\u01fa\7c\2\2\u01f6"+
+		"\u01f7\7F\2\2\u01f7\u01f9\7G\2\2\u01f8\u01f6\3\2\2\2\u01f9\u01fc\3\2\2"+
+		"\2\u01fa\u01f8\3\2\2\2\u01fa\u01fb\3\2\2\2\u01fb\u01fd\3\2\2\2\u01fc\u01fa"+
+		"\3\2\2\2\u01fd\u01fe\7K\2\2\u01fe\u01ff\5L\'\2\u01ff?\3\2\2\2\u0200\u0202"+
+		"\5B\"\2\u0201\u0200\3\2\2\2\u0202\u0205\3\2\2\2\u0203\u0201\3\2\2\2\u0203"+
+		"\u0204\3\2\2\2\u0204\u0210\3\2\2\2\u0205\u0203\3\2\2\2\u0206\u0211\5."+
+		"\30\2\u0207\u020b\5\22\n\2\u0208\u020a\5f\64\2\u0209\u0208\3\2\2\2\u020a"+
+		"\u020d\3\2\2\2\u020b\u0209\3\2\2\2\u020b\u020c\3\2\2\2\u020c\u020e\3\2"+
+		"\2\2\u020d\u020b\3\2\2\2\u020e\u020f\5.\30\2\u020f\u0211\3\2\2\2\u0210"+
+		"\u0206\3\2\2\2\u0210\u0207\3\2\2\2\u0211\u0212\3\2\2\2\u0212\u0213\7c"+
+		"\2\2\u0213\u0218\5V,\2\u0214\u0215\7F\2\2\u0215\u0217\7G\2\2\u0216\u0214"+
+		"\3\2\2\2\u0217\u021a\3\2\2\2\u0218\u0216\3\2\2\2\u0218\u0219\3\2\2\2\u0219"+
+		"\u021d\3\2\2\2\u021a\u0218\3\2\2\2\u021b\u021c\7\66\2\2\u021c\u021e\5"+
+		"T+\2\u021d\u021b\3\2\2\2\u021d\u021e\3\2\2\2\u021e\u021f\3\2\2\2\u021f"+
+		"\u0220\5,\27\2\u0220A\3\2\2\2\u0221\u0228\5f\64\2\u0222\u0228\7/\2\2\u0223"+
+		"\u0228\7\24\2\2\u0224\u0228\7j\2\2\u0225\u0228\7\61\2\2\u0226\u0228\7"+
+		"i\2\2\u0227\u0221\3\2\2\2\u0227\u0222\3\2\2\2\u0227\u0223\3\2\2\2\u0227"+
+		"\u0224\3\2\2\2\u0227\u0225\3\2\2\2\u0227\u0226\3\2\2\2\u0228C\3\2\2\2"+
+		"\u0229\u022a\5\22\n\2\u022a\u022b\5@!\2\u022bE\3\2\2\2\u022c\u0231\5H"+
+		"%\2\u022d\u022e\7I\2\2\u022e\u0230\5H%\2\u022f\u022d\3\2\2\2\u0230\u0233"+
+		"\3\2\2\2\u0231\u022f\3\2\2\2\u0231\u0232\3\2\2\2\u0232G\3\2\2\2\u0233"+
+		"\u0231\3\2\2\2\u0234\u0237\5J&\2\u0235\u0236\7K\2\2\u0236\u0238\5L\'\2"+
+		"\u0237\u0235\3\2\2\2\u0237\u0238\3\2\2\2\u0238I\3\2\2\2\u0239\u023e\7"+
+		"c\2\2\u023a\u023b\7F\2\2\u023b\u023d\7G\2\2\u023c\u023a\3\2\2\2\u023d"+
+		"\u0240\3\2\2\2\u023e\u023c\3\2\2\2\u023e\u023f\3\2\2\2\u023fK\3\2\2\2"+
+		"\u0240\u023e\3\2\2\2\u0241\u0244\5N(\2\u0242\u0244\5\u00a6T\2\u0243\u0241"+
+		"\3\2\2\2\u0243\u0242\3\2\2\2\u0244M\3\2\2\2\u0245\u0251\7D\2\2\u0246\u024b"+
+		"\5L\'\2\u0247\u0248\7I\2\2\u0248\u024a\5L\'\2\u0249\u0247\3\2\2\2\u024a"+
+		"\u024d\3\2\2\2\u024b\u0249\3\2\2\2\u024b\u024c\3\2\2\2\u024c\u024f\3\2"+
+		"\2\2\u024d\u024b\3\2\2\2\u024e\u0250\7I\2\2\u024f\u024e\3\2\2\2\u024f"+
+		"\u0250\3\2\2\2\u0250\u0252\3\2\2\2\u0251\u0246\3\2\2\2\u0251\u0252\3\2"+
+		"\2\2\u0252\u0253\3\2\2\2\u0253\u0254\7E\2\2\u0254O\3\2\2\2\u0255\u0257"+
+		"\7c\2\2\u0256\u0258\5\u00caf\2\u0257\u0256\3\2\2\2\u0257\u0258\3\2\2\2"+
+		"\u0258\u0260\3\2\2\2\u0259\u025a\7J\2\2\u025a\u025c\7c\2\2\u025b\u025d"+
+		"\5\u00caf\2\u025c\u025b\3\2\2\2\u025c\u025d\3\2\2\2\u025d\u025f\3\2\2"+
+		"\2\u025e\u0259\3\2\2\2\u025f\u0262\3\2\2\2\u0260\u025e\3\2\2\2\u0260\u0261"+
+		"\3\2\2\2\u0261Q\3\2\2\2\u0262\u0260\3\2\2\2\u0263\u026a\5\u00c6d\2\u0264"+
+		"\u0267\7\4\2\2\u0265\u0266\t\2\2\2\u0266\u0268\5\u00c6d\2\u0267\u0265"+
+		"\3\2\2\2\u0267\u0268\3\2\2\2\u0268\u026a\3\2\2\2\u0269\u0263\3\2\2\2\u0269"+
+		"\u0264\3\2\2\2\u026aS\3\2\2\2\u026b\u0270\5^\60\2\u026c\u026d\7I\2\2\u026d"+
+		"\u026f\5^\60\2\u026e\u026c\3\2\2\2\u026f\u0272\3\2\2\2\u0270\u026e\3\2"+
+		"\2\2\u0270\u0271\3\2\2\2\u0271U\3\2\2\2\u0272\u0270\3\2\2\2\u0273\u0275"+
+		"\7B\2\2\u0274\u0276\5X-\2\u0275\u0274\3\2\2\2\u0275\u0276\3\2\2\2\u0276"+
+		"\u0277\3\2\2\2\u0277\u0278\7C\2\2\u0278W\3\2\2\2\u0279\u027e\5Z.\2\u027a"+
+		"\u027b\7I\2\2\u027b\u027d\5Z.\2\u027c\u027a\3\2\2\2\u027d\u0280\3\2\2"+
+		"\2\u027e\u027c\3\2\2\2\u027e\u027f\3\2\2\2\u027f\u0283\3\2\2\2\u0280\u027e"+
+		"\3\2\2\2\u0281\u0282\7I\2\2\u0282\u0284\5\\/\2\u0283\u0281\3\2\2\2\u0283"+
+		"\u0284\3\2\2\2\u0284\u0287\3\2\2\2\u0285\u0287\5\\/\2\u0286\u0279\3\2"+
+		"\2\2\u0286\u0285\3\2\2\2\u0287Y\3\2\2\2\u0288\u028a\5\16\b\2\u0289\u0288"+
+		"\3\2\2\2\u028a\u028d\3\2\2\2\u028b\u0289\3\2\2\2\u028b\u028c\3\2\2\2\u028c"+
+		"\u028e\3\2\2\2\u028d\u028b\3\2\2\2\u028e\u028f\5\u00c6d\2\u028f\u0290"+
+		"\5J&\2\u0290[\3\2\2\2\u0291\u0293\5\16\b\2\u0292\u0291\3\2\2\2\u0293\u0296"+
+		"\3\2\2\2\u0294\u0292\3\2\2\2\u0294\u0295\3\2\2\2\u0295\u0297\3\2\2\2\u0296"+
+		"\u0294\3\2\2\2\u0297\u0298\5\u00c6d\2\u0298\u0299\7\5\2\2\u0299\u029a"+
+		"\5J&\2\u029a]\3\2\2\2\u029b\u02a0\7c\2\2\u029c\u029d\7J\2\2\u029d\u029f"+
+		"\7c\2\2\u029e\u029c\3\2\2\2\u029f\u02a2\3\2\2\2\u02a0\u029e\3\2\2\2\u02a0"+
+		"\u02a1\3\2\2\2\u02a1_\3\2\2\2\u02a2\u02a0\3\2\2\2\u02a3\u02aa\5b\62\2"+
+		"\u02a4\u02aa\5d\63\2\u02a5\u02aa\7k\2\2\u02a6\u02aa\7@\2\2\u02a7\u02aa"+
+		"\7?\2\2\u02a8\u02aa\7A\2\2\u02a9\u02a3\3\2\2\2\u02a9\u02a4\3\2\2\2\u02a9"+
+		"\u02a5\3\2\2\2\u02a9\u02a6\3\2\2\2\u02a9\u02a7\3\2\2\2\u02a9\u02a8\3\2"+
+		"\2\2\u02aaa\3\2\2\2\u02ab\u02ac\7=\2\2\u02acc\3\2\2\2\u02ad\u02ae\7>\2"+
+		"\2\u02aee\3\2\2\2\u02af\u02b0\7\6\2\2\u02b0\u02b7\5^\60\2\u02b1\u02b4"+
+		"\7B\2\2\u02b2\u02b5\5h\65\2\u02b3\u02b5\5l\67\2\u02b4\u02b2\3\2\2\2\u02b4"+
+		"\u02b3\3\2\2\2\u02b4\u02b5\3\2\2\2\u02b5\u02b6\3\2\2\2\u02b6\u02b8\7C"+
+		"\2\2\u02b7\u02b1\3\2\2\2\u02b7\u02b8\3\2\2\2\u02b8g\3\2\2\2\u02b9\u02be"+
+		"\5j\66\2\u02ba\u02bb\7I\2\2\u02bb\u02bd\5j\66\2\u02bc\u02ba\3\2\2\2\u02bd"+
+		"\u02c0\3\2\2\2\u02be\u02bc\3\2\2\2\u02be\u02bf\3\2\2\2\u02bfi\3\2\2\2"+
+		"\u02c0\u02be\3\2\2\2\u02c1\u02c2\7c\2\2\u02c2\u02c3\7K\2\2\u02c3\u02c4"+
+		"\5l\67\2\u02c4k\3\2\2\2\u02c5\u02c9\5\u00a6T\2\u02c6\u02c9\5f\64\2\u02c7"+
+		"\u02c9\5n8\2\u02c8\u02c5\3\2\2\2\u02c8\u02c6\3\2\2\2\u02c8\u02c7\3\2\2"+
+		"\2\u02c9m\3\2\2\2\u02ca\u02d3\7D\2\2\u02cb\u02d0\5l\67\2\u02cc\u02cd\7"+
+		"I\2\2\u02cd\u02cf\5l\67\2\u02ce\u02cc\3\2\2\2\u02cf\u02d2\3\2\2\2\u02d0"+
+		"\u02ce\3\2\2\2\u02d0\u02d1\3\2\2\2\u02d1\u02d4\3\2\2\2\u02d2\u02d0\3\2"+
+		"\2\2\u02d3\u02cb\3\2\2\2\u02d3\u02d4\3\2\2\2\u02d4\u02d6\3\2\2\2\u02d5"+
+		"\u02d7\7I\2\2\u02d6\u02d5\3\2\2\2\u02d6\u02d7\3\2\2\2\u02d7\u02d8\3\2"+
+		"\2\2\u02d8\u02d9\7E\2\2\u02d9o\3\2\2\2\u02da\u02db\7\6\2\2\u02db\u02dc"+
+		"\7*\2\2\u02dc\u02dd\7c\2\2\u02dd\u02de\5r:\2\u02deq\3\2\2\2\u02df\u02e3"+
+		"\7D\2\2\u02e0\u02e2\5t;\2\u02e1\u02e0\3\2\2\2\u02e2\u02e5\3\2\2\2\u02e3"+
+		"\u02e1\3\2\2\2\u02e3\u02e4\3\2\2\2\u02e4\u02e6\3\2\2\2\u02e5\u02e3\3\2"+
+		"\2\2\u02e6\u02e7\7E\2\2\u02e7s\3\2\2\2\u02e8\u02ea\5\n\6\2\u02e9\u02e8"+
+		"\3\2\2\2\u02ea\u02ed\3\2\2\2\u02eb\u02e9\3\2\2\2\u02eb\u02ec\3\2\2\2\u02ec"+
+		"\u02ee\3\2\2\2\u02ed\u02eb\3\2\2\2\u02ee\u02f1\5v<\2\u02ef\u02f1\7H\2"+
+		"\2\u02f0\u02eb\3\2\2\2\u02f0\u02ef\3\2\2\2\u02f1u\3\2\2\2\u02f2\u02f3"+
+		"\5\u00c6d\2\u02f3\u02f4\5x=\2\u02f4\u02f5\7H\2\2\u02f5\u0307\3\2\2\2\u02f6"+
+		"\u02f8\5\20\t\2\u02f7\u02f9\7H\2\2\u02f8\u02f7\3\2\2\2\u02f8\u02f9\3\2"+
+		"\2\2\u02f9\u0307\3\2\2\2\u02fa\u02fc\5 \21\2\u02fb\u02fd\7H\2\2\u02fc"+
+		"\u02fb\3\2\2\2\u02fc\u02fd\3\2\2\2\u02fd\u0307\3\2\2\2\u02fe\u0300\5\30"+
+		"\r\2\u02ff\u0301\7H\2\2\u0300\u02ff\3\2\2\2\u0300\u0301\3\2\2\2\u0301"+
+		"\u0307\3\2\2\2\u0302\u0304\5p9\2\u0303\u0305\7H\2\2\u0304\u0303\3\2\2"+
+		"\2\u0304\u0305\3\2\2\2\u0305\u0307\3\2\2\2\u0306\u02f2\3\2\2\2\u0306\u02f6"+
+		"\3\2\2\2\u0306\u02fa\3\2\2\2\u0306\u02fe\3\2\2\2\u0306\u0302\3\2\2\2\u0307"+
+		"w\3\2\2\2\u0308\u030b\5z>\2\u0309\u030b\5|?\2\u030a\u0308\3\2\2\2\u030a"+
+		"\u0309\3\2\2\2\u030by\3\2\2\2\u030c\u030d\7c\2\2\u030d\u030e\7B\2\2\u030e"+
+		"\u0310\7C\2\2\u030f\u0311\5~@\2\u0310\u030f\3\2\2\2\u0310\u0311\3\2\2"+
+		"\2\u0311{\3\2\2\2\u0312\u0313\5F$\2\u0313}\3\2\2\2\u0314\u0315\7j\2\2"+
+		"\u0315\u0316\5l\67\2\u0316\177\3\2\2\2\u0317\u031b\7D\2\2\u0318\u031a"+
+		"\5\u0082B\2\u0319\u0318\3\2\2\2\u031a\u031d\3\2\2\2\u031b\u0319\3\2\2"+
+		"\2\u031b\u031c\3\2\2\2\u031c\u031e\3\2\2\2\u031d\u031b\3\2\2\2\u031e\u031f"+
+		"\7E\2\2\u031f\u0081\3\2\2\2\u0320\u0321\5\u0084C\2\u0321\u0322\7H\2\2"+
+		"\u0322\u0326\3\2\2\2\u0323\u0326\5\u0088E\2\u0324\u0326\5\u0086D\2\u0325"+
+		"\u0320\3\2\2\2\u0325\u0323\3\2\2\2\u0325\u0324\3\2\2\2\u0326\u0083\3\2"+
+		"\2\2\u0327\u0329\5\16\b\2\u0328\u0327\3\2\2\2\u0329\u032c\3\2\2\2\u032a"+
+		"\u0328\3\2\2\2\u032a\u032b\3\2\2\2\u032b\u032d\3\2\2\2\u032c\u032a\3\2"+
+		"\2\2\u032d\u032e\5\u00c6d\2\u032e\u032f\5F$\2\u032f\u0085\3\2\2\2\u0330"+
+		"\u0332\5\f\7\2\u0331\u0330\3\2\2\2\u0332\u0335\3\2\2\2\u0333\u0331\3\2"+
+		"\2\2\u0333\u0334\3\2\2\2\u0334\u0338\3\2\2\2\u0335\u0333\3\2\2\2\u0336"+
+		"\u0339\5\20\t\2\u0337\u0339\5 \21\2\u0338\u0336\3\2\2\2\u0338\u0337\3"+
+		"\2\2\2\u0339\u033c\3\2\2\2\u033a\u033c\7H\2\2\u033b\u0333\3\2\2\2\u033b"+
+		"\u033a\3\2\2\2\u033c\u0087\3\2\2\2\u033d\u03c0\5\u0080A\2\u033e\u033f"+
+		"\7l\2\2\u033f\u0342\5\u00a6T\2\u0340\u0341\7\7\2\2\u0341\u0343\5\u00a6"+
+		"T\2\u0342\u0340\3\2\2\2\u0342\u0343\3\2\2\2\u0343\u0344\3\2\2\2\u0344"+
+		"\u0345\7H\2\2\u0345\u03c0\3\2\2\2\u0346\u0347\7%\2\2\u0347\u0348\5\u00a0"+
+		"Q\2\u0348\u034b\5\u0088E\2\u0349\u034a\7\36\2\2\u034a\u034c\5\u0088E\2"+
+		"\u034b\u0349\3\2\2\2\u034b\u034c\3\2\2\2\u034c\u03c0\3\2\2\2\u034d\u034e"+
+		"\7$\2\2\u034e\u034f\7B\2\2\u034f\u0350\5\u009aN\2\u0350\u0351\7C\2\2\u0351"+
+		"\u0352\5\u0088E\2\u0352\u03c0\3\2\2\2\u0353\u0354\79\2\2\u0354\u0355\5"+
+		"\u00a0Q\2\u0355\u0356\5\u0088E\2\u0356\u03c0\3\2\2\2\u0357\u0358\7\34"+
+		"\2\2\u0358\u0359\5\u0088E\2\u0359\u035a\79\2\2\u035a\u035b\5\u00a0Q\2"+
+		"\u035b\u035c\7H\2\2\u035c\u03c0\3\2\2\2\u035d\u035e\7\67\2\2\u035e\u0368"+
 		"\5\u0080A\2\u035f\u0361\5\u008aF\2\u0360\u035f\3\2\2\2\u0361\u0362\3\2"+
 		"\2\2\u0362\u0360\3\2\2\2\u0362\u0363\3\2\2\2\u0363\u0365\3\2\2\2\u0364"+
 		"\u0366\5\u008eH\2\u0365\u0364\3\2\2\2\u0365\u0366\3\2\2\2\u0366\u0369"+
 		"\3\2\2\2\u0367\u0369\5\u008eH\2\u0368\u0360\3\2\2\2\u0368\u0367\3\2\2"+
-		"\2\u0369\u03a6\3\2\2\2\u036a\u036b\7;\2\2\u036b\u036c\5\u0090I\2\u036c"+
+		"\2\u0369\u03c0\3\2\2\2\u036a\u036b\7\67\2\2\u036b\u036c\5\u0090I\2\u036c"+
 		"\u0370\5\u0080A\2\u036d\u036f\5\u008aF\2\u036e\u036d\3\2\2\2\u036f\u0372"+
 		"\3\2\2\2\u0370\u036e\3\2\2\2\u0370\u0371\3\2\2\2\u0371\u0374\3\2\2\2\u0372"+
 		"\u0370\3\2\2\2\u0373\u0375\5\u008eH\2\u0374\u0373\3\2\2\2\u0374\u0375"+
-		"\3\2\2\2\u0375\u03a6\3\2\2\2\u0376\u0377\7\67\2\2\u0377\u0378\5\u00a0"+
-		"Q\2\u0378\u037c\7E\2\2\u0379\u037b\5\u0096L\2\u037a\u0379\3\2\2\2\u037b"+
+		"\3\2\2\2\u0375\u03c0\3\2\2\2\u0376\u0377\7\63\2\2\u0377\u0378\5\u00a0"+
+		"Q\2\u0378\u037c\7D\2\2\u0379\u037b\5\u0096L\2\u037a\u0379\3\2\2\2\u037b"+
 		"\u037e\3\2\2\2\u037c\u037a\3\2\2\2\u037c\u037d\3\2\2\2\u037d\u0382\3\2"+
 		"\2\2\u037e\u037c\3\2\2\2\u037f\u0381\5\u0098M\2\u0380\u037f\3\2\2\2\u0381"+
 		"\u0384\3\2\2\2\u0382\u0380\3\2\2\2\u0382\u0383\3\2\2\2\u0383\u0385\3\2"+
-		"\2\2\u0384\u0382\3\2\2\2\u0385\u0386\7F\2\2\u0386\u03a6\3\2\2\2\u0387"+
-		"\u0388\7c\2\2\u0388\u0389\5\u00a0Q\2\u0389\u038a\5\u0080A\2\u038a\u03a6"+
-		"\3\2\2\2\u038b\u038d\7\64\2\2\u038c\u038e\5\u00a6T\2\u038d\u038c\3\2\2"+
-		"\2\u038d\u038e\3\2\2\2\u038e\u038f\3\2\2\2\u038f\u03a6\7I\2\2\u0390\u0391"+
-		"\79\2\2\u0391\u0392\5\u00a6T\2\u0392\u0393\7I\2\2\u0393\u03a6\3\2\2\2"+
-		"\u0394\u0396\7\32\2\2\u0395\u0397\7`\2\2\u0396\u0395\3\2\2\2\u0396\u0397"+
-		"\3\2\2\2\u0397\u0398\3\2\2\2\u0398\u03a6\7I\2\2\u0399\u039b\7n\2\2\u039a"+
-		"\u039c\7`\2\2\u039b\u039a\3\2\2\2\u039b\u039c\3\2\2\2\u039c\u039d\3\2"+
-		"\2\2\u039d\u03a6\7I\2\2\u039e\u03a6\7I\2\2\u039f\u03a0\5\u00a6T\2\u03a0"+
-		"\u03a1\7I\2\2\u03a1\u03a6\3\2\2\2\u03a2\u03a3\7`\2\2\u03a3\u03a4\7\7\2"+
-		"\2\u03a4\u03a6\5\u0088E\2\u03a5\u033d\3\2\2\2\u03a5\u033e\3\2\2\2\u03a5"+
-		"\u0346\3\2\2\2\u03a5\u034d\3\2\2\2\u03a5\u0353\3\2\2\2\u03a5\u0357\3\2"+
-		"\2\2\u03a5\u035d\3\2\2\2\u03a5\u036a\3\2\2\2\u03a5\u0376\3\2\2\2\u03a5"+
-		"\u0387\3\2\2\2\u03a5\u038b\3\2\2\2\u03a5\u0390\3\2\2\2\u03a5\u0394\3\2"+
-		"\2\2\u03a5\u0399\3\2\2\2\u03a5\u039e\3\2\2\2\u03a5\u039f\3\2\2\2\u03a5"+
-		"\u03a2\3\2\2\2\u03a6\u0089\3\2\2\2\u03a7\u03a8\7\34\2\2\u03a8\u03ac\7"+
-		"C\2\2\u03a9\u03ab\5\16\b\2\u03aa\u03a9\3\2\2\2\u03ab\u03ae\3\2\2\2\u03ac"+
-		"\u03aa\3\2\2\2\u03ac\u03ad\3\2\2\2\u03ad\u03af\3\2\2\2\u03ae\u03ac\3\2"+
-		"\2\2\u03af\u03b0\5\u008cG\2\u03b0\u03b1\7`\2\2\u03b1\u03b2\7D\2\2\u03b2"+
-		"\u03b3\5\u0080A\2\u03b3\u008b\3\2\2\2\u03b4\u03b9\5^\60\2\u03b5\u03b6"+
-		"\7\b\2\2\u03b6\u03b8\5^\60\2\u03b7\u03b5\3\2\2\2\u03b8\u03bb\3\2\2\2\u03b9"+
-		"\u03b7\3\2\2\2\u03b9\u03ba\3\2\2\2\u03ba\u008d\3\2\2\2\u03bb\u03b9\3\2"+
-		"\2\2\u03bc\u03bd\7&\2\2\u03bd\u03be\5\u0080A\2\u03be\u008f\3\2\2\2\u03bf"+
-		"\u03c0\7C\2\2\u03c0\u03c2\5\u0092J\2\u03c1\u03c3\7I\2\2\u03c2\u03c1\3"+
-		"\2\2\2\u03c2\u03c3\3\2\2\2\u03c3\u03c4\3\2\2\2\u03c4\u03c5\7D\2\2\u03c5"+
-		"\u0091\3\2\2\2\u03c6\u03cb\5\u0094K\2\u03c7\u03c8\7I\2\2\u03c8\u03ca\5"+
-		"\u0094K\2\u03c9\u03c7\3\2\2\2\u03ca\u03cd\3\2\2\2\u03cb\u03c9\3\2\2\2"+
-		"\u03cb\u03cc\3\2\2\2\u03cc\u0093\3\2\2\2\u03cd\u03cb\3\2\2\2\u03ce\u03d0"+
-		"\5\16\b\2\u03cf\u03ce\3\2\2\2\u03d0\u03d3\3\2\2\2\u03d1\u03cf\3\2\2\2"+
-		"\u03d1\u03d2\3\2\2\2\u03d2\u03d4\3\2\2\2\u03d3\u03d1\3\2\2\2\u03d4\u03d5"+
-		"\5P)\2\u03d5\u03d6\5J&\2\u03d6\u03d7\7L\2\2\u03d7\u03d8\5\u00a6T\2\u03d8"+
-		"\u0095\3\2\2\2\u03d9\u03db\5\u0098M\2\u03da\u03d9\3\2\2\2\u03db\u03dc"+
-		"\3\2\2\2\u03dc\u03da\3\2\2\2\u03dc\u03dd\3\2\2\2\u03dd\u03df\3\2\2\2\u03de"+
-		"\u03e0\5\u0082B\2\u03df\u03de\3\2\2\2\u03e0\u03e1\3\2\2\2\u03e1\u03df"+
-		"\3\2\2\2\u03e1\u03e2\3\2\2\2\u03e2\u0097\3\2\2\2\u03e3\u03e6\7\33\2\2"+
-		"\u03e4\u03e7\5\u00a6T\2\u03e5\u03e7\7`\2\2\u03e6\u03e4\3\2\2\2\u03e6\u03e5"+
-		"\3\2\2\2\u03e7\u03e8\3\2\2\2\u03e8\u03ec\7\7\2\2\u03e9\u03ea\7g\2\2\u03ea"+
-		"\u03ec\7\7\2\2\u03eb\u03e3\3\2\2\2\u03eb\u03e9\3\2\2\2\u03ec\u0099\3\2"+
-		"\2\2\u03ed\u03fa\5\u009eP\2\u03ee\u03f0\5\u009cO\2\u03ef\u03ee\3\2\2\2"+
-		"\u03ef\u03f0\3\2\2\2\u03f0\u03f1\3\2\2\2\u03f1\u03f3\7I\2\2\u03f2\u03f4"+
-		"\5\u00a6T\2\u03f3\u03f2\3\2\2\2\u03f3\u03f4\3\2\2\2\u03f4\u03f5\3\2\2"+
-		"\2\u03f5\u03f7\7I\2\2\u03f6\u03f8\5\u00a2R\2\u03f7\u03f6\3\2\2\2\u03f7"+
-		"\u03f8\3\2\2\2\u03f8\u03fa\3\2\2\2\u03f9\u03ed\3\2\2\2\u03f9\u03ef\3\2"+
-		"\2\2\u03fa\u009b\3\2\2\2\u03fb\u03fe\5\u0084C\2\u03fc\u03fe\5\u00a2R\2"+
-		"\u03fd\u03fb\3\2\2\2\u03fd\u03fc\3\2\2\2\u03fe\u009d\3\2\2\2\u03ff\u0401"+
-		"\5\16\b\2\u0400\u03ff\3\2\2\2\u0401\u0404\3\2\2\2\u0402\u0400\3\2\2\2"+
-		"\u0402\u0403\3\2\2\2\u0403\u0405\3\2\2\2\u0404\u0402\3\2\2\2\u0405\u0406"+
-		"\5\u00c6d\2\u0406\u0407\5J&\2\u0407\u0408\7\7\2\2\u0408\u0409\5\u00a6"+
-		"T\2\u0409\u009f\3\2\2\2\u040a\u040b\7C\2\2\u040b\u040c\5\u00a6T\2\u040c"+
-		"\u040d\7D\2\2\u040d\u00a1\3\2\2\2\u040e\u0413\5\u00a6T\2\u040f\u0410\7"+
-		"J\2\2\u0410\u0412\5\u00a6T\2\u0411\u040f\3\2\2\2\u0412\u0415\3\2\2\2\u0413"+
-		"\u0411\3\2\2\2\u0413\u0414\3\2\2\2\u0414\u00a3\3\2\2\2\u0415\u0413\3\2"+
-		"\2\2\u0416\u0417\7`\2\2\u0417\u0419\7C\2\2\u0418\u041a\5\u00a2R\2\u0419"+
-		"\u0418\3\2\2\2\u0419\u041a\3\2\2\2\u041a\u041b\3\2\2\2\u041b\u0429\7D"+
-		"\2\2\u041c\u041d\78\2\2\u041d\u041f\7C\2\2\u041e\u0420\5\u00a2R\2\u041f"+
-		"\u041e\3\2\2\2\u041f\u0420\3\2\2\2\u0420\u0421\3\2\2\2\u0421\u0429\7D"+
-		"\2\2\u0422\u0423\7\66\2\2\u0423\u0425\7C\2\2\u0424\u0426\5\u00a2R\2\u0425"+
-		"\u0424\3\2\2\2\u0425\u0426\3\2\2\2\u0426\u0427\3\2\2\2\u0427\u0429\7D"+
-		"\2\2\u0428\u0416\3\2\2\2\u0428\u041c\3\2\2\2\u0428\u0422\3\2\2\2\u0429"+
-		"\u00a5\3\2\2\2\u042a\u042b\bT\1\2\u042b\u044a\5\u00aeX\2\u042c\u044a\5"+
-		"\u00a4S\2\u042d\u042e\7/\2\2\u042e\u044a\5\u00b2Z\2\u042f\u0430\7C\2\2"+
-		"\u0430\u0431\5\u00c6d\2\u0431\u0432\7D\2\2\u0432\u0433\5\u00a6T\27\u0433"+
-		"\u044a\3\2\2\2\u0434\u0435\t\5\2\2\u0435\u044a\5\u00a6T\25\u0436\u0437"+
-		"\t\6\2\2\u0437\u044a\5\u00a6T\24\u0438\u044a\5\u00a8U\2\u0439\u043a\5"+
-		"\u00c6d\2\u043a\u0440\7\26\2\2\u043b\u043d\5\u00caf\2\u043c\u043b\3\2"+
-		"\2\2\u043c\u043d\3\2\2\2\u043d\u043e\3\2\2\2\u043e\u0441\7`\2\2\u043f"+
-		"\u0441\7/\2\2\u0440\u043c\3\2\2\2\u0440\u043f\3\2\2\2\u0441\u044a\3\2"+
-		"\2\2\u0442\u0443\5\u00b0Y\2\u0443\u0445\7\26\2\2\u0444\u0446\5\u00caf"+
-		"\2\u0445\u0444\3\2\2\2\u0445\u0446\3\2\2\2\u0446\u0447\3\2\2\2\u0447\u0448"+
-		"\7/\2\2\u0448\u044a\3\2\2\2\u0449\u042a\3\2\2\2\u0449\u042c\3\2\2\2\u0449"+
-		"\u042d\3\2\2\2\u0449\u042f\3\2\2\2\u0449\u0434\3\2\2\2\u0449\u0436\3\2"+
-		"\2\2\u0449\u0438\3\2\2\2\u0449\u0439\3\2\2\2\u0449\u0442\3\2\2\2\u044a"+
-		"\u049b\3\2\2\2\u044b\u044c\f\23\2\2\u044c\u044d\t\7\2\2\u044d\u049a\5"+
-		"\u00a6T\24\u044e\u044f\f\22\2\2\u044f\u0450\t\b\2\2\u0450\u049a\5\u00a6"+
-		"T\23\u0451\u0459\f\21\2\2\u0452\u0453\7N\2\2\u0453\u045a\7N\2\2\u0454"+
-		"\u0455\7M\2\2\u0455\u0456\7M\2\2\u0456\u045a\7M\2\2\u0457\u0458\7M\2\2"+
-		"\u0458\u045a\7M\2\2\u0459\u0452\3\2\2\2\u0459\u0454\3\2\2\2\u0459\u0457"+
-		"\3\2\2\2\u045a\u045b\3\2\2\2\u045b\u049a\5\u00a6T\22\u045c\u045d\f\20"+
-		"\2\2\u045d\u045e\t\t\2\2\u045e\u049a\5\u00a6T\21\u045f\u0460\f\16\2\2"+
-		"\u0460\u0461\t\n\2\2\u0461\u049a\5\u00a6T\17\u0462\u0463\f\r\2\2\u0463"+
-		"\u0464\7\3\2\2\u0464\u049a\5\u00a6T\16\u0465\u0466\f\f\2\2\u0466\u0467"+
-		"\7\n\2\2\u0467\u049a\5\u00a6T\r\u0468\u0469\f\13\2\2\u0469\u046a\7\b\2"+
-		"\2\u046a\u049a\5\u00a6T\f\u046b\u046c\f\n\2\2\u046c\u046d\7T\2\2\u046d"+
-		"\u049a\5\u00a6T\13\u046e\u046f\f\t\2\2\u046f\u0470\7U\2\2\u0470\u049a"+
-		"\5\u00a6T\n\u0471\u0472\f\b\2\2\u0472\u0473\7\4\2\2\u0473\u0474\5\u00a6"+
-		"T\2\u0474\u0475\7\7\2\2\u0475\u0476\5\u00a6T\b\u0476\u049a\3\2\2\2\u0477"+
-		"\u0478\f\7\2\2\u0478\u0479\t\13\2\2\u0479\u049a\5\u00a6T\7\u047a\u047b"+
-		"\f\33\2\2\u047b\u0487\7K\2\2\u047c\u0488\7`\2\2\u047d\u0488\5\u00a4S\2"+
-		"\u047e\u0488\78\2\2\u047f\u0481\7/\2\2\u0480\u0482\5\u00c2b\2\u0481\u0480"+
-		"\3\2\2\2\u0481\u0482\3\2\2\2\u0482\u0483\3\2\2\2\u0483\u0488\5\u00b6\\"+
-		"\2\u0484\u0485\7\66\2\2\u0485\u0488\5\u00ccg\2\u0486\u0488\5\u00bc_\2"+
-		"\u0487\u047c\3\2\2\2\u0487\u047d\3\2\2\2\u0487\u047e\3\2\2\2\u0487\u047f"+
-		"\3\2\2\2\u0487\u0484\3\2\2\2\u0487\u0486\3\2\2\2\u0488\u049a\3\2\2\2\u0489"+
-		"\u048a\f\32\2\2\u048a\u048b\7G\2\2\u048b\u048c\5\u00a6T\2\u048c\u048d"+
-		"\7H\2\2\u048d\u049a\3\2\2\2\u048e\u048f\f\26\2\2\u048f\u049a\t\f\2\2\u0490"+
-		"\u0491\f\17\2\2\u0491\u0492\7,\2\2\u0492\u049a\5\u00c6d\2\u0493\u0494"+
-		"\f\5\2\2\u0494\u0496\7\26\2\2\u0495\u0497\5\u00caf\2\u0496\u0495\3\2\2"+
-		"\2\u0496\u0497\3\2\2\2\u0497\u0498\3\2\2\2\u0498\u049a\7`\2\2\u0499\u044b"+
-		"\3\2\2\2\u0499\u044e\3\2\2\2\u0499\u0451\3\2\2\2\u0499\u045c\3\2\2\2\u0499"+
-		"\u045f\3\2\2\2\u0499\u0462\3\2\2\2\u0499\u0465\3\2\2\2\u0499\u0468\3\2"+
-		"\2\2\u0499\u046b\3\2\2\2\u0499\u046e\3\2\2\2\u0499\u0471\3\2\2\2\u0499"+
-		"\u0477\3\2\2\2\u0499\u047a\3\2\2\2\u0499\u0489\3\2\2\2\u0499\u048e\3\2"+
-		"\2\2\u0499\u0490\3\2\2\2\u0499\u0493\3\2\2\2\u049a\u049d\3\2\2\2\u049b"+
-		"\u0499\3\2\2\2\u049b\u049c\3\2\2\2\u049c\u00a7\3\2\2\2\u049d\u049b\3\2"+
-		"\2\2\u049e\u049f\5\u00aaV\2\u049f\u04a0\7\27\2\2\u04a0\u04a1\5\u00acW"+
-		"\2\u04a1\u00a9\3\2\2\2\u04a2\u04b3\7`\2\2\u04a3\u04a5\7C\2\2\u04a4\u04a6"+
-		"\5X-\2\u04a5\u04a4\3\2\2\2\u04a5\u04a6\3\2\2\2\u04a6\u04a7\3\2\2\2\u04a7"+
-		"\u04b3\7D\2\2\u04a8\u04a9\7C\2\2\u04a9\u04ae\7`\2\2\u04aa\u04ab\7J\2\2"+
-		"\u04ab\u04ad\7`\2\2\u04ac\u04aa\3\2\2\2\u04ad\u04b0\3\2\2\2\u04ae\u04ac"+
-		"\3\2\2\2\u04ae\u04af\3\2\2\2\u04af\u04b1\3\2\2\2\u04b0\u04ae\3\2\2\2\u04b1"+
-		"\u04b3\7D\2\2\u04b2\u04a2\3\2\2\2\u04b2\u04a3\3\2\2\2\u04b2\u04a8\3\2"+
-		"\2\2\u04b3\u00ab\3\2\2\2\u04b4\u04b7\5\u00a6T\2\u04b5\u04b7\5\u0080A\2"+
-		"\u04b6\u04b4\3\2\2\2\u04b6\u04b5\3\2\2\2\u04b7\u00ad\3\2\2\2\u04b8\u04b9"+
-		"\7C\2\2\u04b9\u04ba\5\u00a6T\2\u04ba\u04bb\7D\2\2\u04bb\u04cb\3\2\2\2"+
-		"\u04bc\u04cb\78\2\2\u04bd\u04cb\7\66\2\2\u04be\u04cb\5`\61\2\u04bf\u04cb"+
-		"\7`\2\2\u04c0\u04c1\5.\30\2\u04c1\u04c2\7K\2\2\u04c2\u04c3\7\36\2\2\u04c3"+
-		"\u04cb\3\2\2\2\u04c4\u04c8\5\u00c2b\2\u04c5\u04c9\5\u00ceh\2\u04c6\u04c7"+
-		"\78\2\2\u04c7\u04c9\5\u00d0i\2\u04c8\u04c5\3\2\2\2\u04c8\u04c6\3\2\2\2"+
-		"\u04c9\u04cb\3\2\2\2\u04ca\u04b8\3\2\2\2\u04ca\u04bc\3\2\2\2\u04ca\u04bd"+
-		"\3\2\2\2\u04ca\u04be\3\2\2\2\u04ca\u04bf\3\2\2\2\u04ca\u04c0\3\2\2\2\u04ca"+
-		"\u04c4\3\2\2\2\u04cb\u00af\3\2\2\2\u04cc\u04cd\5P)\2\u04cd\u04ce\7K\2"+
-		"\2\u04ce\u04d0\3\2\2\2\u04cf\u04cc\3\2\2\2\u04cf\u04d0\3\2\2\2\u04d0\u04d4"+
-		"\3\2\2\2\u04d1\u04d3\5f\64\2\u04d2\u04d1\3\2\2\2\u04d3\u04d6\3\2\2\2\u04d4"+
-		"\u04d2\3\2\2\2\u04d4\u04d5\3\2\2\2\u04d5\u04d7\3\2\2\2\u04d6\u04d4\3\2"+
-		"\2\2\u04d7\u04d9\7`\2\2\u04d8\u04da\5\u00caf\2\u04d9\u04d8\3\2\2\2\u04d9"+
-		"\u04da\3\2\2\2\u04da\u00b1\3\2\2\2\u04db\u04dc\5\u00c2b\2\u04dc\u04dd"+
-		"\5\u00b4[\2\u04dd\u04de\5\u00ba^\2\u04de\u04e5\3\2\2\2\u04df\u04e2\5\u00b4"+
-		"[\2\u04e0\u04e3\5\u00b8]\2\u04e1\u04e3\5\u00ba^\2\u04e2\u04e0\3\2\2\2"+
-		"\u04e2\u04e1\3\2\2\2\u04e3\u04e5\3\2\2\2\u04e4\u04db\3\2\2\2\u04e4\u04df"+
-		"\3\2\2\2\u04e5\u00b3\3\2\2\2\u04e6\u04e8\7`\2\2\u04e7\u04e9\5\u00be`\2"+
-		"\u04e8\u04e7\3\2\2\2\u04e8\u04e9\3\2\2\2\u04e9\u04f1\3\2\2\2\u04ea\u04eb"+
-		"\7K\2\2\u04eb\u04ed\7`\2\2\u04ec\u04ee\5\u00be`\2\u04ed\u04ec\3\2\2\2"+
-		"\u04ed\u04ee\3\2\2\2\u04ee\u04f0\3\2\2\2\u04ef\u04ea\3\2\2\2\u04f0\u04f3"+
-		"\3\2\2\2\u04f1\u04ef\3\2\2\2\u04f1\u04f2\3\2\2\2\u04f2\u04f6\3\2\2\2\u04f3"+
-		"\u04f1\3\2\2\2\u04f4\u04f6\5\u00c8e\2\u04f5\u04e6\3\2\2\2\u04f5\u04f4"+
-		"\3\2\2\2\u04f6\u00b5\3\2\2\2\u04f7\u04f9\7`\2\2\u04f8\u04fa\5\u00c0a\2"+
-		"\u04f9\u04f8\3\2\2\2\u04f9\u04fa\3\2\2\2\u04fa\u04fb\3\2\2\2\u04fb\u04fc"+
-		"\5\u00ba^\2\u04fc\u00b7\3\2\2\2\u04fd\u0519\7G\2\2\u04fe\u0503\7H\2\2"+
-		"\u04ff\u0500\7G\2\2\u0500\u0502\7H\2\2\u0501\u04ff\3\2\2\2\u0502\u0505"+
-		"\3\2\2\2\u0503\u0501\3\2\2\2\u0503\u0504\3\2\2\2\u0504\u0506\3\2\2\2\u0505"+
-		"\u0503\3\2\2\2\u0506\u051a\5N(\2\u0507\u0508\5\u00a6T\2\u0508\u050f\7"+
-		"H\2\2\u0509\u050a\7G\2\2\u050a\u050b\5\u00a6T\2\u050b\u050c\7H\2\2\u050c"+
-		"\u050e\3\2\2\2\u050d\u0509\3\2\2\2\u050e\u0511\3\2\2\2\u050f\u050d\3\2"+
-		"\2\2\u050f\u0510\3\2\2\2\u0510\u0516\3\2\2\2\u0511\u050f\3\2\2\2\u0512"+
-		"\u0513\7G\2\2\u0513\u0515\7H\2\2\u0514\u0512\3\2\2\2\u0515\u0518\3\2\2"+
-		"\2\u0516\u0514\3\2\2\2\u0516\u0517\3\2\2\2\u0517\u051a\3\2\2\2\u0518\u0516"+
-		"\3\2\2\2\u0519\u04fe\3\2\2\2\u0519\u0507\3\2\2\2\u051a\u00b9\3\2\2\2\u051b"+
-		"\u051d\5\u00d0i\2\u051c\u051e\5\"\22\2\u051d\u051c\3\2\2\2\u051d\u051e"+
-		"\3\2\2\2\u051e\u00bb\3\2\2\2\u051f\u0520\5\u00c2b\2\u0520\u0521\5\u00ce"+
-		"h\2\u0521\u00bd\3\2\2\2\u0522\u0523\7N\2\2\u0523\u0526\7M\2\2\u0524\u0526"+
-		"\5\u00caf\2\u0525\u0522\3\2\2\2\u0525\u0524\3\2\2\2\u0526\u00bf\3\2\2"+
-		"\2\u0527\u0528\7N\2\2\u0528\u052b\7M\2\2\u0529\u052b\5\u00c2b\2\u052a"+
-		"\u0527\3\2\2\2\u052a\u0529\3\2\2\2\u052b\u00c1\3\2\2\2\u052c\u052d\7N"+
-		"\2\2\u052d\u052e\5\u00c4c\2\u052e\u052f\7M\2\2\u052f\u00c3\3\2\2\2\u0530"+
-		"\u0535\5\u00c6d\2\u0531\u0532\7J\2\2\u0532\u0534\5\u00c6d\2\u0533\u0531"+
-		"\3\2\2\2\u0534\u0537\3\2\2\2\u0535\u0533\3\2\2\2\u0535\u0536\3\2\2\2\u0536"+
-		"\u00c5\3\2\2\2\u0537\u0535\3\2\2\2\u0538\u053a\5f\64\2\u0539\u0538\3\2"+
-		"\2\2\u0539\u053a\3\2\2\2\u053a\u053d\3\2\2\2\u053b\u053e\5P)\2\u053c\u053e"+
-		"\5\u00c8e\2\u053d\u053b\3\2\2\2\u053d\u053c\3\2\2\2\u053e\u0543\3\2\2"+
-		"\2\u053f\u0540\7G\2\2\u0540\u0542\7H\2\2\u0541\u053f\3\2\2\2\u0542\u0545"+
-		"\3\2\2\2\u0543\u0541\3\2\2\2\u0543\u0544\3\2\2\2\u0544\u00c7\3\2\2\2\u0545"+
-		"\u0543\3\2\2\2\u0546\u0547\t\r\2\2\u0547\u00c9\3\2\2\2\u0548\u0549\7N"+
-		"\2\2\u0549\u054e\5R*\2\u054a\u054b\7J\2\2\u054b\u054d\5R*\2\u054c\u054a"+
-		"\3\2\2\2\u054d\u0550\3\2\2\2\u054e\u054c\3\2\2\2\u054e\u054f\3\2\2\2\u054f"+
-		"\u0551\3\2\2\2\u0550\u054e\3\2\2\2\u0551\u0552\7M\2\2\u0552\u00cb\3\2"+
-		"\2\2\u0553\u055a\5\u00d0i\2\u0554\u0555\7K\2\2\u0555\u0557\7`\2\2\u0556"+
-		"\u0558\5\u00d0i\2\u0557\u0556\3\2\2\2\u0557\u0558\3\2\2\2\u0558\u055a"+
-		"\3\2\2\2\u0559\u0553\3\2\2\2\u0559\u0554\3\2\2\2\u055a\u00cd\3\2\2\2\u055b"+
-		"\u055c\7\66\2\2\u055c\u0560\5\u00ccg\2\u055d\u055e\7`\2\2\u055e\u0560"+
-		"\5\u00d0i\2\u055f\u055b\3\2\2\2\u055f\u055d\3\2\2\2\u0560\u00cf\3\2\2"+
-		"\2\u0561\u0563\7C\2\2\u0562\u0564\5\u00a2R\2\u0563\u0562\3\2\2\2\u0563"+
-		"\u0564\3\2\2\2\u0564\u0565\3\2\2\2\u0565\u0566\7D\2\2\u0566\u00d1\3\2"+
-		"\2\2\u00ad\u00d3\u00d8\u00de\u00e6\u00ef\u00f4\u00fb\u0102\u0105\u010c"+
+		"\2\2\u0384\u0382\3\2\2\2\u0385\u0386\7E\2\2\u0386\u03c0\3\2\2\2\u0387"+
+		"\u0388\7f\2\2\u0388\u0389\5\u00a0Q\2\u0389\u038a\5\u0080A\2\u038a\u03c0"+
+		"\3\2\2\2\u038b\u038d\7\60\2\2\u038c\u038e\5\u00a6T\2\u038d\u038c\3\2\2"+
+		"\2\u038d\u038e\3\2\2\2\u038e\u038f\3\2\2\2\u038f\u03c0\7H\2\2\u0390\u0391"+
+		"\7\65\2\2\u0391\u0392\5\u00a6T\2\u0392\u0393\7H\2\2\u0393\u03c0\3\2\2"+
+		"\2\u0394\u0396\7\26\2\2\u0395\u0397\7c\2\2\u0396\u0395\3\2\2\2\u0396\u0397"+
+		"\3\2\2\2\u0397\u0398\3\2\2\2\u0398\u03c0\7H\2\2\u0399\u039b\7m\2\2\u039a"+
+		"\u039c\7c\2\2\u039b\u039a\3\2\2\2\u039b\u039c\3\2\2\2\u039c\u039d\3\2"+
+		"\2\2\u039d\u03c0\7H\2\2\u039e\u03c0\7H\2\2\u039f\u03a0\5\u00a6T\2\u03a0"+
+		"\u03a1\7H\2\2\u03a1\u03c0\3\2\2\2\u03a2\u03a3\7c\2\2\u03a3\u03a4\7\7\2"+
+		"\2\u03a4\u03c0\5\u0088E\2\u03a5\u03a6\7c\2\2\u03a6\u03a7\7K\2\2\u03a7"+
+		"\u03a8\7:\2\2\u03a8\u03b1\7B\2\2\u03a9\u03ae\7@\2\2\u03aa\u03ab\7W\2\2"+
+		"\u03ab\u03ad\7c\2\2\u03ac\u03aa\3\2\2\2\u03ad\u03b0\3\2\2\2\u03ae\u03ac"+
+		"\3\2\2\2\u03ae\u03af\3\2\2\2\u03af\u03b2\3\2\2\2\u03b0\u03ae\3\2\2\2\u03b1"+
+		"\u03a9\3\2\2\2\u03b1\u03b2\3\2\2\2\u03b2\u03b3\3\2\2\2\u03b3\u03c0\7C"+
+		"\2\2\u03b4\u03b5\7;\2\2\u03b5\u03b6\7B\2\2\u03b6\u03bb\7@\2\2\u03b7\u03b8"+
+		"\7W\2\2\u03b8\u03ba\7c\2\2\u03b9\u03b7\3\2\2\2\u03ba\u03bd\3\2\2\2\u03bb"+
+		"\u03b9\3\2\2\2\u03bb\u03bc\3\2\2\2\u03bc\u03be\3\2\2\2\u03bd\u03bb\3\2"+
+		"\2\2\u03be\u03c0\7C\2\2\u03bf\u033d\3\2\2\2\u03bf\u033e\3\2\2\2\u03bf"+
+		"\u0346\3\2\2\2\u03bf\u034d\3\2\2\2\u03bf\u0353\3\2\2\2\u03bf\u0357\3\2"+
+		"\2\2\u03bf\u035d\3\2\2\2\u03bf\u036a\3\2\2\2\u03bf\u0376\3\2\2\2\u03bf"+
+		"\u0387\3\2\2\2\u03bf\u038b\3\2\2\2\u03bf\u0390\3\2\2\2\u03bf\u0394\3\2"+
+		"\2\2\u03bf\u0399\3\2\2\2\u03bf\u039e\3\2\2\2\u03bf\u039f\3\2\2\2\u03bf"+
+		"\u03a2\3\2\2\2\u03bf\u03a5\3\2\2\2\u03bf\u03b4\3\2\2\2\u03c0\u0089\3\2"+
+		"\2\2\u03c1\u03c2\7\30\2\2\u03c2\u03c6\7B\2\2\u03c3\u03c5\5\16\b\2\u03c4"+
+		"\u03c3\3\2\2\2\u03c5\u03c8\3\2\2\2\u03c6\u03c4\3\2\2\2\u03c6\u03c7\3\2"+
+		"\2\2\u03c7\u03c9\3\2\2\2\u03c8\u03c6\3\2\2\2\u03c9\u03ca\5\u008cG\2\u03ca"+
+		"\u03cb\7c\2\2\u03cb\u03cc\7C\2\2\u03cc\u03cd\5\u0080A\2\u03cd\u008b\3"+
+		"\2\2\2\u03ce\u03d3\5^\60\2\u03cf\u03d0\7\b\2\2\u03d0\u03d2\5^\60\2\u03d1"+
+		"\u03cf\3\2\2\2\u03d2\u03d5\3\2\2\2\u03d3\u03d1\3\2\2\2\u03d3\u03d4\3\2"+
+		"\2\2\u03d4\u008d\3\2\2\2\u03d5\u03d3\3\2\2\2\u03d6\u03d7\7\"\2\2\u03d7"+
+		"\u03d8\5\u0080A\2\u03d8\u008f\3\2\2\2\u03d9\u03da\7B\2\2\u03da\u03dc\5"+
+		"\u0092J\2\u03db\u03dd\7H\2\2\u03dc\u03db\3\2\2\2\u03dc\u03dd\3\2\2\2\u03dd"+
+		"\u03de\3\2\2\2\u03de\u03df\7C\2\2\u03df\u0091\3\2\2\2\u03e0\u03e5\5\u0094"+
+		"K\2\u03e1\u03e2\7H\2\2\u03e2\u03e4\5\u0094K\2\u03e3\u03e1\3\2\2\2\u03e4"+
+		"\u03e7\3\2\2\2\u03e5\u03e3\3\2\2\2\u03e5\u03e6\3\2\2\2\u03e6\u0093\3\2"+
+		"\2\2\u03e7\u03e5\3\2\2\2\u03e8\u03ea\5\16\b\2\u03e9\u03e8\3\2\2\2\u03ea"+
+		"\u03ed\3\2\2\2\u03eb\u03e9\3\2\2\2\u03eb\u03ec\3\2\2\2\u03ec\u03ee\3\2"+
+		"\2\2\u03ed\u03eb\3\2\2\2\u03ee\u03ef\5P)\2\u03ef\u03f0\5J&\2\u03f0\u03f1"+
+		"\7K\2\2\u03f1\u03f2\5\u00a6T\2\u03f2\u0095\3\2\2\2\u03f3\u03f5\5\u0098"+
+		"M\2\u03f4\u03f3\3\2\2\2\u03f5\u03f6\3\2\2\2\u03f6\u03f4\3\2\2\2\u03f6"+
+		"\u03f7\3\2\2\2\u03f7\u03f9\3\2\2\2\u03f8\u03fa\5\u0082B\2\u03f9\u03f8"+
+		"\3\2\2\2\u03fa\u03fb\3\2\2\2\u03fb\u03f9\3\2\2\2\u03fb\u03fc\3\2\2\2\u03fc"+
+		"\u0097\3\2\2\2\u03fd\u0400\7\27\2\2\u03fe\u0401\5\u00a6T\2\u03ff\u0401"+
+		"\7c\2\2\u0400\u03fe\3\2\2\2\u0400\u03ff\3\2\2\2\u0401\u0402\3\2\2\2\u0402"+
+		"\u0406\7\7\2\2\u0403\u0404\7j\2\2\u0404\u0406\7\7\2\2\u0405\u03fd\3\2"+
+		"\2\2\u0405\u0403\3\2\2\2\u0406\u0099\3\2\2\2\u0407\u0414\5\u009eP\2\u0408"+
+		"\u040a\5\u009cO\2\u0409\u0408\3\2\2\2\u0409\u040a\3\2\2\2\u040a\u040b"+
+		"\3\2\2\2\u040b\u040d\7H\2\2\u040c\u040e\5\u00a6T\2\u040d\u040c\3\2\2\2"+
+		"\u040d\u040e\3\2\2\2\u040e\u040f\3\2\2\2\u040f\u0411\7H\2\2\u0410\u0412"+
+		"\5\u00a2R\2\u0411\u0410\3\2\2\2\u0411\u0412\3\2\2\2\u0412\u0414\3\2\2"+
+		"\2\u0413\u0407\3\2\2\2\u0413\u0409\3\2\2\2\u0414\u009b\3\2\2\2\u0415\u0418"+
+		"\5\u0084C\2\u0416\u0418\5\u00a2R\2\u0417\u0415\3\2\2\2\u0417\u0416\3\2"+
+		"\2\2\u0418\u009d\3\2\2\2\u0419\u041b\5\16\b\2\u041a\u0419\3\2\2\2\u041b"+
+		"\u041e\3\2\2\2\u041c\u041a\3\2\2\2\u041c\u041d\3\2\2\2\u041d\u041f\3\2"+
+		"\2\2\u041e\u041c\3\2\2\2\u041f\u0420\5\u00c6d\2\u0420\u0421\5J&\2\u0421"+
+		"\u0422\7\7\2\2\u0422\u0423\5\u00a6T\2\u0423\u009f\3\2\2\2\u0424\u0425"+
+		"\7B\2\2\u0425\u0426\5\u00a6T\2\u0426\u0427\7C\2\2\u0427\u00a1\3\2\2\2"+
+		"\u0428\u042d\5\u00a6T\2\u0429\u042a\7I\2\2\u042a\u042c\5\u00a6T\2\u042b"+
+		"\u0429\3\2\2\2\u042c\u042f\3\2\2\2\u042d\u042b\3\2\2\2\u042d\u042e\3\2"+
+		"\2\2\u042e\u00a3\3\2\2\2\u042f\u042d\3\2\2\2\u0430\u0431\7c\2\2\u0431"+
+		"\u0433\7B\2\2\u0432\u0434\5\u00a2R\2\u0433\u0432\3\2\2\2\u0433\u0434\3"+
+		"\2\2\2\u0434\u0435\3\2\2\2\u0435\u0443\7C\2\2\u0436\u0437\7\64\2\2\u0437"+
+		"\u0439\7B\2\2\u0438\u043a\5\u00a2R\2\u0439\u0438\3\2\2\2\u0439\u043a\3"+
+		"\2\2\2\u043a\u043b\3\2\2\2\u043b\u0443\7C\2\2\u043c\u043d\7\62\2\2\u043d"+
+		"\u043f\7B\2\2\u043e\u0440\5\u00a2R\2\u043f\u043e\3\2\2\2\u043f\u0440\3"+
+		"\2\2\2\u0440\u0441\3\2\2\2\u0441\u0443\7C\2\2\u0442\u0430\3\2\2\2\u0442"+
+		"\u0436\3\2\2\2\u0442\u043c\3\2\2\2\u0443\u00a5\3\2\2\2\u0444\u0445\bT"+
+		"\1\2\u0445\u0471\5\u00aeX\2\u0446\u0471\5\u00a4S\2\u0447\u0448\7+\2\2"+
+		"\u0448\u0471\5\u00b2Z\2\u0449\u044a\7B\2\2\u044a\u044b\5\u00c6d\2\u044b"+
+		"\u044c\7C\2\2\u044c\u044d\5\u00a6T\30\u044d\u0471\3\2\2\2\u044e\u044f"+
+		"\t\3\2\2\u044f\u0471\5\u00a6T\26\u0450\u0451\t\4\2\2\u0451\u0471\5\u00a6"+
+		"T\25\u0452\u0471\5\u00a8U\2\u0453\u0454\5\u00c6d\2\u0454\u045a\7\22\2"+
+		"\2\u0455\u0457\5\u00caf\2\u0456\u0455\3\2\2\2\u0456\u0457\3\2\2\2\u0457"+
+		"\u0458\3\2\2\2\u0458\u045b\7c\2\2\u0459\u045b\7+\2\2\u045a\u0456\3\2\2"+
+		"\2\u045a\u0459\3\2\2\2\u045b\u0471\3\2\2\2\u045c\u045d\5\u00b0Y\2\u045d"+
+		"\u045f\7\22\2\2\u045e\u0460\5\u00caf\2\u045f\u045e\3\2\2\2\u045f\u0460"+
+		"\3\2\2\2\u0460\u0461\3\2\2\2\u0461\u0462\7+\2\2\u0462\u0471\3\2\2\2\u0463"+
+		"\u0464\7:\2\2\u0464\u046d\7B\2\2\u0465\u046a\7@\2\2\u0466\u0467\7W\2\2"+
+		"\u0467\u0469\7c\2\2\u0468\u0466\3\2\2\2\u0469\u046c\3\2\2\2\u046a\u0468"+
+		"\3\2\2\2\u046a\u046b\3\2\2\2\u046b\u046e\3\2\2\2\u046c\u046a\3\2\2\2\u046d"+
+		"\u0465\3\2\2\2\u046d\u046e\3\2\2\2\u046e\u046f\3\2\2\2\u046f\u0471\7C"+
+		"\2\2\u0470\u0444\3\2\2\2\u0470\u0446\3\2\2\2\u0470\u0447\3\2\2\2\u0470"+
+		"\u0449\3\2\2\2\u0470\u044e\3\2\2\2\u0470\u0450\3\2\2\2\u0470\u0452\3\2"+
+		"\2\2\u0470\u0453\3\2\2\2\u0470\u045c\3\2\2\2\u0470\u0463\3\2\2\2\u0471"+
+		"\u04c2\3\2\2\2\u0472\u0473\f\24\2\2\u0473\u0474\t\5\2\2\u0474\u04c1\5"+
+		"\u00a6T\25\u0475\u0476\f\23\2\2\u0476\u0477\t\6\2\2\u0477\u04c1\5\u00a6"+
+		"T\24\u0478\u0480\f\22\2\2\u0479\u047a\7M\2\2\u047a\u0481\7M\2\2\u047b"+
+		"\u047c\7L\2\2\u047c\u047d\7L\2\2\u047d\u0481\7L\2\2\u047e\u047f\7L\2\2"+
+		"\u047f\u0481\7L\2\2\u0480\u0479\3\2\2\2\u0480\u047b\3\2\2\2\u0480\u047e"+
+		"\3\2\2\2\u0481\u0482\3\2\2\2\u0482\u04c1\5\u00a6T\23\u0483\u0484\f\21"+
+		"\2\2\u0484\u0485\t\7\2\2\u0485\u04c1\5\u00a6T\22\u0486\u0487\f\17\2\2"+
+		"\u0487\u0488\t\b\2\2\u0488\u04c1\5\u00a6T\20\u0489\u048a\f\16\2\2\u048a"+
+		"\u048b\7\3\2\2\u048b\u04c1\5\u00a6T\17\u048c\u048d\f\r\2\2\u048d\u048e"+
+		"\7\n\2\2\u048e\u04c1\5\u00a6T\16\u048f\u0490\f\f\2\2\u0490\u0491\7\b\2"+
+		"\2\u0491\u04c1\5\u00a6T\r\u0492\u0493\f\13\2\2\u0493\u0494\7S\2\2\u0494"+
+		"\u04c1\5\u00a6T\f\u0495\u0496\f\n\2\2\u0496\u0497\7T\2\2\u0497\u04c1\5"+
+		"\u00a6T\13\u0498\u0499\f\t\2\2\u0499\u049a\7\4\2\2\u049a\u049b\5\u00a6"+
+		"T\2\u049b\u049c\7\7\2\2\u049c\u049d\5\u00a6T\t\u049d\u04c1\3\2\2\2\u049e"+
+		"\u049f\f\b\2\2\u049f\u04a0\t\t\2\2\u04a0\u04c1\5\u00a6T\b\u04a1\u04a2"+
+		"\f\34\2\2\u04a2\u04ae\7J\2\2\u04a3\u04af\7c\2\2\u04a4\u04af\5\u00a4S\2"+
+		"\u04a5\u04af\7\64\2\2\u04a6\u04a8\7+\2\2\u04a7\u04a9\5\u00c2b\2\u04a8"+
+		"\u04a7\3\2\2\2\u04a8\u04a9\3\2\2\2\u04a9\u04aa\3\2\2\2\u04aa\u04af\5\u00b6"+
+		"\\\2\u04ab\u04ac\7\62\2\2\u04ac\u04af\5\u00ccg\2\u04ad\u04af\5\u00bc_"+
+		"\2\u04ae\u04a3\3\2\2\2\u04ae\u04a4\3\2\2\2\u04ae\u04a5\3\2\2\2\u04ae\u04a6"+
+		"\3\2\2\2\u04ae\u04ab\3\2\2\2\u04ae\u04ad\3\2\2\2\u04af\u04c1\3\2\2\2\u04b0"+
+		"\u04b1\f\33\2\2\u04b1\u04b2\7F\2\2\u04b2\u04b3\5\u00a6T\2\u04b3\u04b4"+
+		"\7G\2\2\u04b4\u04c1\3\2\2\2\u04b5\u04b6\f\27\2\2\u04b6\u04c1\t\n\2\2\u04b7"+
+		"\u04b8\f\20\2\2\u04b8\u04b9\7(\2\2\u04b9\u04c1\5\u00c6d\2\u04ba\u04bb"+
+		"\f\6\2\2\u04bb\u04bd\7\22\2\2\u04bc\u04be\5\u00caf\2\u04bd\u04bc\3\2\2"+
+		"\2\u04bd\u04be\3\2\2\2\u04be\u04bf\3\2\2\2\u04bf\u04c1\7c\2\2\u04c0\u0472"+
+		"\3\2\2\2\u04c0\u0475\3\2\2\2\u04c0\u0478\3\2\2\2\u04c0\u0483\3\2\2\2\u04c0"+
+		"\u0486\3\2\2\2\u04c0\u0489\3\2\2\2\u04c0\u048c\3\2\2\2\u04c0\u048f\3\2"+
+		"\2\2\u04c0\u0492\3\2\2\2\u04c0\u0495\3\2\2\2\u04c0\u0498\3\2\2\2\u04c0"+
+		"\u049e\3\2\2\2\u04c0\u04a1\3\2\2\2\u04c0\u04b0\3\2\2\2\u04c0\u04b5\3\2"+
+		"\2\2\u04c0\u04b7\3\2\2\2\u04c0\u04ba\3\2\2\2\u04c1\u04c4\3\2\2\2\u04c2"+
+		"\u04c0\3\2\2\2\u04c2\u04c3\3\2\2\2\u04c3\u00a7\3\2\2\2\u04c4\u04c2\3\2"+
+		"\2\2\u04c5\u04c6\5\u00aaV\2\u04c6\u04c7\7\23\2\2\u04c7\u04c8\5\u00acW"+
+		"\2\u04c8\u00a9\3\2\2\2\u04c9\u04da\7c\2\2\u04ca\u04cc\7B\2\2\u04cb\u04cd"+
+		"\5X-\2\u04cc\u04cb\3\2\2\2\u04cc\u04cd\3\2\2\2\u04cd\u04ce\3\2\2\2\u04ce"+
+		"\u04da\7C\2\2\u04cf\u04d0\7B\2\2\u04d0\u04d5\7c\2\2\u04d1\u04d2\7I\2\2"+
+		"\u04d2\u04d4\7c\2\2\u04d3\u04d1\3\2\2\2\u04d4\u04d7\3\2\2\2\u04d5\u04d3"+
+		"\3\2\2\2\u04d5\u04d6\3\2\2\2\u04d6\u04d8\3\2\2\2\u04d7\u04d5\3\2\2\2\u04d8"+
+		"\u04da\7C\2\2\u04d9\u04c9\3\2\2\2\u04d9\u04ca\3\2\2\2\u04d9\u04cf\3\2"+
+		"\2\2\u04da\u00ab\3\2\2\2\u04db\u04de\5\u00a6T\2\u04dc\u04de\5\u0080A\2"+
+		"\u04dd\u04db\3\2\2\2\u04dd\u04dc\3\2\2\2\u04de\u00ad\3\2\2\2\u04df\u04e0"+
+		"\7B\2\2\u04e0\u04e1\5\u00a6T\2\u04e1\u04e2\7C\2\2\u04e2\u04f2\3\2\2\2"+
+		"\u04e3\u04f2\7\64\2\2\u04e4\u04f2\7\62\2\2\u04e5\u04f2\5`\61\2\u04e6\u04f2"+
+		"\7c\2\2\u04e7\u04e8\5.\30\2\u04e8\u04e9\7J\2\2\u04e9\u04ea\7\32\2\2\u04ea"+
+		"\u04f2\3\2\2\2\u04eb\u04ef\5\u00c2b\2\u04ec\u04f0\5\u00ceh\2\u04ed\u04ee"+
+		"\7\64\2\2\u04ee\u04f0\5\u00d0i\2\u04ef\u04ec\3\2\2\2\u04ef\u04ed\3\2\2"+
+		"\2\u04f0\u04f2\3\2\2\2\u04f1\u04df\3\2\2\2\u04f1\u04e3\3\2\2\2\u04f1\u04e4"+
+		"\3\2\2\2\u04f1\u04e5\3\2\2\2\u04f1\u04e6\3\2\2\2\u04f1\u04e7\3\2\2\2\u04f1"+
+		"\u04eb\3\2\2\2\u04f2\u00af\3\2\2\2\u04f3\u04f4\5P)\2\u04f4\u04f5\7J\2"+
+		"\2\u04f5\u04f7\3\2\2\2\u04f6\u04f3\3\2\2\2\u04f6\u04f7\3\2\2\2\u04f7\u04fb"+
+		"\3\2\2\2\u04f8\u04fa\5f\64\2\u04f9\u04f8\3\2\2\2\u04fa\u04fd\3\2\2\2\u04fb"+
+		"\u04f9\3\2\2\2\u04fb\u04fc\3\2\2\2\u04fc\u04fe\3\2\2\2\u04fd\u04fb\3\2"+
+		"\2\2\u04fe\u0500\7c\2\2\u04ff\u0501\5\u00caf\2\u0500\u04ff\3\2\2\2\u0500"+
+		"\u0501\3\2\2\2\u0501\u00b1\3\2\2\2\u0502\u0503\5\u00c2b\2\u0503\u0504"+
+		"\5\u00b4[\2\u0504\u0505\5\u00ba^\2\u0505\u050c\3\2\2\2\u0506\u0509\5\u00b4"+
+		"[\2\u0507\u050a\5\u00b8]\2\u0508\u050a\5\u00ba^\2\u0509\u0507\3\2\2\2"+
+		"\u0509\u0508\3\2\2\2\u050a\u050c\3\2\2\2\u050b\u0502\3\2\2\2\u050b\u0506"+
+		"\3\2\2\2\u050c\u00b3\3\2\2\2\u050d\u050f\7c\2\2\u050e\u0510\5\u00be`\2"+
+		"\u050f\u050e\3\2\2\2\u050f\u0510\3\2\2\2\u0510\u0518\3\2\2\2\u0511\u0512"+
+		"\7J\2\2\u0512\u0514\7c\2\2\u0513\u0515\5\u00be`\2\u0514\u0513\3\2\2\2"+
+		"\u0514\u0515\3\2\2\2\u0515\u0517\3\2\2\2\u0516\u0511\3\2\2\2\u0517\u051a"+
+		"\3\2\2\2\u0518\u0516\3\2\2\2\u0518\u0519\3\2\2\2\u0519\u051d\3\2\2\2\u051a"+
+		"\u0518\3\2\2\2\u051b\u051d\5\u00c8e\2\u051c\u050d\3\2\2\2\u051c\u051b"+
+		"\3\2\2\2\u051d\u00b5\3\2\2\2\u051e\u0520\7c\2\2\u051f\u0521\5\u00c0a\2"+
+		"\u0520\u051f\3\2\2\2\u0520\u0521\3\2\2\2\u0521\u0522\3\2\2\2\u0522\u0523"+
+		"\5\u00ba^\2\u0523\u00b7\3\2\2\2\u0524\u0540\7F\2\2\u0525\u052a\7G\2\2"+
+		"\u0526\u0527\7F\2\2\u0527\u0529\7G\2\2\u0528\u0526\3\2\2\2\u0529\u052c"+
+		"\3\2\2\2\u052a\u0528\3\2\2\2\u052a\u052b\3\2\2\2\u052b\u052d\3\2\2\2\u052c"+
+		"\u052a\3\2\2\2\u052d\u0541\5N(\2\u052e\u052f\5\u00a6T\2\u052f\u0536\7"+
+		"G\2\2\u0530\u0531\7F\2\2\u0531\u0532\5\u00a6T\2\u0532\u0533\7G\2\2\u0533"+
+		"\u0535\3\2\2\2\u0534\u0530\3\2\2\2\u0535\u0538\3\2\2\2\u0536\u0534\3\2"+
+		"\2\2\u0536\u0537\3\2\2\2\u0537\u053d\3\2\2\2\u0538\u0536\3\2\2\2\u0539"+
+		"\u053a\7F\2\2\u053a\u053c\7G\2\2\u053b\u0539\3\2\2\2\u053c\u053f\3\2\2"+
+		"\2\u053d\u053b\3\2\2\2\u053d\u053e\3\2\2\2\u053e\u0541\3\2\2\2\u053f\u053d"+
+		"\3\2\2\2\u0540\u0525\3\2\2\2\u0540\u052e\3\2\2\2\u0541\u00b9\3\2\2\2\u0542"+
+		"\u0544\5\u00d0i\2\u0543\u0545\5\"\22\2\u0544\u0543\3\2\2\2\u0544\u0545"+
+		"\3\2\2\2\u0545\u00bb\3\2\2\2\u0546\u0547\5\u00c2b\2\u0547\u0548\5\u00ce"+
+		"h\2\u0548\u00bd\3\2\2\2\u0549\u054a\7M\2\2\u054a\u054d\7L\2\2\u054b\u054d"+
+		"\5\u00caf\2\u054c\u0549\3\2\2\2\u054c\u054b\3\2\2\2\u054d\u00bf\3\2\2"+
+		"\2\u054e\u054f\7M\2\2\u054f\u0552\7L\2\2\u0550\u0552\5\u00c2b\2\u0551"+
+		"\u054e\3\2\2\2\u0551\u0550\3\2\2\2\u0552\u00c1\3\2\2\2\u0553\u0554\7M"+
+		"\2\2\u0554\u0555\5\u00c4c\2\u0555\u0556\7L\2\2\u0556\u00c3\3\2\2\2\u0557"+
+		"\u055c\5\u00c6d\2\u0558\u0559\7I\2\2\u0559\u055b\5\u00c6d\2\u055a\u0558"+
+		"\3\2\2\2\u055b\u055e\3\2\2\2\u055c\u055a\3\2\2\2\u055c\u055d\3\2\2\2\u055d"+
+		"\u00c5\3\2\2\2\u055e\u055c\3\2\2\2\u055f\u0561\5f\64\2\u0560\u055f\3\2"+
+		"\2\2\u0560\u0561\3\2\2\2\u0561\u0564\3\2\2\2\u0562\u0565\5P)\2\u0563\u0565"+
+		"\5\u00c8e\2\u0564\u0562\3\2\2\2\u0564\u0563\3\2\2\2\u0565\u056a\3\2\2"+
+		"\2\u0566\u0567\7F\2\2\u0567\u0569\7G\2\2\u0568\u0566\3\2\2\2\u0569\u056c"+
+		"\3\2\2\2\u056a\u0568\3\2\2\2\u056a\u056b\3\2\2\2\u056b\u00c7\3\2\2\2\u056c"+
+		"\u056a\3\2\2\2\u056d\u056e\t\13\2\2\u056e\u00c9\3\2\2\2\u056f\u0570\7"+
+		"M\2\2\u0570\u0575\5R*\2\u0571\u0572\7I\2\2\u0572\u0574\5R*\2\u0573\u0571"+
+		"\3\2\2\2\u0574\u0577\3\2\2\2\u0575\u0573\3\2\2\2\u0575\u0576\3\2\2\2\u0576"+
+		"\u0578\3\2\2\2\u0577\u0575\3\2\2\2\u0578\u0579\7L\2\2\u0579\u00cb\3\2"+
+		"\2\2\u057a\u0581\5\u00d0i\2\u057b\u057c\7J\2\2\u057c\u057e\7c\2\2\u057d"+
+		"\u057f\5\u00d0i\2\u057e\u057d\3\2\2\2\u057e\u057f\3\2\2\2\u057f\u0581"+
+		"\3\2\2\2\u0580\u057a\3\2\2\2\u0580\u057b\3\2\2\2\u0581\u00cd\3\2\2\2\u0582"+
+		"\u0583\7\62\2\2\u0583\u0587\5\u00ccg\2\u0584\u0585\7c\2\2\u0585\u0587"+
+		"\5\u00d0i\2\u0586\u0582\3\2\2\2\u0586\u0584\3\2\2\2\u0587\u00cf\3\2\2"+
+		"\2\u0588\u058a\7B\2\2\u0589\u058b\5\u00a2R\2\u058a\u0589\3\2\2\2\u058a"+
+		"\u058b\3\2\2\2\u058b\u058c\3\2\2\2\u058c\u058d\7C\2\2\u058d\u00d1\3\2"+
+		"\2\2\u00b2\u00d3\u00d8\u00de\u00e6\u00ef\u00f4\u00fb\u0102\u0105\u010c"+
 		"\u0116\u011a\u011f\u0123\u0127\u0131\u0139\u013f\u0146\u014d\u0151\u0154"+
 		"\u0157\u0160\u0166\u016b\u016e\u0174\u017a\u017e\u0186\u018f\u0196\u019c"+
 		"\u01a0\u01ab\u01b4\u01b9\u01bf\u01c3\u01cf\u01da\u01df\u01e8\u01f0\u01fa"+
@@ -9362,12 +10005,12 @@ public class EzBrewParser extends Parser {
 		"\u0294\u02a0\u02a9\u02b4\u02b7\u02be\u02c8\u02d0\u02d3\u02d6\u02e3\u02eb"+
 		"\u02f0\u02f8\u02fc\u0300\u0304\u0306\u030a\u0310\u031b\u0325\u032a\u0333"+
 		"\u0338\u033b\u0342\u034b\u0362\u0365\u0368\u0370\u0374\u037c\u0382\u038d"+
-		"\u0396\u039b\u03a5\u03ac\u03b9\u03c2\u03cb\u03d1\u03dc\u03e1\u03e6\u03eb"+
-		"\u03ef\u03f3\u03f7\u03f9\u03fd\u0402\u0413\u0419\u041f\u0425\u0428\u043c"+
-		"\u0440\u0445\u0449\u0459\u0481\u0487\u0496\u0499\u049b\u04a5\u04ae\u04b2"+
-		"\u04b6\u04c8\u04ca\u04cf\u04d4\u04d9\u04e2\u04e4\u04e8\u04ed\u04f1\u04f5"+
-		"\u04f9\u0503\u050f\u0516\u0519\u051d\u0525\u052a\u0535\u0539\u053d\u0543"+
-		"\u054e\u0557\u0559\u055f\u0563";
+		"\u0396\u039b\u03ae\u03b1\u03bb\u03bf\u03c6\u03d3\u03dc\u03e5\u03eb\u03f6"+
+		"\u03fb\u0400\u0405\u0409\u040d\u0411\u0413\u0417\u041c\u042d\u0433\u0439"+
+		"\u043f\u0442\u0456\u045a\u045f\u046a\u046d\u0470\u0480\u04a8\u04ae\u04bd"+
+		"\u04c0\u04c2\u04cc\u04d5\u04d9\u04dd\u04ef\u04f1\u04f6\u04fb\u0500\u0509"+
+		"\u050b\u050f\u0514\u0518\u051c\u0520\u052a\u0536\u053d\u0540\u0544\u054c"+
+		"\u0551\u055c\u0560\u0564\u056a\u0575\u057e\u0580\u0586\u058a";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

@@ -133,7 +133,6 @@ public class Controller {
                             error -> consoleLog(((SyntaxError)error).getMessage())
                     );
         }
-
         EzBrewLexer lexer2 = new EzBrewLexer(new ANTLRInputStream(codeArea.getText()));
         consoleLog("----------Tokens----------");
         int count = 0;
@@ -142,6 +141,7 @@ public class Controller {
         for (Token token: lexer2.getAllTokens()){
             String tokenClass = null;
             String symbolicName = vocabulary.getSymbolicName(token.getType());
+            System.out.println(symbolicName);
 
             if (symbolicName.contains("COMMENT")){
                 tokenClass = "COMMENT";
@@ -149,11 +149,11 @@ public class Controller {
                 tokenClass = "IDENTIFIER";
             } else if (symbolicName.contains("LITERAL")) {
                 tokenClass = "LITERAL";
-            } else if (token.getType() >= 65 && token.getType() <= 73) {
+            } else if (token.getType() >= 64 && token.getType() <= 72) {
                 tokenClass = "SEPARATOR";
-            } else if (token.getType() >= 74 && token.getType() <= 90) {
+            } else if (token.getType() >= 73 && token.getType() <= 93) {
                 tokenClass = "OPERATOR";
-            } else if (token.getType() >= 22 && token.getType() <= 59){
+            } else if (token.getType() >= 18 && token.getType() <= 58){
                 tokenClass = "KEYWORD";
             } else if (symbolicName.contains("WS")) {
                 ws_count++;
@@ -181,13 +181,42 @@ public class Controller {
     }
 
     public void onParseClick(ActionEvent actionEvent) {
+        clearConsole();
+        CollectingErrorListener listener = new CollectingErrorListener();
+        System.out.println(codeArea.getText());
         EzBrewLexer lexer = new EzBrewLexer(new ANTLRInputStream(codeArea.getText()));
+        lexer.addErrorListener(listener);
         TokenStream tokenStream = new CommonTokenStream(lexer);
         EzBrewParser parser = new EzBrewParser(tokenStream);
+        parser.addErrorListener(listener);
         ParseTree tree = parser.compilationUnit();
         TreeViewer viewr = new TreeViewer(Arrays.asList(parser.getRuleNames()),tree);
         viewr.setScale(.3);
         viewr.open();
+//        EzBrewBaseVisitor visitor = new EzBrewBaseVisitor<EzBrewBaseVisitor>().visit(tree);
+//        visitor.
+
+        int errors_count = listener.getSyntaxErrors().size();
+
+        if (errors_count != 0) {
+            consoleLog("----------Parsing Errors----------");
+            int count = 0;
+            for (SyntaxError error:listener.getSyntaxErrors()){
+                count++;
+                // default error message
+                String errorMsg = error.getMessage() + " at line " + error.getLine();
+
+                // make error messages nice here, label cases appropriately
+                // errors for missing semicolons or parenthesis
+                if (errorMsg.contains("missing")) {
+                    char symbol = error.getMessage().charAt(error.getMessage().indexOf("'") + 1);
+                    errorMsg = "'" + symbol + "'" + " expected at line " + error.getLine();
+                }
+//                else if ()
+
+                consoleLog("[" + count + "] " + errorMsg);
+            }
+        } else consoleLog("----------No Parsing Errors----------");
     }
 
 

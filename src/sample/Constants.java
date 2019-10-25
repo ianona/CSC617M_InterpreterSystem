@@ -52,7 +52,10 @@ public class Constants {
             "shoots",
             "attempt",
             "emp",
-            "during"
+            "during",
+            "scan",
+            "print",
+            "string",
     };
 
     public static final String[] OPERATORS = new String[] {
@@ -68,7 +71,7 @@ public class Constants {
     public static final String SEMICOLON_PATTERN = "\\;";
     public static final String OPERATOR_PATTERN = "\\b(" + String.join("|", OPERATORS) + ")\\b";
     public static final String STRING_PATTERN = "\"([^\"\\\\]|\\\\.)*\"";
-    public static final String COMMENT_PATTERN = "//[^\n]*" + "|" + "/\\*(.|\\R)*?\\*/";
+    public static final String COMMENT_PATTERN = "#[^\n]*" + "|" + "<!>(.|\\R)*?<!>";
 
     public static final Pattern PATTERN = Pattern.compile(
             "(?<KEYWORD>" + KEYWORD_PATTERN + ")"
