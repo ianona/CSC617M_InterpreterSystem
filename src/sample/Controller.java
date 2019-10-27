@@ -207,12 +207,28 @@ public class Controller {
                 String errorMsg = error.getMessage() + " at line " + error.getLine();
 
                 // make error messages nice here, label cases appropriately
-                // errors for missing semicolons or parenthesis
+                // errors for missing identifiers
                 if (errorMsg.contains("missing")) {
                     char symbol = error.getMessage().charAt(error.getMessage().indexOf("'") + 1);
-                    errorMsg = "'" + symbol + "'" + " expected at line " + error.getLine();
+                    String splitMessage[] = error.getMessage().split(" ",4);
+                    errorMsg = "Expected '" + symbol + "' after " + splitMessage[3] + " at line " + error.getLine();
                 }
-//                else if ()
+                // errors for invalid inputs, with missing expected characters
+                else if (errorMsg.contains("mismatched")) {
+                    char symbol = error.getMessage().charAt(error.getMessage().indexOf("'") + 1);
+                    String splitMessage[] = error.getMessage().split(" ", 5);
+                    errorMsg = "Detected invalid input " + splitMessage[2] + " and instead expected " + splitMessage[4]  + " at line " + error.getLine();
+                }
+                // errors for invalid inputs, with no detected alternative
+                else if (errorMsg.contains("viable")) {
+                    String splitMessage[] = error.getMessage().split(" ",6);
+                    errorMsg = "Detected invalid input " + splitMessage[5] + " at line " + error.getLine();
+                }
+                // errors for extraneous inputs
+                else if (errorMsg.contains("extraneous")) {
+                    String splitMessage[] = error.getMessage().split(" ",5);
+                    errorMsg = "Detected extraneous input " + splitMessage[2] + " and expected "  + splitMessage[4]  + " at line " + error.getLine();
+                }
 
                 consoleLog("[" + count + "] " + errorMsg);
             }
