@@ -217,17 +217,17 @@ public class Controller {
                 else if (errorMsg.contains("mismatched")) {
                     char symbol = error.getMessage().charAt(error.getMessage().indexOf("'") + 1);
                     String splitMessage[] = error.getMessage().split(" ", 5);
-                    errorMsg = "Detected invalid input " + splitMessage[2] + " and instead expected " + splitMessage[4]  + " at line " + error.getLine();
+                    errorMsg = "Detected invalid expression " + splitMessage[2] + " and instead expected " + splitMessage[4]  + " at line " + error.getLine();
                 }
                 // errors for invalid inputs, with no detected alternative
                 else if (errorMsg.contains("viable")) {
                     String splitMessage[] = error.getMessage().split(" ",6);
-                    errorMsg = "Detected invalid input " + splitMessage[5] + " at line " + error.getLine();
+                    errorMsg = "Detected invalid expression " + splitMessage[5] + " at line " + error.getLine();
                 }
                 // errors for extraneous inputs
                 else if (errorMsg.contains("extraneous")) {
                     String splitMessage[] = error.getMessage().split(" ",5);
-                    errorMsg = "Detected extraneous input " + splitMessage[2] + " and expected "  + splitMessage[4]  + " at line " + error.getLine();
+                    errorMsg = "Detected extraneous expression " + splitMessage[2] + " and expected "  + splitMessage[4]  + " at line " + error.getLine();
                 }
 
                 consoleLog("[" + count + "] " + errorMsg);
