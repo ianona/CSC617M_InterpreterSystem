@@ -1,0 +1,15 @@
+open blueprint TestCase1 {
+	emp main() {
+		num x = 0;
+		sdec _veryWeirdIdentifier567 = 999.9f;
+		bool y = (5 > 4 && true) || (false && !(x==0));
+		num[] myArray = orig num[10];
+
+		x = scan("What is the input: "); <!>ask for user input<!>
+		print("Input: "+x); <!>print the input<!>
+
+		loop(num i = 0; i < 5; i++) {
+			print("Hello world");
+		}
+	}
+}

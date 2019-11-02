@@ -621,7 +621,7 @@ expression
     | methodCall
     | NEW creator
     | '(' typeType ')' expression
-    | expression postfix=('++' | '--')
+    | IDENTIFIER postfix=('++' | '--')
     | prefix=('+'|'-'|'++'|'--') expression
     | prefix=('~'|'!') expression
     | expression bop=('*'|'/'|'%') expression

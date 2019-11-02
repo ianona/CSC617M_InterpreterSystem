@@ -211,23 +211,27 @@ public class Controller {
                 if (errorMsg.contains("missing")) {
                     char symbol = error.getMessage().charAt(error.getMessage().indexOf("'") + 1);
                     String splitMessage[] = error.getMessage().split(" ",4);
-                    errorMsg = "Expected '" + symbol + "' after " + splitMessage[3] + " at line " + error.getLine();
+                    errorMsg = "Line "  + error.getLine() + ": Detected invalid expression; consider replacing or removing expression " + splitMessage[3];
+
+                    if(splitMessage[3].contains("++") || splitMessage[3].contains("--") || splitMessage[3].contains("**") || splitMessage[3].contains("//")) {
+                        errorMsg = "Line "  + error.getLine() + ": Detected invalid expression; consider removing excess characters in expression " + splitMessage[3];
+                    }
                 }
                 // errors for invalid inputs, with missing expected characters
                 else if (errorMsg.contains("mismatched")) {
                     char symbol = error.getMessage().charAt(error.getMessage().indexOf("'") + 1);
-                    String splitMessage[] = error.getMessage().split(" ", 5);
-                    errorMsg = "Detected invalid expression " + splitMessage[2] + " and instead expected " + splitMessage[4]  + " at line " + error.getLine();
+                        String splitMessage[] = error.getMessage().split(" ", 5);
+//                    errorMsg = "Detected invalid expression " + splitMessage[2] + " and instead expected " + splitMessage[4]  + " at line " + error.getLine();
                 }
                 // errors for invalid inputs, with no detected alternative
                 else if (errorMsg.contains("viable")) {
                     String splitMessage[] = error.getMessage().split(" ",6);
-                    errorMsg = "Detected invalid expression " + splitMessage[5] + " at line " + error.getLine();
+                    errorMsg = "Line " + error.getLine() + ": Detected invalid expression; consider adding identifier.";
                 }
                 // errors for extraneous inputs
                 else if (errorMsg.contains("extraneous")) {
                     String splitMessage[] = error.getMessage().split(" ",5);
-                    errorMsg = "Detected extraneous expression " + splitMessage[2] + " and expected "  + splitMessage[4]  + " at line " + error.getLine();
+                    errorMsg = "Line " + error.getLine() + ": Detected invalid expression; consider replacing or removing expression " + splitMessage[2];
                 }
 
                 consoleLog("[" + count + "] " + errorMsg);

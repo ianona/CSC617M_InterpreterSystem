@@ -1,0 +1,18 @@
+open blueprint TestCase2 {
+	num myFunction(num x) {
+		num add = x + 50 ++ 1; <!>syntax error #1<!>
+
+		out num; <!>syntax error #2<!>
+	}
+
+	sdec myFunctionFloat(sdec x) {
+		sdec fTest = (x * 50) + (x * 15)); <!>//syntax error #3<!>
+	
+		out fTest * 50 (); <!>//syntax error #4<!>
+	}
+
+	emp main() {
+		this.myFunction(50);
+		this.myFunctionFloat(50.0f);
+	}
+}
