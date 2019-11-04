@@ -211,34 +211,48 @@ public class Controller {
                 if (errorMsg.contains("missing")) {
                     char symbol = error.getMessage().charAt(error.getMessage().indexOf("'") + 1);
                     String splitMessage[] = error.getMessage().split(" ",4);
-                    errorMsg = "Line "  + error.getLine() + ": Detected invalid expression; consider replacing or removing expression " + splitMessage[3];
 
-                    if(splitMessage[3].contains("++") || splitMessage[3].contains("--") || splitMessage[3].contains("**") || splitMessage[3].contains("//")) {
-                        errorMsg = "Line "  + error.getLine() + ": Detected invalid expression; consider removing excess characters in expression " + splitMessage[3];
+                    if(symbol == ';') {
+                        errorMsg = "Line " + error.getLine() + ": Detected invalid syntax; consider replacing or removing expression " + splitMessage[3];
+                    }
+                    else if(splitMessage[3].contains("++") || splitMessage[3].contains("--") || splitMessage[3].contains("**") || splitMessage[3].contains("//")) {
+                        errorMsg = "Line "  + error.getLine() + ": Detected invalid syntax; consider removing excess characters in expression " + splitMessage[3];
+                    }
+                    else {
+                        System.out.println(splitMessage[3]);
+                        errorMsg = "Line " + error.getLine() + ": Detected invalid syntax; consider adding expression " + splitMessage[1];
                     }
                 }
                 // errors for invalid inputs, with missing expected characters
                 else if (errorMsg.contains("mismatched")) {
                     char symbol = error.getMessage().charAt(error.getMessage().indexOf("'") + 1);
-                        String splitMessage[] = error.getMessage().split(" ", 5);
-//                    errorMsg = "Detected invalid expression " + splitMessage[2] + " and instead expected " + splitMessage[4]  + " at line " + error.getLine();
+                    String splitMessage[] = error.getMessage().split(" ", 5);
+
+                    errorMsg = "Line " + error.getLine() + ": Detected invalid syntax; consider replacing or removing expression " + splitMessage[2];
+
+                    if(splitMessage[4].equals("STRING_LITERAL")) {
+                        errorMsg = "Line " + error.getLine() + ": Detected invalid syntax; consider adding valid string literal enclosed in quotation marks";
+                    }
                 }
                 // errors for invalid inputs, with no detected alternative
                 else if (errorMsg.contains("viable")) {
                     String splitMessage[] = error.getMessage().split(" ",6);
-                    errorMsg = "Line " + error.getLine() + ": Detected invalid expression; consider adding identifier.";
+                    errorMsg = "Line " + error.getLine() + ": Detected invalid syntax; consider replacing or removing expression " + splitMessage[5];
                 }
                 // errors for extraneous inputs
                 else if (errorMsg.contains("extraneous")) {
                     String splitMessage[] = error.getMessage().split(" ",5);
-                    errorMsg = "Line " + error.getLine() + ": Detected invalid expression; consider replacing or removing expression " + splitMessage[2];
+                    errorMsg = "Line " + error.getLine() + ": Detected invalid syntax; consider replacing or removing expression " + splitMessage[2];
+
+                    if(splitMessage[2].contains("<EOF>")) {
+                        errorMsg = "Line "  + error.getLine() + ": Detected invalid syntax; consider adding missing '}' at EOF";
+                    }
                 }
 
                 consoleLog("[" + count + "] " + errorMsg);
             }
         } else consoleLog("----------No Parsing Errors----------");
     }
-
 
     public void onRunClick(ActionEvent actionEvent) {
         Main.getInstance().failNotif("Run","Function not implemented yet");

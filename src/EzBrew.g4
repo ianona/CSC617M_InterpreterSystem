@@ -579,11 +579,12 @@ switchLabel
 
 forControl
     : enhancedForControl
-    | forInit? ';' expression? ';' forUpdate=expressionList?
+    | forInit ';' expression? ';' forUpdate=expressionList?
     ;
 
 forInit
-    : localVariableDeclaration
+//    : localVariableDeclaration
+    : variableModifier* typeType variableDeclaratorId '=' variableInitializer
     | expressionList
     ;
 
@@ -758,3 +759,4 @@ explicitGenericInvocationSuffix
 arguments
     : '(' expressionList? ')'
     ;
+G
