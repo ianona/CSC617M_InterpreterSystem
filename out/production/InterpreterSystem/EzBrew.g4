@@ -523,6 +523,7 @@ statement
     : blockLabel=block
     | ASSERT expression (':' expression)? ';'
     | IF parExpression statement (ELSE statement)?
+//    | IF '(' expression bop=('==' | '!=') expression ')' (ELSE statement)?
     | FOR '(' forControl ')' statement
     | WHILE parExpression statement
     | DO statement WHILE parExpression ';'
@@ -538,7 +539,7 @@ statement
     | statementExpression=expression ';'
     | identifierLabel=IDENTIFIER ':' statement
     | IDENTIFIER '=' SCAN '(' (STRING_LITERAL('+'IDENTIFIER)*)? ')'
-    | PRINT '(' STRING_LITERAL ('+'IDENTIFIER)* ')'
+    | PRINT '(' STRING_LITERAL ('+'IDENTIFIER)* ');'
     ;
 
 catchClause
@@ -579,11 +580,12 @@ switchLabel
 
 forControl
     : enhancedForControl
-    | forInit? ';' expression? ';' forUpdate=expressionList?
+    | forInit ';' expression? ';' forUpdate=expressionList?
     ;
 
 forInit
-    : localVariableDeclaration
+//    : localVariableDeclaration
+    : variableModifier* typeType variableDeclaratorId '=' variableInitializer
     | expressionList
     ;
 
@@ -621,7 +623,7 @@ expression
     | methodCall
     | NEW creator
     | '(' typeType ')' expression
-    | expression postfix=('++' | '--')
+    | IDENTIFIER postfix=('++' | '--')
     | prefix=('+'|'-'|'++'|'--') expression
     | prefix=('~'|'!') expression
     | expression bop=('*'|'/'|'%') expression

@@ -523,6 +523,7 @@ statement
     : blockLabel=block
     | ASSERT expression (':' expression)? ';'
     | IF parExpression statement (ELSE statement)?
+//    | IF '(' expression bop=('==' | '!=') expression ')' (ELSE statement)?
     | FOR '(' forControl ')' statement
     | WHILE parExpression statement
     | DO statement WHILE parExpression ';'
@@ -538,7 +539,7 @@ statement
     | statementExpression=expression ';'
     | identifierLabel=IDENTIFIER ':' statement
     | IDENTIFIER '=' SCAN '(' (STRING_LITERAL('+'IDENTIFIER)*)? ')'
-    | PRINT '(' STRING_LITERAL ('+'IDENTIFIER)* ')'
+    | PRINT '(' STRING_LITERAL ('+'IDENTIFIER)* ');'
     ;
 
 catchClause
@@ -759,4 +760,3 @@ explicitGenericInvocationSuffix
 arguments
     : '(' expressionList? ')'
     ;
-G

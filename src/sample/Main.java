@@ -38,6 +38,11 @@ public class Main extends Application {
                 this.getClass().getResource("light-mode.css").toExternalForm()
         );
 
+//        boolean x;
+//        if(x = 0) {
+//            x = 1;
+//        }
+
         // set current IDE mode
         mode = Constants.MODE_LIGHT;
     }

@@ -1,0 +1,30 @@
+open blueprint Demo{
+
+sdec func2()
+{
+	out sdec;
+}
+num myFunc(num y, num x)
+{
+	num compute=x+y*2+func(2);
+	out 2+3;
+}
+sdec myFunc2(sdec x)
+{
+	sdec test=(x*50)+(6*2));
+	out (2*5)+2(5);
+}
+
+main()
+{
+	print("Hello"+2+);
+	print(Hi)
+	given(x=3)
+	{
+		print("Bye")
+		num y=myFunc(2,3)();
+	}
+}
+
+}
+
