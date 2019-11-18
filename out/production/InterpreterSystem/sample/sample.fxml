@@ -79,6 +79,14 @@
                     <Insets bottom="2.0" top="2.0" />
                 </VBox.margin>
             </Button>
+            <Button fx:id="dummyBtn" mnemonicParsing="false" onAction="#onDummyClick" text="Dummy">
+                <graphic>
+                    <FontAwesomeIconView fill="#727272" glyphName="ANCHOR" size="15" strokeType="OUTSIDE" strokeWidth="0.0" />
+                </graphic>
+                <VBox.margin>
+                    <Insets bottom="2.0" top="2.0" />
+                </VBox.margin>
+            </Button>
         </items>
       </ToolBar>
    </top>

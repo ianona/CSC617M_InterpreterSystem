@@ -1,4 +1,4 @@
-// Generated from /Users/wonsukcho/Documents/GitHub/CSC617M_InterpreterSystem/src/EzBrew.g4 by ANTLR 4.7.2
+// Generated from /Users/ianona/Desktop/CSC617M/InterpreterSystem/src/EzBrew.g4 by ANTLR 4.7.2
 package antlr4;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -8,45 +8,15 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface EzBrewListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#compilationUnit}.
+	 * Enter a parse tree produced by {@link EzBrewParser#start}.
 	 * @param ctx the parse tree
 	 */
-	void enterCompilationUnit(EzBrewParser.CompilationUnitContext ctx);
+	void enterStart(EzBrewParser.StartContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#compilationUnit}.
+	 * Exit a parse tree produced by {@link EzBrewParser#start}.
 	 * @param ctx the parse tree
 	 */
-	void exitCompilationUnit(EzBrewParser.CompilationUnitContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#packageDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterPackageDeclaration(EzBrewParser.PackageDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#packageDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitPackageDeclaration(EzBrewParser.PackageDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#importDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterImportDeclaration(EzBrewParser.ImportDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#importDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitImportDeclaration(EzBrewParser.ImportDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#typeDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterTypeDeclaration(EzBrewParser.TypeDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#typeDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitTypeDeclaration(EzBrewParser.TypeDeclarationContext ctx);
+	void exitStart(EzBrewParser.StartContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EzBrewParser#modifier}.
 	 * @param ctx the parse tree
@@ -77,116 +47,6 @@ public interface EzBrewListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVariableModifier(EzBrewParser.VariableModifierContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#classDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterClassDeclaration(EzBrewParser.ClassDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#classDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitClassDeclaration(EzBrewParser.ClassDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#typeParameters}.
-	 * @param ctx the parse tree
-	 */
-	void enterTypeParameters(EzBrewParser.TypeParametersContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#typeParameters}.
-	 * @param ctx the parse tree
-	 */
-	void exitTypeParameters(EzBrewParser.TypeParametersContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#typeParameter}.
-	 * @param ctx the parse tree
-	 */
-	void enterTypeParameter(EzBrewParser.TypeParameterContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#typeParameter}.
-	 * @param ctx the parse tree
-	 */
-	void exitTypeParameter(EzBrewParser.TypeParameterContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#typeBound}.
-	 * @param ctx the parse tree
-	 */
-	void enterTypeBound(EzBrewParser.TypeBoundContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#typeBound}.
-	 * @param ctx the parse tree
-	 */
-	void exitTypeBound(EzBrewParser.TypeBoundContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#enumDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterEnumDeclaration(EzBrewParser.EnumDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#enumDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitEnumDeclaration(EzBrewParser.EnumDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#enumConstants}.
-	 * @param ctx the parse tree
-	 */
-	void enterEnumConstants(EzBrewParser.EnumConstantsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#enumConstants}.
-	 * @param ctx the parse tree
-	 */
-	void exitEnumConstants(EzBrewParser.EnumConstantsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#enumConstant}.
-	 * @param ctx the parse tree
-	 */
-	void enterEnumConstant(EzBrewParser.EnumConstantContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#enumConstant}.
-	 * @param ctx the parse tree
-	 */
-	void exitEnumConstant(EzBrewParser.EnumConstantContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#enumBodyDeclarations}.
-	 * @param ctx the parse tree
-	 */
-	void enterEnumBodyDeclarations(EzBrewParser.EnumBodyDeclarationsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#enumBodyDeclarations}.
-	 * @param ctx the parse tree
-	 */
-	void exitEnumBodyDeclarations(EzBrewParser.EnumBodyDeclarationsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#interfaceDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterInterfaceDeclaration(EzBrewParser.InterfaceDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#interfaceDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitInterfaceDeclaration(EzBrewParser.InterfaceDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#classBody}.
-	 * @param ctx the parse tree
-	 */
-	void enterClassBody(EzBrewParser.ClassBodyContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#classBody}.
-	 * @param ctx the parse tree
-	 */
-	void exitClassBody(EzBrewParser.ClassBodyContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#interfaceBody}.
-	 * @param ctx the parse tree
-	 */
-	void enterInterfaceBody(EzBrewParser.InterfaceBodyContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#interfaceBody}.
-	 * @param ctx the parse tree
-	 */
-	void exitInterfaceBody(EzBrewParser.InterfaceBodyContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EzBrewParser#classBodyDeclaration}.
 	 * @param ctx the parse tree
@@ -238,26 +98,6 @@ public interface EzBrewListener extends ParseTreeListener {
 	 */
 	void exitTypeTypeOrVoid(EzBrewParser.TypeTypeOrVoidContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#genericMethodDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterGenericMethodDeclaration(EzBrewParser.GenericMethodDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#genericMethodDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitGenericMethodDeclaration(EzBrewParser.GenericMethodDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#genericConstructorDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterGenericConstructorDeclaration(EzBrewParser.GenericConstructorDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#genericConstructorDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitGenericConstructorDeclaration(EzBrewParser.GenericConstructorDeclarationContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link EzBrewParser#constructorDeclaration}.
 	 * @param ctx the parse tree
 	 */
@@ -267,36 +107,6 @@ public interface EzBrewListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitConstructorDeclaration(EzBrewParser.ConstructorDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#fieldDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterFieldDeclaration(EzBrewParser.FieldDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#fieldDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitFieldDeclaration(EzBrewParser.FieldDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#interfaceBodyDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterInterfaceBodyDeclaration(EzBrewParser.InterfaceBodyDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#interfaceBodyDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitInterfaceBodyDeclaration(EzBrewParser.InterfaceBodyDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#interfaceMemberDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterInterfaceMemberDeclaration(EzBrewParser.InterfaceMemberDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#interfaceMemberDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitInterfaceMemberDeclaration(EzBrewParser.InterfaceMemberDeclarationContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EzBrewParser#constDeclaration}.
 	 * @param ctx the parse tree
@@ -318,16 +128,6 @@ public interface EzBrewListener extends ParseTreeListener {
 	 */
 	void exitConstantDeclarator(EzBrewParser.ConstantDeclaratorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#interfaceMethodDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterInterfaceMethodDeclaration(EzBrewParser.InterfaceMethodDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#interfaceMethodDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitInterfaceMethodDeclaration(EzBrewParser.InterfaceMethodDeclarationContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link EzBrewParser#interfaceMethodModifier}.
 	 * @param ctx the parse tree
 	 */
@@ -337,16 +137,6 @@ public interface EzBrewListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitInterfaceMethodModifier(EzBrewParser.InterfaceMethodModifierContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#genericInterfaceMethodDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterGenericInterfaceMethodDeclaration(EzBrewParser.GenericInterfaceMethodDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#genericInterfaceMethodDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitGenericInterfaceMethodDeclaration(EzBrewParser.GenericInterfaceMethodDeclarationContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EzBrewParser#variableDeclarators}.
 	 * @param ctx the parse tree
@@ -368,25 +158,41 @@ public interface EzBrewListener extends ParseTreeListener {
 	 */
 	void exitVariableDeclarator(EzBrewParser.VariableDeclaratorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#variableDeclaratorId}.
+	 * Enter a parse tree produced by the {@code VarDeclarator}
+	 * labeled alternative in {@link EzBrewParser#variableDeclaratorId}.
 	 * @param ctx the parse tree
 	 */
-	void enterVariableDeclaratorId(EzBrewParser.VariableDeclaratorIdContext ctx);
+	void enterVarDeclarator(EzBrewParser.VarDeclaratorContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#variableDeclaratorId}.
+	 * Exit a parse tree produced by the {@code VarDeclarator}
+	 * labeled alternative in {@link EzBrewParser#variableDeclaratorId}.
 	 * @param ctx the parse tree
 	 */
-	void exitVariableDeclaratorId(EzBrewParser.VariableDeclaratorIdContext ctx);
+	void exitVarDeclarator(EzBrewParser.VarDeclaratorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#variableInitializer}.
+	 * Enter a parse tree produced by the {@code ArrInit}
+	 * labeled alternative in {@link EzBrewParser#variableInitializer}.
 	 * @param ctx the parse tree
 	 */
-	void enterVariableInitializer(EzBrewParser.VariableInitializerContext ctx);
+	void enterArrInit(EzBrewParser.ArrInitContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#variableInitializer}.
+	 * Exit a parse tree produced by the {@code ArrInit}
+	 * labeled alternative in {@link EzBrewParser#variableInitializer}.
 	 * @param ctx the parse tree
 	 */
-	void exitVariableInitializer(EzBrewParser.VariableInitializerContext ctx);
+	void exitArrInit(EzBrewParser.ArrInitContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ExprInit}
+	 * labeled alternative in {@link EzBrewParser#variableInitializer}.
+	 * @param ctx the parse tree
+	 */
+	void enterExprInit(EzBrewParser.ExprInitContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ExprInit}
+	 * labeled alternative in {@link EzBrewParser#variableInitializer}.
+	 * @param ctx the parse tree
+	 */
+	void exitExprInit(EzBrewParser.ExprInitContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EzBrewParser#arrayInitializer}.
 	 * @param ctx the parse tree
@@ -488,15 +294,17 @@ public interface EzBrewListener extends ParseTreeListener {
 	 */
 	void exitLiteral(EzBrewParser.LiteralContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#integerLiteral}.
+	 * Enter a parse tree produced by the {@code IntLit}
+	 * labeled alternative in {@link EzBrewParser#integerLiteral}.
 	 * @param ctx the parse tree
 	 */
-	void enterIntegerLiteral(EzBrewParser.IntegerLiteralContext ctx);
+	void enterIntLit(EzBrewParser.IntLitContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#integerLiteral}.
+	 * Exit a parse tree produced by the {@code IntLit}
+	 * labeled alternative in {@link EzBrewParser#integerLiteral}.
 	 * @param ctx the parse tree
 	 */
-	void exitIntegerLiteral(EzBrewParser.IntegerLiteralContext ctx);
+	void exitIntLit(EzBrewParser.IntLitContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EzBrewParser#floatLiteral}.
 	 * @param ctx the parse tree
@@ -558,86 +366,6 @@ public interface EzBrewListener extends ParseTreeListener {
 	 */
 	void exitElementValueArrayInitializer(EzBrewParser.ElementValueArrayInitializerContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#annotationTypeDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnnotationTypeDeclaration(EzBrewParser.AnnotationTypeDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#annotationTypeDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnnotationTypeDeclaration(EzBrewParser.AnnotationTypeDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#annotationTypeBody}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnnotationTypeBody(EzBrewParser.AnnotationTypeBodyContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#annotationTypeBody}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnnotationTypeBody(EzBrewParser.AnnotationTypeBodyContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#annotationTypeElementDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnnotationTypeElementDeclaration(EzBrewParser.AnnotationTypeElementDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#annotationTypeElementDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnnotationTypeElementDeclaration(EzBrewParser.AnnotationTypeElementDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#annotationTypeElementRest}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnnotationTypeElementRest(EzBrewParser.AnnotationTypeElementRestContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#annotationTypeElementRest}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnnotationTypeElementRest(EzBrewParser.AnnotationTypeElementRestContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#annotationMethodOrConstantRest}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnnotationMethodOrConstantRest(EzBrewParser.AnnotationMethodOrConstantRestContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#annotationMethodOrConstantRest}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnnotationMethodOrConstantRest(EzBrewParser.AnnotationMethodOrConstantRestContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#annotationMethodRest}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnnotationMethodRest(EzBrewParser.AnnotationMethodRestContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#annotationMethodRest}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnnotationMethodRest(EzBrewParser.AnnotationMethodRestContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#annotationConstantRest}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnnotationConstantRest(EzBrewParser.AnnotationConstantRestContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#annotationConstantRest}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnnotationConstantRest(EzBrewParser.AnnotationConstantRestContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#defaultValue}.
-	 * @param ctx the parse tree
-	 */
-	void enterDefaultValue(EzBrewParser.DefaultValueContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#defaultValue}.
-	 * @param ctx the parse tree
-	 */
-	void exitDefaultValue(EzBrewParser.DefaultValueContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link EzBrewParser#block}.
 	 * @param ctx the parse tree
 	 */
@@ -668,16 +396,6 @@ public interface EzBrewListener extends ParseTreeListener {
 	 */
 	void exitLocalVariableDeclaration(EzBrewParser.LocalVariableDeclarationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#localTypeDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterLocalTypeDeclaration(EzBrewParser.LocalTypeDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#localTypeDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitLocalTypeDeclaration(EzBrewParser.LocalTypeDeclarationContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link EzBrewParser#statement}.
 	 * @param ctx the parse tree
 	 */
@@ -687,36 +405,6 @@ public interface EzBrewListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitStatement(EzBrewParser.StatementContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#catchClause}.
-	 * @param ctx the parse tree
-	 */
-	void enterCatchClause(EzBrewParser.CatchClauseContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#catchClause}.
-	 * @param ctx the parse tree
-	 */
-	void exitCatchClause(EzBrewParser.CatchClauseContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#catchType}.
-	 * @param ctx the parse tree
-	 */
-	void enterCatchType(EzBrewParser.CatchTypeContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#catchType}.
-	 * @param ctx the parse tree
-	 */
-	void exitCatchType(EzBrewParser.CatchTypeContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#finallyBlock}.
-	 * @param ctx the parse tree
-	 */
-	void enterFinallyBlock(EzBrewParser.FinallyBlockContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#finallyBlock}.
-	 * @param ctx the parse tree
-	 */
-	void exitFinallyBlock(EzBrewParser.FinallyBlockContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EzBrewParser#resourceSpecification}.
 	 * @param ctx the parse tree
@@ -788,16 +476,6 @@ public interface EzBrewListener extends ParseTreeListener {
 	 */
 	void exitForInit(EzBrewParser.ForInitContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#enhancedForControl}.
-	 * @param ctx the parse tree
-	 */
-	void enterEnhancedForControl(EzBrewParser.EnhancedForControlContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#enhancedForControl}.
-	 * @param ctx the parse tree
-	 */
-	void exitEnhancedForControl(EzBrewParser.EnhancedForControlContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link EzBrewParser#parExpression}.
 	 * @param ctx the parse tree
 	 */
@@ -828,95 +506,89 @@ public interface EzBrewListener extends ParseTreeListener {
 	 */
 	void exitMethodCall(EzBrewParser.MethodCallContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#expression}.
+	 * Enter a parse tree produced by the {@code Input}
+	 * labeled alternative in {@link EzBrewParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpression(EzBrewParser.ExpressionContext ctx);
+	void enterInput(EzBrewParser.InputContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#expression}.
+	 * Exit a parse tree produced by the {@code Input}
+	 * labeled alternative in {@link EzBrewParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpression(EzBrewParser.ExpressionContext ctx);
+	void exitInput(EzBrewParser.InputContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#lambdaExpression}.
+	 * Enter a parse tree produced by the {@code MulDiv}
+	 * labeled alternative in {@link EzBrewParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterLambdaExpression(EzBrewParser.LambdaExpressionContext ctx);
+	void enterMulDiv(EzBrewParser.MulDivContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#lambdaExpression}.
+	 * Exit a parse tree produced by the {@code MulDiv}
+	 * labeled alternative in {@link EzBrewParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitLambdaExpression(EzBrewParser.LambdaExpressionContext ctx);
+	void exitMulDiv(EzBrewParser.MulDivContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#lambdaParameters}.
+	 * Enter a parse tree produced by the {@code AddSub}
+	 * labeled alternative in {@link EzBrewParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterLambdaParameters(EzBrewParser.LambdaParametersContext ctx);
+	void enterAddSub(EzBrewParser.AddSubContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#lambdaParameters}.
+	 * Exit a parse tree produced by the {@code AddSub}
+	 * labeled alternative in {@link EzBrewParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitLambdaParameters(EzBrewParser.LambdaParametersContext ctx);
+	void exitAddSub(EzBrewParser.AddSubContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#lambdaBody}.
+	 * Enter a parse tree produced by the {@code Pri}
+	 * labeled alternative in {@link EzBrewParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterLambdaBody(EzBrewParser.LambdaBodyContext ctx);
+	void enterPri(EzBrewParser.PriContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#lambdaBody}.
+	 * Exit a parse tree produced by the {@code Pri}
+	 * labeled alternative in {@link EzBrewParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitLambdaBody(EzBrewParser.LambdaBodyContext ctx);
+	void exitPri(EzBrewParser.PriContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#primary}.
+	 * Enter a parse tree produced by the {@code ParEps}
+	 * labeled alternative in {@link EzBrewParser#primary}.
 	 * @param ctx the parse tree
 	 */
-	void enterPrimary(EzBrewParser.PrimaryContext ctx);
+	void enterParEps(EzBrewParser.ParEpsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#primary}.
+	 * Exit a parse tree produced by the {@code ParEps}
+	 * labeled alternative in {@link EzBrewParser#primary}.
 	 * @param ctx the parse tree
 	 */
-	void exitPrimary(EzBrewParser.PrimaryContext ctx);
+	void exitParEps(EzBrewParser.ParEpsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#classType}.
+	 * Enter a parse tree produced by the {@code Lit}
+	 * labeled alternative in {@link EzBrewParser#primary}.
 	 * @param ctx the parse tree
 	 */
-	void enterClassType(EzBrewParser.ClassTypeContext ctx);
+	void enterLit(EzBrewParser.LitContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#classType}.
+	 * Exit a parse tree produced by the {@code Lit}
+	 * labeled alternative in {@link EzBrewParser#primary}.
 	 * @param ctx the parse tree
 	 */
-	void exitClassType(EzBrewParser.ClassTypeContext ctx);
+	void exitLit(EzBrewParser.LitContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#creator}.
+	 * Enter a parse tree produced by the {@code Identifier}
+	 * labeled alternative in {@link EzBrewParser#primary}.
 	 * @param ctx the parse tree
 	 */
-	void enterCreator(EzBrewParser.CreatorContext ctx);
+	void enterIdentifier(EzBrewParser.IdentifierContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#creator}.
+	 * Exit a parse tree produced by the {@code Identifier}
+	 * labeled alternative in {@link EzBrewParser#primary}.
 	 * @param ctx the parse tree
 	 */
-	void exitCreator(EzBrewParser.CreatorContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#createdName}.
-	 * @param ctx the parse tree
-	 */
-	void enterCreatedName(EzBrewParser.CreatedNameContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#createdName}.
-	 * @param ctx the parse tree
-	 */
-	void exitCreatedName(EzBrewParser.CreatedNameContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#innerCreator}.
-	 * @param ctx the parse tree
-	 */
-	void enterInnerCreator(EzBrewParser.InnerCreatorContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#innerCreator}.
-	 * @param ctx the parse tree
-	 */
-	void exitInnerCreator(EzBrewParser.InnerCreatorContext ctx);
+	void exitIdentifier(EzBrewParser.IdentifierContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EzBrewParser#arrayCreatorRest}.
 	 * @param ctx the parse tree
@@ -927,66 +599,6 @@ public interface EzBrewListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitArrayCreatorRest(EzBrewParser.ArrayCreatorRestContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#classCreatorRest}.
-	 * @param ctx the parse tree
-	 */
-	void enterClassCreatorRest(EzBrewParser.ClassCreatorRestContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#classCreatorRest}.
-	 * @param ctx the parse tree
-	 */
-	void exitClassCreatorRest(EzBrewParser.ClassCreatorRestContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#explicitGenericInvocation}.
-	 * @param ctx the parse tree
-	 */
-	void enterExplicitGenericInvocation(EzBrewParser.ExplicitGenericInvocationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#explicitGenericInvocation}.
-	 * @param ctx the parse tree
-	 */
-	void exitExplicitGenericInvocation(EzBrewParser.ExplicitGenericInvocationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#typeArgumentsOrDiamond}.
-	 * @param ctx the parse tree
-	 */
-	void enterTypeArgumentsOrDiamond(EzBrewParser.TypeArgumentsOrDiamondContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#typeArgumentsOrDiamond}.
-	 * @param ctx the parse tree
-	 */
-	void exitTypeArgumentsOrDiamond(EzBrewParser.TypeArgumentsOrDiamondContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#nonWildcardTypeArgumentsOrDiamond}.
-	 * @param ctx the parse tree
-	 */
-	void enterNonWildcardTypeArgumentsOrDiamond(EzBrewParser.NonWildcardTypeArgumentsOrDiamondContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#nonWildcardTypeArgumentsOrDiamond}.
-	 * @param ctx the parse tree
-	 */
-	void exitNonWildcardTypeArgumentsOrDiamond(EzBrewParser.NonWildcardTypeArgumentsOrDiamondContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#nonWildcardTypeArguments}.
-	 * @param ctx the parse tree
-	 */
-	void enterNonWildcardTypeArguments(EzBrewParser.NonWildcardTypeArgumentsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#nonWildcardTypeArguments}.
-	 * @param ctx the parse tree
-	 */
-	void exitNonWildcardTypeArguments(EzBrewParser.NonWildcardTypeArgumentsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#typeList}.
-	 * @param ctx the parse tree
-	 */
-	void enterTypeList(EzBrewParser.TypeListContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#typeList}.
-	 * @param ctx the parse tree
-	 */
-	void exitTypeList(EzBrewParser.TypeListContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EzBrewParser#typeType}.
 	 * @param ctx the parse tree

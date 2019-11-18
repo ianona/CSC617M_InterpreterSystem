@@ -1,4 +1,4 @@
-// Generated from /Users/wonsukcho/Documents/GitHub/CSC617M_InterpreterSystem/src/EzBrew.g4 by ANTLR 4.7.2
+// Generated from /Users/ianona/Desktop/CSC617M/InterpreterSystem/src/EzBrew.g4 by ANTLR 4.7.2
 package antlr4;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -11,29 +11,11 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#compilationUnit}.
+	 * Visit a parse tree produced by {@link EzBrewParser#start}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCompilationUnit(EzBrewParser.CompilationUnitContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#packageDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPackageDeclaration(EzBrewParser.PackageDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#importDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitImportDeclaration(EzBrewParser.ImportDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#typeDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeDeclaration(EzBrewParser.TypeDeclarationContext ctx);
+	T visitStart(EzBrewParser.StartContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#modifier}.
 	 * @param ctx the parse tree
@@ -52,72 +34,6 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitVariableModifier(EzBrewParser.VariableModifierContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#classDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitClassDeclaration(EzBrewParser.ClassDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#typeParameters}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeParameters(EzBrewParser.TypeParametersContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#typeParameter}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeParameter(EzBrewParser.TypeParameterContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#typeBound}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeBound(EzBrewParser.TypeBoundContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#enumDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEnumDeclaration(EzBrewParser.EnumDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#enumConstants}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEnumConstants(EzBrewParser.EnumConstantsContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#enumConstant}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEnumConstant(EzBrewParser.EnumConstantContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#enumBodyDeclarations}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEnumBodyDeclarations(EzBrewParser.EnumBodyDeclarationsContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#interfaceDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInterfaceDeclaration(EzBrewParser.InterfaceDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#classBody}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitClassBody(EzBrewParser.ClassBodyContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#interfaceBody}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInterfaceBody(EzBrewParser.InterfaceBodyContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#classBodyDeclaration}.
 	 * @param ctx the parse tree
@@ -149,41 +65,11 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTypeTypeOrVoid(EzBrewParser.TypeTypeOrVoidContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#genericMethodDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitGenericMethodDeclaration(EzBrewParser.GenericMethodDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#genericConstructorDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitGenericConstructorDeclaration(EzBrewParser.GenericConstructorDeclarationContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#constructorDeclaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitConstructorDeclaration(EzBrewParser.ConstructorDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#fieldDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFieldDeclaration(EzBrewParser.FieldDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#interfaceBodyDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInterfaceBodyDeclaration(EzBrewParser.InterfaceBodyDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#interfaceMemberDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInterfaceMemberDeclaration(EzBrewParser.InterfaceMemberDeclarationContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#constDeclaration}.
 	 * @param ctx the parse tree
@@ -197,23 +83,11 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitConstantDeclarator(EzBrewParser.ConstantDeclaratorContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#interfaceMethodDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInterfaceMethodDeclaration(EzBrewParser.InterfaceMethodDeclarationContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#interfaceMethodModifier}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitInterfaceMethodModifier(EzBrewParser.InterfaceMethodModifierContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#genericInterfaceMethodDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitGenericInterfaceMethodDeclaration(EzBrewParser.GenericInterfaceMethodDeclarationContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#variableDeclarators}.
 	 * @param ctx the parse tree
@@ -227,17 +101,26 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitVariableDeclarator(EzBrewParser.VariableDeclaratorContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#variableDeclaratorId}.
+	 * Visit a parse tree produced by the {@code VarDeclarator}
+	 * labeled alternative in {@link EzBrewParser#variableDeclaratorId}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVariableDeclaratorId(EzBrewParser.VariableDeclaratorIdContext ctx);
+	T visitVarDeclarator(EzBrewParser.VarDeclaratorContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#variableInitializer}.
+	 * Visit a parse tree produced by the {@code ArrInit}
+	 * labeled alternative in {@link EzBrewParser#variableInitializer}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVariableInitializer(EzBrewParser.VariableInitializerContext ctx);
+	T visitArrInit(EzBrewParser.ArrInitContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExprInit}
+	 * labeled alternative in {@link EzBrewParser#variableInitializer}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExprInit(EzBrewParser.ExprInitContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#arrayInitializer}.
 	 * @param ctx the parse tree
@@ -299,11 +182,12 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLiteral(EzBrewParser.LiteralContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#integerLiteral}.
+	 * Visit a parse tree produced by the {@code IntLit}
+	 * labeled alternative in {@link EzBrewParser#integerLiteral}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIntegerLiteral(EzBrewParser.IntegerLiteralContext ctx);
+	T visitIntLit(EzBrewParser.IntLitContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#floatLiteral}.
 	 * @param ctx the parse tree
@@ -341,54 +225,6 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitElementValueArrayInitializer(EzBrewParser.ElementValueArrayInitializerContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#annotationTypeDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnnotationTypeDeclaration(EzBrewParser.AnnotationTypeDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#annotationTypeBody}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnnotationTypeBody(EzBrewParser.AnnotationTypeBodyContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#annotationTypeElementDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnnotationTypeElementDeclaration(EzBrewParser.AnnotationTypeElementDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#annotationTypeElementRest}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnnotationTypeElementRest(EzBrewParser.AnnotationTypeElementRestContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#annotationMethodOrConstantRest}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnnotationMethodOrConstantRest(EzBrewParser.AnnotationMethodOrConstantRestContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#annotationMethodRest}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnnotationMethodRest(EzBrewParser.AnnotationMethodRestContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#annotationConstantRest}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnnotationConstantRest(EzBrewParser.AnnotationConstantRestContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#defaultValue}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDefaultValue(EzBrewParser.DefaultValueContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#block}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -407,35 +243,11 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLocalVariableDeclaration(EzBrewParser.LocalVariableDeclarationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#localTypeDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLocalTypeDeclaration(EzBrewParser.LocalTypeDeclarationContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitStatement(EzBrewParser.StatementContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#catchClause}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitCatchClause(EzBrewParser.CatchClauseContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#catchType}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitCatchType(EzBrewParser.CatchTypeContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#finallyBlock}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFinallyBlock(EzBrewParser.FinallyBlockContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#resourceSpecification}.
 	 * @param ctx the parse tree
@@ -479,12 +291,6 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitForInit(EzBrewParser.ForInitContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#enhancedForControl}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEnhancedForControl(EzBrewParser.EnhancedForControlContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#parExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -503,101 +309,60 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMethodCall(EzBrewParser.MethodCallContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#expression}.
+	 * Visit a parse tree produced by the {@code Input}
+	 * labeled alternative in {@link EzBrewParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpression(EzBrewParser.ExpressionContext ctx);
+	T visitInput(EzBrewParser.InputContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#lambdaExpression}.
+	 * Visit a parse tree produced by the {@code MulDiv}
+	 * labeled alternative in {@link EzBrewParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLambdaExpression(EzBrewParser.LambdaExpressionContext ctx);
+	T visitMulDiv(EzBrewParser.MulDivContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#lambdaParameters}.
+	 * Visit a parse tree produced by the {@code AddSub}
+	 * labeled alternative in {@link EzBrewParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLambdaParameters(EzBrewParser.LambdaParametersContext ctx);
+	T visitAddSub(EzBrewParser.AddSubContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#lambdaBody}.
+	 * Visit a parse tree produced by the {@code Pri}
+	 * labeled alternative in {@link EzBrewParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLambdaBody(EzBrewParser.LambdaBodyContext ctx);
+	T visitPri(EzBrewParser.PriContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#primary}.
+	 * Visit a parse tree produced by the {@code ParEps}
+	 * labeled alternative in {@link EzBrewParser#primary}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPrimary(EzBrewParser.PrimaryContext ctx);
+	T visitParEps(EzBrewParser.ParEpsContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#classType}.
+	 * Visit a parse tree produced by the {@code Lit}
+	 * labeled alternative in {@link EzBrewParser#primary}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitClassType(EzBrewParser.ClassTypeContext ctx);
+	T visitLit(EzBrewParser.LitContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#creator}.
+	 * Visit a parse tree produced by the {@code Identifier}
+	 * labeled alternative in {@link EzBrewParser#primary}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCreator(EzBrewParser.CreatorContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#createdName}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitCreatedName(EzBrewParser.CreatedNameContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#innerCreator}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInnerCreator(EzBrewParser.InnerCreatorContext ctx);
+	T visitIdentifier(EzBrewParser.IdentifierContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#arrayCreatorRest}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitArrayCreatorRest(EzBrewParser.ArrayCreatorRestContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#classCreatorRest}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitClassCreatorRest(EzBrewParser.ClassCreatorRestContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#explicitGenericInvocation}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitExplicitGenericInvocation(EzBrewParser.ExplicitGenericInvocationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#typeArgumentsOrDiamond}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeArgumentsOrDiamond(EzBrewParser.TypeArgumentsOrDiamondContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#nonWildcardTypeArgumentsOrDiamond}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNonWildcardTypeArgumentsOrDiamond(EzBrewParser.NonWildcardTypeArgumentsOrDiamondContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#nonWildcardTypeArguments}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNonWildcardTypeArguments(EzBrewParser.NonWildcardTypeArgumentsContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#typeList}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeList(EzBrewParser.TypeListContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#typeType}.
 	 * @param ctx the parse tree

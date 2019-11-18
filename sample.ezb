@@ -1,4 +1,3 @@
-open emp performFunction(num x) {
-    sdec _sampleIdentifier123 = 999.9f;
-    bool y = (5 > 4 && true) || (false && !(x==0));
+emp performFunction(num x) {
+    num a = (b + 2) - 5;
 }
