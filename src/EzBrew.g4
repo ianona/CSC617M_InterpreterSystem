@@ -371,7 +371,7 @@ variableDeclarators
     ;
 
 variableDeclarator
-    : variableDeclaratorId ('=' variableInitializer)?
+    : variableDeclaratorId ('=' variableInitializer)? # VarAssignment
     ;
 
 variableDeclaratorId
@@ -527,26 +527,27 @@ localVariableDeclaration
 //    ;
 
 statement
-    : blockLabel=block
+    : blockLabel=block #BlockStmt
 //    | ASSERT expression (':' expression)? ';'
-    | IF parExpression statement (ELSE statement)?
-    | IF '(' expression bop=('==' | '!=') expression ')' (ELSE statement)?
-    | FOR '(' forControl ')' statement
-    | WHILE parExpression statement
-    | DO statement WHILE parExpression ';'
+    | IF parExpression statement (ELSE statement)? #IfStmt
+    | IF '(' expression bop=('==' | '!=') expression ')' (ELSE statement)? #IfStmt2
+    | FOR '(' forControl ')' statement #ForStmt
+    | WHILE parExpression statement #WhileStmt
+    | DO statement WHILE parExpression ';' #DoWhileStmt
 //    | TRY block (catchClause+ finallyBlock? | finallyBlock)
 //    | TRY resourceSpecification block catchClause* finallyBlock?
-    | SWITCH parExpression '{' switchBlockStatementGroup* switchLabel* '}'
+    | SWITCH parExpression '{' switchBlockStatementGroup* switchLabel* '}' #SwitchStmt
 //    | SYNCHRONIZED parExpression block
-    | RETURN expression? ';'
+    | RETURN expression? ';' #ReturnStmt
 //    | THROW expression ';'
 //    | BREAK IDENTIFIER? ';'
 //    | CONTINUE IDENTIFIER? ';'
 //    | SEMI
-    | statementExpression=expression ';'
+    | statementExpression=expression ';' #ExprStmt
 //    | identifierLabel=IDENTIFIER ':' statement
-    | IDENTIFIER '=' SCAN '(' (STRING_LITERAL('+'IDENTIFIER)*)? ')'
-    | PRINT '(' STRING_LITERAL ('+'IDENTIFIER)* ');'
+    | IDENTIFIER '=' SCAN '(' (STRING_LITERAL('+'IDENTIFIER)*)? ')' #InputStmt
+//    | PRINT '(' (STRING_LITERAL | IDENTIFIER) (('+'STRING_LITERAL) ('+'IDENTIFIER))* ');' #PrintStmt
+    | PRINT '(' primary ('+'primary)* ');' #PrintStmt
     ;
 
 //catchClause
@@ -603,7 +604,7 @@ forInit
 // EXPRESSIONS
 
 parExpression
-    : '(' expression ')'
+    : '(' expression ')' #ParExp
     ;
 
 expressionList
@@ -636,17 +637,16 @@ expression
     | expression bop=('*'|'/'|'%') expression # MulDiv
     | expression bop=('+'|'-') expression # AddSub
 //    | expression ('<' '<' | '>' '>' '>' | '>' '>') expression
-//    | expression bop=('<=' | '>=' | '>' | '<') expression
+    | expression bop=('<=' | '>=' | '>' | '<') expression #Compare1
 ////    | expression bop=INSTANCEOF typeType
-//    | expression bop=('==' | '!=') expression
+    | expression bop=('==' | '!=') expression #Compare2
 //    | expression bop='&' expression
 //    | expression bop='^' expression
 //    | expression bop='|' expression
-//    | expression bop='&&' expression
-//    | expression bop='||' expression
+    | expression bop='&&' expression #And
+    | expression bop='||' expression #Or
 //    | <assoc=right> expression bop='?' expression ':' expression
-//    | <assoc=right> expression
-//      bop=('=' | '+=' | '-=' | '*=' | '/=' | '&=' | '|=' | '^=' | '>>=' | '>>>=' | '<<=' | '%=') expression
+      | <assoc=right> expression bop=('=' | '+=' | '-=' | '*=' | '/=' | '&=' | '|=' | '^=' | '>>=' | '>>>=' | '<<=' | '%=') expression #Assignment
 //    | lambdaExpression // Java8
 
     // Java 8 methodReference
@@ -654,7 +654,8 @@ expression
 //    | typeType '::' (typeArguments? IDENTIFIER | NEW)
 //    | classType '::' typeArguments? NEW
 
-    | SCAN '(' (STRING_LITERAL('+'IDENTIFIER)*)? ')' # Input
+//    | SCAN '(' (STRING_LITERAL('+'IDENTIFIER)*)? ')' # Input
+    | SCAN '(' STRING_LITERAL ')' # Input
     ;
 
 // Java8

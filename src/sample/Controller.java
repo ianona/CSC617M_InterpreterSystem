@@ -7,6 +7,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
@@ -22,9 +26,11 @@ import org.fxmisc.richtext.model.StyleSpans;
 import org.fxmisc.richtext.model.StyleSpansBuilder;
 import org.reactfx.Subscription;
 
+import java.awt.*;
 import java.io.*;
 import java.time.Duration;
 import java.util.*;
+import java.util.List;
 import java.util.regex.Matcher;
 
 public class Controller {
@@ -180,22 +186,34 @@ public class Controller {
 
     public void onParseClick(ActionEvent actionEvent) {
         clearConsole();
-        CollectingErrorListener listener = new CollectingErrorListener();
-        System.out.println(codeArea.getText());
+//        CollectingErrorListener listener = new CollectingErrorListener();
+//        System.out.println(codeArea.getText());
         EzBrewLexer lexer = new EzBrewLexer(new ANTLRInputStream(codeArea.getText()));
-        lexer.addErrorListener(listener);
+//        lexer.addErrorListener(listener);
         TokenStream tokenStream = new CommonTokenStream(lexer);
         EzBrewParser parser = new EzBrewParser(tokenStream);
-        parser.addErrorListener(listener);
+//        parser.addErrorListener(listener);
 //        ParseTree tree = parser.compilationUnit();
         ParseTree tree = parser.start();
         TreeViewer viewr = new TreeViewer(Arrays.asList(parser.getRuleNames()),tree);
         viewr.setScale(.3);
         viewr.open();
+        viewr.setBoxColor(Color.CYAN);
+        viewr.setTextColor(Color.WHITE);
 
+        CustomErrorListener listener = new CustomErrorListener();
         ParseTreeWalker walker = new ParseTreeWalker();
-        walker.walk(new SampleListener(),tree);
+        walker.walk(listener,tree);
+        List<String> errors = listener.getErrors();
 
+        if (errors.size() == 0) {
+            consoleLog("----------No Parsing Errors----------");
+        } else {
+            for (String error:errors)
+                consoleLog(error);
+        }
+
+        /*
         int errors_count = listener.getSyntaxErrors().size();
 
         if (errors_count != 0) {
@@ -252,6 +270,7 @@ public class Controller {
                 consoleLog("[" + count + "] " + errorMsg);
             }
         } else consoleLog("----------No Parsing Errors----------");
+        */
 
     }
 
@@ -263,53 +282,36 @@ public class Controller {
         TokenStream tokenStream = new CommonTokenStream(lexer);
         EzBrewParser parser = new EzBrewParser(tokenStream);
         ParseTree tree = parser.start();
-        TreeViewer viewr = new TreeViewer(Arrays.asList(parser.getRuleNames()),tree);
-        viewr.setScale(.3);
-        viewr.open();
+//        TreeViewer viewr = new TreeViewer(Arrays.asList(parser.getRuleNames()),tree);
+//        viewr.setScale(.3);
+//        viewr.open();
 
         ParseTreeWalker walker = new ParseTreeWalker();
         SampleListener listener = new SampleListener();
         walker.walk(listener,tree);
         System.out.println("---------");
         printMap(listener.getTAC());
-
-    }
-
-    private static void printAST(RuleContext ctx, boolean verbose, int indentation) {
-        boolean toBeIgnored = !verbose && ctx.getChildCount() == 1 && ctx.getChild(0) instanceof ParserRuleContext;
-
-        if (!toBeIgnored) {
-            String ruleName = EzBrewParser.ruleNames[ctx.getRuleIndex()];
-            for (int i = 0; i < indentation; i++) {
-                System.out.print("  ");
-            }
-            System.out.println(ruleName + " -> " + ctx.getText());
-        }
-        for (int i = 0; i < ctx.getChildCount(); i++) {
-            ParseTree element = ctx.getChild(i);
-            if (element instanceof RuleContext) {
-                printAST((RuleContext) element, verbose, indentation + (toBeIgnored ? 0 : 1));
-            }
-        }
     }
 
     public static void printMap(Map mp) {
         Iterator it = mp.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
-            System.out.println(pair.getKey() + " = " + pair.getValue());
+            Key curKey = (Key)pair.getKey();
+            if (curKey.getLabel() != null) System.out.println(curKey.getLabel()+": ");
+            System.out.print("\t");
+            if (curKey.getName().charAt(0)=='@') {
+                System.out.println(curKey.getName() + " " + pair.getValue());
+            }
+            else {
+                System.out.println(curKey.getName() + " = " + pair.getValue());
+            }
             it.remove(); // avoids a ConcurrentModificationException
         }
     }
 
     public void onDummyClick(ActionEvent actionEvent) {
-        EzBrewLexer lexer = new EzBrewLexer(new ANTLRInputStream(codeArea.getText()));
-        TokenStream tokenStream = new CommonTokenStream(lexer);
-        EzBrewParser parser = new EzBrewParser(tokenStream);
-        ParserRuleContext ctx = parser.start();
 
-        System.out.println("---------");
-        printAST(ctx,false,0);
     }
 
     public void onClearClick(ActionEvent actionEvent) {
