@@ -4,6 +4,7 @@ import antlr4.EzBrewBaseListener;
 import antlr4.EzBrewParser;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
+import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.util.ArrayList;
@@ -461,9 +462,31 @@ public class CustomErrorListener extends EzBrewBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override public void exitBlockStatement(EzBrewParser.BlockStatementContext ctx) {
-        if(ctx.getText().charAt(ctx.getText().length()-1) != ';'){
-            System.out.println("Error at line " + ctx.start.getLine() +  ": No semi colon");
+//        if(ctx.getText().charAt(ctx.getText().length()-1) != ';'){
+//            System.out.println("Error at line " + ctx.start.getLine() +  ": No semi colon");
+//        }
+
+//        System.out.println("A: " + ctx.getChildCount());
+        for(int x = 0; x < ctx.getChildCount(); x++) {
+//            System.out.println("B: " + ctx.getChild(x).getText());
+            if(ctx.getChild(x).getText().equals("++")) {
+                ParseTree tempCtx = ctx.getChild(x-1);
+//                System.out.println("C: " + tempCtx.getText());
+                int temp = tempCtx.getText().length() - 1;
+                boolean checker = false;
+                while(((tempCtx.getText().charAt(temp) != '=') && (tempCtx.getText().charAt(temp) != '+') && (tempCtx.getText().charAt(temp) != '-') && (tempCtx.getText().charAt(temp) != '*') && (tempCtx.getText().charAt(temp) != '/') && (tempCtx.getText().charAt(temp) != '%')) && temp > 0) {
+//                    System.out.println(tempCtx.getText().charAt(temp));
+                    if(Character.isAlphabetic(tempCtx.getText().charAt(temp))) {
+                        checker = true;
+                        break;
+                    }
+                    temp--;
+                }
+                if(checker == false)
+                    errors.add("Error at line " + ctx.start.getLine() + ". See expression '" + ctx.getChild(1).getText() + "'. Consider removing extra '+'.");
+            }
         }
+
     }
     /**
      * {@inheritDoc}
@@ -572,7 +595,15 @@ public class CustomErrorListener extends EzBrewBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void exitReturnStmt(EzBrewParser.ReturnStmtContext ctx) { }
+    @Override public void exitReturnStmt(EzBrewParser.ReturnStmtContext ctx) {
+        String[] keywords = {"outline", "bool", "stop", "sample", "letter", "perm", "do", "ddec", "other", "sdec", "loop", "given", "num", "out", "choose", "self", "emp", "during", "scan", "print", "string"};
+
+        for(int i = 0; i < keywords.length; i++) {
+            if(ctx.getChild(1).getText().equals(keywords[i])) {
+                errors.add("Error at line " + ctx.start.getLine() + ". See expression '" + ctx.getChild(1).getText() + "'. Reserved keyword cannot be passed as a return value.");
+            }
+        }
+    }
     /**
      * {@inheritDoc}
      *
