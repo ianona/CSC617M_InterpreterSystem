@@ -123,11 +123,32 @@ public class CustomErrorListener extends EzBrewBaseListener {
                 ctrclose++;
         }
 
-        System.out.println("@@@@-TEST-@@@@");
-        System.out.println(temp);
+//        System.out.println("@@@@-TEST-@@@@");
+//        System.out.println(temp);
 
         if(ctropen > ctrclose)
             errors.add("Error at line " + ctx.start.getLine() + ": '{" + "' does not have corresponding '}'");
     }
 
+    @Override public void exitParExp(EzBrewParser.ParExpContext ctx) {
+        String temp = ctx.getParent().getChild(0).getText();
+        int size=0;
+        temp = temp.replaceAll("\\s", "");
+
+        if(temp.equals("given")){
+            temp = ctx.getParent().getChild(1).getText();
+            if(temp.contains("=")){
+                for(int i=0; i<temp.length(); i++){
+                    if(temp.charAt(i) == '='){
+                        size++;
+                    }
+                }
+                if(size % 2 != 0) {
+                    System.out.println("@@@@-TEST-@@@@");
+                    System.out.println("Error at line " + ctx.start.getLine() + ": In the statement " + ctx.getParent().getChild(0).getText() + ctx.getParent().getChild(1).getText() + " lacking '='");
+                    errors.add("Error at line " + ctx.start.getLine() + ": In the statement " + ctx.getParent().getChild(0).getText() + ctx.getParent().getChild(1).getText() + " lacking '='");
+                }
+            }
+        }
+    }
 }
