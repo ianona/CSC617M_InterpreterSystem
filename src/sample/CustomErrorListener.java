@@ -717,7 +717,30 @@ public class CustomErrorListener extends EzBrewBaseListener {
      *
      * <p>The default implementation does nothing.</p>
      */
-    @Override public void enterForInit(EzBrewParser.ForInitContext ctx) { }
+    @Override public void enterForInit(EzBrewParser.ForInitContext ctx) {
+        String temp = ctx.getText();
+        System.out.println("@@@@-TEST-@@@@");
+        System.out.println(temp);
+
+        temp = ctx.getParent().getParent().getText();
+        System.out.println("@@@@-SIZE-@@@@");
+        System.out.println(temp);
+
+        temp = ctx.getParent().getText();
+        System.out.println("@@@@-SIZE-@@@@");
+        System.out.println(temp);
+
+//        int num = ctx.children.size();
+//        for(int i=0; i <= num; i++) {
+//            temp = ctx.getParent().getParent().getText();
+//            System.out.println("@@@@-SIZE-@@@@");
+//            System.out.println(temp);
+//        }
+
+        if(ctx.getText().charAt(ctx.getText().length()-1) != ';'){
+            System.out.println("Error at line " + ctx.start.getLine() +  ": No semi colon");
+        }
+    }
     /**
      * {@inheritDoc}
      *
