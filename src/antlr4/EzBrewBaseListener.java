@@ -1,4 +1,4 @@
-// Generated from /Users/ianona/Desktop/CSC617M/InterpreterSystem/src/EzBrew.g4 by ANTLR 4.7.2
+// Generated from /Users/wonsukcho/Documents/GitHub/CSC617M_InterpreterSystem/src/EzBrew.g4 by ANTLR 4.7.2
 package antlr4;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -47,18 +47,6 @@ public class EzBrewBaseListener implements EzBrewListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitClassOrInterfaceModifier(EzBrewParser.ClassOrInterfaceModifierContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterVariableModifier(EzBrewParser.VariableModifierContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitVariableModifier(EzBrewParser.VariableModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -472,6 +460,18 @@ public class EzBrewBaseListener implements EzBrewListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterElseStmt(EzBrewParser.ElseStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitElseStmt(EzBrewParser.ElseStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterBlockStmt(EzBrewParser.BlockStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -575,18 +575,6 @@ public class EzBrewBaseListener implements EzBrewListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitExprStmt(EzBrewParser.ExprStmtContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInputStmt(EzBrewParser.InputStmtContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInputStmt(EzBrewParser.InputStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -724,30 +712,6 @@ public class EzBrewBaseListener implements EzBrewListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAssignment(EzBrewParser.AssignmentContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitAssignment(EzBrewParser.AssignmentContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInput(EzBrewParser.InputContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInput(EzBrewParser.InputContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterOr(EzBrewParser.OrContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -796,6 +760,66 @@ public class EzBrewBaseListener implements EzBrewListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterMthdCall(EzBrewParser.MthdCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMthdCall(EzBrewParser.MthdCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIncDec(EzBrewParser.IncDecContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIncDec(EzBrewParser.IncDecContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAssignment(EzBrewParser.AssignmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAssignment(EzBrewParser.AssignmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterInput(EzBrewParser.InputContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInput(EzBrewParser.InputContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArrayAccess(EzBrewParser.ArrayAccessContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArrayAccess(EzBrewParser.ArrayAccessContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCompare1(EzBrewParser.Compare1Context ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -832,6 +856,18 @@ public class EzBrewBaseListener implements EzBrewListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterNewCreator(EzBrewParser.NewCreatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNewCreator(EzBrewParser.NewCreatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterParEps(EzBrewParser.ParEpsContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -863,6 +899,30 @@ public class EzBrewBaseListener implements EzBrewListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitIdentifier(EzBrewParser.IdentifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCreator(EzBrewParser.CreatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCreator(EzBrewParser.CreatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCreatedName(EzBrewParser.CreatedNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCreatedName(EzBrewParser.CreatedNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

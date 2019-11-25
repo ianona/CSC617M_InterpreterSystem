@@ -6,13 +6,14 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.util.Pair;
 import org.antlr.v4.gui.TreeViewer;
@@ -37,6 +38,8 @@ public class Controller {
     @FXML private Button runBtn;
     @FXML private CodeArea codeArea;
     @FXML private TextArea consoleArea;
+    @FXML private ListView consoleArea2;
+    @FXML private VBox rightBox;
     @FXML private AnchorPane bottomAnchor;
     @FXML private AnchorPane topAnchor;
     @FXML private SplitPane splitPane;
@@ -52,6 +55,9 @@ public class Controller {
 
         consoleArea.prefWidthProperty().bind(bottomAnchor.widthProperty());
         consoleArea.prefHeightProperty().bind(bottomAnchor.heightProperty());
+
+        consoleArea2.prefWidthProperty().bind(rightBox.widthProperty());
+        consoleArea2.prefHeightProperty().bind(rightBox.heightProperty());
 
         splitPane.setDividerPositions(0.8);
 
@@ -101,6 +107,11 @@ public class Controller {
     private void consoleLog(String log){
         consoleArea.appendText(log);
         consoleArea.appendText("\n");
+    }
+
+    private void sideLog(List<String> toLog){
+        consoleArea2.getItems().clear();
+        consoleArea2.setItems(FXCollections.observableList(toLog));
     }
 
     private void clearConsole(){
@@ -196,9 +207,9 @@ public class Controller {
 //        ParseTree tree = parser.compilationUnit();
         ParseTree tree = parser.start();
         TreeViewer viewr = new TreeViewer(Arrays.asList(parser.getRuleNames()),tree);
-        viewr.setScale(.3);
+//        viewr.setScale(.3);
         viewr.open();
-        viewr.setBoxColor(Color.CYAN);
+        viewr.setBoxColor(Color.black);
         viewr.setTextColor(Color.WHITE);
 
         CustomErrorListener listener = new CustomErrorListener();
@@ -293,21 +304,44 @@ public class Controller {
         printMap(listener.getTAC());
     }
 
-    public static void printMap(Map mp) {
+    public void printMap(Map mp) {
+        List<String> TAC = new ArrayList<>();
         Iterator it = mp.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
             Key curKey = (Key)pair.getKey();
-            if (curKey.getLabel() != null) System.out.println(curKey.getLabel()+": ");
-            System.out.print("\t");
-            if (curKey.getName().charAt(0)=='@') {
-                System.out.println(curKey.getName() + " " + pair.getValue());
-            }
-            else {
-                System.out.println(curKey.getName() + " = " + pair.getValue());
+            String curVal = (String)pair.getValue();
+
+            String toAdd = "";
+            if (curVal != null) {
+                System.out.print("\t");
+                toAdd += "\t";
+                if (curKey.getName().charAt(0)=='@') {
+                    System.out.println(curKey.getName() + " " + pair.getValue());
+                    toAdd += curKey.getName() + " " + pair.getValue();
+                }
+                else if (curVal.isEmpty()){
+                    System.out.println(curKey.getName());
+                    toAdd += curKey.getName();
+                }
+                else {
+                    System.out.println(curKey.getName() + " = " + pair.getValue());
+                    toAdd += curKey.getName() + " = " + pair.getValue();
+                }
+
+                if (curKey.getName() == Constants.END_FUNC) {
+                    toAdd = "";
+                    System.out.println();
+                }
+
+                TAC.add(toAdd);
+            } else {
+                TAC.add(curKey.getName() + ":");
+                System.out.println(curKey.getName() + ":");
             }
             it.remove(); // avoids a ConcurrentModificationException
         }
+        sideLog(TAC);
     }
 
     public void onDummyClick(ActionEvent actionEvent) {

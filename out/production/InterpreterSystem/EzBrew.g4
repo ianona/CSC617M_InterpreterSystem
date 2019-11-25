@@ -31,7 +31,7 @@ INT:                'num';//'int';
 //INTERFACE:          'mod';//'interface';
 //LONG:               'long';
 //NATIVE:             'native';
-//NEW:                'orig';//'new';
+NEW:                'orig';//'new';
 //PACKAGE:            'bundle';//'package';
 //PRIVATE:            'closed';//'private';
 //PROTECTED:          'secured';//'protected';
@@ -215,10 +215,10 @@ classOrInterfaceModifier
 //    | STRICTFP
     ;
 //
-variableModifier
-    : FINAL
+//variableModifier
+//    : FINAL
 //    | annotation
-    ;
+//    ;
 
 //classDeclaration
 //    : CLASS IDENTIFIER typeParameters?
@@ -410,11 +410,13 @@ formalParameterList
     ;
 
 formalParameter
-    : variableModifier* typeType variableDeclaratorId
+//    : variableModifier* typeType variableDeclaratorId
+    : typeType variableDeclaratorId
     ;
 
 lastFormalParameter
-    : variableModifier* typeType '...' variableDeclaratorId
+//    : variableModifier* typeType '...' variableDeclaratorId
+    : typeType '...' variableDeclaratorId
     ;
 
 qualifiedName
@@ -517,7 +519,8 @@ blockStatement
     ;
 
 localVariableDeclaration
-    : variableModifier* typeType variableDeclarators
+//    : variableModifier* typeType variableDeclarators
+    : typeType variableDeclarators
     ;
 
 //localTypeDeclaration
@@ -526,11 +529,15 @@ localVariableDeclaration
 //    | ';'
 //    ;
 
+elseStatement
+    : ELSE statement #ElseStmt
+    ;
+
 statement
     : blockLabel=block #BlockStmt
 //    | ASSERT expression (':' expression)? ';'
-    | IF parExpression statement (ELSE statement)? #IfStmt
-    | IF '(' expression bop=('==' | '!=') expression ')' (ELSE statement)? #IfStmt2
+    | IF parExpression statement (elseStatement)? #IfStmt
+    | IF '(' expression bop=('==' | '!=') expression ')' (elseStatement)? #IfStmt2
     | FOR '(' forControl ')' statement #ForStmt
     | WHILE parExpression statement #WhileStmt
     | DO statement WHILE parExpression ';' #DoWhileStmt
@@ -545,7 +552,7 @@ statement
 //    | SEMI
     | statementExpression=expression ';' #ExprStmt
 //    | identifierLabel=IDENTIFIER ':' statement
-    | IDENTIFIER '=' SCAN '(' (STRING_LITERAL('+'IDENTIFIER)*)? ')' #InputStmt
+//    | IDENTIFIER '=' SCAN '(' (STRING_LITERAL('+'IDENTIFIER)*)? ')' #InputStmt
 //    | PRINT '(' (STRING_LITERAL | IDENTIFIER) (('+'STRING_LITERAL) ('+'IDENTIFIER))* ');' #PrintStmt
     | PRINT '(' primary ('+'primary)* ');' #PrintStmt
     ;
@@ -571,7 +578,8 @@ resources
     ;
 
 resource
-    : variableModifier* classOrInterfaceType variableDeclaratorId '=' expression
+//    : variableModifier* classOrInterfaceType variableDeclaratorId '=' expression
+    : classOrInterfaceType variableDeclaratorId '=' expression
     ;
 
 /** Matches cases then statements, both of which are mandatory.
@@ -593,7 +601,8 @@ forControl
 
 forInit
 //    : localVariableDeclaration
-    : variableModifier* typeType variableDeclaratorId '=' variableInitializer
+//    : variableModifier* typeType variableDeclaratorId '=' variableInitializer
+    : typeType variableDeclaratorId '=' variableInitializer
     | expressionList
     ;
 
@@ -611,7 +620,7 @@ expressionList
     : expression (',' expression)*
     ;
 
-methodCall
+ methodCall
     : IDENTIFIER '(' expressionList? ')'
     | THIS '(' expressionList? ')'
     | SUPER '(' expressionList? ')'
@@ -627,11 +636,11 @@ expression
 //      | SUPER superSuffix
 ////      | explicitGenericInvocation
 //      )
-//    | expression '[' expression ']'
-//    | methodCall
-////    | NEW creator
+    | expression '[' expression ']' #ArrayAccess
+    | methodCall #MthdCall
+    | NEW creator #NewCreator
 ////    | '(' typeType ')' expression
-//    | IDENTIFIER postfix=('++' | '--')
+    | IDENTIFIER postfix=('++' | '--') #IncDec
 //    | prefix=('+'|'-'|'++'|'--') expression
 //    | prefix=('~'|'!') expression
     | expression bop=('*'|'/'|'%') expression # MulDiv
@@ -655,7 +664,7 @@ expression
 //    | classType '::' typeArguments? NEW
 
 //    | SCAN '(' (STRING_LITERAL('+'IDENTIFIER)*)? ')' # Input
-    | SCAN '(' STRING_LITERAL ')' # Input
+    | SCAN '(' primary ')' # Input
     ;
 
 // Java8
@@ -690,15 +699,16 @@ primary
 //    : (classOrInterfaceType '.')? annotation* IDENTIFIER typeArguments?
 //    ;
 
-//creator
+creator
 //    : nonWildcardTypeArguments createdName classCreatorRest
 //    | createdName (arrayCreatorRest | classCreatorRest)
-//    ;
+    :createdName arrayCreatorRest
+    ;
 //
-//createdName
+createdName
 //    : IDENTIFIER typeArgumentsOrDiamond? ('.' IDENTIFIER typeArgumentsOrDiamond?)*
-//    | primitiveType
-//    ;
+    : primitiveType
+    ;
 //
 //innerCreator
 //    : IDENTIFIER nonWildcardTypeArgumentsOrDiamond? classCreatorRest

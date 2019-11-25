@@ -13,6 +13,8 @@ public class Constants {
     public static final String MODE_DARK = "Dark";
     public static final String[] IDE_MODES = {MODE_LIGHT,MODE_DARK};
 
+    public static final String END_FUNC = "EndFunc";
+
     public static final String[] KEYWORDS = new String[] {
             "null",
             "outline",
@@ -38,7 +40,7 @@ public class Constants {
 //            "is",
             "num",
 //            "mod",
-//            "orig",
+            "orig",
 //            "bundle",
 //            "closed",
 //            "secured",

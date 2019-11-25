@@ -1,4 +1,4 @@
-// Generated from /Users/ianona/Desktop/CSC617M/InterpreterSystem/src/EzBrew.g4 by ANTLR 4.7.2
+// Generated from /Users/wonsukcho/Documents/GitHub/CSC617M_InterpreterSystem/src/EzBrew.g4 by ANTLR 4.7.2
 package antlr4;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -28,12 +28,6 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitClassOrInterfaceModifier(EzBrewParser.ClassOrInterfaceModifierContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#variableModifier}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVariableModifier(EzBrewParser.VariableModifierContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#classBodyDeclaration}.
 	 * @param ctx the parse tree
@@ -244,6 +238,13 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLocalVariableDeclaration(EzBrewParser.LocalVariableDeclarationContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code ElseStmt}
+	 * labeled alternative in {@link EzBrewParser#elseStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitElseStmt(EzBrewParser.ElseStmtContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code BlockStmt}
 	 * labeled alternative in {@link EzBrewParser#statement}.
 	 * @param ctx the parse tree
@@ -306,13 +307,6 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitExprStmt(EzBrewParser.ExprStmtContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code InputStmt}
-	 * labeled alternative in {@link EzBrewParser#statement}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInputStmt(EzBrewParser.InputStmtContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code PrintStmt}
 	 * labeled alternative in {@link EzBrewParser#statement}.
@@ -382,20 +376,6 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMethodCall(EzBrewParser.MethodCallContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Assignment}
-	 * labeled alternative in {@link EzBrewParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAssignment(EzBrewParser.AssignmentContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Input}
-	 * labeled alternative in {@link EzBrewParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInput(EzBrewParser.InputContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code Or}
 	 * labeled alternative in {@link EzBrewParser#expression}.
 	 * @param ctx the parse tree
@@ -424,6 +404,41 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPri(EzBrewParser.PriContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code MthdCall}
+	 * labeled alternative in {@link EzBrewParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMthdCall(EzBrewParser.MthdCallContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code IncDec}
+	 * labeled alternative in {@link EzBrewParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIncDec(EzBrewParser.IncDecContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Assignment}
+	 * labeled alternative in {@link EzBrewParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAssignment(EzBrewParser.AssignmentContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Input}
+	 * labeled alternative in {@link EzBrewParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInput(EzBrewParser.InputContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ArrayAccess}
+	 * labeled alternative in {@link EzBrewParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArrayAccess(EzBrewParser.ArrayAccessContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code Compare1}
 	 * labeled alternative in {@link EzBrewParser#expression}.
 	 * @param ctx the parse tree
@@ -445,6 +460,13 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitCompare2(EzBrewParser.Compare2Context ctx);
 	/**
+	 * Visit a parse tree produced by the {@code NewCreator}
+	 * labeled alternative in {@link EzBrewParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNewCreator(EzBrewParser.NewCreatorContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code ParEps}
 	 * labeled alternative in {@link EzBrewParser#primary}.
 	 * @param ctx the parse tree
@@ -465,6 +487,18 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitIdentifier(EzBrewParser.IdentifierContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link EzBrewParser#creator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCreator(EzBrewParser.CreatorContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link EzBrewParser#createdName}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCreatedName(EzBrewParser.CreatedNameContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#arrayCreatorRest}.
 	 * @param ctx the parse tree

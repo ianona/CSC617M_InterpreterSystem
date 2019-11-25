@@ -22,13 +22,13 @@ public class Main extends Application {
 
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
         Constants.SCREEN_HEIGHT = (int) (primaryScreenBounds.getHeight() * 0.85);
-        Constants.SCREEN_WIDTH = (int) (primaryScreenBounds.getWidth() * 0.85);
+        Constants.SCREEN_WIDTH = (int) (primaryScreenBounds.getWidth() * 0.70);
         primaryStage.setTitle(Constants.APP_NAME);
 
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setScene(new Scene(root, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT));
         primaryStage.show();
-        primaryStage.setResizable(false);
+//        primaryStage.setResizable(false);
 
         primaryStage.getScene().getStylesheets().add(
                 this.getClass().getResource("common-style.css").toExternalForm()

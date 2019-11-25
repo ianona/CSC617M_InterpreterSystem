@@ -3,6 +3,12 @@
     -fx-faint-focus-color: transparent;
 }
 
+.listView {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+
 .text-area .content {
     -fx-background-color:-fx-control-inner-background;
 }
@@ -15,3 +21,4 @@
     -fx-background-insets: 0, 1;
     -fx-background-radius: 3, 2;
 }
+
