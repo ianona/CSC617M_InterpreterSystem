@@ -323,10 +323,10 @@
     <option name="width" value="1334" />
     <option name="height" value="877" />
   </component>
-=======
+
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectId" id="1U0hbJXUSvbp6M6WbIbpqGQ98ya" />
->>>>>>> d9461dbf7ca41cb0dd7f70abb79867352261940e
+
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
@@ -973,8 +973,7 @@
       </provider>
     </entry>
   </component>
-=======
->>>>>>> d9461dbf7ca41cb0dd7f70abb79867352261940e
+
   <component name="masterDetails">
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
