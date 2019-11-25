@@ -104,7 +104,7 @@ public class Controller {
         return spansBuilder.create();
     }
 
-    private void consoleLog(String log){
+    public void consoleLog(String log){
         consoleArea.appendText(log);
         consoleArea.appendText("\n");
     }
@@ -297,11 +297,26 @@ public class Controller {
 //        viewr.setScale(.3);
 //        viewr.open();
 
+        CustomErrorListener errorListener = new CustomErrorListener();
         ParseTreeWalker walker = new ParseTreeWalker();
+        walker.walk(errorListener,tree);
+        List<String> errors = errorListener.getErrors();
+
+        if (errors.size() != 0) {
+            return;
+        }
+
+        ParseTreeWalker walker2 = new ParseTreeWalker();
         SampleListener listener = new SampleListener();
-        walker.walk(listener,tree);
+        walker2.walk(listener,tree);
         System.out.println("---------");
+
+        Map<Key,String> TAC = new HashMap<>();
+        TAC.putAll(listener.getTAC());
         printMap(listener.getTAC());
+
+//        Interpreter interpreter = new Interpreter(listener.getTAC(),consoleArea);
+//        interpreter.interpret();
     }
 
     public void printMap(Map mp) {
