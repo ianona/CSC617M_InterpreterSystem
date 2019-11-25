@@ -13,6 +13,9 @@ import java.util.List;
 public class CustomErrorListener extends EzBrewBaseListener {
     List<String> errors = new ArrayList<>();
 
+    String[] keywords = {"outline", "stop", "sample", "handle", "blueprint", "perm", "do", "other", "catalog", "childof", "abs", "lastly", "loop", "given", "has", "is", "mod", "orig", "closed", "secured", "open", "out", "same", "parent", "choose", "self", "shoot", "shoots", "attempt", "emp", "during", "bundle", "include"};
+    String[] assign = {"bool", "letter", "ddec", "sdec", "num"};
+
     @Override public void exitEveryRule(ParserRuleContext ctx) {
         errors.add("SAMPLE, rule exited+ " + ctx.toString());
     }
@@ -722,24 +725,34 @@ public class CustomErrorListener extends EzBrewBaseListener {
         System.out.println("@@@@-TEST-@@@@");
         System.out.println(temp);
 
-        temp = ctx.getParent().getParent().getText();
-        System.out.println("@@@@-SIZE-@@@@");
-        System.out.println(temp);
+        for(int i=0; i < assign.length; i++) {
+         if (temp.contains(assign[i])) {
+           temp = temp.replaceAll(assign[i], "");
+           i = assign.length;
+         }
+        }
 
-        temp = ctx.getParent().getText();
-        System.out.println("@@@@-SIZE-@@@@");
-        System.out.println(temp);
-
+        if(!(temp.contains("="))){
+         errors.add("Error at line " + ctx.start.getLine() + ": '" + ctx.getChild(1).getText() + "' does not have any assignment to the variable");
+        }
+//        temp = ctx.getParent().getParent().getText();
+//        System.out.println("@@@@-SIZE-@@@@");
+//        System.out.println(temp);
+//
+//        temp = ctx.getParent().getText();
+//        System.out.println("@@@@-SIZE-@@@@");
+//        System.out.println(temp);
+//
 //        int num = ctx.children.size();
 //        for(int i=0; i <= num; i++) {
 //            temp = ctx.getParent().getParent().getText();
 //            System.out.println("@@@@-SIZE-@@@@");
 //            System.out.println(temp);
 //        }
-
-        if(ctx.getText().charAt(ctx.getText().length()-1) != ';'){
-            System.out.println("Error at line " + ctx.start.getLine() +  ": No semi colon");
-        }
+//
+//        if(ctx.getText().charAt(ctx.getText().length()-1) != ';'){
+//            System.out.println("Error at line " + ctx.start.getLine() +  ": No semi colon");
+//        }
     }
     /**
      * {@inheritDoc}
