@@ -15,6 +15,22 @@ public class Constants {
 
     public static final String END_FUNC = "EndFunc";
 
+    public static final String DTYPE_STRING = "string";
+    public static final String DTYPE_INT = "num";
+    public static final String DTYPE_FLOAT = "sdec";
+    public static final String DTYPE_DOUBLE = "ddec";
+    public static final String DTYPE_BOOL = "bool";
+
+    public static final String TYPE_VAR = "var";
+    public static final String TYPE_PROC = "proc";
+
+    public static final String KTYPE_LABEL = "label";
+    public static final String KTYPE_FUNC = "method";
+    public static final String KTYPE_ERROR = "error";
+
+    public static final String MAIN = "main";
+
+
     public static final String[] KEYWORDS = new String[] {
             "null",
             "outline",

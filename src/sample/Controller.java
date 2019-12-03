@@ -303,6 +303,12 @@ public class Controller {
         List<String> errors = errorListener.getErrors();
 
         if (errors.size() != 0) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText("Parsing error detected");
+            alert.setContentText("Will not execute code");
+
+            alert.showAndWait();
             return;
         }
 
@@ -311,12 +317,12 @@ public class Controller {
         walker2.walk(listener,tree);
         System.out.println("---------");
 
-        Map<Key,String> TAC = new HashMap<>();
-        TAC.putAll(listener.getTAC());
         printMap(listener.getTAC());
 
-//        Interpreter interpreter = new Interpreter(listener.getTAC(),consoleArea);
-//        interpreter.interpret();
+        SampleListener listener2 = new SampleListener();
+        walker2.walk(listener2,tree);
+        Interpreter interpreter = new Interpreter(listener2.getTAC(),consoleArea);
+        interpreter.functionCall(Constants.MAIN);
     }
 
     public void printMap(Map mp) {
@@ -332,8 +338,8 @@ public class Controller {
                 System.out.print("\t");
                 toAdd += "\t";
                 if (curKey.getName().charAt(0)=='@') {
-                    System.out.println(curKey.getName() + " " + pair.getValue());
-                    toAdd += curKey.getName() + " " + pair.getValue();
+                    System.out.println(curKey.getName() + " " + (curKey.getInfo() != null ? curKey.getInfo() : "") + " " + pair.getValue());
+                    toAdd += curKey.getName() + " " + (curKey.getInfo() != null ? curKey.getInfo() : "") + " " + pair.getValue();
                 }
                 else if (curVal.isEmpty()){
                     System.out.println(curKey.getName());
@@ -366,6 +372,7 @@ public class Controller {
     public void onClearClick(ActionEvent actionEvent) {
         codeArea.clear();
         consoleArea.clear();
+        consoleArea2.getItems().clear();
         Main.getInstance().successNotif("Clear","Editor cleared");
         updateStatus("Console ready");
     }

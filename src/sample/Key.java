@@ -2,11 +2,11 @@ package sample;
 
 public class Key {
     private String name;
-    private String label;
+    private String info;
 
-    public Key(String name, String label) {
+    public Key(String name, String info) {
         this.name = name;
-        this.label = label;
+        this.info = info;
     }
 
     public Key(String name) {
@@ -21,11 +21,11 @@ public class Key {
         this.name = name;
     }
 
-    public String getLabel() {
-        return label;
+    public String getInfo() {
+        return info;
     }
 
-    public void setLabel(String label) {
-        this.label = label;
+    public void setInfo(String info) {
+        this.info = info;
     }
 }

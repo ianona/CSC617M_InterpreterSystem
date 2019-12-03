@@ -664,7 +664,8 @@ expression
 //    | classType '::' typeArguments? NEW
 
 //    | SCAN '(' (STRING_LITERAL('+'IDENTIFIER)*)? ')' # Input
-    | SCAN '(' primary ')' # Input
+//    | SCAN '(' primary ')' # Input
+    | SCAN '(' primary ('+'primary)* ')' # Input
     ;
 
 // Java8

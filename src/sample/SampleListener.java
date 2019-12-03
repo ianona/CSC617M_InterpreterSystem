@@ -43,44 +43,44 @@ public class SampleListener extends EzBrewBaseListener {
 
     @Override public void exitForStmt(EzBrewParser.ForStmtContext ctx) {
         String endLbl = loopStack.peek().getEndLbl();
-        TAC.put(new Key(endLbl),null);
+        TAC.put(new Key(endLbl, Constants.KTYPE_LABEL),null);
         loopStack.pop();
     }
 
     @Override public void enterCompare1(EzBrewParser.Compare1Context ctx){
         if (ctx.getParent() instanceof EzBrewParser.ForControlContext){
             String conditionalLbl = loopStack.peek().getConditionLbl();
-            TAC.put(new Key(conditionalLbl),null);
+            TAC.put(new Key(conditionalLbl, Constants.KTYPE_LABEL),null);
         }
     }
 
     @Override public void enterCompare2(EzBrewParser.Compare2Context ctx){
         if (ctx.getParent() instanceof EzBrewParser.ForControlContext){
             String conditionalLbl = loopStack.peek().getConditionLbl();
-            TAC.put(new Key(conditionalLbl),null);
+            TAC.put(new Key(conditionalLbl, Constants.KTYPE_LABEL),null);
         }
     }
 
     @Override public void enterBlockStmt(EzBrewParser.BlockStmtContext ctx) {
         if (ctx.getParent() instanceof EzBrewParser.IfStmtContext) {
             String label = labelStack.pop();
-            TAC.put(new Key(label),null);
+            TAC.put(new Key(label, Constants.KTYPE_LABEL),null);
         }
 
         if (ctx.getParent() instanceof EzBrewParser.ForStmtContext) {
             String bodyLabel = loopStack.peek().getBodyLbl();
-            TAC.put(new Key(bodyLabel),null);
+            TAC.put(new Key(bodyLabel, Constants.KTYPE_LABEL),null);
         }
     }
 
     @Override public void exitIfStmt(EzBrewParser.IfStmtContext ctx) {
         String label = skipStack.pop();
-        TAC.put(new Key(label),null);
+        TAC.put(new Key(label, Constants.KTYPE_LABEL),null);
     }
 
     @Override public void exitIfStmt2(EzBrewParser.IfStmt2Context ctx) {
         String label = skipStack.pop();
-        TAC.put(new Key(label),null);
+        TAC.put(new Key(label, Constants.KTYPE_LABEL),null);
     }
 
 
@@ -92,7 +92,7 @@ public class SampleListener extends EzBrewBaseListener {
             TAC.put(new Key("@Goto"),exitIfLbl);
 
             String label = skipStack.pop();
-            TAC.put(new Key(label),null);
+            TAC.put(new Key(label, Constants.KTYPE_LABEL),null);
 
             skipStack.push(exitIfLbl);
         }
@@ -109,10 +109,11 @@ public class SampleListener extends EzBrewBaseListener {
             label_count++;
             labelStack.push(label);
 
-            String left = "@If " + operationStack.pop();
-            String right = "Goto" + label;
+//            String left = "@If " + operationStack.pop();
+            String left = "@If";
+            String right = "Goto " + label;
 
-            TAC.put(new Key(left),right);
+            TAC.put(new Key(left, operationStack.pop()),right);
 
             String skip = "_L"+label_count;
             label_count++;
@@ -167,11 +168,11 @@ public class SampleListener extends EzBrewBaseListener {
         assignmentStack.push(left);
 
         if (ctx.getParent() instanceof EzBrewParser.ForControlContext){
-            String left2 = "@If " + operationStack.pop();
+            String left2 = "@If";
             assignmentStack.pop();
             String right2 = "Goto " + loopStack.peek().getBodyLbl();
 
-            TAC.put(new Key(left2),right2);
+            TAC.put(new Key(left2, operationStack.pop()),right2);
             TAC.put(new Key("@Goto"),loopStack.peek().getEndLbl());
         }
     }
@@ -218,7 +219,7 @@ public class SampleListener extends EzBrewBaseListener {
     @Override public void enterIncDec(EzBrewParser.IncDecContext ctx) {
         if (ctx.getParent().getParent() instanceof EzBrewParser.ForControlContext){
             String updateLbl = loopStack.peek().getUpdateLbl();
-            TAC.put(new Key(updateLbl),null);
+            TAC.put(new Key(updateLbl, Constants.KTYPE_LABEL),null);
         }
     }
 
@@ -235,7 +236,7 @@ public class SampleListener extends EzBrewBaseListener {
                 TAC.put(new Key(left),identifier + " - 1");
                 break;
             default:
-                TAC.put(new Key("ERROR"),null);
+                TAC.put(new Key("ERROR", Constants.KTYPE_ERROR),null);
         }
 
         if (ctx.getParent().getParent() instanceof EzBrewParser.ForControlContext){
@@ -272,6 +273,7 @@ public class SampleListener extends EzBrewBaseListener {
             else {
                 String left = ((EzBrewParser.IdentifierContext) ctx.getChild(0).getChild(0)).IDENTIFIER().getText();
                 String right = assignmentStack.pop();
+                System.out.println("FAM! IM ASSIGNING " + left + " AND " + right);
 
                 TAC.put(new Key(left),right);
                 operationStack.pop();
@@ -306,20 +308,25 @@ public class SampleListener extends EzBrewBaseListener {
     }
 
     @Override public void exitPrintStmt(EzBrewParser.PrintStmtContext ctx) {
-        String right = operationStack.pop();
+        int paramaters = ctx.getChildCount() / 2 - 1;
+        for (int i=0;i<paramaters;i++) {
+            String right = operationStack.pop();
+            TAC.put(new Key("@PushParam"), right);
+        }
 
-        TAC.put(new Key("@PushParam"),right);
-        TAC.put(new Key("@LCall"),"_Print");
+        TAC.put(new Key("@LCall"), "_Print " + paramaters);
     }
 
     @Override public void exitInput(EzBrewParser.InputContext ctx) {
-        String right = operationStack.pop();
-
-        TAC.put(new Key("@PushParam"),right);
+        int paramaters = ctx.getChildCount() / 2 - 1;
+        for (int i=0;i<paramaters;i++) {
+            String right = operationStack.pop();
+            TAC.put(new Key("@PushParam"), right);
+        }
 
         String left = "_t"+count;
         count++;
-        TAC.put(new Key(left),"@LCall _Scan");
+        TAC.put(new Key(left),"@LCall _Scan " + paramaters);
         assignmentStack.push(left);
         operationStack.push(left);
     }
@@ -333,13 +340,32 @@ public class SampleListener extends EzBrewBaseListener {
             TAC.put(new Key(left),right);
             operationStack.pop();
         }
-
     }
 
     @Override public void enterLocalVariableDeclaration(EzBrewParser.LocalVariableDeclarationContext ctx) {
         String type = ctx.getChild(0).getText();
         String varName = ctx.getChild(1).getChild(0).getChild(0).getText();
         TAC.put(new Key("@Declare"),type + " " + varName);
+    }
+
+
+    @Override public void enterForInit(EzBrewParser.ForInitContext ctx) {
+        if (ctx.getChildCount() > 1){
+            String type = ctx.getChild(0).getChild(0).getChild(0).getText();
+            String varName = ctx.getChild(1).getChild(0).getText();
+            TAC.put(new Key("@Declare"),type + " " + varName);
+        }
+    }
+
+    @Override public void exitForInit(EzBrewParser.ForInitContext ctx) {
+        if (!assignmentStack.empty() && ctx.getChildCount() > 1){
+            String left = ctx.getChild(1).getChild(0).getText();
+            String right = assignmentStack.pop();
+            System.out.println("FAM! IM ASSIGNING " + left + " AND " + right);
+
+            TAC.put(new Key(left),right);
+            operationStack.pop();
+        }
     }
 
     @Override public void exitCreator(EzBrewParser.CreatorContext ctx) {
@@ -385,11 +411,11 @@ public class SampleListener extends EzBrewBaseListener {
 
     @Override public void enterMethodDeclaration(EzBrewParser.MethodDeclarationContext ctx) {
         String methodName = ctx.getChild(1).getText();
-        TAC.put(new Key(methodName),null);
+        TAC.put(new Key(methodName, Constants.KTYPE_FUNC),null);
     }
 
     @Override public void exitMethodDeclaration(EzBrewParser.MethodDeclarationContext ctx) {
-        TAC.put(new Key("EndFunc"),"");
+        TAC.put(new Key("@EndFunc"),"");
     }
 
     public Map<Key,String> getTAC(){
