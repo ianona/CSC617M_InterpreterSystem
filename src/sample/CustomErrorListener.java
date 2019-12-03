@@ -57,8 +57,8 @@ public class CustomErrorListener extends EzBrewBaseListener {
 
     @Override public void enterForInit(EzBrewParser.ForInitContext ctx) {
         String temp = ctx.getText();
-        System.out.println("@@@@-TEST-@@@@");
-        System.out.println(temp);
+//        System.out.println("@@@@-TEST-@@@@");
+//        System.out.println(temp);
 
         for(int i=0; i < assign.length; i++) {
          if (temp.contains(assign[i])) {
@@ -90,4 +90,65 @@ public class CustomErrorListener extends EzBrewBaseListener {
 //        }
     }
 
+    @Override public void exitPrintStmt(EzBrewParser.PrintStmtContext ctx) {
+        String temp = ctx.getText();
+//        System.out.println("@@@@-TEST-@@@@");
+//        System.out.println(temp);
+
+        int size = 0;
+
+        for(int i=temp.length()-1; i>-1; i--) {
+            if(')' == temp.charAt(i)){
+                size = i;
+                i=-1;
+            }
+        }
+
+        if('+' == temp.charAt(size - 1)){
+            errors.add("Error at line " + ctx.start.getLine() + ": '" + ctx.getText() + "' has extra operator/s");
+        }
+    }
+
+    @Override public void exitBlock(EzBrewParser.BlockContext ctx) {
+        String temp = ctx.getText();
+
+        temp = temp.replaceAll("\\s", "");
+        temp = temp.replaceAll("'}'", "");
+
+        int size = temp.length(), ctropen=0, ctrclose=0;
+        for(int i=0; i < size; i++) {
+            if(temp.charAt(i) == '{')
+                ctropen++;
+            if(temp.charAt(i) == '}')
+                ctrclose++;
+        }
+
+//        System.out.println("@@@@-TEST-@@@@");
+//        System.out.println(temp);
+
+        if(ctropen > ctrclose)
+            errors.add("Error at line " + ctx.start.getLine() + ": '{" + "' does not have corresponding '}'");
+    }
+
+    @Override public void exitParExp(EzBrewParser.ParExpContext ctx) {
+        String temp = ctx.getParent().getChild(0).getText();
+        int size=0;
+        temp = temp.replaceAll("\\s", "");
+
+        if(temp.equals("given")){
+            temp = ctx.getParent().getChild(1).getText();
+            if(temp.contains("=")){
+                for(int i=0; i<temp.length(); i++){
+                    if(temp.charAt(i) == '='){
+                        size++;
+                    }
+                }
+                if(size % 2 != 0) {
+                    System.out.println("@@@@-TEST-@@@@");
+                    System.out.println("Error at line " + ctx.start.getLine() + ": In the statement " + ctx.getParent().getChild(0).getText() + ctx.getParent().getChild(1).getText() + " lacking '='");
+                    errors.add("Error at line " + ctx.start.getLine() + ": In the statement " + ctx.getParent().getChild(0).getText() + ctx.getParent().getChild(1).getText() + " lacking '='");
+                }
+            }
+        }
+    }
 }
