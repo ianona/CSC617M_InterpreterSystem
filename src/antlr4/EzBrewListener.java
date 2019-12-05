@@ -38,6 +38,16 @@ public interface EzBrewListener extends ParseTreeListener {
 	 */
 	void exitClassOrInterfaceModifier(EzBrewParser.ClassOrInterfaceModifierContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link EzBrewParser#variableModifier}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariableModifier(EzBrewParser.VariableModifierContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link EzBrewParser#variableModifier}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariableModifier(EzBrewParser.VariableModifierContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link EzBrewParser#classBodyDeclaration}.
 	 * @param ctx the parse tree
 	 */
@@ -246,15 +256,17 @@ public interface EzBrewListener extends ParseTreeListener {
 	 */
 	void exitFormalParameterList(EzBrewParser.FormalParameterListContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link EzBrewParser#formalParameter}.
+	 * Enter a parse tree produced by the {@code FormalParam}
+	 * labeled alternative in {@link EzBrewParser#formalParameter}.
 	 * @param ctx the parse tree
 	 */
-	void enterFormalParameter(EzBrewParser.FormalParameterContext ctx);
+	void enterFormalParam(EzBrewParser.FormalParamContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link EzBrewParser#formalParameter}.
+	 * Exit a parse tree produced by the {@code FormalParam}
+	 * labeled alternative in {@link EzBrewParser#formalParameter}.
 	 * @param ctx the parse tree
 	 */
-	void exitFormalParameter(EzBrewParser.FormalParameterContext ctx);
+	void exitFormalParam(EzBrewParser.FormalParamContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EzBrewParser#lastFormalParameter}.
 	 * @param ctx the parse tree

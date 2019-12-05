@@ -4,10 +4,14 @@ import java.util.regex.Pattern;
 
 public class Constants {
     public static final String APP_NAME = "WiM Editor";
+    public static final String WATCH_NAME = "Debugging Environment";
     public static final String EZB_EXTENSION = ".ezb";
 
     public static int SCREEN_WIDTH;
     public static int SCREEN_HEIGHT;
+
+    public static int SCREEN_WIDTH_2;
+    public static int SCREEN_HEIGHT_2;
 
     public static final String MODE_LIGHT = "Light";
     public static final String MODE_DARK = "Dark";
@@ -20,16 +24,23 @@ public class Constants {
     public static final String DTYPE_FLOAT = "sdec";
     public static final String DTYPE_DOUBLE = "ddec";
     public static final String DTYPE_BOOL = "bool";
+    public static final String DTYPE_VOID = "emp";
 
     public static final String TYPE_VAR = "var";
     public static final String TYPE_PROC = "proc";
 
+    public static final String KTYPE_LOOP = "loop";
     public static final String KTYPE_LABEL = "label";
     public static final String KTYPE_FUNC = "method";
     public static final String KTYPE_ERROR = "error";
 
     public static final String MAIN = "main";
 
+    public static final String DECL_CONSTANT = "abs";
+    public static final String DECL_NORMAL = "normal";
+
+    public static final String PARAM_FUNC = "func";
+    public static final String PARAM_PRINT = "print";
 
     public static final String[] KEYWORDS = new String[] {
             "null",
@@ -46,7 +57,7 @@ public class Constants {
             "other",
 //            "catalog",
 //            "childof",
-//            "abs",
+            "abs",
 //            "lastly",
             "sdec",
             "loop",

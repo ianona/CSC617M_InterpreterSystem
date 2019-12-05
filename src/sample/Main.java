@@ -22,7 +22,7 @@ public class Main extends Application {
 
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
         Constants.SCREEN_HEIGHT = (int) (primaryScreenBounds.getHeight() * 0.85);
-        Constants.SCREEN_WIDTH = (int) (primaryScreenBounds.getWidth() * 0.70);
+        Constants.SCREEN_WIDTH = (int) (primaryScreenBounds.getWidth() * 0.60);
         primaryStage.setTitle(Constants.APP_NAME);
 
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -37,11 +37,6 @@ public class Main extends Application {
         primaryStage.getScene().getStylesheets().add(
                 this.getClass().getResource("light-mode.css").toExternalForm()
         );
-
-//        boolean x;
-//        if(x = 0) {
-//            x = 1;
-//        }
 
         // set current IDE mode
         mode = Constants.MODE_LIGHT;
@@ -65,6 +60,10 @@ public class Main extends Application {
 
     public void failNotif(String title, String body){
         Notifications.create().title(title + " Fail").text(body).position(Pos.BOTTOM_RIGHT).owner(primaryStage).showError();
+    }
+
+    public void infoNotif(String title, String body){
+        Notifications.create().title(title).text(body).position(Pos.BOTTOM_RIGHT).owner(primaryStage).showConfirm();
     }
 
     public Stage getPrimaryStage(){

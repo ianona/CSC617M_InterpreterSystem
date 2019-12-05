@@ -2,9 +2,10 @@ package sample;
 
 import antlr4.EzBrewBaseListener;
 import antlr4.EzBrewParser;
-import org.antlr.v4.runtime.ParserRuleContext;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Stack;
 
 public class SampleListener extends EzBrewBaseListener {
     private Map<Key,String> TAC = new LinkedHashMap<>();
@@ -15,19 +16,16 @@ public class SampleListener extends EzBrewBaseListener {
     private Stack<String> assignmentStack = new Stack<>();
     private Stack<String> labelStack = new Stack<>();
     private Stack<String> skipStack = new Stack<>();
+    private Stack<String> paramStack = new Stack<>();
     private Stack<LoopStackEntry> loopStack = new Stack<>();
-//    private LinkedList<String> labelQ = new LinkedList<>();
-//    private Stack<String> parStack = new Stack<>();
-//    private Stack<String> exprStack = new Stack<>();
-//    private Stack<String> literalStack = new Stack<>();
 
-    @Override public void enterEveryRule(ParserRuleContext ctx) {  //see gramBaseListener for allowed functions
-        System.out.println("rule entered: " + ctx.getText());      //code that executes per rule
-    }
-
-    @Override public void exitEveryRule(ParserRuleContext ctx) {  //see gramBaseListener for allowed functions
-        System.out.println("rule exited: " + ctx.getText());      //code that executes per rule
-    }
+//    @Override public void enterEveryRule(ParserRuleContext ctx) {  //see gramBaseListener for allowed functions
+//        System.out.println("rule entered: " + ctx.getText());      //code that executes per rule
+//    }
+//
+//    @Override public void exitEveryRule(ParserRuleContext ctx) {  //see gramBaseListener for allowed functions
+//        System.out.println("rule exited: " + ctx.getText());      //code that executes per rule
+//    }
 
     @Override public void enterForStmt(EzBrewParser.ForStmtContext ctx) {
         String conditionLbl = "_L"+label_count;
@@ -69,7 +67,7 @@ public class SampleListener extends EzBrewBaseListener {
 
         if (ctx.getParent() instanceof EzBrewParser.ForStmtContext) {
             String bodyLabel = loopStack.peek().getBodyLbl();
-            TAC.put(new Key(bodyLabel, Constants.KTYPE_LABEL),null);
+            TAC.put(new Key(bodyLabel, Constants.KTYPE_LOOP),null);
         }
     }
 
@@ -227,7 +225,7 @@ public class SampleListener extends EzBrewBaseListener {
         String op = ctx.postfix.getText();
         String identifier = ctx.IDENTIFIER().getText();
         String left = identifier;
-        System.out.println("OVER HERE:"+identifier + ":"+op);
+//        System.out.println("OVER HERE:"+identifier + ":"+op);
         switch(op){
             case "++":
                 TAC.put(new Key(left),identifier + " + 1");
@@ -273,7 +271,7 @@ public class SampleListener extends EzBrewBaseListener {
             else {
                 String left = ((EzBrewParser.IdentifierContext) ctx.getChild(0).getChild(0)).IDENTIFIER().getText();
                 String right = assignmentStack.pop();
-                System.out.println("FAM! IM ASSIGNING " + left + " AND " + right);
+//                System.out.println("FAM! IM ASSIGNING " + left + " AND " + right);
 
                 TAC.put(new Key(left),right);
                 operationStack.pop();
@@ -285,8 +283,9 @@ public class SampleListener extends EzBrewBaseListener {
         operationStack.push(ctx.IDENTIFIER().toString());
         assignmentStack.push(ctx.IDENTIFIER().toString());
 
+        // Pushing function parameter
         if (ctx.getParent().getParent().getParent().getParent() instanceof EzBrewParser.MthdCallContext) {
-            TAC.put(new Key("@PushParam"),operationStack.pop());
+            TAC.put(new Key("@PushParam", Constants.PARAM_FUNC),operationStack.pop());
             assignmentStack.pop();
         }
     }
@@ -301,8 +300,9 @@ public class SampleListener extends EzBrewBaseListener {
         operationStack.push(left);
         assignmentStack.push(left);
 
+        // Pushing function parameter
         if (ctx.getParent().getParent().getParent().getParent() instanceof EzBrewParser.MthdCallContext) {
-            TAC.put(new Key("@PushParam"),operationStack.pop());
+            TAC.put(new Key("@PushParam",Constants.PARAM_FUNC),operationStack.pop());
             assignmentStack.pop();
         }
     }
@@ -311,7 +311,8 @@ public class SampleListener extends EzBrewBaseListener {
         int paramaters = ctx.getChildCount() / 2 - 1;
         for (int i=0;i<paramaters;i++) {
             String right = operationStack.pop();
-            TAC.put(new Key("@PushParam"), right);
+            // Push parameter for print function
+            TAC.put(new Key("@PushParam",Constants.PARAM_PRINT), right);
         }
 
         TAC.put(new Key("@LCall"), "_Print " + paramaters);
@@ -321,7 +322,8 @@ public class SampleListener extends EzBrewBaseListener {
         int paramaters = ctx.getChildCount() / 2 - 1;
         for (int i=0;i<paramaters;i++) {
             String right = operationStack.pop();
-            TAC.put(new Key("@PushParam"), right);
+            // Push parameter for scan function
+            TAC.put(new Key("@PushParam",Constants.PARAM_PRINT), right);
         }
 
         String left = "_t"+count;
@@ -343,9 +345,19 @@ public class SampleListener extends EzBrewBaseListener {
     }
 
     @Override public void enterLocalVariableDeclaration(EzBrewParser.LocalVariableDeclarationContext ctx) {
-        String type = ctx.getChild(0).getText();
-        String varName = ctx.getChild(1).getChild(0).getChild(0).getText();
-        TAC.put(new Key("@Declare"),type + " " + varName);
+        if (ctx.getChildCount() == 2) {
+            // normal variable declaration
+            String type = ctx.getChild(0).getText();
+            String varName = ctx.getChild(1).getChild(0).getChild(0).getText();
+            TAC.put(new Key("@Declare",Constants.DECL_NORMAL),type + " " + varName);
+        } else if (ctx.getChildCount() == 3){
+            // constant declaration
+            String type = ctx.getChild(1).getText();
+            String varName = ctx.getChild(2).getChild(0).getChild(0).getText();
+
+            TAC.put(new Key("@Declare",Constants.DECL_CONSTANT),type + " " + varName);
+        }
+
     }
 
 
@@ -353,7 +365,7 @@ public class SampleListener extends EzBrewBaseListener {
         if (ctx.getChildCount() > 1){
             String type = ctx.getChild(0).getChild(0).getChild(0).getText();
             String varName = ctx.getChild(1).getChild(0).getText();
-            TAC.put(new Key("@Declare"),type + " " + varName);
+            TAC.put(new Key("@Declare",Constants.DECL_NORMAL),type + " " + varName);
         }
     }
 
@@ -361,7 +373,6 @@ public class SampleListener extends EzBrewBaseListener {
         if (!assignmentStack.empty() && ctx.getChildCount() > 1){
             String left = ctx.getChild(1).getChild(0).getText();
             String right = assignmentStack.pop();
-            System.out.println("FAM! IM ASSIGNING " + left + " AND " + right);
 
             TAC.put(new Key(left),right);
             operationStack.pop();
@@ -394,25 +405,30 @@ public class SampleListener extends EzBrewBaseListener {
         assignmentStack.push(left);
         operationStack.push(left);
 
+        // Push parameter for function
         if (ctx.getParent().getParent().getParent() instanceof EzBrewParser.MthdCallContext) {
-            TAC.put(new Key("@PushParam"),operationStack.pop());
+            TAC.put(new Key("@PushParam",Constants.PARAM_FUNC),operationStack.pop());
             assignmentStack.pop();
         }
     }
 
-//    @Override public void exitParEps(EzBrewParser.ParEpsContext ctx) {
-//        String left = "_t"+count;
-//        count++;
-//        String right = parStack.pop();
-//        TAC.put(left,right);
-//        operationStack.push(left);
-//    }
-
-
     @Override public void enterMethodDeclaration(EzBrewParser.MethodDeclarationContext ctx) {
         String methodName = ctx.getChild(1).getText();
-        TAC.put(new Key(methodName, Constants.KTYPE_FUNC),null);
+        int params = ctx.getChild(2).getChild(1).getChildCount() - ((ctx.getChild(2).getChild(1).getChildCount()-1)/2);
+        String paramInfo = "";
+        for (int i = 0; i<params; i++){
+            String type = ctx.getChild(2).getChild(1).getChild(i*2).getChild(0).getText();
+            String name = ctx.getChild(2).getChild(1).getChild(i*2).getChild(1).getText();
+            paramInfo += type + "," + name + "@";
+        }
+        TAC.put(new Key(methodName, Constants.KTYPE_FUNC, new String[]{ctx.getChild(0).getChild(0).getText(),paramInfo}),null);
     }
+
+    @Override public void exitReturnStmt(EzBrewParser.ReturnStmtContext ctx) {
+        TAC.put(new Key("@Return"),operationStack.pop());
+    }
+
+    @Override public void exitFormalParameters(EzBrewParser.FormalParametersContext ctx) { }
 
     @Override public void exitMethodDeclaration(EzBrewParser.MethodDeclarationContext ctx) {
         TAC.put(new Key("@EndFunc"),"");

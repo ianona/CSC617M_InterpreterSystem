@@ -29,6 +29,12 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitClassOrInterfaceModifier(EzBrewParser.ClassOrInterfaceModifierContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link EzBrewParser#variableModifier}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVariableModifier(EzBrewParser.VariableModifierContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#classBodyDeclaration}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -153,11 +159,12 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFormalParameterList(EzBrewParser.FormalParameterListContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link EzBrewParser#formalParameter}.
+	 * Visit a parse tree produced by the {@code FormalParam}
+	 * labeled alternative in {@link EzBrewParser#formalParameter}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFormalParameter(EzBrewParser.FormalParameterContext ctx);
+	T visitFormalParam(EzBrewParser.FormalParamContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#lastFormalParameter}.
 	 * @param ctx the parse tree

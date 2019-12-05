@@ -10,7 +10,7 @@ CASE:               'sample';//'case';
 //CATCH:              'handle';//'catch';
 CHAR:               'letter';//'char';
 //CLASS:              'blueprint';//'class';
-CONST:              'perm';//'const';
+//CONST:              'perm';//'const';
 //CONTINUE:           'continue';
 //DEFAULT:            'default';
 DO:                 'do';//'do';
@@ -18,7 +18,7 @@ DOUBLE:             'ddec';//'double';
 ELSE:               'other';//'else';
 //ENUM:               'catalog';//'enum';
 //EXTENDS:            'childof';//'extends';
-//FINAL:              'abs';//'final';
+FINAL:              'abs';//'final';
 //FINALLY:            'lastly';//'finally';
 FLOAT:              'sdec';//'float';
 FOR:                'loop';//'for';
@@ -215,10 +215,10 @@ classOrInterfaceModifier
 //    | STRICTFP
     ;
 //
-//variableModifier
-//    : FINAL
+variableModifier
+    : FINAL
 //    | annotation
-//    ;
+    ;
 
 //classDeclaration
 //    : CLASS IDENTIFIER typeParameters?
@@ -411,7 +411,7 @@ formalParameterList
 
 formalParameter
 //    : variableModifier* typeType variableDeclaratorId
-    : typeType variableDeclaratorId
+    : typeType variableDeclaratorId # FormalParam
     ;
 
 lastFormalParameter
@@ -519,8 +519,8 @@ blockStatement
     ;
 
 localVariableDeclaration
-//    : variableModifier* typeType variableDeclarators
-    : typeType variableDeclarators
+    : variableModifier* typeType variableDeclarators
+    | typeType variableDeclarators
     ;
 
 //localTypeDeclaration

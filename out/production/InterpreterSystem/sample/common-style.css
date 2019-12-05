@@ -4,10 +4,8 @@
 }
 
 .listView {
-    -fx-focus-color: transparent;
-    -fx-faint-focus-color: transparent;
-}
 
+}
 
 .text-area .content {
     -fx-background-color:-fx-control-inner-background;

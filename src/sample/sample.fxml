@@ -3,6 +3,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
@@ -40,6 +41,7 @@
                     <Insets bottom="2.0" top="2.0" />
                 </VBox.margin>
             </Button>
+            <CheckBox fx:id="parseChk" mnemonicParsing="false" text="Parse Tree" />
             <Button fx:id="runBtn" mnemonicParsing="false" onAction="#onRunClick" text="Run">
                 <graphic>
                     <FontAwesomeIconView fill="#17d052" glyphName="PLAY" size="15" strokeType="OUTSIDE" strokeWidth="0.0" />
@@ -48,9 +50,33 @@
                     <Insets bottom="2.0" top="2.0" />
                 </VBox.margin>
             </Button>
+            <Button fx:id="runStepBtn" mnemonicParsing="false" onAction="#onRunStepClick" text="Run (Step)">
+                <graphic>
+                    <FontAwesomeIconView fill="#3467d7" glyphName="PLAY" size="15" strokeType="OUTSIDE" strokeWidth="0.0" />
+                </graphic>
+                <VBox.margin>
+                    <Insets bottom="2.0" top="2.0" />
+                </VBox.margin>
+            </Button>
+            <Button fx:id="stopBtn" disable="true" mnemonicParsing="false" onAction="#onStopClick" text="Stop">
+                <graphic>
+                    <FontAwesomeIconView fill="#ee3333" glyphName="STOP" size="15" strokeType="OUTSIDE" strokeWidth="0.0" />
+                </graphic>
+                <VBox.margin>
+                    <Insets bottom="2.0" top="2.0" />
+                </VBox.margin>
+            </Button>
+            <Button fx:id="refactorBtn" mnemonicParsing="false" onAction="#onRefactorClick" text="Refactor">
+                <graphic>
+                    <FontAwesomeIconView fill="#00ffd0" glyphName="DEDENT" size="15" strokeType="OUTSIDE" strokeWidth="0.0" />
+                </graphic>
+                <VBox.margin>
+                    <Insets bottom="2.0" top="2.0" />
+                </VBox.margin>
+            </Button>
             <Button fx:id="clearBtn" mnemonicParsing="false" onAction="#onClearClick" text="Clear">
                 <graphic>
-                    <FontAwesomeIconView fill="#414dd3" glyphName="REFRESH" size="15" strokeType="OUTSIDE" strokeWidth="0.0" />
+                    <FontAwesomeIconView fill="#adadb2" glyphName="REFRESH" size="15" strokeType="OUTSIDE" strokeWidth="0.0" />
                 </graphic>
                 <VBox.margin>
                     <Insets bottom="2.0" top="2.0" />
@@ -78,16 +104,6 @@
                 </graphic>
                 <VBox.margin>
                     <Insets bottom="2.0" top="2.0" />
-                </VBox.margin>
-            </Button>
-            <Button fx:id="dummyBtn" mnemonicParsing="false" onAction="#onDummyClick" text="Dummy">
-                <graphic>
-                    <FontAwesomeIconView fill="#727272" glyphName="ANCHOR" size="15" strokeType="OUTSIDE" strokeWidth="0.0" />
-                </graphic>
-                <VBox.margin>
-                    <Insets bottom="2.0" top="2.0" />
-
-
                 </VBox.margin>
             </Button>
         </items>

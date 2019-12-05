@@ -52,6 +52,18 @@ public class EzBrewBaseListener implements EzBrewListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterVariableModifier(EzBrewParser.VariableModifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVariableModifier(EzBrewParser.VariableModifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterClassBodyDeclaration(EzBrewParser.ClassBodyDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -292,13 +304,13 @@ public class EzBrewBaseListener implements EzBrewListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFormalParameter(EzBrewParser.FormalParameterContext ctx) { }
+	@Override public void enterFormalParam(EzBrewParser.FormalParamContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFormalParameter(EzBrewParser.FormalParameterContext ctx) { }
+	@Override public void exitFormalParam(EzBrewParser.FormalParamContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

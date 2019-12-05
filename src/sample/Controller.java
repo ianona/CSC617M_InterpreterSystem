@@ -4,17 +4,23 @@ import antlr4.EzBrewLexer;
 import antlr4.EzBrewParser;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
+import javafx.stage.*;
 import javafx.util.Pair;
 import org.antlr.v4.gui.TreeViewer;
 import org.antlr.v4.runtime.*;
@@ -33,9 +39,12 @@ import java.time.Duration;
 import java.util.*;
 import java.util.List;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Controller {
     @FXML private Button runBtn;
+    @FXML private Button runStepBtn;
+    @FXML private Button stopBtn;
     @FXML private CodeArea codeArea;
     @FXML private TextArea consoleArea;
     @FXML private ListView consoleArea2;
@@ -44,6 +53,12 @@ public class Controller {
     @FXML private AnchorPane topAnchor;
     @FXML private SplitPane splitPane;
     @FXML private StatusBar statusBar;
+    @FXML private CheckBox parseChk;
+
+    private Stage watchStage;
+    private int stepCount;
+    private String stepFunc;
+    private Interpreter stepInterpreter;
 
     @FXML public void initialize(){
         codeArea.setParagraphGraphicFactory(LineNumberFactory.get(codeArea));
@@ -112,6 +127,10 @@ public class Controller {
     private void sideLog(List<String> toLog){
         consoleArea2.getItems().clear();
         consoleArea2.setItems(FXCollections.observableList(toLog));
+    }
+
+    private void sideLogSelect(int index){
+        consoleArea2.getSelectionModel().select(index);
     }
 
     private void clearConsole(){
@@ -197,20 +216,17 @@ public class Controller {
 
     public void onParseClick(ActionEvent actionEvent) {
         clearConsole();
-//        CollectingErrorListener listener = new CollectingErrorListener();
-//        System.out.println(codeArea.getText());
         EzBrewLexer lexer = new EzBrewLexer(new ANTLRInputStream(codeArea.getText()));
-//        lexer.addErrorListener(listener);
         TokenStream tokenStream = new CommonTokenStream(lexer);
         EzBrewParser parser = new EzBrewParser(tokenStream);
-//        parser.addErrorListener(listener);
-//        ParseTree tree = parser.compilationUnit();
         ParseTree tree = parser.start();
-        TreeViewer viewr = new TreeViewer(Arrays.asList(parser.getRuleNames()),tree);
-//        viewr.setScale(.3);
-        viewr.open();
-        viewr.setBoxColor(Color.black);
-        viewr.setTextColor(Color.WHITE);
+
+        if (parseChk.isSelected()) {
+            TreeViewer viewr = new TreeViewer(Arrays.asList(parser.getRuleNames()), tree);
+            viewr.open();
+            viewr.setBoxColor(Color.black);
+            viewr.setTextColor(Color.WHITE);
+        }
 
         CustomErrorListener listener = new CustomErrorListener();
         ParseTreeWalker walker = new ParseTreeWalker();
@@ -224,78 +240,15 @@ public class Controller {
                 consoleLog(error);
         }
 
-        /*
-        int errors_count = listener.getSyntaxErrors().size();
-
-        if (errors_count != 0) {
-            consoleLog("----------Parsing Errors----------");
-            int count = 0;
-            for (SyntaxError error:listener.getSyntaxErrors()){
-                count++;
-                // default error message
-                String errorMsg = error.getMessage() + " at line " + error.getLine();
-
-                // make error messages nice here, label cases appropriately
-                // errors for missing identifiers
-                if (errorMsg.contains("missing")) {
-                    char symbol = error.getMessage().charAt(error.getMessage().indexOf("'") + 1);
-                    String splitMessage[] = error.getMessage().split(" ",4);
-
-                    if(symbol == ';') {
-                        errorMsg = "Line " + error.getLine() + ": Detected invalid syntax; consider replacing or removing expression " + splitMessage[3];
-                    }
-                    else if(splitMessage[3].contains("++") || splitMessage[3].contains("--") || splitMessage[3].contains("**") || splitMessage[3].contains("//")) {
-                        errorMsg = "Line "  + error.getLine() + ": Detected invalid syntax; consider removing excess characters in expression " + splitMessage[3];
-                    }
-                    else {
-                        System.out.println(splitMessage[3]);
-                        errorMsg = "Line " + error.getLine() + ": Detected invalid syntax; consider adding expression " + splitMessage[1];
-                    }
-                }
-                // errors for invalid inputs, with missing expected characters
-                else if (errorMsg.contains("mismatched")) {
-                    char symbol = error.getMessage().charAt(error.getMessage().indexOf("'") + 1);
-                    String splitMessage[] = error.getMessage().split(" ", 5);
-
-                    errorMsg = "Line " + error.getLine() + ": Detected invalid syntax; consider replacing or removing expression " + splitMessage[2];
-
-                    if(splitMessage[4].equals("STRING_LITERAL")) {
-                        errorMsg = "Line " + error.getLine() + ": Detected invalid syntax; consider adding valid string literal enclosed in quotation marks";
-                    }
-                }
-                // errors for invalid inputs, with no detected alternative
-                else if (errorMsg.contains("viable")) {
-                    String splitMessage[] = error.getMessage().split(" ",6);
-                    errorMsg = "Line " + error.getLine() + ": Detected invalid syntax; consider replacing or removing expression " + splitMessage[5];
-                }
-                // errors for extraneous inputs
-                else if (errorMsg.contains("extraneous")) {
-                    String splitMessage[] = error.getMessage().split(" ",5);
-                    errorMsg = "Line " + error.getLine() + ": Detected invalid syntax; consider replacing or removing expression " + splitMessage[2];
-
-                    if(splitMessage[2].contains("<EOF>")) {
-                        errorMsg = "Line "  + error.getLine() + ": Detected invalid syntax; consider adding missing '}' at EOF";
-                    }
-                }
-
-                consoleLog("[" + count + "] " + errorMsg);
-            }
-        } else consoleLog("----------No Parsing Errors----------");
-        */
-
     }
 
     public void onRunClick(ActionEvent actionEvent) {
-//        Main.getInstance().failNotif("Run","Function not implemented yet");
         clearConsole();
 
         EzBrewLexer lexer = new EzBrewLexer(new ANTLRInputStream(codeArea.getText()));
         TokenStream tokenStream = new CommonTokenStream(lexer);
         EzBrewParser parser = new EzBrewParser(tokenStream);
         ParseTree tree = parser.start();
-//        TreeViewer viewr = new TreeViewer(Arrays.asList(parser.getRuleNames()),tree);
-//        viewr.setScale(.3);
-//        viewr.open();
 
         CustomErrorListener errorListener = new CustomErrorListener();
         ParseTreeWalker walker = new ParseTreeWalker();
@@ -365,8 +318,92 @@ public class Controller {
         sideLog(TAC);
     }
 
-    public void onDummyClick(ActionEvent actionEvent) {
 
+    public void onRunStepClick(ActionEvent actionEvent) {
+        if (watchStage == null) {
+            try {
+                Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+                Constants.SCREEN_HEIGHT_2 = (int) (primaryScreenBounds.getHeight() * 0.70);
+                Constants.SCREEN_WIDTH_2 = (int) (primaryScreenBounds.getWidth() * 0.35);
+
+                Parent root = FXMLLoader.load(getClass().getResource("watchstage.fxml"));
+                watchStage = new Stage();
+                watchStage.setScene(new Scene(root, Constants.SCREEN_WIDTH_2, Constants.SCREEN_HEIGHT_2));
+                watchStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                    @Override
+                    public void handle(WindowEvent event) {
+                        // consume event
+                        event.consume();
+                    }
+                });
+                watchStage.initStyle(StageStyle.UTILITY);
+                watchStage.setTitle(Constants.WATCH_NAME);
+                watchStage.show();
+
+                stopBtn.setDisable(false);
+                runBtn.setDisable(true);
+                stepCount = 0;
+                stepFunc = Constants.MAIN;
+
+                clearConsole();
+
+                EzBrewLexer lexer = new EzBrewLexer(new ANTLRInputStream(codeArea.getText()));
+                TokenStream tokenStream = new CommonTokenStream(lexer);
+                EzBrewParser parser = new EzBrewParser(tokenStream);
+                ParseTree tree = parser.start();
+
+                CustomErrorListener errorListener = new CustomErrorListener();
+                ParseTreeWalker walker = new ParseTreeWalker();
+                walker.walk(errorListener,tree);
+                List<String> errors = errorListener.getErrors();
+
+                if (errors.size() != 0) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Parsing error detected");
+                    alert.setContentText("Will not execute code");
+
+                    alert.showAndWait();
+                    return;
+                }
+
+                SampleListener listener = new SampleListener();
+                walker.walk(listener,tree);
+                printMap(listener.getTAC());
+
+                ParseTreeWalker walker2 = new ParseTreeWalker();
+                SampleListener listener2 = new SampleListener();
+                walker2.walk(listener2,tree);
+                stepInterpreter = new Interpreter(listener2.getTAC(),consoleArea);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Pair<String, Integer> pair = stepInterpreter.functionCall(stepFunc, stepCount);
+            // finished running all the code
+            if (pair == null) {
+                Main.getInstance().infoNotif("Code Done Running","All lines of code have been run or program has terminated.");
+                runStepBtn.setDisable(true);
+            }
+            else {
+                sideLogSelect(pair.getValue());
+                stepCount = pair.getValue();
+                stepFunc = pair.getKey();
+
+                Watchstage.getInstance().updateSymbolTable(stepInterpreter.getSymbolTable());
+                Watchstage.getInstance().updateTempTable(stepInterpreter.getTempTable());
+            }
+        }
+    }
+
+    public void onStopClick(ActionEvent actionEvent) {
+        stopBtn.setDisable(true);
+        runBtn.setDisable(false);
+        runStepBtn.setDisable(false);
+        stepInterpreter = null;
+
+        watchStage.close();
+        watchStage = null;
     }
 
     public void onClearClick(ActionEvent actionEvent) {
@@ -435,6 +472,60 @@ public class Controller {
             Main.getInstance().getPrimaryStage().getScene().getStylesheets().add(
                     this.getClass().getResource(mode.toLowerCase()+"-mode.css").toExternalForm()
             );
+        });
+    }
+
+    public void onRefactorClick(ActionEvent actionEvent) {
+        Dialog<Pair<String, String>> dialog = new Dialog<>();
+        dialog.setTitle("Refactor");
+        dialog.setHeaderText("Refactor function names");
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
+
+        String text = codeArea.getText();
+        Pattern pattern = Pattern.compile("(\\bemp\\b|\\bstring\\b|\\bnum\\b|\\bsdec\\b|\\bddec\\b|\\bbool\\b)\\s+[a-zA-Z0-9]+\\s*[(][a-zA-Z0-9, ]*\\s*[)]");
+        Matcher matcher = pattern.matcher(text);
+        List<String> functions = new ArrayList<>();
+        while (matcher.find()) {
+            String line= text.substring(matcher.start(), matcher.end());
+            String funcName = line.split(" ")[1];
+            if (funcName.contains("("))
+                funcName = funcName.split("\\(")[0];
+            System.out.println(funcName);
+            functions.add(funcName);
+        }
+
+        ComboBox function = new ComboBox(FXCollections.observableArrayList(functions));
+        function.getSelectionModel().select(0);
+        TextField namefield = new TextField("functionX");
+
+        grid.add(new Label("Function:"), 0, 0);
+        grid.add(function, 1, 0);
+        grid.add(new Label("New Name:"), 0, 1);
+        grid.add(namefield, 1, 1);
+        dialog.getDialogPane().setContent(grid);
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == ButtonType.OK) {
+                return new Pair<>(
+                        function.getSelectionModel().getSelectedItem().toString(),
+                        namefield.getText()
+                );
+            }
+            return null;
+        });
+
+        Optional<Pair<String, String>> result = dialog.showAndWait();
+        result.ifPresent(options -> {
+            String functionName = options.getKey();
+            String newName = options.getValue();
+
+            System.out.println("Function=" + functionName + ", New  name=" + newName);
+            codeArea.replaceText(codeArea.getText().replace(functionName,newName));
         });
     }
 
