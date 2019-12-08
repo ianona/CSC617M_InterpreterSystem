@@ -41,6 +41,7 @@ import java.util.List;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Controller {
     @FXML private Button runBtn;
@@ -548,11 +549,18 @@ public class Controller {
         List<String> functions = new ArrayList<>();
         while (matcher.find()) {
             String line= text.substring(matcher.start(), matcher.end());
-            String funcName = line.split(" ")[1];
-            if (funcName.contains("("))
-                funcName = funcName.split("\\(")[0];
-            System.out.println(funcName);
-            functions.add(funcName);
+            if(line.contains(" ")) {
+                String funcName;
+                funcName = line.split(" ")[1];
+                if (funcName.contains("("))
+                    funcName = funcName.split("\\(")[0];
+                funcName = funcName.replaceAll("[^A-Za-z0-9]", "");
+//                System.out.println("this is " + funcName);
+//                System.out.println(funcName.length());
+                functions.add(funcName);
+                functions = functions.stream().distinct().collect(Collectors.toList());
+//                System.out.println(functions);
+            }
         }
 
         consoleArea3.setItems(FXCollections.observableList(functions));
