@@ -117,6 +117,7 @@ public class Controller {
                                             matcher.group("BRACKET") != null ? "bracket" :
                                                     matcher.group("SEMICOLON") != null ? "semicolon" :
                                                             matcher.group("STRING") != null ? "string" :
+                                                                matcher.group("CHAR") != null ? "char" :
                                                                     matcher.group("OPERATOR") != null ? "operator" :
                                                                             matcher.group("COMMENT") != null ? "comment" :
                                                                                     null; /* never happens */ assert styleClass != null;

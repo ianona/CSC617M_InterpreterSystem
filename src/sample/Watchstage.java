@@ -8,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import org.controlsfx.control.StatusBar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Watchstage {
@@ -34,9 +35,9 @@ public class Watchstage {
         addColumns_st();
         addColumns_tt();
         symbolTable.prefWidthProperty().bind(mainContainer.widthProperty());
-        symbolTable.setColumnResizePolicy((param) -> true);
+//        symbolTable.setColumnResizePolicy((param) -> true);
         tempTable.prefWidthProperty().bind(mainContainer.widthProperty());
-        tempTable.setColumnResizePolicy((param) -> true);
+//        tempTable.setColumnResizePolicy((param) -> true);
         splitPane.setDividerPositions(0.5);
     }
 
@@ -60,7 +61,14 @@ public class Watchstage {
             @Override
             protected void updateItem(Object item, boolean empty) {
                 super.updateItem(item,empty);
-                setText(empty ? "" : item == null ? "---" : String.valueOf(item));
+                if (item instanceof Object[]){
+                    List<Object> toDisplay = new ArrayList<>();
+                    for (Object object:((Object[])item)){
+                        toDisplay.add(object);
+                    }
+                    setText(empty ? "" : item == null ? "---" : toDisplay.toString());
+                } else
+                    setText(empty ? "" : item == null ? "---" : String.valueOf(item));
             }
         });
 
@@ -97,6 +105,20 @@ public class Watchstage {
 
         TableColumn<Symbol, Object> valueCol = new TableColumn<>("Value");
         valueCol.setCellValueFactory(new PropertyValueFactory<>("value"));
+        valueCol.setCellFactory(col -> new TableCell<Symbol, Object>() {
+            @Override
+            protected void updateItem(Object item, boolean empty) {
+                super.updateItem(item,empty);
+                if (item instanceof Object[]){
+                    List<Object> toDisplay = new ArrayList<>();
+                    for (Object object:((Object[])item)){
+                        toDisplay.add(object);
+                    }
+                    setText(empty ? "" : item == null ? "---" : toDisplay.toString());
+                } else
+                    setText(empty ? "" : item == null ? "---" : String.valueOf(item));
+            }
+        });
 
         TableColumn<Symbol, Boolean> constCol = new TableColumn<>("Constant");
         constCol.setCellValueFactory(new PropertyValueFactory<>("isConst"));

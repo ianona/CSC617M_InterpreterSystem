@@ -27,6 +27,30 @@ public class SampleListener extends EzBrewBaseListener {
 //        System.out.println("rule exited: " + ctx.getText());      //code that executes per rule
 //    }
 
+    @Override public void enterDoWhileStmt(EzBrewParser.DoWhileStmtContext ctx) {
+        String conditionLbl = "_L"+label_count;
+        label_count++;
+        String bodyLbl = "_L"+label_count;
+        label_count++;
+        String endLbl = "_L"+label_count;
+        label_count++;
+        loopStack.push(new LoopStackEntry(conditionLbl,bodyLbl,endLbl,null));
+
+        // when you enter a do-while, the body is the first thing you see
+        String bodyLabel = loopStack.peek().getBodyLbl();
+        TAC.put(new Key(bodyLabel, Constants.KTYPE_LOOP),null);
+    }
+
+    @Override public void enterWhileStmt(EzBrewParser.WhileStmtContext ctx) {
+        String conditionLbl = "_L"+label_count;
+        label_count++;
+        String bodyLbl = "_L"+label_count;
+        label_count++;
+        String endLbl = "_L"+label_count;
+        label_count++;
+        loopStack.push(new LoopStackEntry(conditionLbl,bodyLbl,endLbl,null));
+    }
+
     @Override public void enterForStmt(EzBrewParser.ForStmtContext ctx) {
         String conditionLbl = "_L"+label_count;
         label_count++;
@@ -40,6 +64,18 @@ public class SampleListener extends EzBrewBaseListener {
     }
 
     @Override public void exitForStmt(EzBrewParser.ForStmtContext ctx) {
+        String endLbl = loopStack.peek().getEndLbl();
+        TAC.put(new Key(endLbl, Constants.KTYPE_LABEL),null);
+        loopStack.pop();
+    }
+
+    @Override public void exitWhileStmt(EzBrewParser.WhileStmtContext ctx) {
+        String endLbl = loopStack.peek().getEndLbl();
+        TAC.put(new Key(endLbl, Constants.KTYPE_LABEL),null);
+        loopStack.pop();
+    }
+
+    @Override public void exitDoWhileStmt(EzBrewParser.DoWhileStmtContext ctx) {
         String endLbl = loopStack.peek().getEndLbl();
         TAC.put(new Key(endLbl, Constants.KTYPE_LABEL),null);
         loopStack.pop();
@@ -65,7 +101,7 @@ public class SampleListener extends EzBrewBaseListener {
             TAC.put(new Key(label, Constants.KTYPE_LABEL),null);
         }
 
-        if (ctx.getParent() instanceof EzBrewParser.ForStmtContext) {
+        if (ctx.getParent() instanceof EzBrewParser.ForStmtContext || ctx.getParent() instanceof EzBrewParser.WhileStmtContext) {
             String bodyLabel = loopStack.peek().getBodyLbl();
             TAC.put(new Key(bodyLabel, Constants.KTYPE_LOOP),null);
         }
@@ -95,11 +131,23 @@ public class SampleListener extends EzBrewBaseListener {
             skipStack.push(exitIfLbl);
         }
 
+        // if exiting for loop block, jump to update block
         if (ctx.getParent() instanceof EzBrewParser.ForStmtContext) {
             TAC.put(new Key("@Goto"),loopStack.peek().getUpdateLbl());
         }
+
+        // if exiting while loop OR do-while block, jump to conditional check block
+        if (ctx.getParent() instanceof EzBrewParser.WhileStmtContext || ctx.getParent() instanceof EzBrewParser.DoWhileStmtContext) {
+            TAC.put(new Key("@Goto"),loopStack.peek().getConditionLbl());
+        }
     }
 
+    @Override public void enterParExp(EzBrewParser.ParExpContext ctx) {
+        if (ctx.getParent() instanceof EzBrewParser.WhileStmtContext || ctx.getParent() instanceof EzBrewParser.DoWhileStmtContext){
+            String condLabel = loopStack.peek().getConditionLbl();
+            TAC.put(new Key(condLabel, Constants.KTYPE_LABEL),null);
+        }
+    }
 
     @Override public void exitParExp(EzBrewParser.ParExpContext ctx) {
         if (ctx.getParent() instanceof EzBrewParser.IfStmtContext) {
@@ -122,7 +170,6 @@ public class SampleListener extends EzBrewBaseListener {
 //            String skipElse = "_L"+label_count;
 //            label_count++;
 //            skipStack.push(skipElse);
-
         }
     }
 
@@ -165,13 +212,22 @@ public class SampleListener extends EzBrewBaseListener {
         operationStack.push(left);
         assignmentStack.push(left);
 
-        if (ctx.getParent() instanceof EzBrewParser.ForControlContext){
+        if (ctx.getParent() instanceof EzBrewParser.ForControlContext || ctx.getParent().getParent() instanceof EzBrewParser.WhileStmtContext){
             String left2 = "@If";
             assignmentStack.pop();
             String right2 = "Goto " + loopStack.peek().getBodyLbl();
 
             TAC.put(new Key(left2, operationStack.pop()),right2);
             TAC.put(new Key("@Goto"),loopStack.peek().getEndLbl());
+        }
+
+        if (ctx.getParent().getParent() instanceof EzBrewParser.DoWhileStmtContext){
+            String left2 = "@If";
+            assignmentStack.pop();
+            String right2 = "Goto " + loopStack.peek().getBodyLbl();
+
+            TAC.put(new Key(left2, operationStack.pop()),right2);
+            // no need to goto end label because the condition check is already at the end of the do-while
         }
     }
 
@@ -186,6 +242,24 @@ public class SampleListener extends EzBrewBaseListener {
         TAC.put(new Key(left),right);
         operationStack.push(left);
         assignmentStack.push(left);
+
+        // newly added, please test
+        if (ctx.getParent() instanceof EzBrewParser.ForControlContext || ctx.getParent().getParent() instanceof EzBrewParser.WhileStmtContext){
+            String left2 = "@If";
+            assignmentStack.pop();
+            String right2 = "Goto " + loopStack.peek().getBodyLbl();
+
+            TAC.put(new Key(left2, operationStack.pop()),right2);
+            TAC.put(new Key("@Goto"),loopStack.peek().getEndLbl());
+        }
+        if (ctx.getParent().getParent() instanceof EzBrewParser.DoWhileStmtContext){
+            String left2 = "@If";
+            assignmentStack.pop();
+            String right2 = "Goto " + loopStack.peek().getBodyLbl();
+
+            TAC.put(new Key(left2, operationStack.pop()),right2);
+            // no need to goto end label because the condition check is already at the end of the do-while
+        }
     }
 
     @Override public void exitAnd(EzBrewParser.AndContext ctx) {
@@ -271,7 +345,6 @@ public class SampleListener extends EzBrewBaseListener {
             else {
                 String left = ((EzBrewParser.IdentifierContext) ctx.getChild(0).getChild(0)).IDENTIFIER().getText();
                 String right = assignmentStack.pop();
-//                System.out.println("FAM! IM ASSIGNING " + left + " AND " + right);
 
                 TAC.put(new Key(left),right);
                 operationStack.pop();

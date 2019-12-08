@@ -60,4 +60,45 @@ public class Symbol {
     public void setScope(String scope) {
         this.scope = scope;
     }
+
+    public void setArrayValue(Object value, int index){
+        switch (getData_type()){
+            case Constants.DTYPE_INT_ARR:
+                ((Integer[])getValue())[index] = Integer.valueOf(value.toString());
+                break;
+            case Constants.DTYPE_CHAR_ARR:
+                ((Character[])getValue())[index] = value.toString().charAt(0);
+                break;
+            case Constants.DTYPE_FLOAT_ARR:
+                ((Float[])getValue())[index] = Float.valueOf(value.toString());
+                break;
+            case Constants.DTYPE_DOUBLE_ARR:
+                ((Double[])getValue())[index] = Double.valueOf(value.toString());
+                break;
+            case Constants.DTYPE_STRING_ARR:
+                ((String[])getValue())[index] = value.toString();
+                break;
+            case Constants.DTYPE_BOOL_ARR:
+                ((Boolean[])getValue())[index]  = Boolean.valueOf(value.toString());
+                break;
+        }
+    }
+
+    public Object getArrayValue(int index){
+        switch (getData_type()){
+            case Constants.DTYPE_INT_ARR:
+                return ((Integer[])getValue())[index];
+            case Constants.DTYPE_CHAR_ARR:
+                return ((Character[])getValue())[index];
+            case Constants.DTYPE_FLOAT_ARR:
+                return ((Float[])getValue())[index];
+            case Constants.DTYPE_DOUBLE_ARR:
+                return ((Double[])getValue())[index];
+            case Constants.DTYPE_STRING_ARR:
+                return ((String[])getValue())[index];
+            case Constants.DTYPE_BOOL_ARR:
+                return ((Boolean[])getValue())[index];
+        }
+        return null;
+    }
 }

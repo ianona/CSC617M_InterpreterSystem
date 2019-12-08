@@ -25,6 +25,17 @@ public class Constants {
     public static final String DTYPE_DOUBLE = "ddec";
     public static final String DTYPE_BOOL = "bool";
     public static final String DTYPE_VOID = "emp";
+    public static final String DTYPE_CHAR = "letter";
+
+    public static final String DTYPE_STRING_ARR = "string[]";
+    public static final String DTYPE_INT_ARR = "num[]";
+    public static final String DTYPE_FLOAT_ARR = "sdec[]";
+    public static final String DTYPE_DOUBLE_ARR = "ddec[]";
+    public static final String DTYPE_BOOL_ARR = "bool[]";
+    public static final String DTYPE_CHAR_ARR = "letter[]";
+
+    public static final String BOOL_TRUE = "true";
+    public static final String BOOL_FALSE = "false";
 
     public static final String TYPE_VAR = "var";
     public static final String TYPE_PROC = "proc";
@@ -100,6 +111,7 @@ public class Constants {
     public static final String SEMICOLON_PATTERN = "\\;";
     public static final String OPERATOR_PATTERN = "\\b(" + String.join("|", OPERATORS) + ")\\b";
     public static final String STRING_PATTERN = "\"([^\"\\\\]|\\\\.)*\"";
+    public static final String CHAR_PATTERN = "'([^\"\\\\]|\\\\.)*'";
     public static final String COMMENT_PATTERN = "#[^\n]*" + "|" + "<!>(.|\\R)*?<!>";
 
     public static final Pattern PATTERN = Pattern.compile(
@@ -109,6 +121,7 @@ public class Constants {
                     + "|(?<BRACKET>" + BRACKET_PATTERN + ")"
                     + "|(?<SEMICOLON>" + SEMICOLON_PATTERN + ")"
                     + "|(?<STRING>" + STRING_PATTERN + ")"
+                    + "|(?<CHAR>" + CHAR_PATTERN + ")"
                     + "|(?<COMMENT>" + COMMENT_PATTERN + ")"
                     + "|(?<OPERATOR>" + OPERATOR_PATTERN + ")"
     );

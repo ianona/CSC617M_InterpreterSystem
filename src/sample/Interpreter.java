@@ -593,6 +593,49 @@ public class Interpreter {
                     e.printStackTrace();
                 }
             }
+            // _t = @[datatype]Array _t(size)
+            else if (curVal.contains("@numArray")){
+                String dataType = curVal.split("A")[0].replace("@","");
+                int size = Integer.valueOf(valLookup(curVal.split(" ")[1],true).toString());
+                Object[] defaultValue = null;
+                switch (dataType){
+                    case Constants.DTYPE_INT:
+                        defaultValue = new Integer[size];
+                        break;
+                    case Constants.DTYPE_CHAR:
+                        defaultValue = new Character[size];
+                        break;
+                    case Constants.DTYPE_FLOAT:
+                        defaultValue = new Float[size];
+                        break;
+                    case Constants.DTYPE_DOUBLE:
+                        defaultValue = new Double[size];
+                        break;
+                    case Constants.DTYPE_STRING:
+                        defaultValue = new String[size];
+                        break;
+                    case Constants.DTYPE_BOOL:
+                        defaultValue = new Boolean[size];
+                        break;
+                }
+                tempTable.add(new Symbol(curKey.getName(),
+                        Constants.TYPE_VAR,
+                        dataType,
+                        getScope(),
+                        defaultValue));
+            }
+            // _t = arrName[index]
+            else if (curVal.contains("[") && curVal.contains("]")){
+                String arrName = curVal.split("\\[")[0];
+                int index = Integer.valueOf(curVal.split("\\[")[1].replace("]",""));
+                Symbol array = findInScope(arrName);
+                Object val = array.getArrayValue(index);
+                tempTable.add(new Symbol(curKey.getName(),
+                        Constants.TYPE_VAR,
+                        array.getData_type(),
+                        getScope(),
+                        val));
+            }
             // _t = literal
             else {
                 Symbol temp = find(curKey.getName());
@@ -612,7 +655,25 @@ public class Interpreter {
                 }
                 printTable(tempTable);
             }
-        } else if (!curKey.getName().contains("@")) { // left side is an identifier if it doesnt have @ or _t
+        } else if (curKey.getName().contains("[") && curKey.getName().contains("]")){ // arrName[index] = _t
+            String arrName = curKey.getName().split("\\[")[0];
+            Symbol curSymbol = findInScope(arrName);
+            Symbol curTemp = findInScope(curVal);
+            int index = Integer.valueOf(
+                    curKey.getName().split("\\[")[1].replace("]","")
+            );
+            if (curSymbol == null) {
+                flagError(curKey.getName() + " has not been declared.");
+            }
+            else if (curSymbol.getConst().booleanValue()) {
+                flagError("Cannot reassign value of a constant!");
+            }
+            else if (!curSymbol.getData_type().contains(curTemp.getData_type())){
+                flagError("Data type mismatch (array assignment)!");
+            }
+            Object value = valLookup(curVal,true);
+            curSymbol.setArrayValue(value,index);
+        } else if (!curKey.getName().contains("@")) { // left side is an (non-array) identifier if it doesnt have @ or _t or []
             Symbol curSymbol = findInScope(curKey.getName());
             // check first if variable has already been declared
             if (curSymbol == null) {
@@ -640,12 +701,24 @@ public class Interpreter {
                     e.printStackTrace();
                 }
             }
+            // identifier = _t (array)
+            else if (curSymbol.getData_type().contains("[") &&
+                    curSymbol.getData_type().contains("]")){
+                curSymbol.setValue(valLookup(curVal,true));
+                watchLog("[Assignment] "+curSymbol.getName() + " is now = " + curSymbol.getValue());
+            }
             // identifier = _t
             else {
                 String realVal = String.valueOf(valLookup(curVal,true));
                 // proper data type checking
                 // data type of identifier must match the data type of the value being assigned to it
                 // there are some exceptions like float to int & vice versa
+                System.out.println("------");
+                System.out.println(realVal);
+                System.out.println(getDType(realVal));
+                System.out.println(curSymbol.getData_type());
+                System.out.println("------");
+
                 if (curSymbol.getData_type().equals(getDType(realVal))) {
                     curSymbol.setValue(cast(realVal));
                 } else if (curSymbol.getData_type().equals(Constants.DTYPE_INT) &&
@@ -657,7 +730,12 @@ public class Interpreter {
                 } else if (curSymbol.getData_type().equals(Constants.DTYPE_DOUBLE) &&
                         getDType(realVal).equals(Constants.DTYPE_INT)) {
                     curSymbol.setValue(Double.valueOf(realVal));
-                } else {
+                } else if (curSymbol.getData_type().equals(Constants.DTYPE_CHAR) &&
+                        getDType(realVal).equals(Constants.DTYPE_STRING) &&
+                        realVal.length() == 1){
+                    curSymbol.setValue(Character.valueOf(realVal.charAt(0)));
+                }
+                else {
                     flagError("Data type mismatch, expecting " + curSymbol.getData_type() + ".");
                 }
             }
@@ -710,6 +788,10 @@ public class Interpreter {
     public String getDType(String value){
         if (value.contains("\""))
             return Constants.DTYPE_STRING;
+        else if (value.contains("\'"))
+            return Constants.DTYPE_CHAR;
+        else if (value.equals(Constants.BOOL_FALSE) || value.equals(Constants.BOOL_TRUE))
+            return Constants.DTYPE_BOOL;
         else if (value.matches("-?\\d+"))
             return Constants.DTYPE_INT;
         else if (value.matches("[-+]?[0-9]*\\.?[0-9]+"))
@@ -727,6 +809,12 @@ public class Interpreter {
                 return Integer.valueOf(value);
             case Constants.DTYPE_FLOAT:
                 return Float.valueOf(value);
+            case Constants.DTYPE_BOOL:
+                return Boolean.valueOf(value);
+            case Constants.DTYPE_CHAR:
+                return value.charAt(1);
+            case Constants.DTYPE_DOUBLE:
+                return Double.valueOf(value);
                 default:
                     return null;
         }

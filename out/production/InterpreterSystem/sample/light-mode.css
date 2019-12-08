@@ -43,6 +43,9 @@
 .string {
     -fx-fill: blue;
 }
+.char {
+    -fx-fill: blue;
+}
 
 .comment {
 	-fx-fill: cadetblue;
