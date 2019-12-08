@@ -11,12 +11,13 @@ import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -36,8 +37,8 @@ import org.reactfx.Subscription;
 import java.awt.*;
 import java.io.*;
 import java.time.Duration;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -48,6 +49,7 @@ public class Controller {
     @FXML private CodeArea codeArea;
     @FXML private TextArea consoleArea;
     @FXML private ListView consoleArea2;
+    @FXML private ListView consoleArea3;
     @FXML private VBox rightBox;
     @FXML private AnchorPane bottomAnchor;
     @FXML private AnchorPane topAnchor;
@@ -74,7 +76,14 @@ public class Controller {
         consoleArea2.prefWidthProperty().bind(rightBox.widthProperty());
         consoleArea2.prefHeightProperty().bind(rightBox.heightProperty());
 
+        consoleArea3.prefWidthProperty().bind(rightBox.widthProperty());
+        consoleArea3.prefHeightProperty().bind(rightBox.heightProperty());
+
         splitPane.setDividerPositions(0.8);
+
+        codeArea.textProperty().addListener( ( ov, oldv, newv ) -> {
+            populateCodeOutline();
+        });
 
         // syntax highlighting
         // recompute the syntax highlighting 100 ms after user stops editing area
@@ -410,6 +419,7 @@ public class Controller {
         codeArea.clear();
         consoleArea.clear();
         consoleArea2.getItems().clear();
+        consoleArea3.getItems().clear();
         Main.getInstance().successNotif("Clear","Editor cleared");
         updateStatus("Console ready");
     }
@@ -527,6 +537,35 @@ public class Controller {
             System.out.println("Function=" + functionName + ", New  name=" + newName);
             codeArea.replaceText(codeArea.getText().replace(functionName,newName));
         });
+    }
+
+    public void populateCodeOutline() {
+//        System.out.println("Filling code outline table");
+        String text = codeArea.getText();
+        Pattern pattern = Pattern.compile("(\\bemp\\b|\\bstring\\b|\\bnum\\b|\\bsdec\\b|\\bddec\\b|\\bbool\\b)\\s+[a-zA-Z0-9]+\\s*[(][a-zA-Z0-9, ]*\\s*[)]");
+        Matcher matcher = pattern.matcher(text);
+        List<String> functions = new ArrayList<>();
+        while (matcher.find()) {
+            String line= text.substring(matcher.start(), matcher.end());
+            String funcName = line.split(" ")[1];
+            if (funcName.contains("("))
+                funcName = funcName.split("\\(")[0];
+            System.out.println(funcName);
+            functions.add(funcName);
+        }
+
+        consoleArea3.setItems(FXCollections.observableList(functions));
+        consoleArea3.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println("Clicked on " + consoleArea3.getSelectionModel().getSelectedItem());
+                System.out.println(codeArea.getText().indexOf(String.valueOf(consoleArea3.getSelectionModel().getSelectedItem())));
+                codeArea.moveTo(codeArea.getText().indexOf(String.valueOf(consoleArea3.getSelectionModel().getSelectedItem())) + 1);
+                codeArea.selectWord();
+            }
+        });
+
     }
 
     private void loadDocument() {

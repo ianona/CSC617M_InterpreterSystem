@@ -19,6 +19,7 @@
       <VBox fx:id="rightBox" alignment="CENTER" minWidth="150.0" prefHeight="200.0" prefWidth="250.0" styleClass="side-bar" BorderPane.alignment="TOP_CENTER">
          <children>
             <ListView fx:id="consoleArea2" prefWidth="200.0" styleClass="listView" />
+             <ListView fx:id="consoleArea3" prefWidth="200.0" styleClass="listView" />
          </children>
       </VBox>
    </right>
