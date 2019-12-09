@@ -34,16 +34,18 @@ public class CustomErrorListener extends EzBrewBaseListener {
         int openCheck = 0;
         int closeCheck = 0;
 
-        for(int x = 0; x < ctx.getText().length(); x++) {
+        if(!(ctx.getChild(ctx.getChildCount()-1).getText().equals("<missing ';'>"))) {
+            for(int x = 0; x < ctx.getText().length(); x++) {
 //            System.out.println("Test: " + ctx.getChild(x).getText());
-            if(ctx.getText().charAt(x) == '(')
-                openCheck++;
-            else if(ctx.getText().charAt(x) == ')')
-                closeCheck++;
-        }
+                if(ctx.getText().charAt(x) == '(')
+                    openCheck++;
+                else if(ctx.getText().charAt(x) == ')')
+                    closeCheck++;
+            }
 
-        if(openCheck != closeCheck)
-            errors.add("Error at line " + ctx.start.getLine() + ". See expression '" + ctx.getText() + "'. Consider adding or removing parentheses.");
+            if(openCheck != closeCheck)
+                errors.add("Error at line " + ctx.start.getLine() + ". See expression '" + ctx.getText() + "'. Consider adding or removing parentheses.");
+        }
 
         for(int x = 0; x < ctx.getChildCount(); x++) {
 //            System.out.println("B: " + ctx.getChild(x).getText());
@@ -151,6 +153,7 @@ public class CustomErrorListener extends EzBrewBaseListener {
     }
 
     @Override public void exitBlock(EzBrewParser.BlockContext ctx) {
+        System.out.println(ctx.getText());
         System.out.println(ctx.getChildCount());
 
         for(int x = 0; x < ctx.getChildCount(); x++) {
@@ -164,16 +167,20 @@ public class CustomErrorListener extends EzBrewBaseListener {
                 System.out.println("C: " + tempCtxString);
                 int temp = tempCtxString.length() - 1;
                 boolean checker = false;
+                boolean notMathOperation = false;
                 while(((tempCtxString.charAt(temp) != '+') && (tempCtxString.charAt(temp) != '-') && (tempCtxString.charAt(temp) != '*') && (tempCtxString.charAt(temp) != '/') && (tempCtxString.charAt(temp) != '%')) && temp > 0) {
                     System.out.println(tempCtxString.charAt(temp));
+                    notMathOperation = true;
                     if(Character.isAlphabetic(tempCtxString.charAt(temp))) {
                         checker = true;
                         break;
                     }
                     temp--;
                 }
-//                if(checker == false)
-//                    errors.add("Error at line " + ctx.start.getLine() + ". See expression '" + ctx.getText().replace("<missing ';'>","") + "'. Consider removing parentheses after terminal number.");
+
+                if(checker == false && notMathOperation == true)
+//                    System.out.println("false detection");
+                    errors.add("Error at line " + ctx.start.getLine() + ". See expression '" + ctx.getText().replace("<missing ';'>","") + "'. Consider removing parentheses after terminal number.");
             }
         }
 
@@ -236,7 +243,7 @@ public class CustomErrorListener extends EzBrewBaseListener {
 //                        }
                         if(checkEquals == 1 && check % 2 != 0) {
                             checkEquals = 0;
-                            errors.add("Error at line " + ctx.start.getLine() + ". See expression '" + ctx.getParent().getChild(0).getText() + ctx.getParent().getChild(1).getText() + "'. '=' appears to be missing.");
+                            errors.add("Error at line " + ctx.start.getLine() + ". See expression '" + ctx.getParent().getChild(0).getText() + ctx.getParent().getChild(1).getText() + "'. Assignment operator appears to be missing.");
                         }
 
                         checkInequality = 0;
@@ -252,4 +259,31 @@ public class CustomErrorListener extends EzBrewBaseListener {
             }
         }
     }
+
+    @Override public void exitMethodCall(EzBrewParser.MethodCallContext ctx) {
+
+        System.out.println("que?");
+        for(int x = 0; x < ctx.getChildCount(); x++) {
+            System.out.println(ctx.getChild(x));
+            if(ctx.getChild(x).getText().equals("++")) {
+                ParseTree tempCtx = ctx.getChild(x-1);
+                String tempCtxString = tempCtx.getText();
+                System.out.println("tempctx string" + tempCtxString);
+
+                int temp = tempCtxString.length() - 1;
+                boolean checker = false;
+                while(temp > 0) {
+                    if(!(Character.isDigit(tempCtxString.charAt(temp)))) {
+                        checker = true;
+                        break;
+                    }
+                    temp--;
+                }
+
+                if(checker == false)
+                    errors.add("Error at line " + ctx.start.getLine() + ". See expression '" + ctx.getText() + "'. Terminal number cannot be incremented.");
+            }
+        }
+    }
+
 }
