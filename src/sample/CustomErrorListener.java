@@ -172,7 +172,7 @@ public class CustomErrorListener extends EzBrewBaseListener {
 //    System.out.println("here's temp: " +            temp);
         System.out.println(ctx.getChild(ctx.getChildCount() - 1).getText());
 
-    if(!(ctx.getChild(ctx.getChildCount() - 1).getText().equals(");"))) {
+    if(!(ctx.getChild(ctx.getChildCount() - 1).getText().contains(";"))) {
         errors.add("Error at line " + ctx.start.getLine() + ". See expression '" + ctx.getText() + "'. String expression does not appear to be properly enclosed.");
     }
     else {
