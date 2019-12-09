@@ -41,12 +41,21 @@ public class CodeOptimizer extends EzBrewBaseListener {
                         lines[x] = lines[x].replaceAll(";", "");
                         assignment[x][1] = lines[x].substring(0, lines[x].indexOf("="));
                         assignment[x][2] = lines[x].substring(lines[x].indexOf("=")+1);
-                        assignment[x][3] = Integer.toString(x);
-
+                        assignment[x][3] = Integer.toString(x+1);
                     } else if (lines[x].contains(numerical[1])) {
-
+                        assignment[x][0] = numerical[1];
+                        lines[x] = lines[x].replaceAll(numerical[1], "");
+                        lines[x] = lines[x].replaceAll(";", "");
+                        assignment[x][1] = lines[x].substring(0, lines[x].indexOf("="));
+                        assignment[x][2] = lines[x].substring(lines[x].indexOf("=")+1);
+                        assignment[x][3] = Integer.toString(x+1);
                     } else if (lines[x].contains(numerical[2])) {
-
+                        assignment[x][0] = numerical[2];
+                        lines[x] = lines[x].replaceAll(numerical[2], "");
+                        lines[x] = lines[x].replaceAll(";", "");
+                        assignment[x][1] = lines[x].substring(0, lines[x].indexOf("="));
+                        assignment[x][2] = lines[x].substring(lines[x].indexOf("=")+1);
+                        assignment[x][3] = Integer.toString(x+1);
                     }
                 }
             }
