@@ -1,0 +1,97 @@
+.root {
+    -fx-base: #3f474f;
+    -fx-accent: #e7eff7 ;
+    -fx-default-button: #7f878f ;
+    -fx-focus-color: #efefef;
+    -fx-faint-focus-color: #efefef22;
+    -fx-focused-text-base-color : ladder(
+            -fx-selection-bar,
+            -fx-light-text-color 45%,
+            -fx-dark-text-color 46%,
+            -fx-dark-text-color 59%,
+            -fx-mid-text-color 60%
+        );
+    -fx-focused-mark-color : -fx-focused-text-base-color ;
+
+}
+
+.text-input:focused {
+    -fx-highlight-text-fill: ladder(
+        -fx-highlight-fill,
+        -fx-light-text-color 45%,
+        -fx-dark-text-color  46%,
+        -fx-dark-text-color  59%,
+        -fx-mid-text-color   60%
+    );
+}
+
+.split-pane:vertical > .split-pane-divider {
+   -fx-padding: 0 1 0 1;
+}
+
+.styled-text-area{
+    -fx-background-color: #323232;
+}
+
+.styled-text-area .text{
+    -fx-fill: #CCC6CB;
+}
+
+.styled-text-area :has-caret {
+    -fx-background-color: #3A3A3A;
+}
+
+.styled-text-area .caret{
+    -fx-stroke: white;
+}
+
+.styled-text-area .lineno{
+    -fx-background-color: #323232;
+}
+
+.text-area {
+    text-area-background: #323232;
+}
+
+.text-area .content {
+    -fx-background-color: text-area-background;
+}
+
+.scroll-pane{
+    -fx-fill: #323232;
+}
+
+.keyword {
+    -fx-fill: #CC7832;
+    -fx-font-weight: bold;
+}
+.operator{
+    -fx-fill: lightblue;
+    -fx-font-weight: bold;
+}
+.semicolon {
+    -fx-font-weight: bold;
+    -fx-fill: #CC7832;
+}
+.paren {
+    -fx-fill: #CCC6CB;
+    -fx-font-weight: bold;
+}
+.bracket {
+    -fx-fill: #CCC6CB;
+    -fx-font-weight: bold;
+}
+.brace {
+    -fx-fill: #CCC6CB;
+    -fx-font-weight: bold;
+}
+.string {
+    -fx-fill: #6A8759;
+}
+.char {
+    -fx-fill: lightgreen;
+}
+
+.comment {
+	-fx-fill: cadetblue;
+}
