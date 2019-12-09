@@ -128,7 +128,7 @@ public class Controller {
                     Platform.runLater(() -> codeArea.replaceText(caretPosition -3, caretPosition -1, "print();"));
                 }
 
-                if(codeArea.getText(caretPosition - 3, caretPosition - 1).contains("dw")){
+                if(codeArea.getText(caretPosition - 3, caretPosition - 1).contains("dd")){
                     Platform.runLater(() -> codeArea.replaceText(caretPosition -3, caretPosition -1, "do{ \n\n }during();"));
                 }
 
