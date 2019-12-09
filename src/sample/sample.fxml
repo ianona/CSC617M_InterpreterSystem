@@ -75,6 +75,14 @@
                     <Insets bottom="2.0" top="2.0" />
                 </VBox.margin>
             </Button>
+            <Button fx:id="optimizeBtn" mnemonicParsing="false" onAction="#onOptimizeClick" text="Optimize">
+                <graphic>
+                    <FontAwesomeIconView fill="#AA0114" glyphName="CLOCK_ALT" size="15" strokeType="OUTSIDE" strokeWidth="0.0" />
+                </graphic>
+                <VBox.margin>
+                    <Insets bottom="2.0" top="2.0" />
+                </VBox.margin>
+            </Button>
             <Button fx:id="clearBtn" mnemonicParsing="false" onAction="#onClearClick" text="Clear">
                 <graphic>
                     <FontAwesomeIconView fill="#adadb2" glyphName="REFRESH" size="15" strokeType="OUTSIDE" strokeWidth="0.0" />

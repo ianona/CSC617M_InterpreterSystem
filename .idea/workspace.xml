@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/InterpreterSystem/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterpreterSystem/sample/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/antlr4/EzBrewBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr4/EzBrewBaseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/antlr4/EzBrewBaseVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr4/EzBrewBaseVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/antlr4/EzBrewLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr4/EzBrewLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/antlr4/EzBrewListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr4/EzBrewListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/antlr4/EzBrewParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr4/EzBrewParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/antlr4/EzBrewVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/antlr4/EzBrewVisitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/CustomErrorListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CustomErrorListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,43 +79,6 @@
         <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>por</find>
-      <find>porn</find>
-      <find>system.ou</find>
-      <find>patte</find>
-      <find>Forcontro</find>
-      <find>compare1</find>
-      <find>loopstack</find>
-      <find>while</find>
-      <find>enterpa</find>
-      <find>endlb</find>
-      <find>do</find>
-      <find>start</find>
-      <find>parexp</find>
-      <find>bodylbl</find>
-      <find>dowhi</find>
-      <find>exitblo</find>
-      <find>arr</find>
-      <find>prints</find>
-      <find>char</find>
-      <find>assign</find>
-      <find>local</find>
-      <find>declare</find>
-      <find>Clicked on</find>
-      <find>data type mis</find>
-      <find>cast</find>
-      <find>exiting lo</find>
-      <find>exiting loop</find>
-      <find>condl</find>
-      <find>con</find>
-      <find>lbl</find>
-    </findStrings>
-    <replaceStrings>
-      <replace />
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

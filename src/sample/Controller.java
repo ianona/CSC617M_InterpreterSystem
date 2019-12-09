@@ -60,6 +60,7 @@ public class Controller {
     @FXML private SplitPane splitPane;
     @FXML private StatusBar statusBar;
     @FXML private CheckBox parseChk;
+    @FXML private Button optimizeBtn;
 
     private Stage watchStage;
     private int stepCount;
@@ -261,6 +262,12 @@ public class Controller {
         }
         Main.getInstance().successNotif("Scan","Scan complete, found " + count + " tokens");
         updateStatus(count + " tokens found (" + ws_count + " whitespace tokens, " + valid_count + " valid tokens, " + errors_count + " errors)");
+    }
+
+    public void onOptimizeClick(ActionEvent actionEvent) {
+        String wholecode = codeArea.getText();
+
+        System.out.println(wholecode);
     }
 
     public void onParseClick(ActionEvent actionEvent) {
@@ -671,5 +678,4 @@ public class Controller {
             Main.getInstance().successNotif("Save",file.getName() + " saved");
         }
     }
-
 }

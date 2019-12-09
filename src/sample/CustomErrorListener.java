@@ -23,6 +23,28 @@ public class CustomErrorListener extends EzBrewBaseListener {
 //        }
     }
 
+    @Override public void exitMethodDeclaration(EzBrewParser.MethodDeclarationContext ctx) {
+        String stmnt = ctx.getText();
+
+        if(stmnt.contains("this"))
+        {
+            stmnt = stmnt.substring(stmnt.indexOf(")"));
+            stmnt = stmnt.trim();
+
+            if(stmnt.contains("("))
+            {
+                errors.add("Error at line " + ctx.start.getLine() + ". See expression '" + ctx.getText() + "'. Consider removing the parenthesis '()'");
+            }
+//            result = result.substring(0, result.indexOf('\n'));
+//            result = result.split("\n")[0];
+        }
+//        System.out.println(ctx.getText());
+//        System.out.println(ctx.getChild(0).getText());
+//        System.out.println(ctx.getChild(1).getText());
+//        System.out.println(ctx.getChild(2).getText());
+//        System.out.println(ctx.getChild(3).getText());
+//        System.out.println(ctx.getChildCount());
+    }
 
     @Override public void exitExprStmt(EzBrewParser.ExprStmtContext ctx) {
 
@@ -83,6 +105,26 @@ public class CustomErrorListener extends EzBrewBaseListener {
         for(int i = 0; i < keywords.length; i++) {
             if(ctx.getChild(1).getText().equals(keywords[i])) {
                 errors.add("Error at line " + ctx.start.getLine() + ". See expression '" + ctx.getChild(1).getText() + "'. Reserved keyword cannot be passed as a return value.");
+            }
+        }
+
+        String stmnt = ctx.getText();
+
+        if(stmnt.contains("*"))
+        {
+            if(stmnt.contains("<missing ';'>"))
+            {
+                stmnt = stmnt.substring(stmnt.indexOf("*") + 1);
+                stmnt = stmnt.trim();
+                stmnt = stmnt.split("<")[0];
+
+                boolean numeric = true;
+                numeric = stmnt.matches("-?\\d+(\\.\\d+)?");
+
+                if(numeric)
+                {
+                    errors.add("Error at line " + ctx.start.getLine() + ". See expression '" + ctx.getText() + "'. Consider closing the statemnt with ';' after the numeric value.");
+                }
             }
         }
     }
