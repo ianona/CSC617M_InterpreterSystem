@@ -2,6 +2,7 @@ package sample;
 
 import antlr4.EzBrewLexer;
 import antlr4.EzBrewParser;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,6 +18,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -103,6 +106,41 @@ public class Controller {
 
         // when no longer need syntax highlighting and wish to clean up memory leaks
         // run: `cleanupWhenNoLongerNeedIt.unsubscribe();`
+
+        // auto-indent: insert previous line's indents on enter
+        final Pattern whiteSpace = Pattern.compile( "^\\s+" );
+        codeArea.addEventHandler( KeyEvent.KEY_PRESSED, KE ->
+        {
+            if ( KE.getCode() == KeyCode.ENTER ) {
+                int caretPosition = codeArea.getCaretPosition();
+                int currentParagraph = codeArea.getCurrentParagraph();
+                Matcher m0 = whiteSpace.matcher( codeArea.getParagraph( currentParagraph-1 ).getSegments().get( 0 ) );
+                if ( m0.find() ) Platform.runLater( () -> codeArea.insertText( caretPosition, m0.group() ) );
+            }
+        });
+
+        codeArea.addEventHandler(KeyEvent.KEY_PRESSED, KE ->{
+            if(KE.getCode() == KeyCode.TAB){
+                int caretPosition = codeArea.getCaretPosition();
+                int currentParagraph = codeArea.getCaretPosition();
+
+                if(codeArea.getText(caretPosition - 3, caretPosition - 1).contains("pt")){
+                    Platform.runLater(() -> codeArea.replaceText(caretPosition -3, caretPosition -1, "print();"));
+                }
+
+                if(codeArea.getText(caretPosition - 3, caretPosition - 1).contains("dw")){
+                    Platform.runLater(() -> codeArea.replaceText(caretPosition -3, caretPosition -1, "do{ \n\n }during();"));
+                }
+
+                if(codeArea.getText(caretPosition - 3, caretPosition - 1).contains("du")){
+                    Platform.runLater(() -> codeArea.replaceText(caretPosition -3, caretPosition -1, "during(){ \n\n }"));
+                }
+
+                if(codeArea.getText(caretPosition - 3, caretPosition - 1).contains("ob")){
+                    Platform.runLater(() -> codeArea.replaceText(caretPosition -3, caretPosition -1, "<!>PUT CLASS NAME AFTER BLUEPRINT<!>\n open blueprint { \n\n }"));
+                }
+            }
+        });
     }
 
     private static StyleSpans<Collection<String>> computeHighlighting(String text) {
