@@ -267,7 +267,9 @@ public class Controller {
     public void onOptimizeClick(ActionEvent actionEvent) {
         String wholecode = codeArea.getText();
 
-        System.out.println(wholecode);
+        CodeOptimizer listener = new CodeOptimizer();
+        codeArea.clear();
+        codeArea.appendText(listener.getCode(wholecode));
     }
 
     public void onParseClick(ActionEvent actionEvent) {
@@ -292,8 +294,11 @@ public class Controller {
         if (errors.size() == 0) {
             consoleLog("----------No Parsing Errors----------");
         } else {
-            for (String error:errors)
+            for (String error:errors) {
                 consoleLog(error);
+//                codeArea.appendText(error);
+//                codeArea.appendText("\n");
+            }
         }
 
     }
