@@ -2,7 +2,9 @@ package sample;
 
 import antlr4.EzBrewBaseListener;
 import antlr4.EzBrewParser;
+import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -123,7 +125,7 @@ public class CustomErrorListener extends EzBrewBaseListener {
 
                 if(numeric)
                 {
-                    errors.add("Error at line " + ctx.start.getLine() + ". See expression '" + ctx.getText() + "'. Consider closing the statemnt with ';' after the numeric value.");
+                    errors.add("Error at line " + ctx.start.getLine() + ". See expression '" + ctx.getText() + "'. Consider closing the statement with ';' after the numeric value.");
                 }
             }
         }
@@ -198,33 +200,40 @@ public class CustomErrorListener extends EzBrewBaseListener {
         System.out.println(ctx.getText());
         System.out.println(ctx.getChildCount());
 
-        for(int x = 0; x < ctx.getChildCount(); x++) {
-            System.out.println("B: " + ctx.getChild(x).getText());
-            if(ctx.getChild(x).getText().contains("(") && ctx.getChild(x).getText().contains(")")) {
-                ParseTree tempCtx = ctx.getChild(x-1);
-                String tempCtxString = tempCtx.getText();
-                if(tempCtxString.contains("<"))
-                    tempCtxString = tempCtxString.split("<")[0];
-
-                System.out.println("C: " + tempCtxString);
-                int temp = tempCtxString.length() - 1;
-                boolean checker = false;
-                boolean notMathOperation = false;
-                while(((tempCtxString.charAt(temp) != '+') && (tempCtxString.charAt(temp) != '-') && (tempCtxString.charAt(temp) != '*') && (tempCtxString.charAt(temp) != '/') && (tempCtxString.charAt(temp) != '%')) && temp > 0) {
-                    System.out.println(tempCtxString.charAt(temp));
-                    notMathOperation = true;
-                    if(Character.isAlphabetic(tempCtxString.charAt(temp))) {
-                        checker = true;
-                        break;
-                    }
-                    temp--;
-                }
-
-                if(checker == false && notMathOperation == true)
+//        for(int x = 0; x < ctx.getChildCount(); x++) {
+//            System.out.println("B: " + ctx.getChild(x).getText());
+//            if(ctx.getChild(x).getText().charAt(0) == '(' && ctx.getChild(x).getText().contains("(") && ctx.getChild(x).getText().contains(")")) {
+//                ParseTree tempCtx = ctx.getChild(x-1);
+//                String tempCtxString = tempCtx.getText();
+//                if(tempCtxString.contains("<"))
+//                    tempCtxString = tempCtxString.split("<")[0];
+//
+//                System.out.println("C: " + tempCtxString);
+//                int temp = tempCtxString.length() - 1;
+//                boolean checker = false;
+//                boolean notMathOperation = false;
+//                while(((tempCtxString.charAt(temp) != '+') && (tempCtxString.charAt(temp) != '-') && (tempCtxString.charAt(temp) != '*') && (tempCtxString.charAt(temp) != '/') && (tempCtxString.charAt(temp) != '%')) && temp > 0) {
+//                    System.out.println(tempCtxString.charAt(temp));
+//                    notMathOperation = true;
+//                    if(Character.isAlphabetic(tempCtxString.charAt(temp))) {
+//                        checker = true;
+//                        break;
+//                    }
+//                    temp--;
+//                }
+//
+//                int tempIndex = 0;
+//                List<Token> tokens = new ArrayList<Token>();
+//                inOrderTraversal(tokens, ctx);
+//                for(int i = 0; i < tokens.size(); i++) {
+//                    if(tokens.get(i).getText().equals("("));
+//                }
+//
+//                if(checker == false && notMathOperation == true)
 //                    System.out.println("false detection");
-                    errors.add("Error at line " + ctx.start.getLine() + ". See expression '" + ctx.getText().replace("<missing ';'>","") + "'. Consider removing parentheses after terminal number.");
-            }
-        }
+//                    errors.add("Error at line " + ctx.start.getLine() + ". See expression '" + ctx.getText().replace("<missing ';'>","") + "'. Consider removing parentheses after terminal number.");
+//            }
+//        }
 
         String temp = ctx.getText();
         temp = ctx.getText();
@@ -327,4 +336,20 @@ public class CustomErrorListener extends EzBrewBaseListener {
             }
         }
     }
+
+    private static void inOrderTraversal(List<Token> tokens, ParseTree parent) {
+        for (int i = 0; i < parent.getChildCount(); i++) {
+
+            ParseTree child = parent.getChild(i);
+
+            if (child instanceof TerminalNode) {
+                TerminalNode node = (TerminalNode) child;
+                tokens.add(node.getSymbol());
+            }
+            else {
+                inOrderTraversal(tokens, child);
+            }
+        }
+    }
+
 }
