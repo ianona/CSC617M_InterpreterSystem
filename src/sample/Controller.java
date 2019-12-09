@@ -56,6 +56,7 @@ public class Controller {
     @FXML private SplitPane splitPane;
     @FXML private StatusBar statusBar;
     @FXML private CheckBox parseChk;
+    @FXML private CheckBox collectChk;
 
     private Stage watchStage;
     private int stepCount;
@@ -140,6 +141,7 @@ public class Controller {
     }
 
     private void sideLogSelect(int index){
+        consoleArea2.scrollTo(index);
         consoleArea2.getSelectionModel().select(index);
     }
 
@@ -193,11 +195,11 @@ public class Controller {
                 tokenClass = "IDENTIFIER";
             } else if (symbolicName.contains("LITERAL")) {
                 tokenClass = "LITERAL";
-            } else if (token.getType() >= 43 && token.getType() <= 51) {
+            } else if (token.getType() >= 44 && token.getType() <= 52) {
                 tokenClass = "SEPARATOR";
-            } else if (token.getType() >= 52 && token.getType() <= 72) {
+            } else if (token.getType() >= 53 && token.getType() <= 73) {
                 tokenClass = "OPERATOR";
-            } else if (token.getType() >= 17 && token.getType() <= 37){
+            } else if (token.getType() >= 13 && token.getType() <= 37){
                 tokenClass = "KEYWORD";
             } else if (symbolicName.contains("WS")) {
                 ws_count++;
@@ -284,7 +286,7 @@ public class Controller {
 
         SampleListener listener2 = new SampleListener();
         walker2.walk(listener2,tree);
-        Interpreter interpreter = new Interpreter(listener2.getTAC(),consoleArea);
+        Interpreter interpreter = new Interpreter(listener2.getTAC(),consoleArea, collectChk.isSelected());
         interpreter.functionCall(Constants.MAIN);
     }
 
@@ -384,7 +386,7 @@ public class Controller {
                 ParseTreeWalker walker2 = new ParseTreeWalker();
                 SampleListener listener2 = new SampleListener();
                 walker2.walk(listener2,tree);
-                stepInterpreter = new Interpreter(listener2.getTAC(),consoleArea);
+                stepInterpreter = new Interpreter(listener2.getTAC(),consoleArea,false);
             } catch (IOException e) {
                 e.printStackTrace();
             }

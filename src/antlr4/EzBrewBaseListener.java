@@ -556,6 +556,18 @@ public class EzBrewBaseListener implements EzBrewListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterTryStmt(EzBrewParser.TryStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTryStmt(EzBrewParser.TryStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterSwitchStmt(EzBrewParser.SwitchStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -599,6 +611,42 @@ public class EzBrewBaseListener implements EzBrewListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitPrintStmt(EzBrewParser.PrintStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCatchBlock(EzBrewParser.CatchBlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCatchBlock(EzBrewParser.CatchBlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCatchType(EzBrewParser.CatchTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCatchType(EzBrewParser.CatchTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFinallyBlock(EzBrewParser.FinallyBlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFinallyBlock(EzBrewParser.FinallyBlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

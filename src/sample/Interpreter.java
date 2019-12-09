@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
 import javafx.util.Pair;
@@ -35,9 +36,13 @@ public class Interpreter {
     Stack<String> returnStack = new Stack<>();
     Stack<String> stepReturnStack = new Stack<>();
 
-    public Interpreter(Map<Key, String> TAC, TextArea console) {
+    boolean collectMode;
+    List<String> errors = new ArrayList<>();
+
+    public Interpreter(Map<Key, String> TAC, TextArea console, boolean collectMode) {
         this.TAC = TAC;
         this.consoleArea = console;
+        this.collectMode = collectMode;
     }
 
     // Log to the console area
@@ -210,7 +215,7 @@ public class Interpreter {
 
             // if function has not ended, interpret the line
             interpretLine(curKey,curVal);
-            watchLog("Interpret done, returning: " + stepFunc + " , " + (stepCount+1));
+            watchLog("---Line finished---");
             return new Pair<String, Integer>(stepFunc, stepCount+1);
         }
 
@@ -333,6 +338,7 @@ public class Interpreter {
                 if (find(name) == null) {
                     // normal variable declaration
                     if (curKey.getInfo().equals(Constants.DECL_NORMAL)) {
+                        watchLog("[Declare] Declaring new variable " + name);
                         symbolTable.add(new Symbol(name,Constants.TYPE_VAR,dtype, getScope()));
                     }
                     // declaration of constant
@@ -340,6 +346,7 @@ public class Interpreter {
                         Symbol toAdd = new Symbol(name,Constants.TYPE_VAR,dtype, getScope());
                         toAdd.setConst(true);
                         symbolTable.add(toAdd);
+                        watchLog("[Declare] Declaring new constant " + name);
                     }
                     printTable(symbolTable);
                 } else {
@@ -362,6 +369,7 @@ public class Interpreter {
                             flagError(pop + " is out of scope!");
                         }
                     }
+                    watchLog("[Print] Printing: " + toPrint);
                     consoleLog(toPrint);
                 }
                 break;
@@ -369,19 +377,19 @@ public class Interpreter {
                 // @PushParam variableOrLiteralName
                 if (curKey.getInfo().equals(Constants.PARAM_PRINT)) {
                     printStack.push(curVal);
-                    watchLog("Pushing parameter for print/scan function");
+                    watchLog("[PushParam] Pushing parameter for print/scan function");
                 } else if (curKey.getInfo().equals(Constants.PARAM_FUNC)) {
                     if (findInScope(curVal) == null) flagError("Variable " + curVal + " does not exist!");
                     paramStack.push(curVal);
-                    watchLog("Pushing parameter for function");
+                    watchLog("[PushParam] Pushing parameter for function");
                 }
                 break;
             case "@If":
                 boolean jump = Boolean.valueOf(String.valueOf(valLookup(curKey.getInfo(),true)));
-                watchLog("If statement evaluates to " + jump);
+                watchLog("[IfStmt] If statement evaluates to " + jump);
                 if (jump) {
                     String label = curVal.split(" ")[1];
-                    watchLog("Jumping to " + label);
+                    watchLog("[IfStmt] Jumping to " + label);
                     goTo = label;
                 }
                 break;
@@ -460,7 +468,8 @@ public class Interpreter {
                 }
             }
             // _t = _t op _t
-            else if (curVal.contains("+") || curVal.contains("-") || curVal.contains("*") || curVal.contains("/")) {
+            else if ((curVal.contains("+") || curVal.contains("-") || curVal.contains("*") || curVal.contains("/")) &&
+                    Utilities.operandCount(curVal) == 2){
                 String op = curVal.split(" ")[1];
                 Object leftVal = valLookup(curVal.split(" ")[0], true);
                 Object rightVal = valLookup(curVal.split(" ")[2], true);
@@ -562,7 +571,7 @@ public class Interpreter {
                 }
                 else {
                     watchLog("[Arithmetic] Updating old temp variable...");
-                    temp.setValue(curVal);
+                    temp.setValue(result);
                 }
             }
             // _t = _t conditional_op _t
@@ -641,7 +650,7 @@ public class Interpreter {
                 Symbol temp = find(curKey.getName());
                 // if _t does not exist yet, make a new one
                 if (temp == null) {
-                    watchLog("[TempAssign] Making new temp variable...");
+                    watchLog("[TempAssign] Making new temp variable " + curKey.getName());
                     tempTable.add(new Symbol(curKey.getName(),
                             Constants.TYPE_VAR,
                             getDType(curVal),
@@ -650,7 +659,7 @@ public class Interpreter {
                 }
                 else {
                     // else, just assign it a new value
-                    watchLog("[TempAssign] Updating old temp variable");
+                    watchLog("[TempAssign] Updating old temp variable " + temp.getName());
                     temp.setValue(cast(curVal));
                 }
                 printTable(tempTable);
@@ -665,7 +674,7 @@ public class Interpreter {
             if (curSymbol == null) {
                 flagError(curKey.getName() + " has not been declared.");
             }
-            else if (curSymbol.getConst().booleanValue()) {
+            else if (curSymbol.getConst().booleanValue() && curSymbol.getValue() != null) {
                 flagError("Cannot reassign value of a constant!");
             }
             else if (!curSymbol.getData_type().contains(curTemp.getData_type())){
@@ -680,7 +689,7 @@ public class Interpreter {
                 flagError(curKey.getName() + " has not been declared.");
             }
 
-            if (curSymbol.getConst().booleanValue()) {
+            if (curSymbol.getConst().booleanValue() && curSymbol.getValue() != null) {
                 flagError("Cannot reassign value of a constant!");
             }
 
@@ -765,7 +774,7 @@ public class Interpreter {
         List<Key> keyList = new ArrayList<>(TAC.keySet());
         for (int i = 0; i<keyList.size();i++){
             if (keyList.get(i).getName().equals(label)) {
-                watchLog("RETURNING TO INDEX " + (i-1));
+                watchLog("[LabelFind] Going to index: " + (i-1));
                 return i-1;
             }
         }
@@ -794,7 +803,7 @@ public class Interpreter {
             return Constants.DTYPE_BOOL;
         else if (value.matches("-?\\d+"))
             return Constants.DTYPE_INT;
-        else if (value.matches("[-+]?[0-9]*\\.?[0-9]+"))
+        else if (value.matches("[-+]?[0-9]*\\.?[0-9]+f?"))
             return Constants.DTYPE_FLOAT;
         else
             return Constants.DTYPE_STRING;
@@ -822,16 +831,24 @@ public class Interpreter {
 
     // flags error and terminates program
     public void flagError(String error){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText("Semantic/runtime error detected");
-        alert.setContentText(error + " Program terminating...");
-        printTable(symbolTable);
-        alert.showAndWait();
-        consoleLog("-----Program Terminating-----");
-        terminate = true;
+        if (collectMode) consoleLog("---ERROR: " + error);
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Semantic/runtime error detected");
+            alert.setContentText(error + " Program terminating...");
+            printTable(symbolTable);
+            alert.showAndWait();
+            consoleLog("---ERROR: " + error);
+            consoleLog("-----Program Terminating-----");
+            terminate = true;
 
-        if (stepMode) Watchstage.getInstance().updateStatus("Program terminated...");
+            if (stepMode) Watchstage.getInstance().updateStatus("Program terminated...");
+        }
+    }
+
+    public List<String> getErrors() {
+        return errors;
     }
 
     // finds for symbol on both tables based on identifier
@@ -874,6 +891,7 @@ public class Interpreter {
     // retrieves input from user and returns it as a string
     public String getInput(String inputMsg){
         TextInputDialog dialog = new TextInputDialog();
+        dialog.getDialogPane().lookupButton(ButtonType.CANCEL).setVisible(false);
         dialog.setTitle("Scan Dialog");
         dialog.setHeaderText(inputMsg);
         dialog.setContentText("Please enter your input:");
@@ -890,15 +908,15 @@ public class Interpreter {
     public Object valLookup(String symbolName, boolean inScope){
         Symbol symbol = null;
         if (inScope) {
-            watchLog("Finding for " + symbolName + " in scope " + getScope());
+            watchLog("[Lookup] Finding for " + symbolName + " in scope " + getScope());
             symbol = findInScope(symbolName);
         } else {
-            watchLog("Finding for " + symbolName);
+            watchLog("[Lookup] Finding for " + symbolName);
             symbol = find(symbolName);
         }
 
         if (symbol == null) {
-            watchLog("Nothing found :((");
+            watchLog("[Lookup] Nothing found for " + symbolName);
             flagError("Variable " + symbolName + " does not exist!");
         }
 

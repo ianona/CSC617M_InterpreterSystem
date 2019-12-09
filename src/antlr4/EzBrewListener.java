@@ -484,6 +484,18 @@ public interface EzBrewListener extends ParseTreeListener {
 	 */
 	void exitDoWhileStmt(EzBrewParser.DoWhileStmtContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code TryStmt}
+	 * labeled alternative in {@link EzBrewParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterTryStmt(EzBrewParser.TryStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code TryStmt}
+	 * labeled alternative in {@link EzBrewParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitTryStmt(EzBrewParser.TryStmtContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code SwitchStmt}
 	 * labeled alternative in {@link EzBrewParser#statement}.
 	 * @param ctx the parse tree
@@ -531,6 +543,38 @@ public interface EzBrewListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPrintStmt(EzBrewParser.PrintStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code CatchBlock}
+	 * labeled alternative in {@link EzBrewParser#catchClause}.
+	 * @param ctx the parse tree
+	 */
+	void enterCatchBlock(EzBrewParser.CatchBlockContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code CatchBlock}
+	 * labeled alternative in {@link EzBrewParser#catchClause}.
+	 * @param ctx the parse tree
+	 */
+	void exitCatchBlock(EzBrewParser.CatchBlockContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link EzBrewParser#catchType}.
+	 * @param ctx the parse tree
+	 */
+	void enterCatchType(EzBrewParser.CatchTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link EzBrewParser#catchType}.
+	 * @param ctx the parse tree
+	 */
+	void exitCatchType(EzBrewParser.CatchTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link EzBrewParser#finallyBlock}.
+	 * @param ctx the parse tree
+	 */
+	void enterFinallyBlock(EzBrewParser.FinallyBlockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link EzBrewParser#finallyBlock}.
+	 * @param ctx the parse tree
+	 */
+	void exitFinallyBlock(EzBrewParser.FinallyBlockContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link EzBrewParser#resourceSpecification}.
 	 * @param ctx the parse tree

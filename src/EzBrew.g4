@@ -7,7 +7,7 @@ BOOLEAN:            'bool';//'boolean';
 BREAK:              'stop';//'break';
 //BYTE:               'byte';
 CASE:               'sample';//'case';
-//CATCH:              'handle';//'catch';
+CATCH:              'handle';//'catch';
 CHAR:               'letter';//'char';
 //CLASS:              'blueprint';//'class';
 //CONST:              'perm';//'const';
@@ -19,7 +19,7 @@ ELSE:               'other';//'else';
 //ENUM:               'catalog';//'enum';
 //EXTENDS:            'childof';//'extends';
 FINAL:              'abs';//'final';
-//FINALLY:            'lastly';//'finally';
+FINALLY:            'lastly';//'finally';
 FLOAT:              'sdec';//'float';
 FOR:                'loop';//'for';
 IF:                 'given';//'if';
@@ -47,7 +47,7 @@ THIS:               'self';//'this';
 //THROW:              'shoot';//'throw';
 //THROWS:             'shoots';//'throws';
 //TRANSIENT:          'transient';
-//TRY:                'attempt';//'try';
+TRY:                'attempt';//'try';
 VOID:               'emp';//'void';
 //VOLATILE:           'volatile';
 WHILE:              'during';//'while';
@@ -58,14 +58,14 @@ STRING:             'string';
 // Literals
 
 DECIMAL_LITERAL
-                :    ('0' | [1-9] (Digits? | '_'+ Digits)) [lL]?
+                :    '-'?('0' | [1-9] (Digits? | '_'+ Digits)) [lL]?
                 ;
 //HEX_LITERAL:        '0' [xX] [0-9a-fA-F] ([0-9a-fA-F_]* [0-9a-fA-F])? [lL]?;
 //OCT_LITERAL:        '0' '_'* [0-7] ([0-7_]* [0-7])? [lL]?;
 //BINARY_LITERAL:     '0' [bB] [01] ([01_]* [01])? [lL]?;
 
-FLOAT_LITERAL:      (Digits '.' Digits? | '.' Digits) ExponentPart? [fFdD]?
-             |       Digits (ExponentPart [fFdD]? | [fFdD])
+FLOAT_LITERAL:      '-'?(Digits '.' Digits? | '.' Digits) ExponentPart? [fFdD]?
+             |       '-'?Digits (ExponentPart [fFdD]? | [fFdD])
              ;
 
 //HEX_FLOAT_LITERAL:  '0' [xX] (HexDigits '.'? | HexDigits? '.' HexDigits) [pP] [+-]? Digits [fFdD]?;
@@ -542,7 +542,7 @@ statement
     | FOR '(' forControl ')' statement #ForStmt
     | WHILE parExpression statement #WhileStmt
     | DO statement WHILE parExpression';' #DoWhileStmt
-//    | TRY block (catchClause+ finallyBlock? | finallyBlock)
+    | TRY block (catchClause+ finallyBlock? | finallyBlock) #TryStmt
 //    | TRY resourceSpecification block catchClause* finallyBlock?
     | SWITCH parExpression '{' switchBlockStatementGroup* switchLabel* '}' #SwitchStmt
 //    | SYNCHRONIZED parExpression block
@@ -555,20 +555,20 @@ statement
 //    | identifierLabel=IDENTIFIER ':' statement
 //    | IDENTIFIER '=' SCAN '(' (STRING_LITERAL('+'IDENTIFIER)*)? ')' #InputStmt
 //    | PRINT '(' (STRING_LITERAL | IDENTIFIER) (('+'STRING_LITERAL) ('+'IDENTIFIER))* ');' #PrintStmt
-    | PRINT '(' primary ('+'primary)* ');' #PrintStmt
+    | PRINT LPAREN primary (ADD primary)* RPAREN SEMI #PrintStmt
     ;
 
-//catchClause
-//    : CATCH '(' variableModifier* catchType IDENTIFIER ')' block
-//    ;
-//
-//catchType
-//    : qualifiedName ('|' qualifiedName)*
-//    ;
-//
-//finallyBlock
-//    : FINALLY block
-//    ;
+catchClause
+    : CATCH '(' variableModifier* catchType IDENTIFIER ')' block #CatchBlock
+    ;
+
+catchType
+    : qualifiedName ('|' qualifiedName)*
+    ;
+
+finallyBlock
+    : FINALLY block
+    ;
 
 resourceSpecification
     : '(' resources ';'? ')'
@@ -666,7 +666,7 @@ expression
 
 //    | SCAN '(' (STRING_LITERAL('+'IDENTIFIER)*)? ')' # Input
 //    | SCAN '(' primary ')' # Input
-    | SCAN '(' primary ('+'primary)* ')' # Input
+    | SCAN LPAREN primary (ADD primary)* RPAREN # Input
     ;
 
 // Java8

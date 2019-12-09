@@ -294,6 +294,13 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDoWhileStmt(EzBrewParser.DoWhileStmtContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code TryStmt}
+	 * labeled alternative in {@link EzBrewParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTryStmt(EzBrewParser.TryStmtContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code SwitchStmt}
 	 * labeled alternative in {@link EzBrewParser#statement}.
 	 * @param ctx the parse tree
@@ -321,6 +328,25 @@ public interface EzBrewVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitPrintStmt(EzBrewParser.PrintStmtContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code CatchBlock}
+	 * labeled alternative in {@link EzBrewParser#catchClause}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCatchBlock(EzBrewParser.CatchBlockContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link EzBrewParser#catchType}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCatchType(EzBrewParser.CatchTypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link EzBrewParser#finallyBlock}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFinallyBlock(EzBrewParser.FinallyBlockContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link EzBrewParser#resourceSpecification}.
 	 * @param ctx the parse tree

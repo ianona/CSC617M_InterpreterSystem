@@ -59,7 +59,7 @@ public class Constants {
             "bool",
             "stop",
             "sample",
-//            "handle",
+            "handle",
             "letter",
 //            "blueprint",
             "perm",
@@ -69,7 +69,7 @@ public class Constants {
 //            "catalog",
 //            "childof",
             "abs",
-//            "lastly",
+            "lastly",
             "sdec",
             "loop",
             "given",
@@ -90,7 +90,7 @@ public class Constants {
             "self",
 //            "shoot",
 //            "shoots",
-//            "attempt",
+            "attempt",
             "emp",
             "during",
             "scan",
@@ -125,4 +125,6 @@ public class Constants {
                     + "|(?<COMMENT>" + COMMENT_PATTERN + ")"
                     + "|(?<OPERATOR>" + OPERATOR_PATTERN + ")"
     );
+
+
 }

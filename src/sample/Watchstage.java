@@ -39,6 +39,8 @@ public class Watchstage {
         tempTable.prefWidthProperty().bind(mainContainer.widthProperty());
 //        tempTable.setColumnResizePolicy((param) -> true);
         splitPane.setDividerPositions(0.5);
+        watchLogArea.setWrapText(true);
+        watchLogArea.prefWidthProperty().bind(rightAnchor.widthProperty());
     }
 
     public void updateStatus(String status){
