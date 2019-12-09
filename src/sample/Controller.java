@@ -272,11 +272,35 @@ public class Controller {
 
     public void onOptimizeClick(ActionEvent actionEvent) {
         String wholecode = codeArea.getText();
+        CodeOptimizer shortened = new CodeOptimizer();
+
+        String findStr = "emp";
+        int lastIndex = 0;
+        int count = 0;
+
+        while (lastIndex != -1) {
+
+            lastIndex = wholecode.indexOf(findStr, lastIndex);
+
+            if (lastIndex != -1) {
+                count++;
+                lastIndex += findStr.length();
+            }
+        }
 
         if (consoleArea.getText().contains("No Parsing Errors")) {
-            CodeOptimizer listener = new CodeOptimizer();
-            codeArea.clear();
-            codeArea.appendText(listener.getCode(wholecode));
+            if (!(wholecode.contains("do") || wholecode.contains("during") || wholecode.contains("loop"))) {
+                if (count <=1) {
+                    codeArea.clear();
+                    codeArea.appendText(shortened.getCode(wholecode));
+                } else {
+                    consoleLog("Can only handle single function.");
+                }
+            } else {
+                consoleLog("Can only handle without loop.");
+            }
+        } else {
+            consoleLog("Fix Errors First to run Optimizer.");
         }
     }
 

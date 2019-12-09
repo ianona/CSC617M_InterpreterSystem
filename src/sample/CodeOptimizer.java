@@ -21,10 +21,53 @@ public class CodeOptimizer extends EzBrewBaseListener {
     }
 
     private String consprop(String wholecode) {
-        return wholecode;
+        String shortened = "", intial, middle, end;
+        String[] lines = wholecode.split(System.getProperty("line.separator"));
+        StringBuffer sb = new StringBuffer();
+        String[][] assignment = new String[1][4];
+
+        for (int x = 0; x < lines.length; x++) {
+            System.out.println("@@@@@@@@@@@@@@@@@@@");
+            System.out.println(lines[x]);
+            System.out.println("@@@@@@@@@@@@@@@@@@@");
+
+            lines[x].replaceAll("\\s", "");
+
+            if (lines[x].matches("[a-zA-Z]*[=][0-9]*[;]")) {
+                if (lines[x].contains(numerical[0]) || lines[x].contains(numerical[1]) || lines[x].contains(numerical[2])) {
+                    if (lines[x].contains(numerical[0])) {
+                        assignment[x][0] = numerical[0];
+                        lines[x].replaceAll(numerical[0], "");
+                        lines[x].replaceAll(";", "");
+                        assignment[x][1] = lines[x].substring(0, lines[x].indexOf("="));
+                        assignment[x][2] = lines[x].substring(lines[x].indexOf("=")+1);
+                        assignment[x][3] = Integer.toString(x);
+
+                    } else if (lines[x].contains(numerical[1])) {
+
+                    } else if (lines[x].contains(numerical[2])) {
+
+                    }
+                }
+            }
+            System.out.println(assignment[x][0]);
+            System.out.println(assignment[x][1]);
+            System.out.println(assignment[x][2]);
+
+        }
+
+
+        for (int i = 0; i < lines.length; i++) {
+            sb.append(lines[i]);
+            sb.append("\n");
+        }
+
+        shortened = sb.toString();
+        return shortened;
     }
 
-    @Override public void exitBlockStatement(EzBrewParser.BlockStatementContext ctx) {
+    @Override
+    public void exitBlockStatement(EzBrewParser.BlockStatementContext ctx) {
 //        if(ctx.getText().charAt(ctx.getText().length()-1) != ';'){
 //            System.out.println("Error at line " + ctx.start.getLine() +  ": No semi colon");
 //        }
