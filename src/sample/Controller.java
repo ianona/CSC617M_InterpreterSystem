@@ -47,27 +47,42 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Controller {
-    @FXML private Button runBtn;
-    @FXML private Button runStepBtn;
-    @FXML private Button stopBtn;
-    @FXML private CodeArea codeArea;
-    @FXML private TextArea consoleArea;
-    @FXML private ListView consoleArea2;
-    @FXML private ListView consoleArea3;
-    @FXML private VBox rightBox;
-    @FXML private AnchorPane bottomAnchor;
-    @FXML private AnchorPane topAnchor;
-    @FXML private SplitPane splitPane;
-    @FXML private StatusBar statusBar;
-    @FXML private CheckBox parseChk;
-    @FXML private Button optimizeBtn;
+    @FXML
+    private Button runBtn;
+    @FXML
+    private Button runStepBtn;
+    @FXML
+    private Button stopBtn;
+    @FXML
+    private CodeArea codeArea;
+    @FXML
+    private TextArea consoleArea;
+    @FXML
+    private ListView consoleArea2;
+    @FXML
+    private ListView consoleArea3;
+    @FXML
+    private VBox rightBox;
+    @FXML
+    private AnchorPane bottomAnchor;
+    @FXML
+    private AnchorPane topAnchor;
+    @FXML
+    private SplitPane splitPane;
+    @FXML
+    private StatusBar statusBar;
+    @FXML
+    private CheckBox parseChk;
+    @FXML
+    private Button optimizeBtn;
 
     private Stage watchStage;
     private int stepCount;
     private String stepFunc;
     private Interpreter stepInterpreter;
 
-    @FXML public void initialize(){
+    @FXML
+    public void initialize() {
         codeArea.setParagraphGraphicFactory(LineNumberFactory.get(codeArea));
         codeArea.prefWidthProperty().bind(topAnchor.widthProperty());
         codeArea.prefHeightProperty().bind(topAnchor.heightProperty());
@@ -86,7 +101,7 @@ public class Controller {
 
         splitPane.setDividerPositions(0.8);
 
-        codeArea.textProperty().addListener( ( ov, oldv, newv ) -> {
+        codeArea.textProperty().addListener((ov, oldv, newv) -> {
             populateCodeOutline();
         });
 
@@ -109,36 +124,36 @@ public class Controller {
         // run: `cleanupWhenNoLongerNeedIt.unsubscribe();`
 
         // auto-indent: insert previous line's indents on enter
-        final Pattern whiteSpace = Pattern.compile( "^\\s+" );
-        codeArea.addEventHandler( KeyEvent.KEY_PRESSED, KE ->
+        final Pattern whiteSpace = Pattern.compile("^\\s+");
+        codeArea.addEventHandler(KeyEvent.KEY_PRESSED, KE ->
         {
-            if ( KE.getCode() == KeyCode.ENTER ) {
+            if (KE.getCode() == KeyCode.ENTER) {
                 int caretPosition = codeArea.getCaretPosition();
                 int currentParagraph = codeArea.getCurrentParagraph();
-                Matcher m0 = whiteSpace.matcher( codeArea.getParagraph( currentParagraph-1 ).getSegments().get( 0 ) );
-                if ( m0.find() ) Platform.runLater( () -> codeArea.insertText( caretPosition, m0.group() ) );
+                Matcher m0 = whiteSpace.matcher(codeArea.getParagraph(currentParagraph - 1).getSegments().get(0));
+                if (m0.find()) Platform.runLater(() -> codeArea.insertText(caretPosition, m0.group()));
             }
         });
 
-        codeArea.addEventHandler(KeyEvent.KEY_PRESSED, KE ->{
-            if(KE.getCode() == KeyCode.TAB){
+        codeArea.addEventHandler(KeyEvent.KEY_PRESSED, KE -> {
+            if (KE.getCode() == KeyCode.TAB) {
                 int caretPosition = codeArea.getCaretPosition();
                 int currentParagraph = codeArea.getCaretPosition();
 
-                if(codeArea.getText(caretPosition - 3, caretPosition - 1).contains("pt")){
-                    Platform.runLater(() -> codeArea.replaceText(caretPosition -3, caretPosition -1, "print();"));
+                if (codeArea.getText(caretPosition - 3, caretPosition - 1).contains("pt")) {
+                    Platform.runLater(() -> codeArea.replaceText(caretPosition - 3, caretPosition - 1, "print();"));
                 }
 
-                if(codeArea.getText(caretPosition - 3, caretPosition - 1).contains("dd")){
-                    Platform.runLater(() -> codeArea.replaceText(caretPosition -3, caretPosition -1, "do{ \n\n }during();"));
+                if (codeArea.getText(caretPosition - 3, caretPosition - 1).contains("dd")) {
+                    Platform.runLater(() -> codeArea.replaceText(caretPosition - 3, caretPosition - 1, "do{ \n\n }during();"));
                 }
 
-                if(codeArea.getText(caretPosition - 3, caretPosition - 1).contains("du")){
-                    Platform.runLater(() -> codeArea.replaceText(caretPosition -3, caretPosition -1, "during(){ \n\n }"));
+                if (codeArea.getText(caretPosition - 3, caretPosition - 1).contains("du")) {
+                    Platform.runLater(() -> codeArea.replaceText(caretPosition - 3, caretPosition - 1, "during(){ \n\n }"));
                 }
 
-                if(codeArea.getText(caretPosition - 3, caretPosition - 1).contains("ob")){
-                    Platform.runLater(() -> codeArea.replaceText(caretPosition -3, caretPosition -1, "<!>PUT CLASS NAME AFTER BLUEPRINT<!>\n open blueprint { \n\n }"));
+                if (codeArea.getText(caretPosition - 3, caretPosition - 1).contains("ob")) {
+                    Platform.runLater(() -> codeArea.replaceText(caretPosition - 3, caretPosition - 1, "<!>PUT CLASS NAME AFTER BLUEPRINT<!>\n open blueprint { \n\n }"));
                 }
             }
         });
@@ -149,7 +164,7 @@ public class Controller {
         int lastKwEnd = 0;
         StyleSpansBuilder<Collection<String>> spansBuilder
                 = new StyleSpansBuilder<>();
-        while(matcher.find()) {
+        while (matcher.find()) {
             String styleClass =
                     matcher.group("KEYWORD") != null ? "keyword" :
                             matcher.group("PAREN") != null ? "paren" :
@@ -157,10 +172,11 @@ public class Controller {
                                             matcher.group("BRACKET") != null ? "bracket" :
                                                     matcher.group("SEMICOLON") != null ? "semicolon" :
                                                             matcher.group("STRING") != null ? "string" :
-                                                                matcher.group("CHAR") != null ? "char" :
-                                                                    matcher.group("OPERATOR") != null ? "operator" :
-                                                                            matcher.group("COMMENT") != null ? "comment" :
-                                                                                    null; /* never happens */ assert styleClass != null;
+                                                                    matcher.group("CHAR") != null ? "char" :
+                                                                            matcher.group("OPERATOR") != null ? "operator" :
+                                                                                    matcher.group("COMMENT") != null ? "comment" :
+                                                                                            null; /* never happens */
+            assert styleClass != null;
             spansBuilder.add(Collections.emptyList(), matcher.start() - lastKwEnd);
             spansBuilder.add(Collections.singleton(styleClass), matcher.end() - matcher.start());
             lastKwEnd = matcher.end();
@@ -169,25 +185,25 @@ public class Controller {
         return spansBuilder.create();
     }
 
-    public void consoleLog(String log){
+    public void consoleLog(String log) {
         consoleArea.appendText(log);
         consoleArea.appendText("\n");
     }
 
-    private void sideLog(List<String> toLog){
+    private void sideLog(List<String> toLog) {
         consoleArea2.getItems().clear();
         consoleArea2.setItems(FXCollections.observableList(toLog));
     }
 
-    private void sideLogSelect(int index){
+    private void sideLogSelect(int index) {
         consoleArea2.getSelectionModel().select(index);
     }
 
-    private void clearConsole(){
+    private void clearConsole() {
         consoleArea.clear();
     }
 
-    private void updateStatus(String status){
+    private void updateStatus(String status) {
         statusBar.setText(status);
     }
 
@@ -206,15 +222,15 @@ public class Controller {
         parser.start();
 
         int errors_count = Arrays.stream(listener.getSyntaxErrors().toArray())
-                .filter(error -> ((SyntaxError)error).getMessage().contains("token recognition"))
+                .filter(error -> ((SyntaxError) error).getMessage().contains("token recognition"))
                 .toArray().length;
 
         if (errors_count != 0) {
             consoleLog("----------Token Errors----------");
             Arrays.stream(listener.getSyntaxErrors().toArray())
-                    .filter(error -> ((SyntaxError)error).getMessage().contains("token recognition"))
+                    .filter(error -> ((SyntaxError) error).getMessage().contains("token recognition"))
                     .forEach(
-                            error -> consoleLog(((SyntaxError)error).getMessage())
+                            error -> consoleLog(((SyntaxError) error).getMessage())
                     );
         }
         EzBrewLexer lexer2 = new EzBrewLexer(new ANTLRInputStream(codeArea.getText()));
@@ -222,12 +238,12 @@ public class Controller {
         int count = 0;
         int ws_count = 0;
         int valid_count = 0;
-        for (Token token: lexer2.getAllTokens()){
+        for (Token token : lexer2.getAllTokens()) {
             String tokenClass = null;
             String symbolicName = vocabulary.getSymbolicName(token.getType());
             System.out.println(symbolicName);
 
-            if (symbolicName.contains("COMMENT")){
+            if (symbolicName.contains("COMMENT")) {
                 tokenClass = "COMMENT";
             } else if (symbolicName.contains("IDENTIFIER")) {
                 tokenClass = "IDENTIFIER";
@@ -237,7 +253,7 @@ public class Controller {
                 tokenClass = "SEPARATOR";
             } else if (token.getType() >= 52 && token.getType() <= 72) {
                 tokenClass = "OPERATOR";
-            } else if (token.getType() >= 17 && token.getType() <= 37){
+            } else if (token.getType() >= 17 && token.getType() <= 37) {
                 tokenClass = "KEYWORD";
             } else if (symbolicName.contains("WS")) {
                 ws_count++;
@@ -250,7 +266,7 @@ public class Controller {
             if (tokenClass != null) {
                 consoleLog(token.getText() + "\t\t\t" + tokenClass);
                 valid_count++;
-            } else{
+            } else {
 
             }
 
@@ -260,16 +276,18 @@ public class Controller {
             System.out.println("------");
             count++;
         }
-        Main.getInstance().successNotif("Scan","Scan complete, found " + count + " tokens");
+        Main.getInstance().successNotif("Scan", "Scan complete, found " + count + " tokens");
         updateStatus(count + " tokens found (" + ws_count + " whitespace tokens, " + valid_count + " valid tokens, " + errors_count + " errors)");
     }
 
     public void onOptimizeClick(ActionEvent actionEvent) {
         String wholecode = codeArea.getText();
 
-        CodeOptimizer listener = new CodeOptimizer();
-        codeArea.clear();
-        codeArea.appendText(listener.getCode(wholecode));
+        if (consoleArea.getText().contains("No Parsing Errors")) {
+            CodeOptimizer listener = new CodeOptimizer();
+            codeArea.clear();
+            codeArea.appendText(listener.getCode(wholecode));
+        }
     }
 
     public void onParseClick(ActionEvent actionEvent) {
@@ -288,13 +306,13 @@ public class Controller {
 
         CustomErrorListener listener = new CustomErrorListener();
         ParseTreeWalker walker = new ParseTreeWalker();
-        walker.walk(listener,tree);
+        walker.walk(listener, tree);
         List<String> errors = listener.getErrors();
 
         if (errors.size() == 0) {
             consoleLog("----------No Parsing Errors----------");
         } else {
-            for (String error:errors) {
+            for (String error : errors) {
                 consoleLog(error);
 //                codeArea.appendText(error);
 //                codeArea.appendText("\n");
@@ -313,7 +331,7 @@ public class Controller {
 
         CustomErrorListener errorListener = new CustomErrorListener();
         ParseTreeWalker walker = new ParseTreeWalker();
-        walker.walk(errorListener,tree);
+        walker.walk(errorListener, tree);
         List<String> errors = errorListener.getErrors();
 
         if (errors.size() != 0) {
@@ -328,14 +346,14 @@ public class Controller {
 
         ParseTreeWalker walker2 = new ParseTreeWalker();
         SampleListener listener = new SampleListener();
-        walker2.walk(listener,tree);
+        walker2.walk(listener, tree);
         System.out.println("---------");
 
         printMap(listener.getTAC());
 
         SampleListener listener2 = new SampleListener();
-        walker2.walk(listener2,tree);
-        Interpreter interpreter = new Interpreter(listener2.getTAC(),consoleArea);
+        walker2.walk(listener2, tree);
+        Interpreter interpreter = new Interpreter(listener2.getTAC(), consoleArea);
         interpreter.functionCall(Constants.MAIN);
     }
 
@@ -343,23 +361,21 @@ public class Controller {
         List<String> TAC = new ArrayList<>();
         Iterator it = mp.entrySet().iterator();
         while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            Key curKey = (Key)pair.getKey();
-            String curVal = (String)pair.getValue();
+            Map.Entry pair = (Map.Entry) it.next();
+            Key curKey = (Key) pair.getKey();
+            String curVal = (String) pair.getValue();
 
             String toAdd = "";
             if (curVal != null) {
                 System.out.print("\t");
                 toAdd += "\t";
-                if (curKey.getName().charAt(0)=='@') {
+                if (curKey.getName().charAt(0) == '@') {
                     System.out.println(curKey.getName() + " " + (curKey.getInfo() != null ? curKey.getInfo() : "") + " " + pair.getValue());
                     toAdd += curKey.getName() + " " + (curKey.getInfo() != null ? curKey.getInfo() : "") + " " + pair.getValue();
-                }
-                else if (curVal.isEmpty()){
+                } else if (curVal.isEmpty()) {
                     System.out.println(curKey.getName());
                     toAdd += curKey.getName();
-                }
-                else {
+                } else {
                     System.out.println(curKey.getName() + " = " + pair.getValue());
                     toAdd += curKey.getName() + " = " + pair.getValue();
                 }
@@ -415,7 +431,7 @@ public class Controller {
 
                 CustomErrorListener errorListener = new CustomErrorListener();
                 ParseTreeWalker walker = new ParseTreeWalker();
-                walker.walk(errorListener,tree);
+                walker.walk(errorListener, tree);
                 List<String> errors = errorListener.getErrors();
 
                 if (errors.size() != 0) {
@@ -429,13 +445,13 @@ public class Controller {
                 }
 
                 SampleListener listener = new SampleListener();
-                walker.walk(listener,tree);
+                walker.walk(listener, tree);
                 printMap(listener.getTAC());
 
                 ParseTreeWalker walker2 = new ParseTreeWalker();
                 SampleListener listener2 = new SampleListener();
-                walker2.walk(listener2,tree);
-                stepInterpreter = new Interpreter(listener2.getTAC(),consoleArea);
+                walker2.walk(listener2, tree);
+                stepInterpreter = new Interpreter(listener2.getTAC(), consoleArea);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -443,10 +459,9 @@ public class Controller {
             Pair<String, Integer> pair = stepInterpreter.functionCall(stepFunc, stepCount);
             // finished running all the code
             if (pair == null) {
-                Main.getInstance().infoNotif("Code Done Running","All lines of code have been run or program has terminated.");
+                Main.getInstance().infoNotif("Code Done Running", "All lines of code have been run or program has terminated.");
                 runStepBtn.setDisable(true);
-            }
-            else {
+            } else {
                 sideLogSelect(pair.getValue());
                 stepCount = pair.getValue();
                 stepFunc = pair.getKey();
@@ -472,7 +487,7 @@ public class Controller {
         consoleArea.clear();
         consoleArea2.getItems().clear();
         consoleArea3.getItems().clear();
-        Main.getInstance().successNotif("Clear","Editor cleared");
+        Main.getInstance().successNotif("Clear", "Editor cleared");
         updateStatus("Console ready");
     }
 
@@ -497,7 +512,7 @@ public class Controller {
         grid.setVgap(10);
         grid.setPadding(new Insets(20, 150, 10, 10));
 
-        String week_days[] = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
+        String week_days[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
         ComboBox username = new ComboBox(FXCollections.observableArrayList(Constants.IDE_MODES));
         username.getSelectionModel().select(Main.getInstance().getMode());
         ComboBox dummy = new ComboBox(FXCollections.observableArrayList(week_days));
@@ -532,7 +547,7 @@ public class Controller {
                     this.getClass().getResource("common-style.css").toExternalForm()
             );
             Main.getInstance().getPrimaryStage().getScene().getStylesheets().add(
-                    this.getClass().getResource(mode.toLowerCase()+"-mode.css").toExternalForm()
+                    this.getClass().getResource(mode.toLowerCase() + "-mode.css").toExternalForm()
             );
         });
     }
@@ -553,7 +568,7 @@ public class Controller {
         Matcher matcher = pattern.matcher(text);
         List<String> functions = new ArrayList<>();
         while (matcher.find()) {
-            String line= text.substring(matcher.start(), matcher.end());
+            String line = text.substring(matcher.start(), matcher.end());
             String funcName = line.split(" ")[1];
             if (funcName.contains("("))
                 funcName = funcName.split("\\(")[0];
@@ -587,7 +602,7 @@ public class Controller {
             String newName = options.getValue();
 
             System.out.println("Function=" + functionName + ", New  name=" + newName);
-            codeArea.replaceText(codeArea.getText().replace(functionName,newName));
+            codeArea.replaceText(codeArea.getText().replace(functionName, newName));
         });
     }
 
@@ -598,8 +613,8 @@ public class Controller {
         Matcher matcher = pattern.matcher(text);
         List<String> functions = new ArrayList<>();
         while (matcher.find()) {
-            String line= text.substring(matcher.start(), matcher.end());
-            if(line.contains(" ")) {
+            String line = text.substring(matcher.start(), matcher.end());
+            if (line.contains(" ")) {
                 String funcName;
                 funcName = line.split(" ")[1];
                 if (funcName.contains("("))
@@ -646,16 +661,16 @@ public class Controller {
         try {
             in = new BufferedReader(new FileReader(file.getName()));
             String str;
-            while ((str = in.readLine())!=null) {
+            while ((str = in.readLine()) != null) {
                 codeArea.appendText(str);
                 codeArea.appendText("\n");
             }
         } catch (FileNotFoundException ex) {
-            Main.getInstance().failNotif("Load",ex.getMessage());
+            Main.getInstance().failNotif("Load", ex.getMessage());
         } catch (IOException ex) {
-            Main.getInstance().failNotif("Load",ex.getMessage());
+            Main.getInstance().failNotif("Load", ex.getMessage());
         } finally {
-            Main.getInstance().successNotif("Open",file.getName() + " loaded");
+            Main.getInstance().successNotif("Open", file.getName() + " loaded");
         }
     }
 
@@ -678,9 +693,9 @@ public class Controller {
             writer.println(codeArea.getText());
             writer.close();
         } catch (IOException ex) {
-            Main.getInstance().failNotif("Save",ex.getMessage());
+            Main.getInstance().failNotif("Save", ex.getMessage());
         } finally {
-            Main.getInstance().successNotif("Save",file.getName() + " saved");
+            Main.getInstance().successNotif("Save", file.getName() + " saved");
         }
     }
 }
